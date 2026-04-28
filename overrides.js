@@ -1808,49 +1808,210 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // RELATIONSHIPS
-  // ◣ I [vb] [pessoa] [contexto]
-  // ♥ I used to [vb] [pessoa] [contexto]
-  // ● I have [vb] [pessoa] [contexto]
+  // RELATIONSHIPS — Namoro, parceiros, amigos
+  // ◣ Apresentar parceiro — "I'm with my boyfriend for two years now"
+  // ♥ Como se conheceram — "We met at work three years ago"
+  // ● Buscando namoro — "I'm looking for someone fun and easygoing"
+  // ▲ Tipo de pessoa — "I'm into someone who loves traveling honestly"
+  // ◀ Status atual — "We're getting married next year actually"
+  // ★ História do casal — "We've been dating since college believe it or not"
+  // ◆ Sentimentos — "I really care about her a lot lately"
   // ════════════════════════════════════════════
   "relationships": {
+    title: "relationships",
+    sub: "Namoro & parceiros",
+    desc: "Frases pra falar de relacionamentos em inglês — apresentar parceiro, contar como se conheceram, descrever o que busca. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I",pt:"Eu",s:TRI},
-      {en:"I used to",pt:"Eu costumava",s:HRT},
-      {en:"I have",pt:"Eu",s:DOT},
+      {en:"I'm with",pt:"Estou com",s:TRI},
+      {en:"I'm dating",pt:"Estou namorando",s:TRI},
+      {en:"This is",pt:"Esse(a) é",s:TRI},
+      {en:"Meet",pt:"Conheça",s:TRI},
+
+      {en:"We met",pt:"A gente se conheceu",s:HRT},
+      {en:"We started dating",pt:"Começamos a namorar",s:HRT},
+      {en:"We got together",pt:"Ficamos juntos",s:HRT},
+      {en:"We've known each other",pt:"A gente se conhece",s:HRT},
+
+      {en:"I'm looking for",pt:"Estou procurando",s:DOT},
+      {en:"I want",pt:"Eu quero",s:DOT},
+      {en:"I'd like to meet",pt:"Gostaria de conhecer",s:DOT},
+      {en:"I'm into",pt:"Curto",s:DOT},
+
+      {en:"I'm into",pt:"Curto",s:UP},
+      {en:"I love",pt:"Eu amo",s:UP},
+      {en:"I'm attracted to",pt:"Sou atraído por",s:UP},
+      {en:"My type is",pt:"Meu tipo é",s:UP},
+
+      {en:"We're",pt:"Estamos",s:LFT},
+      {en:"We're getting",pt:"Vamos",s:LFT},
+      {en:"We just",pt:"A gente acabou de",s:LFT},
+      {en:"We recently",pt:"A gente recentemente",s:LFT},
+
+      {en:"We've been dating",pt:"A gente namora",s:STAR},
+      {en:"We've been together",pt:"A gente está junto",s:STAR},
+      {en:"We've been married",pt:"A gente é casado",s:STAR},
+      {en:"We've been seeing each other",pt:"A gente sai",s:STAR},
+
+      {en:"I really care about",pt:"Eu me importo muito com",s:DIA},
+      {en:"I'm crazy about",pt:"Sou louco por",s:DIA},
+      {en:"I'm falling for",pt:"Tô me apaixonando por",s:DIA},
+      {en:"I miss",pt:"Sinto falta de",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"fell for",pt:"me apaixonei por",s:TRI},
-      {en:"got married with",pt:"me casei com",s:TRI},
-      {en:"made up with",pt:"fiz as pazes com",s:TRI},
-      {en:"split up with",pt:"terminei com",s:TRI},
-      {en:"hang out with",pt:"sair com",s:HRT},
-      {en:"flirt with",pt:"flertar com",s:HRT},
-      {en:"fancy",pt:"sou caidinho por",s:HRT},
-      {en:"fallen out with",pt:"fiquei de mal com",s:DOT},
-      {en:"broken up with",pt:"terminei com",s:DOT},
-    ]},
-    2: { replace:true, items:[
-      {en:"my crush",pt:"minha paixão",s:TRI},
+      {en:"my boyfriend",pt:"meu namorado",s:TRI},
+      {en:"my girlfriend",pt:"minha namorada",s:TRI},
+      {en:"my partner",pt:"meu(minha) parceiro(a)",s:TRI},
       {en:"my husband",pt:"meu marido",s:TRI},
       {en:"my wife",pt:"minha esposa",s:TRI},
-      {en:"my best friend",pt:"meu(minha) melhor amigo(a)",s:HRT},
-      {en:"her",pt:"ela",s:HRT},
-      {en:"him",pt:"ele",s:HRT},
-      {en:"my girlfriend",pt:"minha namorada",s:DOT},
-      {en:"my boyfriend",pt:"meu namorado",s:DOT},
+
+      {en:"at work",pt:"no trabalho",s:HRT},
+      {en:"through friends",pt:"por amigos",s:HRT},
+      {en:"on a dating app",pt:"em um app de namoro",s:HRT},
+      {en:"at a party",pt:"em uma festa",s:HRT},
+
+      {en:"someone fun",pt:"alguém divertido",s:DOT},
+      {en:"a serious relationship",pt:"um relacionamento sério",s:DOT},
+      {en:"someone caring",pt:"alguém carinhoso",s:DOT},
+      {en:"a long-term partner",pt:"um(a) parceiro(a) de longo prazo",s:DOT},
+
+      {en:"someone who",pt:"alguém que",s:UP},
+      {en:"people who",pt:"pessoas que",s:UP},
+      {en:"a partner who",pt:"um(a) parceiro(a) que",s:UP},
+      {en:"someone with",pt:"alguém com",s:UP},
+
+      {en:"engaged",pt:"noivos",s:LFT},
+      {en:"married next year",pt:"casar ano que vem",s:LFT},
+      {en:"got engaged",pt:"ficamos noivos",s:LFT},
+      {en:"moved in together",pt:"fomos morar juntos",s:LFT},
+
+      {en:"since college",pt:"desde a faculdade",s:STAR},
+      {en:"for three years",pt:"há três anos",s:STAR},
+      {en:"for a few months",pt:"há alguns meses",s:STAR},
+      {en:"for ages",pt:"há séculos",s:STAR},
+
+      {en:"her",pt:"ela",s:DIA},
+      {en:"him",pt:"ele",s:DIA},
+      {en:"my partner",pt:"meu(minha) parceiro(a)",s:DIA},
+      {en:"my crush",pt:"minha paixão",s:DIA},
+    ]},
+    2: { replace:true, items:[
+      {en:"for two years",pt:"há dois anos",s:TRI},
+      {en:"happily",pt:"felizmente",s:TRI},
+      {en:"for now",pt:"por enquanto",s:TRI},
+      {en:"officially",pt:"oficialmente",s:TRI},
+
+      {en:"three years ago",pt:"três anos atrás",s:HRT},
+      {en:"in college",pt:"na faculdade",s:HRT},
+      {en:"during the pandemic",pt:"na pandemia",s:HRT},
+      {en:"on a trip",pt:"em uma viagem",s:HRT},
+
+      {en:"and easygoing",pt:"e tranquilo(a)",s:DOT},
+      {en:"and ambitious",pt:"e ambicioso(a)",s:DOT},
+      {en:"and family-oriented",pt:"e família",s:DOT},
+      {en:"and adventurous",pt:"e aventureiro(a)",s:DOT},
+
+      {en:"loves traveling",pt:"ama viajar",s:UP},
+      {en:"is loyal",pt:"é leal",s:UP},
+      {en:"makes me laugh",pt:"me faz rir",s:UP},
+      {en:"shares my values",pt:"divide meus valores",s:UP},
+
+      {en:"after two years",pt:"depois de dois anos",s:LFT},
+      {en:"this summer",pt:"esse verão",s:LFT},
+      {en:"last month",pt:"mês passado",s:LFT},
+      {en:"already",pt:"já",s:LFT},
+
+      {en:"believe it or not",pt:"acredite ou não",s:STAR},
+      {en:"and going strong",pt:"e firmes",s:STAR},
+      {en:"and we're happy",pt:"e a gente é feliz",s:STAR},
+      {en:"already",pt:"já",s:STAR},
+
+      {en:"a lot",pt:"muito",s:DIA},
+      {en:"more than ever",pt:"mais do que nunca",s:DIA},
+      {en:"every day",pt:"todo dia",s:DIA},
+      {en:"more than I should",pt:"mais do que devia",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"on the first date",pt:"no primeiro encontro",s:TRI},
-      {en:"after a year",pt:"depois de um ano",s:TRI},
-      {en:"last week",pt:"semana passada",s:TRI},
-      {en:"every day",pt:"todo dia",s:HRT},
-      {en:"a lot",pt:"bastante",s:HRT},
-      {en:"on weekends",pt:"nos fins de semana",s:HRT},
-      {en:"after a fight",pt:"depois de uma briga",s:DOT},
-      {en:"recently",pt:"recentemente",s:DOT},
-      {en:"this month",pt:"esse mês",s:DOT},
+      {en:"now",pt:"agora",s:TRI},
+      {en:"and going strong",pt:"e firmes",s:TRI},
+      {en:"by the way",pt:"a propósito",s:TRI},
+      {en:"believe it or not",pt:"acredite ou não",s:TRI},
+
+      {en:"and it's been great",pt:"e tem sido ótimo",s:HRT},
+      {en:"surprisingly",pt:"surpreendentemente",s:HRT},
+      {en:"by chance",pt:"por acaso",s:HRT},
+      {en:"and clicked instantly",pt:"e nos demos super bem",s:HRT},
+
+      {en:"honestly",pt:"sinceramente",s:DOT},
+      {en:"finally",pt:"finalmente",s:DOT},
+      {en:"that's all",pt:"é isso",s:DOT},
+      {en:"these days",pt:"hoje em dia",s:DOT},
+
+      {en:"honestly",pt:"sinceramente",s:UP},
+      {en:"more than anything",pt:"mais que tudo",s:UP},
+      {en:"as a person",pt:"como pessoa",s:UP},
+      {en:"in general",pt:"no geral",s:UP},
+
+      {en:"actually",pt:"na verdade",s:LFT},
+      {en:"finally",pt:"finalmente",s:LFT},
+      {en:"surprisingly",pt:"surpreendentemente",s:LFT},
+      {en:"and it's serious",pt:"e é sério",s:LFT},
+
+      {en:"and counting",pt:"e contando",s:STAR},
+      {en:"if you can believe it",pt:"se dá pra acreditar",s:STAR},
+      {en:"now",pt:"agora",s:STAR},
+      {en:"and we're solid",pt:"e estamos firmes",s:STAR},
+
+      {en:"lately",pt:"ultimamente",s:DIA},
+      {en:"to be honest",pt:"pra ser sincero",s:DIA},
+      {en:"deeply",pt:"profundamente",s:DIA},
+      {en:"in a good way",pt:"do bom jeito",s:DIA},
     ]},
+    examples: [
+      {en:"I'm with my boyfriend for two years now",pt:"Estou com meu namorado há dois anos"},
+      {en:"This is my partner happily by the way",pt:"Esse(a) é meu(minha) parceiro(a) felizmente a propósito"},
+      {en:"We met at work three years ago and it's been great",pt:"A gente se conheceu no trabalho três anos atrás e tem sido ótimo"},
+      {en:"We started dating on a dating app during the pandemic surprisingly",pt:"Começamos a namorar em um app de namoro na pandemia surpreendentemente"},
+      {en:"I'm looking for someone fun and easygoing honestly",pt:"Estou procurando alguém divertido e tranquilo sinceramente"},
+      {en:"I'd like to meet a long-term partner and family-oriented these days",pt:"Gostaria de conhecer um(a) parceiro(a) de longo prazo e família hoje em dia"},
+      {en:"I'm into someone who loves traveling honestly",pt:"Curto alguém que ama viajar sinceramente"},
+      {en:"My type is a partner who shares my values as a person",pt:"Meu tipo é um(a) parceiro(a) que divide meus valores como pessoa"},
+      {en:"We're getting married next year this summer actually",pt:"Vamos casar ano que vem esse verão na verdade"},
+      {en:"We just moved in together last month and it's serious",pt:"A gente acabou de ir morar juntos mês passado e é sério"},
+      {en:"We've been dating since college believe it or not",pt:"A gente namora desde a faculdade acredite ou não"},
+      {en:"We've been together for three years and going strong",pt:"A gente está junto há três anos e firmes"},
+      {en:"I really care about her a lot lately",pt:"Eu me importo muito com ela ultimamente"},
+      {en:"I'm crazy about him more than ever to be honest",pt:"Sou louco por ele mais do que nunca pra ser sincero"},
+    ],
+    phrasals: [
+      {term:"I'm with / I'm dating",desc:"'I'm with [pessoa]' = relação estabelecida (namoro/casamento). 'I'm dating [pessoa]' = saindo, mais casual. 'I'm seeing someone' é deliberadamente vago.",ex:[
+        {en:"I'm with my boyfriend for two years",pt:"Estou com meu namorado há dois anos"},
+        {en:"I'm dating my partner happily",pt:"Estou namorando meu(minha) parceiro(a) felizmente"}
+      ]},
+      {term:"We met / We started dating",desc:"Pra contar como começou. 'We met [lugar/jeito]' = primeira vez que se viram. 'We started dating' = quando viraram casal. Sempre passado simples (não 'we have met').",ex:[
+        {en:"We met at work three years ago",pt:"A gente se conheceu no trabalho três anos atrás"},
+        {en:"We started dating during the pandemic",pt:"Começamos a namorar na pandemia"}
+      ]},
+      {term:"I'm looking for / I want",desc:"Pra falar do que busca em dating. 'I'm looking for' é mais romântico/sério; 'I want' é direto. Após o objeto, pode adicionar 'who...' (qualidade) ou 'and...' (mais traços).",ex:[
+        {en:"I'm looking for someone fun and easygoing",pt:"Estou procurando alguém divertido e tranquilo"},
+        {en:"I want a serious relationship honestly",pt:"Eu quero um relacionamento sério sinceramente"}
+      ]},
+      {term:"I'm into / My type is",desc:"Pra descrever atração/preferência. 'I'm into [pessoa/tipo]' é casual; 'My type is' é mais filosófico. Após, geralmente vem 'who [verbo]' ou adjetivo.",ex:[
+        {en:"I'm into someone who loves traveling",pt:"Curto alguém que ama viajar"},
+        {en:"My type is a partner who shares my values",pt:"Meu tipo é um(a) parceiro(a) que divide meus valores"}
+      ]},
+      {term:"We're getting / We just",desc:"Pra eventos atuais ou recentes do casal. 'We're getting [married/engaged]' = futuro próximo. 'We just [moved/got]' = passado muito recente.",ex:[
+        {en:"We're getting married next year",pt:"Vamos casar ano que vem"},
+        {en:"We just moved in together last month",pt:"A gente acabou de ir morar juntos mês passado"}
+      ]},
+      {term:"We've been dating / together",desc:"Present perfect continuous pra duração de relacionamento. 'We've been dating' (namoro), 'together' (mais geral), 'married' (casamento). Sempre seguido de 'for [duração]' ou 'since [marco].",ex:[
+        {en:"We've been dating since college",pt:"A gente namora desde a faculdade"},
+        {en:"We've been together for three years",pt:"A gente está junto há três anos"}
+      ]},
+      {term:"I really care about / I'm crazy about",desc:"Pra falar de sentimentos. 'Care about' é amoroso e respeitoso; 'crazy about' é apaixonado/intenso; 'falling for' é o início de paixão. Sempre seguido de pessoa ou pronome.",ex:[
+        {en:"I really care about her a lot",pt:"Eu me importo muito com ela"},
+        {en:"I'm crazy about him more than ever",pt:"Sou louco por ele mais do que nunca"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
