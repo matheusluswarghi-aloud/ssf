@@ -1152,52 +1152,210 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // TRAVELING
-  // ◣ I will [vb] [obj] [tempo]
-  // ♥ I [vb] [obj] [contexto]
-  // ● The plane [vb] [tempo]
+  // TRAVEL — Aeroporto, hotel, direções
+  // ◣ Imigração / propósito da viagem — "I'm here for business for two weeks"
+  // ♥ Reservar / pedir — "I'd like to book a flight to Paris"
+  // ● Pedir info — "Can you tell me where the airport is from here"
+  // ▲ Pedir direção — "How do I get to the hotel by taxi from the station"
+  // ◀ Experiência de viagem — "I've been to Paris last year for vacation"
+  // ★ Onde está hospedado — "I'm staying at a hotel downtown for three nights"
+  // ◆ Itinerário — "I plan to visit the museum tomorrow before I leave"
   // ════════════════════════════════════════════
   "traveling": {
+    title: "travel",
+    sub: "Aeroporto, hotel & direções",
+    desc: "Frases pra usar em qualquer viagem internacional — imigração, hotel, restaurantes, perguntando direções. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I will",pt:"Eu irei",s:TRI},
-      {en:"I",pt:"Eu",s:HRT},
-      {en:"The plane",pt:"O avião",s:DOT},
+      {en:"I'm here for",pt:"Estou aqui a",s:TRI},
+      {en:"I'm visiting for",pt:"Estou visitando a",s:TRI},
+      {en:"I'm traveling for",pt:"Estou viajando a",s:TRI},
+      {en:"I'm staying for",pt:"Vou ficar por",s:TRI},
+
+      {en:"I'd like to",pt:"Eu gostaria de",s:HRT},
+      {en:"I want to",pt:"Eu quero",s:HRT},
+      {en:"I need to",pt:"Eu preciso",s:HRT},
+      {en:"Could I",pt:"Posso",s:HRT},
+
+      {en:"Can you tell me",pt:"Você pode me dizer",s:DOT},
+      {en:"Could you tell me",pt:"Você poderia me dizer",s:DOT},
+      {en:"Excuse me,",pt:"Com licença,",s:DOT},
+      {en:"Sorry,",pt:"Desculpa,",s:DOT},
+
+      {en:"How do I get to",pt:"Como eu chego",s:UP},
+      {en:"What's the best way to",pt:"Qual a melhor forma de chegar",s:UP},
+      {en:"Can I walk to",pt:"Dá pra ir andando até",s:UP},
+      {en:"How far is",pt:"Quão longe fica",s:UP},
+
+      {en:"I've been to",pt:"Eu já fui a",s:LFT},
+      {en:"I visited",pt:"Eu visitei",s:LFT},
+      {en:"I went to",pt:"Eu fui a",s:LFT},
+      {en:"I've traveled to",pt:"Eu já viajei pra",s:LFT},
+
+      {en:"I'm staying at",pt:"Estou hospedado em",s:STAR},
+      {en:"I booked",pt:"Reservei",s:STAR},
+      {en:"We're at",pt:"Estamos em",s:STAR},
+      {en:"I'm checked into",pt:"Fiz check-in em",s:STAR},
+
+      {en:"I plan to",pt:"Pretendo",s:DIA},
+      {en:"I want to",pt:"Eu quero",s:DIA},
+      {en:"I'd love to",pt:"Eu adoraria",s:DIA},
+      {en:"I'm going to",pt:"Vou",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"set off for",pt:"partir para",s:TRI},
-      {en:"book",pt:"reservar",s:TRI},
-      {en:"check in at",pt:"fazer check-in em",s:TRI},
-      {en:"check out of",pt:"fazer check-out de",s:TRI},
-      {en:"got on",pt:"entrei no",s:HRT},
-      {en:"got off",pt:"saí do",s:HRT},
-      {en:"hurried up",pt:"me apressei",s:HRT},
-      {en:"checked in",pt:"fiz check-in",s:HRT},
-      {en:"takes off",pt:"decola",s:DOT},
-      {en:"lands",pt:"pousa",s:DOT},
-      {en:"arrives",pt:"chega",s:DOT},
+      {en:"business",pt:"negócios",s:TRI},
+      {en:"leisure",pt:"lazer",s:TRI},
+      {en:"tourism",pt:"turismo",s:TRI},
+      {en:"vacation",pt:"férias",s:TRI},
+      {en:"a conference",pt:"uma conferência",s:TRI},
+
+      {en:"book",pt:"reservar",s:HRT},
+      {en:"reserve",pt:"reservar",s:HRT},
+      {en:"change",pt:"mudar",s:HRT},
+      {en:"cancel",pt:"cancelar",s:HRT},
+
+      {en:"where",pt:"onde",s:DOT},
+      {en:"how to find",pt:"como achar",s:DOT},
+      {en:"what time",pt:"que horas",s:DOT},
+      {en:"how much",pt:"quanto",s:DOT},
+
+      {en:"the hotel",pt:"o hotel",s:UP},
+      {en:"downtown",pt:"o centro",s:UP},
+      {en:"the museum",pt:"o museu",s:UP},
+      {en:"the airport",pt:"o aeroporto",s:UP},
+
+      {en:"Paris",pt:"Paris",s:LFT},
+      {en:"Tokyo",pt:"Tóquio",s:LFT},
+      {en:"many countries",pt:"vários países",s:LFT},
+      {en:"South America",pt:"a América do Sul",s:LFT},
+
+      {en:"a hotel",pt:"um hotel",s:STAR},
+      {en:"an Airbnb",pt:"um Airbnb",s:STAR},
+      {en:"a hostel",pt:"um hostel",s:STAR},
+      {en:"a resort",pt:"um resort",s:STAR},
+
+      {en:"visit",pt:"visitar",s:DIA},
+      {en:"explore",pt:"explorar",s:DIA},
+      {en:"try",pt:"experimentar",s:DIA},
+      {en:"see",pt:"ver",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"Paris",pt:"Paris",s:TRI},
-      {en:"Tokyo",pt:"Tóquio",s:TRI},
-      {en:"a flight",pt:"um voo",s:TRI},
-      {en:"a hotel",pt:"um hotel",s:TRI},
-      {en:"the airport",pt:"o aeroporto",s:TRI},
-      {en:"the bus",pt:"no ônibus",s:HRT},
-      {en:"the train",pt:"no trem",s:HRT},
-      {en:"the plane",pt:"no avião",s:HRT},
-      {en:"my luggage",pt:"minhas bagagens",s:HRT},
-      {en:"in Paris",pt:"em Paris",s:DOT},
+      {en:"for two weeks",pt:"por duas semanas",s:TRI},
+      {en:"for a few days",pt:"por alguns dias",s:TRI},
+      {en:"for a month",pt:"por um mês",s:TRI},
+      {en:"for the holidays",pt:"para as festas",s:TRI},
+
+      {en:"a flight",pt:"um voo",s:HRT},
+      {en:"a room",pt:"um quarto",s:HRT},
+      {en:"a tour",pt:"um tour",s:HRT},
+      {en:"my reservation",pt:"minha reserva",s:HRT},
+
+      {en:"the airport is",pt:"o aeroporto fica",s:DOT},
+      {en:"the bus stop is",pt:"o ponto de ônibus fica",s:DOT},
+      {en:"check-in opens",pt:"o check-in abre",s:DOT},
+      {en:"a taxi costs",pt:"um táxi custa",s:DOT},
+
+      {en:"by taxi",pt:"de táxi",s:UP},
+      {en:"by bus",pt:"de ônibus",s:UP},
+      {en:"on foot",pt:"a pé",s:UP},
+      {en:"by metro",pt:"de metrô",s:UP},
+
+      {en:"last year",pt:"ano passado",s:LFT},
+      {en:"a few times",pt:"algumas vezes",s:LFT},
+      {en:"once",pt:"uma vez",s:LFT},
+      {en:"on business",pt:"a negócios",s:LFT},
+
+      {en:"downtown",pt:"no centro",s:STAR},
+      {en:"near the airport",pt:"perto do aeroporto",s:STAR},
+      {en:"in the city center",pt:"no centro da cidade",s:STAR},
+      {en:"by the beach",pt:"perto da praia",s:STAR},
+
+      {en:"the museum",pt:"o museu",s:DIA},
+      {en:"the local food",pt:"a comida local",s:DIA},
+      {en:"the old city",pt:"a cidade antiga",s:DIA},
+      {en:"some landmarks",pt:"alguns pontos turísticos",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"tomorrow",pt:"amanhã",s:TRI},
-      {en:"next month",pt:"mês que vem",s:TRI},
-      {en:"in a few weeks",pt:"em algumas semanas",s:TRI},
-      {en:"early",pt:"cedo",s:HRT},
-      {en:"late",pt:"atrasado",s:HRT},
-      {en:"on time",pt:"no horário",s:HRT},
-      {en:"at 3:20 p.m.",pt:"às 15:20",s:DOT},
-      {en:"in two hours",pt:"em duas horas",s:DOT},
+      {en:"on this trip",pt:"nessa viagem",s:TRI},
+      {en:"abroad",pt:"no exterior",s:TRI},
+      {en:"officially",pt:"oficialmente",s:TRI},
+      {en:"for the first time",pt:"pela primeira vez",s:TRI},
+
+      {en:"to Paris",pt:"para Paris",s:HRT},
+      {en:"for tonight",pt:"pra hoje à noite",s:HRT},
+      {en:"for two nights",pt:"por duas noites",s:HRT},
+      {en:"online",pt:"online",s:HRT},
+
+      {en:"from here",pt:"daqui",s:DOT},
+      {en:"nearby",pt:"perto",s:DOT},
+      {en:"in this area",pt:"nessa área",s:DOT},
+      {en:"right now",pt:"agora",s:DOT},
+
+      {en:"from here",pt:"daqui",s:UP},
+      {en:"from the station",pt:"da estação",s:UP},
+      {en:"quickly",pt:"rapidinho",s:UP},
+      {en:"safely",pt:"com segurança",s:UP},
+
+      {en:"for vacation",pt:"de férias",s:LFT},
+      {en:"for work",pt:"a trabalho",s:LFT},
+      {en:"with my family",pt:"com a família",s:LFT},
+      {en:"alone",pt:"sozinho(a)",s:LFT},
+
+      {en:"for three nights",pt:"por três noites",s:STAR},
+      {en:"for a week",pt:"por uma semana",s:STAR},
+      {en:"until Sunday",pt:"até domingo",s:STAR},
+      {en:"on a budget",pt:"com orçamento limitado",s:STAR},
+
+      {en:"tomorrow",pt:"amanhã",s:DIA},
+      {en:"this weekend",pt:"esse fim de semana",s:DIA},
+      {en:"on my last day",pt:"no meu último dia",s:DIA},
+      {en:"before I leave",pt:"antes de eu ir",s:DIA},
     ]},
+    examples: [
+      {en:"I'm here for business for two weeks officially",pt:"Estou aqui a negócios por duas semanas oficialmente"},
+      {en:"I'm staying for vacation for a few days for the first time",pt:"Vou ficar de férias por alguns dias pela primeira vez"},
+      {en:"I'd like to book a flight to Paris online",pt:"Eu gostaria de reservar um voo para Paris online"},
+      {en:"I need to cancel my reservation for tonight",pt:"Eu preciso cancelar minha reserva pra hoje à noite"},
+      {en:"Excuse me, where the airport is from here?",pt:"Com licença, onde o aeroporto fica daqui?"},
+      {en:"Can you tell me how much a taxi costs in this area?",pt:"Você pode me dizer quanto um táxi custa nessa área?"},
+      {en:"How do I get to downtown by metro from here?",pt:"Como eu chego no centro de metrô daqui?"},
+      {en:"How far is the airport by taxi from the station?",pt:"Quão longe fica o aeroporto de táxi da estação?"},
+      {en:"I've been to Paris last year for vacation",pt:"Eu já fui a Paris ano passado de férias"},
+      {en:"I went to many countries on business with my family",pt:"Eu fui a vários países a negócios com a família"},
+      {en:"I'm staying at a hotel downtown for three nights",pt:"Estou hospedado em um hotel no centro por três noites"},
+      {en:"I booked an Airbnb near the airport on a budget",pt:"Reservei um Airbnb perto do aeroporto com orçamento limitado"},
+      {en:"I plan to visit the museum tomorrow",pt:"Pretendo visitar o museu amanhã"},
+      {en:"I'd love to try the local food this weekend",pt:"Eu adoraria experimentar a comida local esse fim de semana"},
+    ],
+    phrasals: [
+      {term:"I'm here for [purpose]",desc:"Frase essencial em imigração / customs. 'I'm here for business' ou 'for leisure/tourism' são as mais usadas. Sempre seguido de substantivo abstrato (não de gerúndio).",ex:[
+        {en:"I'm here for business for two weeks",pt:"Estou aqui a negócios por duas semanas"},
+        {en:"I'm visiting for tourism for a few days",pt:"Estou visitando a turismo por alguns dias"}
+      ]},
+      {term:"I'd like to / I want to",desc:"'I'd like to' é mais formal e educado, ideal pra hotéis e restaurantes. 'I want to' é direto, mais comum em conversa casual. Sempre seguido de verbo no infinitivo (sem 'to' duplicado).",ex:[
+        {en:"I'd like to book a flight to Paris",pt:"Eu gostaria de reservar um voo para Paris"},
+        {en:"I want to change my reservation for tonight",pt:"Eu quero mudar minha reserva pra hoje à noite"}
+      ]},
+      {term:"Can you tell me / Could you tell me",desc:"Forma natural de pedir informação a estranhos. Sempre seguido de pergunta indireta — sem inversão verbo-sujeito ('where IS the airport' vira 'where the airport IS').",ex:[
+        {en:"Can you tell me where the airport is from here?",pt:"Você pode me dizer onde o aeroporto fica daqui?"},
+        {en:"Could you tell me what time check-in opens?",pt:"Você poderia me dizer que horas o check-in abre?"}
+      ]},
+      {term:"How do I get to / What's the best way to",desc:"As duas formas mais práticas de pedir direção. 'How do I get to' é universal; 'what's the best way to' implica comparar opções (taxi vs metrô).",ex:[
+        {en:"How do I get to the hotel by taxi?",pt:"Como eu chego no hotel de táxi?"},
+        {en:"What's the best way to downtown on foot?",pt:"Qual a melhor forma de chegar no centro a pé?"}
+      ]},
+      {term:"I've been to / I went to",desc:"'I've been to [lugar]' = experiência geral, sem tempo definido ('I've been to Paris' = já fui em Paris alguma vez). 'I went to [lugar] [tempo]' = uma viagem específica ('I went to Paris last year').",ex:[
+        {en:"I've been to many countries on business",pt:"Já fui a vários países a negócios"},
+        {en:"I went to Tokyo last year with my family",pt:"Fui a Tóquio ano passado com a família"}
+      ]},
+      {term:"I'm staying at",desc:"Pra dizer onde você se hospedou. Sempre 'at' antes do tipo (a hotel/an Airbnb/a hostel). Não confunda com 'I live at' (que é casa fixa).",ex:[
+        {en:"I'm staying at a hotel downtown for three nights",pt:"Estou hospedado em um hotel no centro por três noites"},
+        {en:"I'm staying at an Airbnb near the airport",pt:"Estou hospedado em um Airbnb perto do aeroporto"}
+      ]},
+      {term:"I plan to / I'd love to",desc:"Pra falar de planos de viagem. 'I plan to' é mais firme (já decidi); 'I'd love to' é desejo flexível (gostaria de fazer). Ambos seguidos de verbo no infinitivo.",ex:[
+        {en:"I plan to visit the museum tomorrow",pt:"Pretendo visitar o museu amanhã"},
+        {en:"I'd love to try the local food this weekend",pt:"Eu adoraria experimentar a comida local esse fim de semana"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
