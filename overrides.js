@@ -751,57 +751,210 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // EDUCATION
-  // ◣ I am [vb-ing] [obj] [contexto]
-  // ♥ I have [vb] [obj] [contexto]
-  // ● I [vb] [obj] [contexto]
-  // ▲ I will [vb] [obj] [contexto]
+  // EDUCATION — Estudos, faculdade, cursos
+  // ◣ Apresentando estudo — "I'm studying business at a university in São Paulo"
+  // ♥ Conquista acadêmica — "I graduated from college last year with honors"
+  // ● Curso atual — "I'm taking a course on data science online this semester"
+  // ▲ Plano de estudo — "I'm planning to apply for a master's next year abroad"
+  // ◀ Desafio acadêmico — "I'm struggling with calculus this semester honestly"
+  // ★ Hábito de estudo — "I usually study at the library after class daily"
+  // ◆ Discutindo nota — "I got an A on the test which surprised me really"
   // ════════════════════════════════════════════
   "education": {
+    title: "education",
+    sub: "Estudos & cursos",
+    desc: "Frases pra falar sobre seus estudos em inglês — onde estuda, o que cursa, planos acadêmicos. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I am",pt:"Eu estou",s:TRI},
-      {en:"I have",pt:"Eu",s:HRT},
-      {en:"I",pt:"Eu",s:DOT},
-      {en:"I will",pt:"Eu irei",s:UP},
+      {en:"I'm studying",pt:"Estou estudando",s:TRI},
+      {en:"I study",pt:"Eu estudo",s:TRI},
+      {en:"I major in",pt:"Faço",s:TRI},
+      {en:"My major is",pt:"Minha graduação é",s:TRI},
+
+      {en:"I graduated",pt:"Eu me formei",s:HRT},
+      {en:"I just finished",pt:"Acabei de terminar",s:HRT},
+      {en:"I completed",pt:"Concluí",s:HRT},
+      {en:"I earned",pt:"Conquistei",s:HRT},
+
+      {en:"I'm taking",pt:"Estou fazendo",s:DOT},
+      {en:"I'm enrolled in",pt:"Estou matriculado em",s:DOT},
+      {en:"I signed up for",pt:"Me inscrevi em",s:DOT},
+      {en:"I'm doing",pt:"Estou fazendo",s:DOT},
+
+      {en:"I'm planning to apply",pt:"Estou planejando aplicar",s:UP},
+      {en:"I want to pursue",pt:"Quero buscar",s:UP},
+      {en:"I'm thinking of doing",pt:"Estou pensando em fazer",s:UP},
+      {en:"I plan to study",pt:"Pretendo estudar",s:UP},
+
+      {en:"I'm struggling",pt:"Estou tendo dificuldade",s:LFT},
+      {en:"I'm having trouble",pt:"Estou tendo problemas",s:LFT},
+      {en:"I find it tough",pt:"Acho difícil",s:LFT},
+      {en:"I'm falling behind",pt:"Estou atrasado(a)",s:LFT},
+
+      {en:"I usually study",pt:"Geralmente estudo",s:STAR},
+      {en:"I tend to review",pt:"Costumo revisar",s:STAR},
+      {en:"I always read",pt:"Sempre leio",s:STAR},
+      {en:"I prefer to learn",pt:"Prefiro aprender",s:STAR},
+
+      {en:"I got an A",pt:"Tirei um A",s:DIA},
+      {en:"I scored",pt:"Fiquei com",s:DIA},
+      {en:"I passed",pt:"Passei",s:DIA},
+      {en:"I failed",pt:"Reprovei",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"trying to catch up with",pt:"tentando acompanhar",s:TRI},
-      {en:"struggling to go over",pt:"lutando para revisar",s:TRI},
-      {en:"reading up on",pt:"lendo sobre",s:TRI},
-      {en:"copying out",pt:"copiando",s:TRI},
-      {en:"taken up",pt:"comecei",s:HRT},
-      {en:"handed in",pt:"entreguei",s:HRT},
-      {en:"dropped out of",pt:"larguei",s:HRT},
-      {en:"fallen behind in",pt:"fiquei pra trás em",s:HRT},
-      {en:"hand out",pt:"distribuir",s:UP},
-      {en:"teach",pt:"ensinar",s:UP},
-      {en:"memorize",pt:"memorizar",s:DOT},
-      {en:"recite",pt:"recitar",s:DOT},
+      {en:"business",pt:"administração",s:TRI},
+      {en:"computer science",pt:"ciência da computação",s:TRI},
+      {en:"law",pt:"direito",s:TRI},
+      {en:"engineering",pt:"engenharia",s:TRI},
+      {en:"design",pt:"design",s:TRI},
+
+      {en:"from college",pt:"da faculdade",s:HRT},
+      {en:"my degree",pt:"minha graduação",s:HRT},
+      {en:"a master's",pt:"um mestrado",s:HRT},
+      {en:"my certification",pt:"minha certificação",s:HRT},
+
+      {en:"a course",pt:"um curso",s:DOT},
+      {en:"an online program",pt:"um programa online",s:DOT},
+      {en:"extra classes",pt:"aulas extras",s:DOT},
+      {en:"a workshop",pt:"um workshop",s:DOT},
+
+      {en:"for a master's",pt:"para um mestrado",s:UP},
+      {en:"a doctorate",pt:"um doutorado",s:UP},
+      {en:"an MBA",pt:"um MBA",s:UP},
+      {en:"another degree",pt:"outra graduação",s:UP},
+
+      {en:"with calculus",pt:"com cálculo",s:LFT},
+      {en:"with statistics",pt:"com estatística",s:LFT},
+      {en:"with this professor",pt:"com esse professor",s:LFT},
+      {en:"with the workload",pt:"com a carga horária",s:LFT},
+
+      {en:"at the library",pt:"na biblioteca",s:STAR},
+      {en:"at home",pt:"em casa",s:STAR},
+      {en:"in groups",pt:"em grupo",s:STAR},
+      {en:"in coffee shops",pt:"em cafeterias",s:STAR},
+
+      {en:"on the test",pt:"na prova",s:DIA},
+      {en:"the final exam",pt:"o exame final",s:DIA},
+      {en:"my last assignment",pt:"meu último trabalho",s:DIA},
+      {en:"the entrance exam",pt:"o vestibular",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"my essay",pt:"minha redação",s:TRI},
-      {en:"this material",pt:"esse material",s:TRI},
-      {en:"this subject",pt:"esse assunto",s:TRI},
-      {en:"my homework",pt:"meu dever",s:HRT},
-      {en:"a new hobby",pt:"um novo hobby",s:HRT},
-      {en:"college",pt:"a faculdade",s:HRT},
-      {en:"the leaflets",pt:"os folhetos",s:UP},
-      {en:"the books",pt:"os livros",s:UP},
-      {en:"a poem",pt:"um poema",s:DOT},
-      {en:"the equation",pt:"a equação",s:DOT},
+      {en:"at a university",pt:"em uma universidade",s:TRI},
+      {en:"at FGV",pt:"na FGV",s:TRI},
+      {en:"online",pt:"online",s:TRI},
+      {en:"at a public school",pt:"em uma escola pública",s:TRI},
+
+      {en:"last year",pt:"ano passado",s:HRT},
+      {en:"with honors",pt:"com honras",s:HRT},
+      {en:"in record time",pt:"em tempo recorde",s:HRT},
+      {en:"after four years",pt:"depois de quatro anos",s:HRT},
+
+      {en:"on data science",pt:"de ciência de dados",s:DOT},
+      {en:"in marketing",pt:"em marketing",s:DOT},
+      {en:"about photography",pt:"sobre fotografia",s:DOT},
+      {en:"in English",pt:"em inglês",s:DOT},
+
+      {en:"next year",pt:"ano que vem",s:UP},
+      {en:"in two years",pt:"em dois anos",s:UP},
+      {en:"after graduation",pt:"depois da formatura",s:UP},
+      {en:"in the future",pt:"no futuro",s:UP},
+
+      {en:"this semester",pt:"esse semestre",s:LFT},
+      {en:"in this class",pt:"nessa matéria",s:LFT},
+      {en:"on this assignment",pt:"nesse trabalho",s:LFT},
+      {en:"with the deadlines",pt:"com os prazos",s:LFT},
+
+      {en:"after class",pt:"depois das aulas",s:STAR},
+      {en:"before the test",pt:"antes da prova",s:STAR},
+      {en:"on weekends",pt:"nos fins de semana",s:STAR},
+      {en:"in the morning",pt:"de manhã",s:STAR},
+
+      {en:"which surprised me",pt:"o que me surpreendeu",s:DIA},
+      {en:"a B+ overall",pt:"um B+ no geral",s:DIA},
+      {en:"by one point",pt:"por um ponto",s:DIA},
+      {en:"with the highest grade",pt:"com a maior nota",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"before the test",pt:"antes da prova",s:TRI},
-      {en:"for school",pt:"para a escola",s:TRI},
-      {en:"this week",pt:"essa semana",s:TRI},
-      {en:"lately",pt:"ultimamente",s:HRT},
-      {en:"recently",pt:"recentemente",s:HRT},
-      {en:"this year",pt:"esse ano",s:HRT},
-      {en:"to the group",pt:"para o grupo",s:UP},
-      {en:"to everybody",pt:"para todos",s:UP},
-      {en:"in front of class",pt:"na frente da turma",s:DOT},
-      {en:"by heart",pt:"de cor",s:DOT},
+      {en:"in São Paulo",pt:"em São Paulo",s:TRI},
+      {en:"abroad",pt:"no exterior",s:TRI},
+      {en:"part-time",pt:"meio período",s:TRI},
+      {en:"full-time",pt:"integral",s:TRI},
+
+      {en:"thankfully",pt:"felizmente",s:HRT},
+      {en:"finally",pt:"finalmente",s:HRT},
+      {en:"and it's a relief",pt:"e é um alívio",s:HRT},
+      {en:"with hard work",pt:"com trabalho duro",s:HRT},
+
+      {en:"this semester",pt:"esse semestre",s:DOT},
+      {en:"to learn more",pt:"pra aprender mais",s:DOT},
+      {en:"to improve my skills",pt:"pra melhorar habilidades",s:DOT},
+      {en:"out of curiosity",pt:"por curiosidade",s:DOT},
+
+      {en:"abroad",pt:"no exterior",s:UP},
+      {en:"online if possible",pt:"online se possível",s:UP},
+      {en:"with a scholarship",pt:"com bolsa",s:UP},
+      {en:"in a top program",pt:"num programa top",s:UP},
+
+      {en:"honestly",pt:"sinceramente",s:LFT},
+      {en:"to be fair",pt:"pra ser justo(a)",s:LFT},
+      {en:"but I'll figure it out",pt:"mas vou conseguir",s:LFT},
+      {en:"more than usual",pt:"mais que o normal",s:LFT},
+
+      {en:"daily",pt:"diariamente",s:STAR},
+      {en:"for a few hours",pt:"por algumas horas",s:STAR},
+      {en:"with focus music",pt:"com música de foco",s:STAR},
+      {en:"with a study buddy",pt:"com um(a) parceiro(a) de estudos",s:STAR},
+
+      {en:"really",pt:"de verdade",s:DIA},
+      {en:"after all that effort",pt:"depois de todo esforço",s:DIA},
+      {en:"I'm proud of it",pt:"orgulho disso",s:DIA},
+      {en:"in my class",pt:"da minha turma",s:DIA},
     ]},
+    examples: [
+      {en:"I'm studying business at a university in São Paulo",pt:"Estou estudando administração em uma universidade em São Paulo"},
+      {en:"My major is computer science online part-time",pt:"Minha graduação é ciência da computação online meio período"},
+      {en:"I graduated from college last year with honors thankfully",pt:"Eu me formei da faculdade ano passado com honras felizmente"},
+      {en:"I just finished a master's after four years finally",pt:"Acabei de terminar um mestrado depois de quatro anos finalmente"},
+      {en:"I'm taking a course on data science online this semester",pt:"Estou fazendo um curso de ciência de dados online esse semestre"},
+      {en:"I signed up for a workshop in marketing to improve my skills",pt:"Me inscrevi em um workshop em marketing pra melhorar habilidades"},
+      {en:"I'm planning to apply for a master's next year abroad",pt:"Estou planejando aplicar para um mestrado ano que vem no exterior"},
+      {en:"I want to pursue a doctorate after graduation with a scholarship",pt:"Quero buscar um doutorado depois da formatura com bolsa"},
+      {en:"I'm struggling with calculus this semester honestly",pt:"Estou tendo dificuldade com cálculo esse semestre sinceramente"},
+      {en:"I'm having trouble with the workload more than usual but I'll figure it out",pt:"Estou tendo problemas com a carga horária mais que o normal mas vou conseguir"},
+      {en:"I usually study at the library after class daily",pt:"Geralmente estudo na biblioteca depois das aulas diariamente"},
+      {en:"I prefer to learn in groups on weekends with a study buddy",pt:"Prefiro aprender em grupo nos fins de semana com um parceiro de estudos"},
+      {en:"I got an A on the test which surprised me really",pt:"Tirei um A na prova o que me surpreendeu de verdade"},
+      {en:"I scored the final exam with the highest grade in my class",pt:"Fiquei com o exame final com a maior nota da minha turma"},
+    ],
+    phrasals: [
+      {term:"I'm studying / I major in",desc:"'I'm studying [área]' = forma geral. 'I major in [área]' = especificamente sua graduação principal. 'My major is' soa mais formal. Não use 'I do' (que é vago).",ex:[
+        {en:"I'm studying business at a university",pt:"Estou estudando administração em uma universidade"},
+        {en:"My major is computer science online",pt:"Minha graduação é ciência da computação online"}
+      ]},
+      {term:"I graduated / I completed",desc:"'I graduated FROM [instituição]' (com 'from'). 'I completed [tipo de curso]' (sem preposição). 'With honors' = com honras (cum laude).",ex:[
+        {en:"I graduated from college last year with honors",pt:"Eu me formei da faculdade ano passado com honras"},
+        {en:"I completed my degree in record time",pt:"Concluí minha graduação em tempo recorde"}
+      ]},
+      {term:"I'm taking / I'm enrolled in",desc:"Pra falar de curso atual. 'Take a course' (não 'do a course' como em português). 'Enrolled in' = matriculado oficialmente. 'Signed up for' = inscrito (mais casual).",ex:[
+        {en:"I'm taking a course on data science",pt:"Estou fazendo um curso de ciência de dados"},
+        {en:"I signed up for a workshop in marketing",pt:"Me inscrevi em um workshop em marketing"}
+      ]},
+      {term:"I'm planning to apply / I want to pursue",desc:"Pra falar de planos acadêmicos. 'Apply FOR a master's/PhD' (com 'for' + tipo de programa). 'Pursue' (mais formal) = buscar (uma carreira/grau).",ex:[
+        {en:"I'm planning to apply for a master's next year",pt:"Estou planejando aplicar para um mestrado ano que vem"},
+        {en:"I want to pursue a doctorate after graduation",pt:"Quero buscar um doutorado depois da formatura"}
+      ]},
+      {term:"I'm struggling with / I'm having trouble with",desc:"Pra reconhecer dificuldade acadêmica. Sempre seguido de 'with' + matéria/coisa. Adicione 'honestly' ou 'to be fair' pra suavizar. Evite 'I'm bad' que soa derrotista.",ex:[
+        {en:"I'm struggling with calculus this semester",pt:"Estou tendo dificuldade com cálculo esse semestre"},
+        {en:"I'm having trouble with this professor honestly",pt:"Estou tendo problemas com esse professor sinceramente"}
+      ]},
+      {term:"I usually study / I prefer to learn",desc:"Pra hábitos de estudo. 'Study at [lugar]' / 'study with [pessoa/material]'. 'I'm a [adjetivo] learner' (visual learner, hands-on learner) é outra estrutura comum.",ex:[
+        {en:"I usually study at the library after class",pt:"Geralmente estudo na biblioteca depois das aulas"},
+        {en:"I prefer to learn in groups on weekends",pt:"Prefiro aprender em grupo nos fins de semana"}
+      ]},
+      {term:"I got an A / I scored",desc:"Sistema de notas em inglês: A (excelente), B (bom), C (médio), D (baixo), F (reprovou). 'I got [nota] ON [prova]' (não 'in'). 'I scored [pontos]' = pontuei.",ex:[
+        {en:"I got an A on the test which surprised me",pt:"Tirei um A na prova o que me surpreendeu"},
+        {en:"I scored the highest grade in my class",pt:"Fiquei com a maior nota da minha turma"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
