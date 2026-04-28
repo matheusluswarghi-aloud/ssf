@@ -1396,57 +1396,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // SHOPPING
-  // ◣ I have [vb] [obj] [tempo]
-  // ♥ I am going to [vb] [obj] [contexto]
-  // ● I [vb] [obj] [contexto]
-  // ▲ It set me back [valor]
+  // SHOPPING — Lojas, tamanhos, devolução
+  // ◣ Procurar item — "I'm looking for a shirt in size medium please"
+  // ♥ Provar / experimentar — "Can I try this on in a different size?"
+  // ● Pergunta sobre produto — "Does this come in any other color?"
+  // ▲ Comparar / preço — "How much is this on sale this week?"
+  // ◀ Pagar — "I'd like to pay by card if you accept it"
+  // ★ Devolução / troca — "I'd like to return this item I bought yesterday"
+  // ◆ Reclamar / pedir ajuda — "Can someone help me find the fitting room?"
   // ════════════════════════════════════════════
   "shopping": {
+    title: "shopping",
+    sub: "Lojas, tamanhos & trocas",
+    desc: "Frases pra qualquer compra em loja, mercado ou shopping em inglês — procurar, experimentar, pagar, devolver. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I have",pt:"Eu",s:TRI},
-      {en:"I’m going to",pt:"Eu irei",s:HRT},
-      {en:"I",pt:"Eu",s:DOT},
-      {en:"It",pt:"Isso",s:UP},
+      {en:"I'm looking for",pt:"Estou procurando",s:TRI},
+      {en:"Do you have",pt:"Vocês têm",s:TRI},
+      {en:"I need",pt:"Preciso",s:TRI},
+      {en:"Where can I find",pt:"Onde encontro",s:TRI},
+
+      {en:"Can I try",pt:"Posso provar",s:HRT},
+      {en:"Could I try",pt:"Posso experimentar",s:HRT},
+      {en:"I'd like to try",pt:"Gostaria de experimentar",s:HRT},
+      {en:"Where can I try",pt:"Onde experimento",s:HRT},
+
+      {en:"Does this come",pt:"Isso vem",s:DOT},
+      {en:"Is this available",pt:"Isso está disponível",s:DOT},
+      {en:"Do you have this",pt:"Vocês têm isso",s:DOT},
+      {en:"Is there",pt:"Tem",s:DOT},
+
+      {en:"How much is",pt:"Quanto é",s:UP},
+      {en:"What's the price of",pt:"Qual o preço de",s:UP},
+      {en:"Is this",pt:"Isso está",s:UP},
+      {en:"Are these",pt:"Esses estão",s:UP},
+
+      {en:"I'd like to pay",pt:"Gostaria de pagar",s:LFT},
+      {en:"Can I pay",pt:"Posso pagar",s:LFT},
+      {en:"Do you accept",pt:"Vocês aceitam",s:LFT},
+      {en:"I'll pay",pt:"Vou pagar",s:LFT},
+
+      {en:"I'd like to return",pt:"Gostaria de devolver",s:STAR},
+      {en:"Can I exchange",pt:"Posso trocar",s:STAR},
+      {en:"I want a refund",pt:"Quero reembolso",s:STAR},
+      {en:"This doesn't fit",pt:"Não serve",s:STAR},
+
+      {en:"Can someone help me",pt:"Alguém pode me ajudar",s:DIA},
+      {en:"Excuse me, do you work",pt:"Com licença, você trabalha",s:DIA},
+      {en:"Could you point me to",pt:"Pode me indicar",s:DIA},
+      {en:"I have a question about",pt:"Tenho uma dúvida sobre",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"paid for",pt:"paguei",s:TRI},
-      {en:"tried on",pt:"experimentei",s:TRI},
-      {en:"queued up",pt:"esperei na fila",s:TRI},
-      {en:"tried out",pt:"testei",s:TRI},
-      {en:"pop into",pt:"dar uma passada em",s:HRT},
-      {en:"shop around for",pt:"pesquisar por",s:HRT},
-      {en:"bring down",pt:"abaixar",s:HRT},
-      {en:"often pay",pt:"geralmente pago",s:DOT},
-      {en:"rarely buy",pt:"raramente compro",s:DOT},
-      {en:"set me back",pt:"me custou",s:UP},
+      {en:"a shirt",pt:"uma camisa",s:TRI},
+      {en:"some jeans",pt:"uma calça",s:TRI},
+      {en:"sneakers",pt:"tênis",s:TRI},
+      {en:"a gift",pt:"um presente",s:TRI},
+
+      {en:"this on",pt:"isso",s:HRT},
+      {en:"these on",pt:"esses",s:HRT},
+      {en:"this dress on",pt:"esse vestido",s:HRT},
+      {en:"another one",pt:"outro",s:HRT},
+
+      {en:"in any other color",pt:"em outra cor",s:DOT},
+      {en:"in a smaller size",pt:"em um tamanho menor",s:DOT},
+      {en:"in stock",pt:"em estoque",s:DOT},
+      {en:"online",pt:"online",s:DOT},
+
+      {en:"this",pt:"isso",s:UP},
+      {en:"the dress",pt:"o vestido",s:UP},
+      {en:"the bag",pt:"a bolsa",s:UP},
+      {en:"the watch",pt:"o relógio",s:UP},
+
+      {en:"by card",pt:"no cartão",s:LFT},
+      {en:"in cash",pt:"em dinheiro",s:LFT},
+      {en:"with PayPal",pt:"com PayPal",s:LFT},
+      {en:"in installments",pt:"parcelado",s:LFT},
+
+      {en:"this item",pt:"esse item",s:STAR},
+      {en:"this product",pt:"esse produto",s:STAR},
+      {en:"these shoes",pt:"esses sapatos",s:STAR},
+      {en:"my purchase",pt:"minha compra",s:STAR},
+
+      {en:"find the fitting room",pt:"achar o provador",s:DIA},
+      {en:"locate this product",pt:"localizar esse produto",s:DIA},
+      {en:"check the price",pt:"checar o preço",s:DIA},
+      {en:"reach the manager",pt:"falar com o gerente",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"a shirt",pt:"uma camisa",s:TRI},
-      {en:"a pair of pants",pt:"uma calça",s:TRI},
-      {en:"a dress",pt:"um vestido",s:TRI},
-      {en:"the service",pt:"o serviço",s:TRI},
-      {en:"the store",pt:"a loja",s:HRT},
-      {en:"the grocery",pt:"o mercado",s:HRT},
-      {en:"the best deals",pt:"as melhores ofertas",s:HRT},
-      {en:"the price",pt:"o preço",s:HRT},
-      {en:"in cash",pt:"em dinheiro",s:DOT},
-      {en:"by card",pt:"no cartão",s:DOT},
-      {en:"a thousand reais",pt:"mil reais",s:UP},
-      {en:"a fortune",pt:"uma fortuna",s:UP},
+      {en:"in size medium",pt:"tamanho médio",s:TRI},
+      {en:"in black",pt:"em preto",s:TRI},
+      {en:"on sale",pt:"em promoção",s:TRI},
+      {en:"under fifty dollars",pt:"abaixo de cinquenta dólares",s:TRI},
+
+      {en:"in a different size",pt:"em outro tamanho",s:HRT},
+      {en:"in another color",pt:"em outra cor",s:HRT},
+      {en:"before deciding",pt:"antes de decidir",s:HRT},
+      {en:"in the next size up",pt:"no próximo tamanho",s:HRT},
+
+      {en:"in blue",pt:"em azul",s:DOT},
+      {en:"in size large",pt:"tamanho grande",s:DOT},
+      {en:"with free shipping",pt:"com frete grátis",s:DOT},
+      {en:"in this style",pt:"nesse estilo",s:DOT},
+
+      {en:"on sale",pt:"em promoção",s:UP},
+      {en:"with the discount",pt:"com o desconto",s:UP},
+      {en:"per item",pt:"por item",s:UP},
+      {en:"including tax",pt:"com taxa",s:UP},
+
+      {en:"if you accept it",pt:"se vocês aceitarem",s:LFT},
+      {en:"thanks",pt:"obrigado(a)",s:LFT},
+      {en:"please",pt:"por favor",s:LFT},
+      {en:"as a deposit",pt:"como entrada",s:LFT},
+
+      {en:"I bought yesterday",pt:"que comprei ontem",s:STAR},
+      {en:"that doesn't fit",pt:"que não serve",s:STAR},
+      {en:"with the receipt",pt:"com o recibo",s:STAR},
+      {en:"unworn",pt:"sem uso",s:STAR},
+
+      {en:"please",pt:"por favor",s:DIA},
+      {en:"if you can",pt:"se puder",s:DIA},
+      {en:"I'm a bit lost",pt:"estou meio perdido(a)",s:DIA},
+      {en:"thanks in advance",pt:"obrigado(a) desde já",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"lately",pt:"ultimamente",s:TRI},
-      {en:"this week",pt:"essa semana",s:TRI},
-      {en:"for hours",pt:"por horas",s:TRI},
-      {en:"after work",pt:"depois do trabalho",s:HRT},
-      {en:"online",pt:"online",s:HRT},
-      {en:"this weekend",pt:"esse fim de semana",s:HRT},
-      {en:"every time",pt:"toda vez",s:DOT},
-      {en:"at the till",pt:"no caixa",s:DOT},
-      {en:"in cash",pt:"em dinheiro",s:UP},
-      {en:"on the spot",pt:"na hora",s:UP},
+      {en:"please",pt:"por favor",s:TRI},
+      {en:"thanks",pt:"obrigado(a)",s:TRI},
+      {en:"if available",pt:"se houver",s:TRI},
+      {en:"by any chance",pt:"por acaso",s:TRI},
+
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"first",pt:"primeiro",s:HRT},
+      {en:"to be sure",pt:"pra ter certeza",s:HRT},
+
+      {en:"by any chance",pt:"por acaso",s:DOT},
+      {en:"these days",pt:"hoje em dia",s:DOT},
+      {en:"please",pt:"por favor",s:DOT},
+      {en:"in stock",pt:"em estoque",s:DOT},
+
+      {en:"this week",pt:"essa semana",s:UP},
+      {en:"with the promotion",pt:"com a promoção",s:UP},
+      {en:"all together",pt:"tudo junto",s:UP},
+      {en:"approximately",pt:"aproximadamente",s:UP},
+
+      {en:"please",pt:"por favor",s:LFT},
+      {en:"separately",pt:"separadamente",s:LFT},
+      {en:"in two installments",pt:"em duas vezes",s:LFT},
+      {en:"in cash",pt:"em dinheiro",s:LFT},
+
+      {en:"please",pt:"por favor",s:STAR},
+      {en:"if possible",pt:"se possível",s:STAR},
+      {en:"thanks",pt:"obrigado(a)",s:STAR},
+      {en:"as soon as possible",pt:"o mais rápido possível",s:STAR},
+
+      {en:"please",pt:"por favor",s:DIA},
+      {en:"if it's not too much trouble",pt:"se não for incômodo",s:DIA},
+      {en:"I'd appreciate it",pt:"agradeço",s:DIA},
+      {en:"thanks",pt:"obrigado(a)",s:DIA},
     ]},
+    examples: [
+      {en:"I'm looking for a shirt in size medium please",pt:"Estou procurando uma camisa tamanho médio por favor"},
+      {en:"Do you have sneakers under fifty dollars by any chance?",pt:"Vocês têm tênis abaixo de cinquenta dólares por acaso?"},
+      {en:"Can I try this on in a different size first?",pt:"Posso provar isso em outro tamanho primeiro?"},
+      {en:"I'd like to try this dress on in another color thanks",pt:"Gostaria de experimentar esse vestido em outra cor obrigado"},
+      {en:"Does this come in any other color these days?",pt:"Isso vem em outra cor hoje em dia?"},
+      {en:"Is this available in size large with free shipping?",pt:"Isso está disponível tamanho grande com frete grátis?"},
+      {en:"How much is this on sale this week?",pt:"Quanto isso está em promoção essa semana?"},
+      {en:"Are these the watch with the discount all together?",pt:"Esses estão o relógio com o desconto tudo junto?"},
+      {en:"I'd like to pay by card if you accept it please",pt:"Gostaria de pagar no cartão se vocês aceitarem por favor"},
+      {en:"Do you accept PayPal in installments separately?",pt:"Vocês aceitam PayPal parcelado separadamente?"},
+      {en:"I'd like to return this item I bought yesterday please",pt:"Gostaria de devolver esse item que comprei ontem por favor"},
+      {en:"Can I exchange these shoes that doesn't fit if possible?",pt:"Posso trocar esses sapatos que não servem se possível?"},
+      {en:"Can someone help me find the fitting room please?",pt:"Alguém pode me ajudar a achar o provador por favor?"},
+      {en:"Could you point me to check the price thanks?",pt:"Pode me indicar pra checar o preço obrigado?"},
+    ],
+    phrasals: [
+      {term:"I'm looking for / Do you have",desc:"Pra começar a busca por um item. 'I'm looking for' implica que ainda não decidiu; 'Do you have' é mais direto. Sempre seguido de 'a/an' + item.",ex:[
+        {en:"I'm looking for a shirt in size medium",pt:"Estou procurando uma camisa tamanho médio"},
+        {en:"Do you have sneakers under fifty dollars?",pt:"Vocês têm tênis abaixo de cinquenta dólares?"}
+      ]},
+      {term:"Can I try this on",desc:"Frase essencial pra prova de roupas. 'Try ON' é phrasal verb separável: 'try this on' (com pronome objeto entre verbo e partícula). Sempre 'on', não 'try this' sem partícula.",ex:[
+        {en:"Can I try this on in a different size?",pt:"Posso provar isso em outro tamanho?"},
+        {en:"Could I try these on before deciding?",pt:"Posso experimentar esses antes de decidir?"}
+      ]},
+      {term:"Does this come in / Is this available",desc:"Pra perguntar variações. 'Does this come in [cor/tamanho]?' = vem em? 'Is this available in...?' = está disponível em? Mesmo significado prático.",ex:[
+        {en:"Does this come in any other color?",pt:"Isso vem em outra cor?"},
+        {en:"Is this available in size large?",pt:"Isso está disponível tamanho grande?"}
+      ]},
+      {term:"How much is / What's the price of",desc:"'How much IS this' (com 'is' direto) é mais natural pra item específico. 'What's the price of [X]?' soa um pouco mais formal. Ambos funcionam.",ex:[
+        {en:"How much is this on sale this week?",pt:"Quanto isso está em promoção essa semana?"},
+        {en:"What's the price of the dress with the discount?",pt:"Qual o preço do vestido com o desconto?"}
+      ]},
+      {term:"I'd like to pay by / Do you accept",desc:"'Pay BY [meio]' (cartão) ou 'pay IN [moeda]' (dinheiro). 'Do you accept [meio]?' é universal pra checar se aceita determinado pagamento. Erro clássico: 'pay with card' (não é o padrão).",ex:[
+        {en:"I'd like to pay by card if you accept it",pt:"Gostaria de pagar no cartão se vocês aceitarem"},
+        {en:"Do you accept PayPal in installments?",pt:"Vocês aceitam PayPal parcelado?"}
+      ]},
+      {term:"I'd like to return / Can I exchange",desc:"'Return' = devolução (recebe dinheiro de volta). 'Exchange' = troca (por outro produto). Sempre traga 'with the receipt' (com o recibo) e mencione o motivo se possível.",ex:[
+        {en:"I'd like to return this item I bought yesterday",pt:"Gostaria de devolver esse item que comprei ontem"},
+        {en:"Can I exchange these shoes that don't fit?",pt:"Posso trocar esses sapatos que não servem?"}
+      ]},
+      {term:"Can someone help me / Excuse me",desc:"Pra começar a pedir ajuda numa loja. 'Excuse me' é o opener mais educado. 'Can someone help me [verbo no infinitivo]' especifica o que precisa.",ex:[
+        {en:"Can someone help me find the fitting room?",pt:"Alguém pode me ajudar a achar o provador?"},
+        {en:"Excuse me, do you work in this section?",pt:"Com licença, você trabalha nessa seção?"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
