@@ -8,24 +8,16 @@
   const chapters = window.SSF_CHAPTERS;
   const OV = window.SSF_OVERRIDES || {};
 
-  // Merge overrides — supports column replacements + examples/phrasals/desc/sub
+  // Merge overrides
   chapters.forEach(ch => {
     const o = OV[ch.id]; if (!o) return;
-    Object.keys(o).forEach(key => {
-      const def = o[key];
-      if (key === 'examples' && Array.isArray(def)) {
-        ch.examples = def;
-      } else if (key === 'phrasals' && Array.isArray(def)) {
-        ch.phrasals = def;
-      } else if (key === 'desc' && typeof def === 'string') {
-        ch.desc = def;
-      } else if (key === 'sub' && typeof def === 'string') {
-        ch.sub = def;
-      } else if (def && def.replace && Array.isArray(def.items)) {
-        ch.cols[+key] = def.items.map(it => ({ ...it }));
+    Object.keys(o).forEach(ci => {
+      const def = o[ci];
+      if (def && def.replace && Array.isArray(def.items)) {
+        ch.cols[ci] = def.items.map(it => ({ ...it }));
       } else if (Array.isArray(def)) {
         def.forEach((meta, idx) => {
-          if (ch.cols[+key] && ch.cols[+key][idx]) Object.assign(ch.cols[+key][idx], meta);
+          if (ch.cols[ci] && ch.cols[ci][idx]) Object.assign(ch.cols[ci][idx], meta);
         });
       }
     });

@@ -1281,13 +1281,12 @@ h1, h2, h3, h4 {
 .toc-close:hover { border-color: var(--cyan); color: var(--cyan); }
 .toc-overlay-grid { max-width: 1100px; margin: 0 auto; }
 
-/* Hide all pages except active. Note: uses descendant selectors because
-   chapter pages are nested inside #chapters-mount, not direct children. */
-.book-pages .page,
-.book-pages .cover,
-.book-pages .closing { display: none; }
-.book-pages .active { display: block; }
-.book-pages .closing.active { display: flex; }
+/* Hide all pages except active */
+.book-pages > .page,
+.book-pages > .cover,
+.book-pages > .closing { display: none; }
+.book-pages > .active { display: block; }
+.book-pages > .closing.active { display: flex; }
 
 /* ========== Onboarding tooltip ========== */
 
