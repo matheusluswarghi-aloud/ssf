@@ -480,76 +480,6 @@ h1, h2, h3, h4 {
   margin-top: 24px;
 }
 
-/* ========== Symbol legend (sticky orientation) ========== */
-
-.sym-legend {
-  position: sticky;
-  top: 0;
-  z-index: 25;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 20px;
-  align-items: center;
-  padding: 14px 20px;
-  background: rgba(20,20,20,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--gray-dark);
-  border-top: 2px solid var(--cyan);
-  margin: 24px 0;
-}
-.sym-legend .lbl {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  line-height: 1.4;
-  white-space: nowrap;
-}
-.sym-legend .syms {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-.sym-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px 4px 6px;
-  border: 1px solid var(--gray-dark);
-  border-radius: 999px;
-  font-family: var(--font-head);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--gray);
-  background: rgba(255,255,255,0.02);
-  transition: all 0.18s ease;
-}
-.sym-chip .glyph {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: rgba(0,255,255,0.1);
-  border: 1px solid var(--cyan);
-  color: var(--cyan);
-  font-size: 12px;
-  line-height: 1;
-}
-.sym-chip.lit {
-  border-color: var(--cyan);
-  color: var(--white);
-  background: rgba(0,255,255,0.06);
-  box-shadow: 0 0 0 1px var(--cyan-glow), 0 0 14px var(--cyan-glow);
-}
-.sym-chip.lit .glyph {
-  background: var(--cyan);
-  color: var(--black);
-}
 
 /* ========== SSF Table ========== */
 
@@ -656,8 +586,9 @@ h1, h2, h3, h4 {
 .ssf-col { display: grid; align-content: start; gap: 0; }
 
 .ssf-cell {
-  padding: 14px 12px 14px 48px;
+  padding: 14px 14px;
   border-bottom: 1px solid var(--gray-dark);
+  border-left: 2px solid transparent;
   font-family: var(--font-body);
   cursor: pointer;
   transition: background 0.15s, opacity 0.2s, filter 0.2s, border-color 0.18s;
@@ -668,40 +599,17 @@ h1, h2, h3, h4 {
   flex-direction: column;
   justify-content: center;
 }
-.ssf-cell .sym {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: rgba(0,255,255,0.06);
-  border: 1.5px solid var(--gray-dark);
-  color: var(--cyan);
-  font-size: 14px;
-  line-height: 1;
-  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
-}
 .ssf-cell:hover {
   background: rgba(0,255,255,0.04);
 }
-.ssf-cell:hover .sym {
-  border-color: var(--cyan);
-}
-.ssf-cell.compatible .sym {
-  border-color: var(--cyan);
-  background: rgba(0,255,255,0.14);
-  box-shadow: 0 0 0 3px rgba(0,255,255,0.08);
-}
 .ssf-cell.compatible {
-  background: rgba(0,255,255,0.025);
+  background: rgba(0,255,255,0.04);
+  border-left-color: var(--cyan);
 }
 .ssf-cell.incompatible {
   opacity: 0.22;
   filter: grayscale(0.6);
+  cursor: default;
 }
 .ssf-cell.incompatible:hover {
   opacity: 0.35;
@@ -710,12 +618,7 @@ h1, h2, h3, h4 {
 .ssf-cell.active {
   background: var(--cyan);
   color: var(--black);
-}
-.ssf-cell.active .sym {
-  background: var(--black);
-  color: var(--cyan);
-  border-color: var(--black);
-  transform: translateY(-50%) scale(1.05);
+  border-left-color: var(--cyan);
 }
 .ssf-cell.active .pt { color: rgba(20,20,20,0.7); }
 .ssf-cell.active .en { color: var(--black); }
@@ -1486,18 +1389,6 @@ h1, h2, h3, h4 {
   .chap-title { font-size: clamp(44px, 13vw, 80px); }
   .chap-sub { font-size: 22px; }
 
-  /* Symbol legend */
-  .sym-legend {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 12px 14px;
-    margin: 20px 0;
-    top: 0;
-  }
-  .sym-legend .lbl { font-size: 9px; }
-  .sym-chip { font-size: 10px; padding: 3px 10px 3px 4px; }
-  .sym-chip .glyph { width: 20px; height: 20px; font-size: 11px; }
-
   /* SSF table — show mobile tabs, hide column heads */
   .ssf-cols { display: none; }
   .ssf-mobile-tabs { display: block; }
@@ -1515,10 +1406,9 @@ h1, h2, h3, h4 {
     to { opacity: 1; transform: translateY(0); }
   }
   .ssf-cell {
-    padding: 16px 14px 16px 56px;
+    padding: 16px 14px;
     min-height: 64px;
   }
-  .ssf-cell .sym { width: 36px; height: 36px; font-size: 16px; left: 10px; }
   .ssf-cell .en { font-size: 16px; }
   .ssf-cell .pt { font-size: 13px; }
 
@@ -1654,33 +1544,31 @@ h1, h2, h3, h4 {
 
   <ol class="howto-steps">
     <li>Escolha um capítulo. Cada um foca em <strong>um tema do dia a dia</strong>.</li>
-    <li>Leia a tabela das quatro colunas (<strong>I · II · III · IIII</strong>). Cada item tem um <strong>símbolo</strong>.</li>
-    <li>Combine itens das colunas que <strong>compartilhem o mesmo símbolo</strong> — lendo da esquerda para a direita.</li>
-    <li>Ao tocar num bloco, os outros se acendem ou apagam mostrando o que combina. O painel ciano monta a frase.</li>
-    <li>Use o botão <strong>▶︎ Ouvir</strong> para escutar a frase pronta antes de repetir em voz alta.</li>
+    <li>Toque num item da <strong>primeira coluna</strong> — ele vira o início da sua frase.</li>
+    <li>Nas próximas colunas, só os itens que <strong>combinam com sua escolha</strong> ficam ativos. Os outros ficam apagados pra você não errar.</li>
+    <li>Continue clicando até montar uma frase completa nas quatro colunas. O painel ciano monta junto, em tempo real.</li>
+    <li>Use o botão <strong>▶︎ Ouvir</strong> para escutar a pronúncia e repita em voz alta.</li>
     <li>Veja os exemplos prontos, leia as <em>expressões-chave</em> e escreva 8 frases novas na página de prática.</li>
   </ol>
 
-  <h3 style="font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); font-weight:600; margin-bottom:18px;">Lógica das colunas</h3>
+  <h3 style="font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); font-weight:600; margin-bottom:18px;">Como funciona na prática</h3>
   <div class="legend">
     <div class="legend-card">
-      <h4>Conexão</h4>
+      <h4>Da esquerda pra direita</h4>
       <div class="demo-orient">
-        Cada item das colunas tem um <strong style="color:var(--cyan)">símbolo</strong>.<br>
-        Para montar uma frase, escolha um item de <strong style="color:var(--white);">cada coluna</strong> que tenha o <strong style="color:var(--cyan)">mesmo símbolo</strong>.<br>
-        Símbolos disponíveis: <span style="color:var(--cyan);font-weight:700;letter-spacing:.15em">◣ ♥ ● ▲ ◀ ★ ◆</span>
+        Você lê e clica <strong style="color:var(--white);">da coluna I até a IIII</strong>. Cada coluna oferece várias opções, mas só algumas combinam com o que você já escolheu antes — então o app só deixa você clicar nas opções que <em style="color:var(--cyan-soft); font-style:italic;">formam uma frase real</em>.
       </div>
       <div class="demo-sentence">
-        <span class="col-roman">I</span><span>◣ It was</span>
-        <span class="col-roman">II</span><span>◣ wiped out</span>
-        <span class="col-roman">III</span><span>◣ by</span>
-        <span class="col-roman">IIII</span><span>◣ the flood.</span>
+        <span class="col-roman">I</span><span>It was</span>
+        <span class="col-roman">II</span><span>wiped out</span>
+        <span class="col-roman">III</span><span>by</span>
+        <span class="col-roman">IIII</span><span>the flood.</span>
       </div>
     </div>
     <div class="legend-card">
-      <h4>Como ler aqui</h4>
+      <h4>Sem decoreba</h4>
       <div class="demo-orient">
-        Toque (ou clique) nos blocos para construir a frase no <strong style="color:var(--cyan)">painel ciano</strong> embaixo da tabela. Os blocos com o <strong style="color:var(--white)">mesmo símbolo</strong> ficam destacados; os outros, apagados. <em style="color:var(--cyan-soft); font-style:italic;">Erre à vontade</em> — é parte do método.
+        O sistema te impede de montar frases erradas — então você pode <strong style="color:var(--cyan)">explorar livremente</strong> e ver dezenas de combinações certas em poucos minutos. <em style="color:var(--cyan-soft); font-style:italic;">Erre à vontade</em>: o painel ciano mostra a frase montada em tempo real, e você ouve depois.
       </div>
     </div>
   </div>
@@ -1761,10 +1649,9 @@ h1, h2, h3, h4 {
       <span class="on"></span><span></span><span></span>
     </div>
     <div class="step" id="onboard-step">PASSO 01 / 03</div>
-    <h3 id="onboard-title">O símbolo é sua bússola</h3>
+    <h3 id="onboard-title">Comece pela coluna I</h3>
     <div class="body" id="onboard-body">
-      Cada item nas tabelas tem um <strong>símbolo</strong>. Para montar uma frase correta, escolha itens das quatro colunas que compartilhem <strong>o mesmo símbolo</strong>.
-      <div class="syms"><span>◣</span><span>♥</span><span>●</span><span>▲</span><span>◀</span><span>★</span><span>◆</span></div>
+      Toque em qualquer item da <strong>primeira coluna</strong>. Ele vira o início da sua frase.
     </div>
     <div class="onboard-actions">
       <button class="skip" id="onboard-skip" type="button">Pular tour</button>

@@ -64,27 +64,6 @@
     const numStr = String(pageNum).padStart(2, '0');
     const chNum = String(i + 1).padStart(2, '0');
 
-    // Symbols actually used in this chapter
-    const symsUsed = new Set();
-    ch.cols.forEach(col => col.forEach(cell => {
-      if (cell.s !== undefined) symsUsed.add(cell.s);
-    }));
-    const symsArr = [...symsUsed].sort((a,b)=>a-b);
-
-    const symLegendHTML = `
-      <div class="sym-legend" data-sym-legend="${ch.id}">
-        <div class="lbl">Símbolos<br>do capítulo</div>
-        <div class="syms">
-          ${symsArr.map(s => `
-            <button type="button" class="sym-chip" data-sym="${s}">
-              <span class="glyph">${SYMBOLS[s]}</span>
-              <span>padrão ${SYMBOLS[s]}</span>
-            </button>
-          `).join('')}
-        </div>
-      </div>
-    `;
-
     const tabsHTML = `
       <div class="ssf-mobile-tabs" data-tabs="${ch.id}">
         <div class="grid">
@@ -107,10 +86,8 @@
       <div class="ssf-col ${ci===0?'tab-active':''}" data-col="${ci}">
         ${col.map((cell, idx) => {
           const symIdx = (cell.s !== undefined) ? cell.s : null;
-          const sym = symIdx !== null ? `<span class="sym">${SYMBOLS[symIdx]}</span>` : '';
           return `
             <div class="ssf-cell" data-col="${ci}" data-idx="${idx}"${symIdx!==null?` data-sym="${symIdx}"`:''}>
-              ${sym}
               <div class="en">${escape(cell.en)}</div>
               <div class="pt">${escape(cell.pt)}</div>
             </div>
@@ -126,7 +103,7 @@
           <span class="builder-progress">
             <strong class="b-count">0</strong> de 4 ·
             <span class="b-status">monte uma frase</span>
-            <span class="builder-warn">— combine itens com o mesmo símbolo</span>
+            <span class="builder-warn">— escolhas que não combinam</span>
           </span>
         </div>
         <div class="builder-slots">
@@ -197,8 +174,6 @@
           <p class="chap-sub">${escape(ch.sub)}</p>
           <p class="chap-desc">${escape(ch.desc)}</p>
         </div>
-
-        ${symLegendHTML}
 
         <div class="ssf-wrap" data-ssf="${ch.id}">
           ${tabsHTML}
@@ -312,16 +287,15 @@
     builderState[id] = { 0: null, 1: null, 2: null, 3: null };
     tabState[id] = 0;
     const builder = wrap.querySelector('.builder');
-    const symLegend = document.querySelector(`.sym-legend[data-sym-legend="${id}"]`);
 
     // Cell clicks
     wrap.querySelectorAll('.ssf-cell').forEach(cell => {
       cell.addEventListener('click', () => {
         if (cell.classList.contains('incompatible')) {
-          // Replace selection in the column the user clicked, even if dimmed,
-          // because the user may want to start over with this cell's symbol.
+          // Clicking an incompatible cell means "start over with this option" —
+          // clear all selections, then pick this cell. Avoids the user feeling
+          // stuck after one mistake.
           const col = +cell.dataset.col;
-          // Clear all other column selections to switch to the new symbol
           builderState[id] = { 0: null, 1: null, 2: null, 3: null };
           wrap.querySelectorAll('.ssf-cell.active').forEach(c => c.classList.remove('active'));
           builderState[id][col] = +cell.dataset.idx;
@@ -353,13 +327,6 @@
         switchTab(id, +btn.dataset.tab);
       });
     });
-
-    // Legend chip preview filter
-    if (symLegend) {
-      symLegend.querySelectorAll('.sym-chip').forEach(chip => {
-        chip.addEventListener('click', () => previewSymbol(id, +chip.dataset.sym));
-      });
-    }
 
     // Builder controls
     builder.querySelector('.clear').addEventListener('click', () => {
@@ -454,16 +421,13 @@
     return syms;
   }
 
+  // Compatibility = which cells in the OTHER columns can still combine
+  // with what's already selected. Internally uses the `s` field on each cell
+  // (set up when the chapter is authored) to know what fits together. Users
+  // never see the symbol — they just see the dimming/highlighting.
   function applyCompass(id) {
     const wrap = document.querySelector(`.ssf-wrap[data-ssf="${id}"]`);
-    const symLegend = document.querySelector(`.sym-legend[data-sym-legend="${id}"]`);
     const activeSyms = getActiveSymbols(id);
-
-    if (symLegend) {
-      symLegend.querySelectorAll('.sym-chip').forEach(chip => {
-        chip.classList.toggle('lit', activeSyms.has(+chip.dataset.sym));
-      });
-    }
 
     wrap.querySelectorAll('.ssf-cell').forEach(cell => {
       cell.classList.remove('compatible', 'incompatible');
@@ -471,23 +435,6 @@
       if (cell.classList.contains('active')) return;
       const cellSym = cell.dataset.sym !== undefined ? +cell.dataset.sym : null;
       if (cellSym !== null && activeSyms.has(cellSym)) cell.classList.add('compatible');
-      else cell.classList.add('incompatible');
-    });
-  }
-
-  function previewSymbol(id, s) {
-    if (getActiveSymbols(id).size > 0) return; // active selection wins
-    const wrap = document.querySelector(`.ssf-wrap[data-ssf="${id}"]`);
-    const symLegend = document.querySelector(`.sym-legend[data-sym-legend="${id}"]`);
-    const chip = symLegend.querySelector(`.sym-chip[data-sym="${s}"]`);
-    const wasLit = chip.classList.contains('lit');
-    symLegend.querySelectorAll('.sym-chip').forEach(c => c.classList.remove('lit'));
-    wrap.querySelectorAll('.ssf-cell').forEach(c => c.classList.remove('compatible', 'incompatible'));
-    if (wasLit) return; // toggle off
-    chip.classList.add('lit');
-    wrap.querySelectorAll('.ssf-cell').forEach(cell => {
-      const cs = cell.dataset.sym !== undefined ? +cell.dataset.sym : null;
-      if (cs === s) cell.classList.add('compatible');
       else cell.classList.add('incompatible');
     });
   }
@@ -546,7 +493,7 @@
     builder.classList.toggle('warning', isWarning);
 
     if (isWarning) {
-      status.textContent = 'símbolos diferentes';
+      status.textContent = 'escolhas não combinam';
     } else if (isComplete) {
       status.textContent = 'frase completa — toque em ouvir';
     } else if (count === 0) {
@@ -589,23 +536,25 @@
   }
 
   // ---------- Onboarding ----------
-  const ONBOARD_KEY = 'ssf-onboarded-v2';
+  // Bumped key to v3 because onboarding was rewritten. Returning users will
+  // see the new tour once.
+  const ONBOARD_KEY = 'ssf-onboarded-v3';
   const onboard = document.getElementById('onboard');
   const onboardSteps = [
     {
       step: 'PASSO 01 / 03',
-      title: 'O símbolo é sua bússola',
-      body: 'Cada item nas tabelas tem um <strong>símbolo</strong>. Para montar uma frase correta, escolha itens das quatro colunas que compartilhem <strong>o mesmo símbolo</strong>.<div class="syms"><span>◣</span><span>♥</span><span>●</span><span>▲</span><span>◀</span><span>★</span><span>◆</span></div>'
+      title: 'Comece pela coluna I',
+      body: 'Toque em qualquer item da <strong>primeira coluna</strong>. Ele vira o início da sua frase.'
     },
     {
       step: 'PASSO 02 / 03',
-      title: 'Toque para acender',
-      body: 'Ao tocar num bloco, os itens compatíveis nas outras colunas <strong>se acendem em ciano</strong>. Os incompatíveis ficam apagados. Combine <strong>I + II + III + IIII</strong> com o mesmo símbolo.'
+      title: 'Siga combinando',
+      body: 'Nas próximas colunas, os itens que <strong>combinam com sua escolha ficam acesos</strong>. Os que não combinam ficam apagados. Vá clicando até montar a frase completa.'
     },
     {
       step: 'PASSO 03 / 03',
       title: 'Ouça e repita',
-      body: 'Frase pronta? Toque em <strong>▶︎ Ouvir</strong> para escutar a pronúncia e repita em voz alta. Use <strong>Salvar</strong> para enviar pra prática no fim do capítulo.'
+      body: 'Frase pronta? Toque em <strong>▶︎ Ouvir</strong> pra escutar a pronúncia e repita em voz alta. Use <strong>Salvar</strong> pra enviar pra prática no fim do capítulo.'
     },
   ];
   let onboardIdx = 0;

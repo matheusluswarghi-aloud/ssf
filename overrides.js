@@ -1,5 +1,10 @@
-// Sistema de só-símbolos: cada item tem `s` (índice 0–6 → ◣ ♥ ● ▲ ◀ ★ ◆).
-// Para formar frase: pegar item da coluna I + II + III + IV com o MESMO símbolo.
+// Compatibility groups: cada item tem `s` (0–6) — campo interno que define
+// quais itens nas 4 colunas combinam pra formar uma frase real. Itens com o
+// mesmo `s` na sequência I→II→III→IIII viram uma frase válida. Esse campo
+// não é exibido ao usuário; a UI só apaga as células que não combinam com
+// a seleção atual. As constantes TRI/HRT/etc são apelidos legados (eram
+// símbolos visuais ◣ ♥ ● ▲ ◀ ★ ◆) — preservadas pra evitar mexer em todo
+// chapter override.
 // Estrutura: { chapterId: { colIndex: { replace:true, items:[{en,pt,s},...] } } }
 
 (function() {
@@ -119,7 +124,7 @@ window.SSF_OVERRIDES = {
   "money": {
     title: "money",
     sub: "Banco, câmbio & pagamentos",
-    desc: "Frases pra qualquer situação envolvendo dinheiro em inglês — câmbio, pagamento, banco, negociação. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra qualquer situação envolvendo dinheiro em inglês — câmbio, pagamento, banco, negociação. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I need to",pt:"Eu preciso",s:TRI},
       {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
@@ -325,7 +330,7 @@ window.SSF_OVERRIDES = {
   "health": {
     title: "health",
     sub: "Médico, farmácia & saúde",
-    desc: "Frases pra qualquer situação médica em inglês — descrever sintomas, marcar consulta, falar de alergias, pedir medicamento. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra qualquer situação médica em inglês — descrever sintomas, marcar consulta, falar de alergias, pedir medicamento. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I have",pt:"Eu tenho",s:TRI},
       {en:"I've got",pt:"Eu peguei",s:TRI},
@@ -531,7 +536,7 @@ window.SSF_OVERRIDES = {
   "working": {
     title: "work",
     sub: "Carreira & entrevistas",
-    desc: "Frases prontas pra falar sobre seu trabalho — em entrevistas, networking e papos de carreira. Cada símbolo é um padrão diferente. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases prontas pra falar sobre seu trabalho — em entrevistas, networking e papos de carreira. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I have",pt:"Eu tenho",s:TRI},
       {en:"I'm working on",pt:"Estou fazendo",s:TRI},
@@ -763,7 +768,7 @@ window.SSF_OVERRIDES = {
   "education": {
     title: "education",
     sub: "Estudos & cursos",
-    desc: "Frases pra falar sobre seus estudos em inglês — onde estuda, o que cursa, planos acadêmicos. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra falar sobre seus estudos em inglês — onde estuda, o que cursa, planos acadêmicos. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'm studying",pt:"Estou estudando",s:TRI},
       {en:"I study",pt:"Eu estudo",s:TRI},
@@ -970,7 +975,7 @@ window.SSF_OVERRIDES = {
   "driving": {
     title: "driving",
     sub: "Aluguel, posto & estrada",
-    desc: "Frases pra dirigir em qualquer país de língua inglesa — alugar carro, abastecer, perguntar direção, lidar com problemas. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra dirigir em qualquer país de língua inglesa — alugar carro, abastecer, perguntar direção, lidar com problemas. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'd like to rent",pt:"Gostaria de alugar",s:TRI},
       {en:"Can I rent",pt:"Posso alugar",s:TRI},
@@ -1227,7 +1232,7 @@ window.SSF_OVERRIDES = {
   "at-home": {
     title: "daily",
     sub: "Rotina & small talk",
-    desc: "Frases pra papo do dia a dia — descrever sua rotina, falar de hobbies, abrir conversa em inglês. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra papo do dia a dia — descrever sua rotina, falar de hobbies, abrir conversa em inglês. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I usually",pt:"Eu geralmente",s:TRI},
       {en:"I always",pt:"Eu sempre",s:TRI},
@@ -1710,7 +1715,7 @@ window.SSF_OVERRIDES = {
   "shopping": {
     title: "shopping",
     sub: "Lojas, tamanhos & trocas",
-    desc: "Frases pra qualquer compra em loja, mercado ou shopping em inglês — procurar, experimentar, pagar, devolver. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra qualquer compra em loja, mercado ou shopping em inglês — procurar, experimentar, pagar, devolver. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'm looking for",pt:"Estou procurando",s:TRI},
       {en:"Do you have",pt:"Vocês têm",s:TRI},
@@ -1916,7 +1921,7 @@ window.SSF_OVERRIDES = {
   "cooking-1": {
     title: "food",
     sub: "Restaurantes & pedidos",
-    desc: "Frases pra usar em qualquer restaurante de língua inglesa — pedir prato, falar sobre alergias, pedir conta. Cada símbolo é um momento da refeição. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra usar em qualquer restaurante de língua inglesa — pedir prato, falar sobre alergias, pedir conta. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'd like to order",pt:"Eu gostaria de pedir",s:TRI},
       {en:"I'll have",pt:"Vou querer",s:TRI},
@@ -2170,7 +2175,7 @@ window.SSF_OVERRIDES = {
   "phone": {
     title: "phone",
     sub: "Ligações & reuniões online",
-    desc: "Frases pra qualquer ligação, videoconferência ou call em inglês — atender, falar com pessoa específica, lidar com problemas de áudio. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra qualquer ligação, videoconferência ou call em inglês — atender, falar com pessoa específica, lidar com problemas de áudio. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"Hi this is",pt:"Oi aqui é",s:TRI},
       {en:"Hello, my name is",pt:"Alô, meu nome é",s:TRI},
@@ -2376,7 +2381,7 @@ window.SSF_OVERRIDES = {
   "traveling": {
     title: "travel",
     sub: "Aeroporto, hotel & direções",
-    desc: "Frases pra usar em qualquer viagem internacional — imigração, hotel, restaurantes, perguntando direções. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra usar em qualquer viagem internacional — imigração, hotel, restaurantes, perguntando direções. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'm here for",pt:"Estou aqui a",s:TRI},
       {en:"I'm visiting for",pt:"Estou visitando a",s:TRI},
@@ -2583,7 +2588,7 @@ window.SSF_OVERRIDES = {
   "relationships": {
     title: "relationships",
     sub: "Namoro & parceiros",
-    desc: "Frases pra falar de relacionamentos em inglês — apresentar parceiro, contar como se conheceram, descrever o que busca. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra falar de relacionamentos em inglês — apresentar parceiro, contar como se conheceram, descrever o que busca. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"I'm with",pt:"Estou com",s:TRI},
       {en:"I'm dating",pt:"Estou namorando",s:TRI},
@@ -2790,7 +2795,7 @@ window.SSF_OVERRIDES = {
   "family": {
     title: "family",
     sub: "Apresentar e descrever",
-    desc: "Frases pra falar da sua família em inglês — apresentar parentes, contar de onde veio, descrever relações. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
+    desc: "Frases pra falar da sua família em inglês — apresentar parentes, contar de onde veio, descrever relações. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
     0: { replace:true, items:[
       {en:"This is",pt:"Esse(a) é",s:TRI},
       {en:"Meet",pt:"Conheça",s:TRI},
