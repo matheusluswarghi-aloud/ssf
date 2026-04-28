@@ -958,60 +958,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // DRIVING
-  // ◣ I [vb] [obj] [tempo/lugar]
-  // ♥ I am [vb-ing] [contexto]
-  // ● I have [vb] [obj] [contexto]
-  // ▲ I was [vb] [contexto]
+  // DRIVING — Aluguel, posto, GPS, infrações
+  // ◣ Aluguel de carro — "I'd like to rent a compact car for three days"
+  // ♥ Posto de gasolina — "Could you fill it up with regular gas please"
+  // ● Direções / GPS — "Where's the nearest gas station from here please"
+  // ▲ Estacionamento — "Can I park here for an hour without a fine"
+  // ◀ Problemas no carro — "My car is making a strange noise lately"
+  // ★ Acidente / blitz — "I was hit by a truck on the highway yesterday"
+  // ◆ Regras de trânsito — "What's the speed limit on this road usually"
   // ════════════════════════════════════════════
   "driving": {
+    title: "driving",
+    sub: "Aluguel, posto & estrada",
+    desc: "Frases pra dirigir em qualquer país de língua inglesa — alugar carro, abastecer, perguntar direção, lidar com problemas. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I",pt:"Eu",s:TRI},
-      {en:"I am",pt:"Eu estou",s:HRT},
-      {en:"I have",pt:"Eu",s:DOT},
-      {en:"I was",pt:"Eu fui",s:UP},
+      {en:"I'd like to rent",pt:"Gostaria de alugar",s:TRI},
+      {en:"Can I rent",pt:"Posso alugar",s:TRI},
+      {en:"Do you have",pt:"Vocês têm",s:TRI},
+      {en:"I want to book",pt:"Quero reservar",s:TRI},
+
+      {en:"Could you fill it up",pt:"Pode encher",s:HRT},
+      {en:"Fill it up",pt:"Enche",s:HRT},
+      {en:"I need",pt:"Preciso de",s:HRT},
+      {en:"Can I get",pt:"Posso pegar",s:HRT},
+
+      {en:"Where's",pt:"Onde fica",s:DOT},
+      {en:"How do I get to",pt:"Como chego em",s:DOT},
+      {en:"Is there",pt:"Tem",s:DOT},
+      {en:"Do you know where",pt:"Você sabe onde fica",s:DOT},
+
+      {en:"Can I park here",pt:"Posso estacionar aqui",s:UP},
+      {en:"Is parking allowed",pt:"É permitido estacionar",s:UP},
+      {en:"How much is parking",pt:"Quanto é o estacionamento",s:UP},
+      {en:"Where can I park",pt:"Onde posso estacionar",s:UP},
+
+      {en:"My car is",pt:"Meu carro está",s:LFT},
+      {en:"The engine is",pt:"O motor está",s:LFT},
+      {en:"There's something wrong",pt:"Tem algo errado",s:LFT},
+      {en:"I think the",pt:"Acho que o(a)",s:LFT},
+
+      {en:"I was hit",pt:"Eu fui batido",s:STAR},
+      {en:"I got pulled over",pt:"Fui parado",s:STAR},
+      {en:"There was an accident",pt:"Aconteceu um acidente",s:STAR},
+      {en:"I had a flat tire",pt:"Tive um pneu furado",s:STAR},
+
+      {en:"What's the speed limit",pt:"Qual a velocidade",s:DIA},
+      {en:"Is it legal to",pt:"É legal",s:DIA},
+      {en:"Can I drive",pt:"Posso dirigir",s:DIA},
+      {en:"Do I need",pt:"Preciso",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"buckle up",pt:"coloco o cinto",s:TRI},
-      {en:"slow down",pt:"desacelero",s:TRI},
-      {en:"pull over",pt:"encosto",s:TRI},
-      {en:"backing up",pt:"dando ré",s:HRT},
-      {en:"filling up",pt:"abastecendo",s:HRT},
-      {en:"picking up",pt:"buscando",s:HRT},
-      {en:"turned on",pt:"liguei",s:DOT},
-      {en:"turned off",pt:"desliguei",s:DOT},
-      {en:"run over",pt:"atropelei",s:DOT},
-      {en:"cut off",pt:"fechado",s:UP},
-      {en:"hit",pt:"atingido",s:UP},
+      {en:"a compact car",pt:"um carro compacto",s:TRI},
+      {en:"an SUV",pt:"um SUV",s:TRI},
+      {en:"an automatic car",pt:"um carro automático",s:TRI},
+      {en:"a small car",pt:"um carro pequeno",s:TRI},
+
+      {en:"with regular gas",pt:"com gasolina comum",s:HRT},
+      {en:"with premium gas",pt:"com gasolina premium",s:HRT},
+      {en:"with diesel",pt:"com diesel",s:HRT},
+      {en:"with ethanol",pt:"com etanol",s:HRT},
+
+      {en:"the nearest gas station",pt:"o posto mais próximo",s:DOT},
+      {en:"the highway",pt:"a rodovia",s:DOT},
+      {en:"a parking lot",pt:"um estacionamento",s:DOT},
+      {en:"the car wash",pt:"o lava a jato",s:DOT},
+
+      {en:"for an hour",pt:"por uma hora",s:UP},
+      {en:"in this area",pt:"nessa área",s:UP},
+      {en:"around here",pt:"por aqui",s:UP},
+      {en:"on this street",pt:"nessa rua",s:UP},
+
+      {en:"making a strange noise",pt:"fazendo um barulho estranho",s:LFT},
+      {en:"overheating",pt:"superaquecendo",s:LFT},
+      {en:"running out of gas",pt:"ficando sem gasolina",s:LFT},
+      {en:"not starting",pt:"não ligando",s:LFT},
+
+      {en:"by a truck",pt:"por um caminhão",s:STAR},
+      {en:"for speeding",pt:"por excesso de velocidade",s:STAR},
+      {en:"in the rain",pt:"na chuva",s:STAR},
+      {en:"on the way home",pt:"a caminho de casa",s:STAR},
+
+      {en:"on this road",pt:"nessa estrada",s:DIA},
+      {en:"to make a U-turn",pt:"fazer retorno",s:DIA},
+      {en:"with this license",pt:"com essa habilitação",s:DIA},
+      {en:"a special permit",pt:"uma autorização especial",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"every day",pt:"todo dia",s:TRI},
-      {en:"when driving",pt:"quando dirijo",s:TRI},
-      {en:"on the road",pt:"na estrada",s:TRI},
-      {en:"the car",pt:"o carro",s:HRT},
-      {en:"the truck",pt:"o caminhão",s:HRT},
-      {en:"my friend",pt:"meu amigo",s:HRT},
-      {en:"my kids",pt:"meus filhos",s:HRT},
-      {en:"the lights",pt:"os faróis",s:DOT},
-      {en:"the wipers",pt:"o limpador",s:DOT},
-      {en:"the engine",pt:"o motor",s:DOT},
-      {en:"a dog",pt:"um cachorro",s:DOT},
-      {en:"by a car",pt:"por um carro",s:UP},
-      {en:"by a truck",pt:"por um caminhão",s:UP},
+      {en:"for three days",pt:"por três dias",s:TRI},
+      {en:"for a week",pt:"por uma semana",s:TRI},
+      {en:"for the weekend",pt:"para o fim de semana",s:TRI},
+      {en:"for a month",pt:"por um mês",s:TRI},
+
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+      {en:"if possible",pt:"se possível",s:HRT},
+      {en:"all the way",pt:"até o final",s:HRT},
+
+      {en:"from here",pt:"daqui",s:DOT},
+      {en:"in this neighborhood",pt:"nessa vizinhança",s:DOT},
+      {en:"on the way",pt:"no caminho",s:DOT},
+      {en:"close by",pt:"perto",s:DOT},
+
+      {en:"without a fine",pt:"sem multa",s:UP},
+      {en:"safely",pt:"com segurança",s:UP},
+      {en:"legally",pt:"legalmente",s:UP},
+      {en:"during business hours",pt:"em horário comercial",s:UP},
+
+      {en:"lately",pt:"ultimamente",s:LFT},
+      {en:"since this morning",pt:"desde essa manhã",s:LFT},
+      {en:"after the trip",pt:"depois da viagem",s:LFT},
+      {en:"and I'm worried",pt:"e estou preocupado(a)",s:LFT},
+
+      {en:"on the highway",pt:"na rodovia",s:STAR},
+      {en:"yesterday",pt:"ontem",s:STAR},
+      {en:"by mistake",pt:"por engano",s:STAR},
+      {en:"thankfully no one was hurt",pt:"felizmente ninguém se feriu",s:STAR},
+
+      {en:"usually",pt:"geralmente",s:DIA},
+      {en:"here",pt:"aqui",s:DIA},
+      {en:"in the city",pt:"na cidade",s:DIA},
+      {en:"as a foreigner",pt:"como estrangeiro(a)",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"for safety",pt:"por segurança",s:TRI},
-      {en:"in the rain",pt:"na chuva",s:TRI},
-      {en:"to avoid accidents",pt:"para evitar acidentes",s:TRI},
-      {en:"at the gas station",pt:"no posto",s:HRT},
-      {en:"at the mall",pt:"no shopping",s:HRT},
-      {en:"this morning",pt:"essa manhã",s:HRT},
-      {en:"lately",pt:"ultimamente",s:DOT},
-      {en:"by accident",pt:"por acidente",s:DOT},
-      {en:"on the highway",pt:"na rodovia",s:DOT},
-      {en:"yesterday",pt:"ontem",s:UP},
-      {en:"last week",pt:"semana passada",s:UP},
+      {en:"if available",pt:"se houver",s:TRI},
+      {en:"please",pt:"por favor",s:TRI},
+      {en:"with insurance",pt:"com seguro",s:TRI},
+      {en:"with full coverage",pt:"com cobertura total",s:TRI},
+
+      {en:"with a receipt",pt:"com recibo",s:HRT},
+      {en:"to be safe",pt:"pra garantir",s:HRT},
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"to top off",pt:"pra completar",s:HRT},
+
+      {en:"please",pt:"por favor",s:DOT},
+      {en:"thanks",pt:"obrigado(a)",s:DOT},
+      {en:"by any chance",pt:"por acaso",s:DOT},
+      {en:"if you know",pt:"se souber",s:DOT},
+
+      {en:"please",pt:"por favor",s:UP},
+      {en:"thanks",pt:"obrigado(a)",s:UP},
+      {en:"or do I move",pt:"ou tenho que mover",s:UP},
+      {en:"for free",pt:"de graça",s:UP},
+
+      {en:"please help",pt:"por favor ajuda",s:LFT},
+      {en:"any advice",pt:"alguma dica",s:LFT},
+      {en:"what should I do",pt:"o que devo fazer",s:LFT},
+      {en:"any thoughts",pt:"alguma ideia",s:LFT},
+
+      {en:"on the way home",pt:"a caminho de casa",s:STAR},
+      {en:"and I called the police",pt:"e chamei a polícia",s:STAR},
+      {en:"and need to file a report",pt:"e preciso fazer um BO",s:STAR},
+      {en:"thankfully",pt:"felizmente",s:STAR},
+
+      {en:"please",pt:"por favor",s:DIA},
+      {en:"out of curiosity",pt:"por curiosidade",s:DIA},
+      {en:"to be sure",pt:"pra ter certeza",s:DIA},
+      {en:"if you know",pt:"se souber",s:DIA},
     ]},
+    examples: [
+      {en:"I'd like to rent a compact car for three days with insurance",pt:"Gostaria de alugar um carro compacto por três dias com seguro"},
+      {en:"Do you have an automatic car for the weekend with full coverage?",pt:"Vocês têm um carro automático para o fim de semana com cobertura total?"},
+      {en:"Could you fill it up with regular gas please with a receipt?",pt:"Pode encher com gasolina comum por favor com recibo?"},
+      {en:"Fill it up with diesel all the way to top off",pt:"Enche com diesel até o final pra completar"},
+      {en:"Where's the nearest gas station from here please?",pt:"Onde fica o posto mais próximo daqui por favor?"},
+      {en:"How do I get to the highway in this neighborhood thanks?",pt:"Como chego na rodovia nessa vizinhança obrigado?"},
+      {en:"Can I park here for an hour without a fine please?",pt:"Posso estacionar aqui por uma hora sem multa por favor?"},
+      {en:"How much is parking in this area during business hours?",pt:"Quanto é o estacionamento nessa área em horário comercial?"},
+      {en:"My car is making a strange noise lately and I'm worried",pt:"Meu carro está fazendo um barulho estranho ultimamente e estou preocupado"},
+      {en:"The engine is overheating since this morning what should I do?",pt:"O motor está superaquecendo desde essa manhã o que devo fazer?"},
+      {en:"I was hit by a truck on the highway yesterday on the way home",pt:"Fui batido por um caminhão na rodovia ontem a caminho de casa"},
+      {en:"I got pulled over for speeding by mistake thankfully",pt:"Fui parado por excesso de velocidade por engano felizmente"},
+      {en:"What's the speed limit on this road usually please?",pt:"Qual a velocidade nessa estrada geralmente por favor?"},
+      {en:"Do I need a special permit as a foreigner to be sure?",pt:"Preciso de uma autorização especial como estrangeiro pra ter certeza?"},
+    ],
+    phrasals: [
+      {term:"I'd like to rent / Do you have",desc:"Pra alugar carro. 'Compact car' (mais barato), 'SUV' (maior), 'automatic' (caixa automática) — vocab essencial. 'For [duração]' especifica o aluguel.",ex:[
+        {en:"I'd like to rent a compact car for three days",pt:"Gostaria de alugar um carro compacto por três dias"},
+        {en:"Do you have an automatic car for the weekend?",pt:"Vocês têm um carro automático para o fim de semana?"}
+      ]},
+      {term:"Fill it up / Could you fill it up",desc:"Frase clássica em postos de gasolina. 'Fill it up' (com 'it' como pronome obrigatório do tanque). Adicione tipo: 'with regular' ou 'with premium'. 'Top off' = completar parcial.",ex:[
+        {en:"Could you fill it up with regular gas please?",pt:"Pode encher com gasolina comum por favor?"},
+        {en:"Fill it up with diesel all the way",pt:"Enche com diesel até o final"}
+      ]},
+      {term:"Where's / How do I get to",desc:"Pra perguntar direção quando dirigindo. 'Where's the nearest [X]' = qual o mais próximo. 'How do I get to' funciona pra qualquer destino.",ex:[
+        {en:"Where's the nearest gas station from here?",pt:"Onde fica o posto mais próximo daqui?"},
+        {en:"How do I get to the highway in this area?",pt:"Como chego na rodovia nessa área?"}
+      ]},
+      {term:"Can I park here / Is parking allowed",desc:"Pra estacionamento. 'Can I park HERE' (lugar atual) ou 'WHERE can I park' (procurar). 'Is parking allowed' é mais formal e específico.",ex:[
+        {en:"Can I park here for an hour without a fine?",pt:"Posso estacionar aqui por uma hora sem multa?"},
+        {en:"How much is parking in this area?",pt:"Quanto é o estacionamento nessa área?"}
+      ]},
+      {term:"My car is / The engine is",desc:"Pra reportar problema mecânico. 'Making a strange noise' (fazendo barulho estranho), 'overheating' (superaquecendo), 'not starting' (não ligando) são os mais comuns.",ex:[
+        {en:"My car is making a strange noise lately",pt:"Meu carro está fazendo um barulho estranho ultimamente"},
+        {en:"The engine is overheating since this morning",pt:"O motor está superaquecendo desde essa manhã"}
+      ]},
+      {term:"I was hit / I got pulled over",desc:"'I was hit BY [veículo]' = passiva de batida (someone hit me). 'I got pulled over FOR [motivo]' = parado pela polícia. 'For speeding' (excesso vel.), 'for running a light' (avançar sinal).",ex:[
+        {en:"I was hit by a truck on the highway",pt:"Fui batido por um caminhão na rodovia"},
+        {en:"I got pulled over for speeding yesterday",pt:"Fui parado por excesso de velocidade ontem"}
+      ]},
+      {term:"What's the speed limit / Do I need",desc:"Pra perguntar regras de trânsito (essencial em país estrangeiro). 'Speed limit' (velocidade máxima), 'special permit' (autorização especial), 'international license' (carteira internacional).",ex:[
+        {en:"What's the speed limit on this road?",pt:"Qual a velocidade nessa estrada?"},
+        {en:"Do I need a special permit as a foreigner?",pt:"Preciso de uma autorização especial como estrangeiro?"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
