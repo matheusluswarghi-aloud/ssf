@@ -1856,46 +1856,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // PHONE
-  // ◣ I will [vb] [pessoa/lugar] [tempo]
-  // ♥ Could you [vb] [obj] [tempo]
-  // ● I [vb] [obj] [contexto]
-  // ▲ We were [vb] [contexto]
+  // PHONE — Ligações, reuniões online, mensagens
+  // ◣ Atender / iniciar — "Hi this is Marina speaking how can I help"
+  // ♥ Pedir conexão — "Could I speak to the manager please if available"
+  // ● Reuniões online — "Can you hear me clearly on this call now"
+  // ▲ Problemas técnicos — "You're breaking up could you repeat that please"
+  // ◀ Reagendar / cancelar — "I'd like to reschedule our call for tomorrow afternoon"
+  // ★ Mensagem / recado — "Could you tell her I called when she's free"
+  // ◆ Despedida — "Talk to you soon take care for now"
   // ════════════════════════════════════════════
   "phone": {
+    title: "phone",
+    sub: "Ligações & reuniões online",
+    desc: "Frases pra qualquer ligação, videoconferência ou call em inglês — atender, falar com pessoa específica, lidar com problemas de áudio. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I will",pt:"Eu irei",s:TRI},
-      {en:"Could you",pt:"Você poderia",s:HRT},
-      {en:"I",pt:"Eu",s:DOT},
-      {en:"We were",pt:"Nós fomos",s:UP},
+      {en:"Hi this is",pt:"Oi aqui é",s:TRI},
+      {en:"Hello, my name is",pt:"Alô, meu nome é",s:TRI},
+      {en:"Speaking,",pt:"Sou eu,",s:TRI},
+      {en:"This is",pt:"Aqui é",s:TRI},
+
+      {en:"Could I speak to",pt:"Posso falar com",s:HRT},
+      {en:"May I speak with",pt:"Posso falar com",s:HRT},
+      {en:"Is there anyone who",pt:"Tem alguém que",s:HRT},
+      {en:"Can you transfer me to",pt:"Pode me transferir para",s:HRT},
+
+      {en:"Can you hear me",pt:"Você me ouve",s:DOT},
+      {en:"Am I coming through",pt:"Estou chegando",s:DOT},
+      {en:"Is my audio",pt:"Meu áudio está",s:DOT},
+      {en:"Can everyone see me",pt:"Todo mundo me vê",s:DOT},
+
+      {en:"You're breaking up",pt:"Você está cortando",s:UP},
+      {en:"I can't hear you",pt:"Não consigo te ouvir",s:UP},
+      {en:"The connection is",pt:"A conexão está",s:UP},
+      {en:"There's an echo",pt:"Tem um eco",s:UP},
+
+      {en:"I'd like to reschedule",pt:"Gostaria de reagendar",s:LFT},
+      {en:"Can we reschedule",pt:"Podemos reagendar",s:LFT},
+      {en:"I need to cancel",pt:"Preciso cancelar",s:LFT},
+      {en:"Could we move",pt:"Podemos mover",s:LFT},
+
+      {en:"Could you tell",pt:"Pode dizer a",s:STAR},
+      {en:"Please let",pt:"Por favor avise",s:STAR},
+      {en:"Can you ask",pt:"Pode perguntar a",s:STAR},
+      {en:"Would you let",pt:"Você pode avisar",s:STAR},
+
+      {en:"Talk to you",pt:"Falo com você",s:DIA},
+      {en:"Have a great",pt:"Tenha um(a) ótimo(a)",s:DIA},
+      {en:"Thanks for",pt:"Obrigado(a) por",s:DIA},
+      {en:"It was nice",pt:"Foi ótimo",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"call you back",pt:"te ligar de volta",s:TRI},
-      {en:"call you up",pt:"te ligar",s:TRI},
-      {en:"hang on",pt:"esperar",s:HRT},
-      {en:"hold on",pt:"aguardar",s:HRT},
-      {en:"hung up",pt:"desliguei",s:DOT},
-      {en:"cut off",pt:"cortados",s:UP},
+      {en:"Marina speaking",pt:"Marina falando",s:TRI},
+      {en:"Marina from sales",pt:"Marina do comercial",s:TRI},
+      {en:"calling about",pt:"ligando sobre",s:TRI},
+      {en:"returning your call",pt:"retornando sua ligação",s:TRI},
+
+      {en:"the manager",pt:"o(a) gerente",s:HRT},
+      {en:"someone in HR",pt:"alguém do RH",s:HRT},
+      {en:"customer service",pt:"o atendimento",s:HRT},
+      {en:"the responsible person",pt:"a pessoa responsável",s:HRT},
+
+      {en:"clearly",pt:"claramente",s:DOT},
+      {en:"loud and clear",pt:"alto e claro",s:DOT},
+      {en:"OK",pt:"OK",s:DOT},
+      {en:"good enough",pt:"bem o suficiente",s:DOT},
+
+      {en:"could you repeat that",pt:"pode repetir",s:UP},
+      {en:"sorry, what did you say",pt:"desculpa, o que disse",s:UP},
+      {en:"could you speak louder",pt:"pode falar mais alto",s:UP},
+      {en:"unstable",pt:"instável",s:UP},
+
+      {en:"our call",pt:"nossa ligação",s:LFT},
+      {en:"the meeting",pt:"a reunião",s:LFT},
+      {en:"our chat",pt:"nossa conversa",s:LFT},
+      {en:"the appointment",pt:"o compromisso",s:LFT},
+
+      {en:"her",pt:"a ela",s:STAR},
+      {en:"him",pt:"a ele",s:STAR},
+      {en:"the team",pt:"a equipe",s:STAR},
+      {en:"the office",pt:"o escritório",s:STAR},
+
+      {en:"to you soon",pt:"em breve",s:DIA},
+      {en:"day ahead",pt:"dia",s:DIA},
+      {en:"calling me",pt:"ter ligado",s:DIA},
+      {en:"talking to you",pt:"falar com você",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"in five minutes",pt:"em cinco minutos",s:TRI},
-      {en:"later",pt:"mais tarde",s:TRI},
-      {en:"a moment",pt:"um momento",s:HRT},
-      {en:"the phone",pt:"o telefone",s:DOT},
-      {en:"on him",pt:"para ele",s:DOT},
-      {en:"on her",pt:"para ela",s:DOT},
-      {en:"in the middle of",pt:"no meio de",s:UP},
+      {en:"how can I help",pt:"como posso ajudar",s:TRI},
+      {en:"how may I assist you",pt:"como posso te assistir",s:TRI},
+      {en:"what can I do for you",pt:"o que posso fazer por você",s:TRI},
+      {en:"is this the right person",pt:"sou a pessoa certa",s:TRI},
+
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"if available",pt:"se disponível",s:HRT},
+      {en:"if possible",pt:"se possível",s:HRT},
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+
+      {en:"on this call",pt:"nessa ligação",s:DOT},
+      {en:"on Zoom",pt:"no Zoom",s:DOT},
+      {en:"in the meeting",pt:"na reunião",s:DOT},
+      {en:"with everyone",pt:"com todo mundo",s:DOT},
+
+      {en:"please",pt:"por favor",s:UP},
+      {en:"a bit slower",pt:"um pouco mais devagar",s:UP},
+      {en:"I missed it",pt:"perdi o que disse",s:UP},
+      {en:"the volume",pt:"o volume",s:UP},
+
+      {en:"for tomorrow afternoon",pt:"para amanhã à tarde",s:LFT},
+      {en:"to next week",pt:"para a semana que vem",s:LFT},
+      {en:"to a different time",pt:"para outro horário",s:LFT},
+      {en:"to Friday morning",pt:"para sexta de manhã",s:LFT},
+
+      {en:"I called",pt:"que liguei",s:STAR},
+      {en:"about the meeting",pt:"sobre a reunião",s:STAR},
+      {en:"to call me back",pt:"para me ligar de volta",s:STAR},
+      {en:"about the project",pt:"sobre o projeto",s:STAR},
+
+      {en:"take care",pt:"se cuida",s:DIA},
+      {en:"have a great day",pt:"tenha um ótimo dia",s:DIA},
+      {en:"goodbye",pt:"tchau",s:DIA},
+      {en:"thanks again",pt:"obrigado(a) de novo",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"when I get home",pt:"quando chegar em casa",s:TRI},
-      {en:"after work",pt:"depois do trabalho",s:TRI},
-      {en:"when I’m free",pt:"quando estiver livre",s:TRI},
-      {en:"please?",pt:"por favor?",s:HRT},
-      {en:"after a few rings",pt:"após alguns toques",s:DOT},
-      {en:"on the third ring",pt:"no terceiro toque",s:DOT},
-      {en:"the conversation",pt:"a conversa",s:UP},
-      {en:"the call",pt:"a ligação",s:UP},
+      {en:"now",pt:"agora",s:TRI},
+      {en:"today",pt:"hoje",s:TRI},
+      {en:"please",pt:"por favor",s:TRI},
+      {en:"this morning",pt:"essa manhã",s:TRI},
+
+      {en:"if available",pt:"se disponível",s:HRT},
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+      {en:"this is urgent",pt:"é urgente",s:HRT},
+      {en:"if you can",pt:"se puder",s:HRT},
+
+      {en:"now",pt:"agora",s:DOT},
+      {en:"please confirm",pt:"por favor confirme",s:DOT},
+      {en:"thanks",pt:"obrigado(a)",s:DOT},
+      {en:"or do I need to adjust",pt:"ou preciso ajustar",s:DOT},
+
+      {en:"please",pt:"por favor",s:UP},
+      {en:"thanks",pt:"obrigado(a)",s:UP},
+      {en:"this is frustrating",pt:"está difícil",s:UP},
+      {en:"sorry",pt:"desculpa",s:UP},
+
+      {en:"if possible",pt:"se possível",s:LFT},
+      {en:"thanks for understanding",pt:"obrigado(a) pela compreensão",s:LFT},
+      {en:"please",pt:"por favor",s:LFT},
+      {en:"sorry for the change",pt:"desculpa pela mudança",s:LFT},
+
+      {en:"when she's free",pt:"quando ela estiver livre",s:STAR},
+      {en:"as soon as possible",pt:"o mais rápido possível",s:STAR},
+      {en:"today if possible",pt:"hoje se possível",s:STAR},
+      {en:"thanks",pt:"obrigado(a)",s:STAR},
+
+      {en:"for now",pt:"por enquanto",s:DIA},
+      {en:"and goodbye",pt:"e tchau",s:DIA},
+      {en:"have a good one",pt:"tenha um ótimo dia",s:DIA},
+      {en:"see you next time",pt:"até a próxima",s:DIA},
     ]},
+    examples: [
+      {en:"Hi this is Marina speaking how can I help now?",pt:"Oi aqui é Marina falando como posso ajudar agora?"},
+      {en:"Hello my name is Marina from sales is this the right person?",pt:"Alô meu nome é Marina do comercial sou a pessoa certa?"},
+      {en:"Could I speak to the manager please if available?",pt:"Posso falar com o gerente por favor se disponível?"},
+      {en:"Can you transfer me to customer service please thanks?",pt:"Pode me transferir para o atendimento por favor obrigado?"},
+      {en:"Can you hear me clearly on this call now?",pt:"Você me ouve claramente nessa ligação agora?"},
+      {en:"Is my audio OK in the meeting please confirm?",pt:"Meu áudio está OK na reunião por favor confirme?"},
+      {en:"You're breaking up could you repeat that please?",pt:"Você está cortando pode repetir por favor?"},
+      {en:"I can't hear you a bit slower thanks?",pt:"Não consigo te ouvir um pouco mais devagar obrigado?"},
+      {en:"I'd like to reschedule our call for tomorrow afternoon if possible",pt:"Gostaria de reagendar nossa ligação para amanhã à tarde se possível"},
+      {en:"Can we reschedule the meeting to Friday morning please?",pt:"Podemos reagendar a reunião para sexta de manhã por favor?"},
+      {en:"Could you tell her I called when she's free?",pt:"Pode dizer a ela que liguei quando ela estiver livre?"},
+      {en:"Please let the team about the project as soon as possible thanks",pt:"Por favor avise a equipe sobre o projeto o mais rápido possível obrigado"},
+      {en:"Talk to you soon take care for now",pt:"Falo com você em breve se cuida por enquanto"},
+      {en:"Thanks for calling me have a great day",pt:"Obrigado por ter ligado tenha um ótimo dia"},
+    ],
+    phrasals: [
+      {term:"Hi this is [nome] / Speaking",desc:"Pra atender ou iniciar uma ligação. 'Hi this is Marina' (apresentação completa). 'Speaking' (resposta curta quando alguém pergunta por você ao telefone).",ex:[
+        {en:"Hi this is Marina speaking",pt:"Oi aqui é Marina falando"},
+        {en:"Speaking, how can I help?",pt:"Sou eu, como posso ajudar?"}
+      ]},
+      {term:"Could I speak to / May I speak with",desc:"'Speak TO' é mais americano e direto; 'speak WITH' é levemente mais formal/britânico. 'Could I' é mais educado que 'Can I'. 'May I' é máximo de formalidade.",ex:[
+        {en:"Could I speak to the manager please?",pt:"Posso falar com o gerente por favor?"},
+        {en:"May I speak with someone in HR?",pt:"Posso falar com alguém do RH?"}
+      ]},
+      {term:"Can you hear me / Am I coming through",desc:"Frases padrão pra checar áudio em call. 'Can you hear me clearly?' é o mais usado. 'Am I coming through?' é mais informal e moderno (uso popularizado em videocalls).",ex:[
+        {en:"Can you hear me clearly on this call?",pt:"Você me ouve claramente nessa ligação?"},
+        {en:"Am I coming through OK in the meeting?",pt:"Estou chegando OK na reunião?"}
+      ]},
+      {term:"You're breaking up / I can't hear you",desc:"Pra problemas de áudio. 'Breaking up' = áudio cortando. 'I can't hear you' é direto. Sempre adicione um pedido: 'could you repeat that' ou 'could you speak louder'.",ex:[
+        {en:"You're breaking up could you repeat that?",pt:"Você está cortando pode repetir?"},
+        {en:"I can't hear you a bit slower please",pt:"Não consigo te ouvir um pouco mais devagar por favor"}
+      ]},
+      {term:"I'd like to reschedule / Can we reschedule",desc:"'Reschedule' (verb) = remarcar. 'I'd like to' é educado; 'Can we' é colaborativo. Sempre 'reschedule [evento] FOR/TO [novo tempo]'. Erro brasileiro: 'remark' (não existe) ou 're-schedule' separado.",ex:[
+        {en:"I'd like to reschedule our call for tomorrow",pt:"Gostaria de reagendar nossa ligação para amanhã"},
+        {en:"Can we reschedule the meeting to Friday?",pt:"Podemos reagendar a reunião para sexta?"}
+      ]},
+      {term:"Could you tell [pessoa] / Please let [pessoa]",desc:"Pra deixar recado. 'Could you tell her [recado]' é o mais comum. 'Please let X know [info]' é mais formal. Sempre seguido de info compacta + 'when she's free' ou 'as soon as possible'.",ex:[
+        {en:"Could you tell her I called when she's free?",pt:"Pode dizer a ela que liguei quando estiver livre?"},
+        {en:"Please let the team know about the project",pt:"Por favor avise a equipe sobre o projeto"}
+      ]},
+      {term:"Talk to you soon / Have a great day",desc:"Despedidas profissionais. 'Talk to you soon' é o padrão (não 'until later' que é tradução literal). 'Take care' é informal mas universal. 'Have a great day' é caloroso e profissional.",ex:[
+        {en:"Talk to you soon take care",pt:"Falo com você em breve se cuida"},
+        {en:"Thanks for calling have a great day",pt:"Obrigado por ligar tenha um ótimo dia"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
