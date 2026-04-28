@@ -8,50 +8,370 @@
 window.SSF_OVERRIDES = {
 
   // ════════════════════════════════════════════
-  // PROBLEMS
-  // ◣ We have to talk over [topic] before [acao]
-  // ♥ I have been [vb-ing] [topic/qtd] [obj] for [tempo]
-  // ● I am [vb-ing] [qtd] [obj]
+  // ENVIRONMENT — Meio ambiente
+  // ◣ [Subj] was/were [destruction-verb] [cause-prep] [disaster]
+  //   "It was wiped out by the flood"
+  // ♥ [Subj] takes [duration] to [process-verb] [where/how]
+  //   "It takes many years to break down in nature"
+  // ● [Subj] [adverb] [recycle-verb] [object]
+  //   "We always recycle plastic bags"
+  // ▲ [Subj] have [used-up] [quantity] [resource]
+  //   "We have run out of almost all the oil"
+  // ◀ [Pollutant] [is/has spreading-verb] [direction-prep] [place]
+  //   "The smoke is slowly spreading across the city"
+  // ★ [Forest] [be-aux] [logging-verb] [time/agent]
+  //   "The forest is being cut down every year"
+  // ◆ [Authority] [modal] [protect-verb] [environmental-cause]
+  //   "The government should protect the environment"
   // ════════════════════════════════════════════
-  "problems": {
+  "environment": {
+    desc: "Formando frases para falar sobre meio ambiente. Cada símbolo é um padrão de frase: escolha um item de cada coluna com o MESMO símbolo e qualquer combinação resulta numa frase correta.",
     0: { replace:true, items:[
-      {en:"We have to",pt:"Nós precisamos",s:TRI},
-      {en:"I have been",pt:"Eu venho",s:HRT},
-      {en:"I am",pt:"Eu estou",s:DOT},
+      {en:"It was",pt:"Isso foi",s:TRI},
+      {en:"They were",pt:"Eles foram",s:TRI},
+      {en:"The crops were",pt:"As plantações foram",s:TRI},
+      {en:"The village was",pt:"O vilarejo foi",s:TRI},
+
+      {en:"It takes",pt:"Leva",s:HRT},
+      {en:"It can take",pt:"Pode levar",s:HRT},
+      {en:"Plastic takes",pt:"O plástico leva",s:HRT},
+      {en:"Glass takes",pt:"O vidro leva",s:HRT},
+
+      {en:"We",pt:"Nós",s:DOT},
+      {en:"I",pt:"Eu",s:DOT},
+      {en:"People",pt:"As pessoas",s:DOT},
+      {en:"Most of us",pt:"A maioria de nós",s:DOT},
+
+      {en:"We have",pt:"Nós",s:UP},
+      {en:"We've",pt:"A gente",s:UP},
+      {en:"Humans have",pt:"Os humanos",s:UP},
+      {en:"Many countries have",pt:"Muitos países",s:UP},
+
+      {en:"The smoke",pt:"A fumaça",s:LFT},
+      {en:"The fog",pt:"A neblina",s:LFT},
+      {en:"The pollution",pt:"A poluição",s:LFT},
+      {en:"The smog",pt:"A poluição do ar",s:LFT},
+
+      {en:"The forest",pt:"A floresta",s:STAR},
+      {en:"The rainforest",pt:"A floresta tropical",s:STAR},
+      {en:"The Amazon",pt:"A Amazônia",s:STAR},
+      {en:"Our jungle",pt:"Nossa selva",s:STAR},
+
+      {en:"The government",pt:"O governo",s:DIA},
+      {en:"Our country",pt:"Nosso país",s:DIA},
+      {en:"Companies",pt:"As empresas",s:DIA},
+      {en:"Politicians",pt:"Os políticos",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"talk over",pt:"discutir sobre",s:TRI},
-      {en:"wrestling with",pt:"quebrando a cabeça com",s:HRT},
-      {en:"running up against",pt:"lutando contra",s:HRT},
-      {en:"thinking through",pt:"ponderando",s:HRT},
-      {en:"sorting out",pt:"resolvendo",s:DOT},
-      {en:"running into",pt:"me deparando com",s:DOT},
-      {en:"dealing with",pt:"lidando com",s:DOT},
+      {en:"wiped out",pt:"varrido(a)(s)",s:TRI},
+      {en:"destroyed",pt:"destruído(a)(s)",s:TRI},
+      {en:"swept away",pt:"levado(a)(s)",s:TRI},
+      {en:"damaged",pt:"danificado(a)(s)",s:TRI},
+
+      {en:"a long time",pt:"um longo tempo",s:HRT},
+      {en:"many years",pt:"muitos anos",s:HRT},
+      {en:"decades",pt:"décadas",s:HRT},
+      {en:"centuries",pt:"séculos",s:HRT},
+
+      {en:"always",pt:"sempre",s:DOT},
+      {en:"never",pt:"nunca",s:DOT},
+      {en:"often",pt:"frequentemente",s:DOT},
+      {en:"rarely",pt:"raramente",s:DOT},
+      {en:"generally",pt:"geralmente",s:DOT},
+
+      {en:"used up",pt:"acabado com",s:UP},
+      {en:"run out of",pt:"ficado sem",s:UP},
+      {en:"wasted",pt:"desperdiçado",s:UP},
+      {en:"depleted",pt:"esgotado",s:UP},
+
+      {en:"is slowly spreading",pt:"está se espalhando lentamente",s:LFT},
+      {en:"is quickly spreading",pt:"está se espalhando rapidamente",s:LFT},
+      {en:"has been spreading",pt:"vem se espalhando",s:LFT},
+      {en:"is moving",pt:"está se movendo",s:LFT},
+
+      {en:"is being",pt:"está sendo",s:STAR},
+      {en:"has been",pt:"foi",s:STAR},
+      {en:"was",pt:"foi",s:STAR},
+      {en:"is getting",pt:"está sendo",s:STAR},
+
+      {en:"should",pt:"deveria",s:DIA},
+      {en:"must",pt:"deve",s:DIA},
+      {en:"will",pt:"vai",s:DIA},
+      {en:"can",pt:"pode",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"this problem",pt:"esse problema",s:TRI},
-      {en:"this decision",pt:"essa decisão",s:TRI},
-      {en:"this purchase",pt:"essa compra",s:TRI},
-      {en:"this decision",pt:"essa decisão",s:HRT},
-      {en:"a lot of",pt:"bastante",s:HRT},
-      {en:"a bit of",pt:"um pouco de",s:HRT},
-      {en:"my plans",pt:"meus planos",s:HRT},
-      {en:"many",pt:"muitos(as)",s:DOT},
-      {en:"some",pt:"algumas",s:DOT},
-      {en:"all",pt:"todos(as)",s:DOT},
+      {en:"by",pt:"pelo(a)",s:TRI},
+      {en:"due to",pt:"devido a",s:TRI},
+      {en:"because of",pt:"por causa de",s:TRI},
+
+      {en:"to break down",pt:"para se decompor",s:HRT},
+      {en:"to decompose",pt:"para se decompor",s:HRT},
+      {en:"to disappear",pt:"para desaparecer",s:HRT},
+      {en:"to recover",pt:"para se recuperar",s:HRT},
+
+      {en:"throw away",pt:"jogamos fora",s:DOT},
+      {en:"recycle",pt:"reciclamos",s:DOT},
+      {en:"reuse",pt:"reutilizamos",s:DOT},
+      {en:"sort",pt:"separamos",s:DOT},
+
+      {en:"all the",pt:"todo(a)(s) o(a)(s)",s:UP},
+      {en:"almost all the",pt:"quase todo(a)(s) o(a)(s)",s:UP},
+      {en:"half of the",pt:"metade do(a)(s)",s:UP},
+      {en:"most of the",pt:"a maior parte do(a)(s)",s:UP},
+
+      {en:"across",pt:"por",s:LFT},
+      {en:"over",pt:"sobre",s:LFT},
+      {en:"through",pt:"através de",s:LFT},
+      {en:"into",pt:"em direção a",s:LFT},
+
+      {en:"cut down",pt:"cortado(a)",s:STAR},
+      {en:"burned",pt:"queimado(a)",s:STAR},
+      {en:"cleared",pt:"desmatado(a)",s:STAR},
+      {en:"destroyed",pt:"destruído(a)",s:STAR},
+
+      {en:"protect",pt:"proteger",s:DIA},
+      {en:"support",pt:"apoiar",s:DIA},
+      {en:"fund",pt:"financiar",s:DIA},
+      {en:"clean up",pt:"limpar",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"before buying it",pt:"antes de comprar",s:TRI},
+      {en:"the flood",pt:"a enchente",s:TRI},
+      {en:"the storm",pt:"a tempestade",s:TRI},
+      {en:"the wildfire",pt:"o incêndio florestal",s:TRI},
+      {en:"the heavy rain",pt:"a chuva forte",s:TRI},
+
+      {en:"in nature",pt:"na natureza",s:HRT},
+      {en:"in the soil",pt:"no solo",s:HRT},
+      {en:"on its own",pt:"sozinho",s:HRT},
+      {en:"completely",pt:"completamente",s:HRT},
+
+      {en:"plastic bags",pt:"sacolas plásticas",s:DOT},
+      {en:"cardboard",pt:"papelão",s:DOT},
+      {en:"water bottles",pt:"garrafas d'água",s:DOT},
+      {en:"old clothes",pt:"roupas velhas",s:DOT},
+
+      {en:"oil",pt:"petróleo",s:UP},
+      {en:"clean water",pt:"água limpa",s:UP},
+      {en:"natural resources",pt:"recursos naturais",s:UP},
+      {en:"fresh air",pt:"ar puro",s:UP},
+
+      {en:"the city",pt:"a cidade",s:LFT},
+      {en:"the streets",pt:"as ruas",s:LFT},
+      {en:"the forest",pt:"a floresta",s:LFT},
+      {en:"the ocean",pt:"o oceano",s:LFT},
+
+      {en:"every year",pt:"todos os anos",s:STAR},
+      {en:"illegally",pt:"ilegalmente",s:STAR},
+      {en:"by farmers",pt:"por fazendeiros",s:STAR},
+      {en:"by loggers",pt:"por madeireiros",s:STAR},
+
+      {en:"the environment",pt:"o meio ambiente",s:DIA},
+      {en:"endangered species",pt:"espécies ameaçadas",s:DIA},
+      {en:"national parks",pt:"parques nacionais",s:DIA},
+      {en:"clean energy",pt:"energia limpa",s:DIA},
+    ]},
+    examples: [
+      {en:"It was wiped out by the flood",pt:"Foi varrido pela enchente"},
+      {en:"The crops were destroyed because of the heavy rain",pt:"As plantações foram destruídas por causa da chuva forte"},
+      {en:"It takes many years to break down in nature",pt:"Leva muitos anos para se decompor na natureza"},
+      {en:"Plastic takes centuries to disappear in the soil",pt:"O plástico leva séculos para desaparecer no solo"},
+      {en:"We always recycle plastic bags",pt:"Nós sempre reciclamos sacolas plásticas"},
+      {en:"People rarely sort cardboard",pt:"As pessoas raramente separam papelão"},
+      {en:"We have run out of almost all the oil",pt:"Nós ficamos sem quase todo o petróleo"},
+      {en:"Humans have wasted most of the clean water",pt:"Os humanos desperdiçaram a maior parte da água limpa"},
+      {en:"The smoke is slowly spreading across the city",pt:"A fumaça está se espalhando lentamente pela cidade"},
+      {en:"The pollution is moving into the ocean",pt:"A poluição está se movendo em direção ao oceano"},
+      {en:"The forest is being cut down every year",pt:"A floresta está sendo cortada todos os anos"},
+      {en:"The Amazon has been burned illegally",pt:"A Amazônia foi queimada ilegalmente"},
+      {en:"The government should protect the environment",pt:"O governo deveria proteger o meio ambiente"},
+      {en:"Companies must fund clean energy",pt:"As empresas devem financiar energia limpa"},
+    ],
+    phrasals: [
+      {term:"wiped out",desc:"Wipe é limpar/apagar. Com out, o sentido fica mais forte: destruir, varrer ou eliminar por completo. Muito usado pra descrever desastres naturais.",ex:[
+        {en:"It was wiped out by the flood",pt:"Foi varrido pela enchente"},
+        {en:"The village was wiped out by the storm",pt:"O vilarejo foi varrido pela tempestade"}
+      ]},
+      {term:"break down",desc:"Sentido literal: quebrar, descontrolar-se. No contexto ambiental: decompor, dividir-se em partes pequenas (matéria orgânica, plástico).",ex:[
+        {en:"It takes many years to break down in nature",pt:"Leva muitos anos para se decompor na natureza"},
+        {en:"Plastic takes centuries to break down completely",pt:"O plástico leva séculos para se decompor completamente"}
+      ]},
+      {term:"throw away",desc:"Descartar, jogar fora. No figurado, também significa desperdiçar (uma chance, uma oportunidade).",ex:[
+        {en:"We always throw away cardboard",pt:"Nós sempre jogamos fora papelão"},
+        {en:"People rarely throw away water bottles",pt:"As pessoas raramente jogam fora garrafas d'água"}
+      ]},
+      {term:"run out of",desc:"Run sozinho é correr. Com out of, vira ficar sem alguma coisa — sempre seguido daquilo que acabou (oil, water, time).",ex:[
+        {en:"We have run out of fresh air",pt:"Nós ficamos sem ar puro"},
+        {en:"Humans have run out of natural resources",pt:"Os humanos ficaram sem recursos naturais"}
+      ]},
+      {term:"used up",desc:"Use é usar. Com up, a ideia é consumir até acabar — gastar tudo, esgotar uma reserva.",ex:[
+        {en:"We have used up all the oil",pt:"Nós acabamos com todo o petróleo"},
+        {en:"We've used up half of the clean water",pt:"A gente acabou com metade da água limpa"}
+      ]},
+      {term:"spread out",desc:"Spread é espalhar. Com out, reforça a ideia de algo se distribuindo em uma área maior (fumaça, poluição, fogo).",ex:[
+        {en:"The smoke is slowly spreading across the city",pt:"A fumaça está se espalhando lentamente pela cidade"},
+        {en:"The pollution has been spreading into the ocean",pt:"A poluição vem se espalhando em direção ao oceano"}
+      ]},
+      {term:"cut down",desc:"Cut é cortar. Com down, a ideia é derrubar (uma árvore, uma floresta) ou reduzir (gastos, consumo).",ex:[
+        {en:"The forest is being cut down every year",pt:"A floresta está sendo cortada todos os anos"},
+        {en:"The rainforest was cut down by loggers",pt:"A floresta tropical foi cortada por madeireiros"}
+      ]},
+      {term:"clean up",desc:"Clean é limpar. Com up, vira limpar até deixar tudo em ordem — geralmente um trabalho mais sério/grande, como limpeza ambiental ou de bagunça.",ex:[
+        {en:"The government must clean up the environment",pt:"O governo deve limpar o meio ambiente"},
+        {en:"Companies should clean up the ocean",pt:"As empresas deveriam limpar o oceano"}
+      ]},
+    ]
+  },
+
+  // ════════════════════════════════════════════
+  // PROBLEMS — Falando sobre dificuldades
+  // ◣ [Subj] [need-modal] [discuss-verb] [topic] [time-adv]
+  //   "We need to discuss this problem before deciding"
+  // ♥ [Subj] have been [vb-ing] [topic] [duration]
+  //   "I have been thinking about this problem for weeks"
+  // ● [Subj] am/are [face-vb-ing] [quantity] [problem-noun]
+  //   "I am running into many problems"
+  // ▲ [Subj] [search-vb-ing] [solution-noun] [target]
+  //   "We are looking for a solution to this issue"
+  // ════════════════════════════════════════════
+  "problems": {
+    desc: "Formando frases para falar sobre problemas, decisões e dificuldades. Cada símbolo é um padrão de frase — escolha itens das 4 colunas com o mesmo símbolo.",
+    0: { replace:true, items:[
+      {en:"We need to",pt:"Nós precisamos",s:TRI},
+      {en:"We should",pt:"A gente deveria",s:TRI},
+      {en:"We have to",pt:"Nós temos que",s:TRI},
+      {en:"I need to",pt:"Eu preciso",s:TRI},
+
+      {en:"I have been",pt:"Eu venho",s:HRT},
+      {en:"I've been",pt:"Eu venho",s:HRT},
+      {en:"We have been",pt:"Nós viemos",s:HRT},
+      {en:"We've been",pt:"A gente vem",s:HRT},
+
+      {en:"I am",pt:"Eu estou",s:DOT},
+      {en:"I'm",pt:"Eu",s:DOT},
+      {en:"We are",pt:"Nós estamos",s:DOT},
+      {en:"They are",pt:"Eles estão",s:DOT},
+
+      {en:"We are",pt:"Nós estamos",s:UP},
+      {en:"I am",pt:"Eu estou",s:UP},
+      {en:"They are",pt:"Eles estão",s:UP},
+    ]},
+    1: { replace:true, items:[
+      {en:"discuss",pt:"discutir",s:TRI},
+      {en:"talk about",pt:"falar sobre",s:TRI},
+      {en:"go over",pt:"revisar",s:TRI},
+      {en:"think about",pt:"pensar sobre",s:TRI},
+      {en:"address",pt:"abordar",s:TRI},
+
+      {en:"thinking about",pt:"pensando sobre",s:HRT},
+      {en:"working on",pt:"trabalhando em",s:HRT},
+      {en:"dealing with",pt:"lidando com",s:HRT},
+      {en:"struggling with",pt:"lutando com",s:HRT},
+      {en:"wrestling with",pt:"quebrando a cabeça com",s:HRT},
+
+      {en:"facing",pt:"enfrentando",s:DOT},
+      {en:"running into",pt:"me deparando com",s:DOT},
+      {en:"encountering",pt:"encontrando",s:DOT},
+      {en:"dealing with",pt:"lidando com",s:DOT},
+      {en:"coming across",pt:"esbarrando em",s:DOT},
+
+      {en:"looking for",pt:"procurando por",s:UP},
+      {en:"trying to find",pt:"tentando achar",s:UP},
+      {en:"searching for",pt:"buscando",s:UP},
+      {en:"hoping to find",pt:"esperando achar",s:UP},
+    ]},
+    2: { replace:true, items:[
+      {en:"this issue",pt:"essa questão",s:TRI},
+      {en:"this problem",pt:"esse problema",s:TRI},
+      {en:"the situation",pt:"a situação",s:TRI},
+      {en:"our plans",pt:"nossos planos",s:TRI},
+      {en:"this decision",pt:"essa decisão",s:TRI},
+
+      {en:"this problem",pt:"esse problema",s:HRT},
+      {en:"this decision",pt:"essa decisão",s:HRT},
+      {en:"a tough situation",pt:"uma situação difícil",s:HRT},
+      {en:"these issues",pt:"essas questões",s:HRT},
+      {en:"a hard choice",pt:"uma escolha difícil",s:HRT},
+
+      {en:"a lot of",pt:"muitos(as)",s:DOT},
+      {en:"many",pt:"muitos(as)",s:DOT},
+      {en:"some",pt:"algumas",s:DOT},
+      {en:"several",pt:"vários(as)",s:DOT},
+      {en:"a few",pt:"alguns(as)",s:DOT},
+
+      {en:"a solution to",pt:"uma solução para",s:UP},
+      {en:"a fix for",pt:"uma resolução para",s:UP},
+      {en:"an answer to",pt:"uma resposta para",s:UP},
+      {en:"a way out of",pt:"uma saída para",s:UP},
+    ]},
+    3: { replace:true, items:[
       {en:"before deciding",pt:"antes de decidir",s:TRI},
-      {en:"for making a decision",pt:"para tomar uma decisão",s:TRI},
+      {en:"right now",pt:"agora mesmo",s:TRI},
+      {en:"today",pt:"hoje",s:TRI},
+      {en:"as soon as possible",pt:"o mais rápido possível",s:TRI},
+      {en:"before moving on",pt:"antes de seguir em frente",s:TRI},
+
       {en:"for a long time",pt:"por um bom tempo",s:HRT},
-      {en:"for a few days",pt:"por alguns dias",s:HRT},
-      {en:"injustice",pt:"injustiça",s:HRT},
-      {en:"opposition",pt:"oposição",s:HRT},
+      {en:"for weeks",pt:"há semanas",s:HRT},
+      {en:"for days",pt:"há dias",s:HRT},
+      {en:"lately",pt:"ultimamente",s:HRT},
+      {en:"since last month",pt:"desde o mês passado",s:HRT},
+
       {en:"problems",pt:"problemas",s:DOT},
       {en:"difficulties",pt:"dificuldades",s:DOT},
-      {en:"snags",pt:"empecilhos",s:DOT},
+      {en:"challenges",pt:"desafios",s:DOT},
+      {en:"obstacles",pt:"obstáculos",s:DOT},
+      {en:"setbacks",pt:"contratempos",s:DOT},
+
+      {en:"this problem",pt:"esse problema",s:UP},
+      {en:"the issue",pt:"a questão",s:UP},
+      {en:"the situation",pt:"a situação",s:UP},
+      {en:"the mess",pt:"a confusão",s:UP},
     ]},
+    examples: [
+      {en:"We need to discuss this problem before deciding",pt:"Nós precisamos discutir esse problema antes de decidir"},
+      {en:"I need to go over our plans right now",pt:"Eu preciso revisar nossos planos agora mesmo"},
+      {en:"We should address the situation as soon as possible",pt:"A gente deveria abordar a situação o mais rápido possível"},
+      {en:"I have been thinking about this problem for weeks",pt:"Eu venho pensando sobre esse problema há semanas"},
+      {en:"We've been struggling with a tough situation lately",pt:"A gente vem lutando com uma situação difícil ultimamente"},
+      {en:"I'm running into many problems",pt:"Eu estou me deparando com muitos problemas"},
+      {en:"They are facing several challenges",pt:"Eles estão enfrentando vários desafios"},
+      {en:"We are looking for a solution to this problem",pt:"Nós estamos procurando uma solução para esse problema"},
+      {en:"I am trying to find an answer to the situation",pt:"Eu estou tentando achar uma resposta para a situação"},
+    ],
+    phrasals: [
+      {term:"talk over",desc:"Discutir um assunto detalhadamente, conversar a respeito de algo até chegar numa conclusão. Mais reflexivo do que talk about.",ex:[
+        {en:"We need to talk over our plans before deciding",pt:"Precisamos discutir nossos planos antes de decidir"},
+        {en:"Let's talk over the situation tonight",pt:"Vamos discutir a situação hoje à noite"}
+      ]},
+      {term:"go over",desc:"Revisar, repassar, examinar com atenção. Usado quando você quer checar os detalhes ou explicar algo passo a passo.",ex:[
+        {en:"We should go over this issue today",pt:"A gente deveria revisar essa questão hoje"},
+        {en:"I need to go over the details with you",pt:"Eu preciso revisar os detalhes com você"}
+      ]},
+      {term:"work on",desc:"Trabalhar em algo (um projeto, um problema, uma habilidade). Sugere esforço contínuo até resolver.",ex:[
+        {en:"I have been working on this problem for weeks",pt:"Eu venho trabalhando nesse problema há semanas"},
+        {en:"We've been working on a hard choice lately",pt:"A gente vem trabalhando numa escolha difícil ultimamente"}
+      ]},
+      {term:"deal with",desc:"Lidar com, enfrentar, gerenciar. Usado tanto pra problemas (deal with the issue) quanto pra pessoas (deal with clients).",ex:[
+        {en:"We are dealing with many problems",pt:"Estamos lidando com muitos problemas"},
+        {en:"I have been dealing with a tough situation",pt:"Venho lidando com uma situação difícil"}
+      ]},
+      {term:"struggle with",desc:"Lutar com, ter dificuldade com. Implica esforço contínuo sem solução fácil. Mais emocional que deal with.",ex:[
+        {en:"I have been struggling with this decision",pt:"Eu venho lutando com essa decisão"},
+        {en:"We've been struggling with these issues for days",pt:"A gente vem lutando com essas questões há dias"}
+      ]},
+      {term:"run into",desc:"Encontrar por acaso ou esbarrar com. Usado pra problemas inesperados (run into difficulties) ou pessoas (run into a friend).",ex:[
+        {en:"I am running into a lot of obstacles",pt:"Eu estou me deparando com muitos obstáculos"},
+        {en:"We are running into setbacks",pt:"Estamos esbarrando em contratempos"}
+      ]},
+      {term:"come across",desc:"Esbarrar em algo, deparar-se com. Mais sutil que run into — geralmente coisas que você descobre ao longo do caminho.",ex:[
+        {en:"I'm coming across some challenges",pt:"Eu estou esbarrando em alguns desafios"},
+        {en:"They are coming across several difficulties",pt:"Eles estão esbarrando em várias dificuldades"}
+      ]},
+      {term:"look for",desc:"Procurar ativamente, buscar. Diferente de find (que é encontrar) — look for é a ação de tentar achar.",ex:[
+        {en:"We are looking for a solution to this problem",pt:"Estamos procurando uma solução para esse problema"},
+        {en:"I am looking for a way out of the mess",pt:"Eu estou procurando uma saída para a confusão"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
