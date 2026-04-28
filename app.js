@@ -5,7 +5,26 @@
   const SYMBOLS = ['◣','♥','●','▲','◀','★','◆'];
   const ROMAN = ['I','II','III','IIII'];
 
-  const chapters = window.SSF_CHAPTERS;
+  // Curated list of practical chapters in pedagogical order (basic → advanced).
+  // Chapters not in this list stay in chapters.js but aren't rendered.
+  const ENABLED_CHAPTERS = [
+    'at-home',       // daily / small talk
+    'family',
+    'relationships',
+    'cooking-1',     // restaurant & food
+    'shopping',
+    'health',        // doctor visit
+    'money',         // banking & finance
+    'driving',
+    'traveling',     // airport, hotel
+    'education',
+    'working',       // career / interview
+    'phone',         // calls & meetings
+  ];
+
+  const chapters = window.SSF_CHAPTERS
+    .filter(c => ENABLED_CHAPTERS.includes(c.id))
+    .sort((a, b) => ENABLED_CHAPTERS.indexOf(a.id) - ENABLED_CHAPTERS.indexOf(b.id));
   const OV = window.SSF_OVERRIDES || {};
 
   // Merge overrides — supports column replacements + meta overrides
