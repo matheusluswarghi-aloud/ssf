@@ -231,58 +231,235 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // WORKING
-  // ◣ I have [vb] [obj] [tempo]
-  // ♥ I am [vb-ing] [obj/colega] [contexto]
-  // ● I [vb] [obj] [contexto]
-  // ▲ I will [vb] [obj] [tempo]
+  // WORK — Carreira & entrevistas
+  // ◣ Background acadêmico — "I have a master's in marketing from a top university"
+  // ♥ Personalidade — "I am very ambitious under pressure"
+  // ● Pontos fortes — "I excel at public speaking when prepared at this company"
+  // ▲ Dificuldades — "I struggle with delegating in fast-paced environments"
+  // ◀ Cargo & função — "I work as a manager in marketing at a startup"
+  // ★ Conquistas — "I led a team of 10 that launched the product last year"
+  // ◆ Procurando — "I'm looking for a senior role in tech with growth potential"
   // ════════════════════════════════════════════
   "working": {
+    title: "work",
+    sub: "Carreira & entrevistas",
+    desc: "Frases prontas pra falar sobre seu trabalho — em entrevistas, networking e papos de carreira. Cada símbolo é um padrão diferente. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I have",pt:"Eu",s:TRI},
-      {en:"I am",pt:"Eu estou",s:HRT},
-      {en:"I",pt:"Eu",s:DOT},
-      {en:"I will",pt:"Eu irei",s:UP},
+      {en:"I have",pt:"Eu tenho",s:TRI},
+      {en:"I'm working on",pt:"Estou fazendo",s:TRI},
+      {en:"I just finished",pt:"Acabei de terminar",s:TRI},
+      {en:"I'm pursuing",pt:"Estou buscando",s:TRI},
+
+      {en:"I am",pt:"Eu sou",s:HRT},
+      {en:"I'm",pt:"Eu sou",s:HRT},
+      {en:"I tend to be",pt:"Costumo ser",s:HRT},
+      {en:"I consider myself",pt:"Me considero",s:HRT},
+
+      {en:"I excel",pt:"Eu me destaco",s:DOT},
+      {en:"I'm good",pt:"Eu sou bom(a)",s:DOT},
+      {en:"I'm great",pt:"Eu sou ótimo(a)",s:DOT},
+      {en:"I really shine",pt:"Eu brilho mesmo",s:DOT},
+
+      {en:"I struggle",pt:"Eu tenho dificuldade",s:UP},
+      {en:"I have trouble",pt:"Eu tenho problemas",s:UP},
+      {en:"I'm not great",pt:"Não sou ótimo(a)",s:UP},
+      {en:"I sometimes battle",pt:"Às vezes luto",s:UP},
+
+      {en:"I work",pt:"Eu trabalho",s:LFT},
+      {en:"I'm employed",pt:"Estou empregado(a)",s:LFT},
+      {en:"I currently work",pt:"Atualmente trabalho",s:LFT},
+      {en:"I serve",pt:"Atuo",s:LFT},
+
+      {en:"I led",pt:"Eu liderei",s:STAR},
+      {en:"I managed",pt:"Eu gerenciei",s:STAR},
+      {en:"I drove",pt:"Eu conduzi",s:STAR},
+      {en:"I oversaw",pt:"Eu supervisionei",s:STAR},
+
+      {en:"I'm looking for",pt:"Estou procurando",s:DIA},
+      {en:"I'm searching for",pt:"Estou buscando",s:DIA},
+      {en:"I'm open to",pt:"Estou aberto(a) a",s:DIA},
+      {en:"I want",pt:"Eu quero",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"burned out",pt:"dei burnout",s:TRI},
-      {en:"called off",pt:"cancelei",s:TRI},
-      {en:"drew up",pt:"elaborei",s:TRI},
-      {en:"took over",pt:"assumi",s:TRI},
-      {en:"carried out",pt:"executei",s:TRI},
-      {en:"filling in for",pt:"substituindo",s:HRT},
-      {en:"taking on",pt:"contratando",s:HRT},
-      {en:"working out",pt:"elaborando",s:HRT},
-      {en:"slack off",pt:"vagueio",s:DOT},
-      {en:"knuckle down",pt:"pego firme",s:DOT},
-      {en:"knock off",pt:"sair do trabalho",s:UP},
+      {en:"a bachelor's",pt:"uma graduação",s:TRI},
+      {en:"a master's",pt:"um mestrado",s:TRI},
+      {en:"a doctorate",pt:"um doutorado",s:TRI},
+      {en:"an MBA",pt:"um MBA",s:TRI},
+      {en:"a certificate",pt:"um certificado",s:TRI},
+      {en:"a degree",pt:"uma formação",s:TRI},
+
+      {en:"very",pt:"muito",s:HRT},
+      {en:"quite",pt:"bem",s:HRT},
+      {en:"extremely",pt:"extremamente",s:HRT},
+      {en:"pretty",pt:"bastante",s:HRT},
+      {en:"naturally",pt:"naturalmente",s:HRT},
+
+      {en:"at public speaking",pt:"em falar em público",s:DOT},
+      {en:"at meeting deadlines",pt:"em cumprir prazos",s:DOT},
+      {en:"at managing teams",pt:"em gerenciar times",s:DOT},
+      {en:"at problem-solving",pt:"em resolver problemas",s:DOT},
+      {en:"at multitasking",pt:"em fazer várias coisas",s:DOT},
+      {en:"at negotiating",pt:"em negociar",s:DOT},
+
+      {en:"with work pressure",pt:"com pressão no trabalho",s:UP},
+      {en:"with public speaking",pt:"com falar em público",s:UP},
+      {en:"with multitasking",pt:"com fazer várias coisas",s:UP},
+      {en:"with delegating",pt:"em delegar",s:UP},
+      {en:"with strict deadlines",pt:"com prazos apertados",s:UP},
+      {en:"with conflict",pt:"com conflitos",s:UP},
+
+      {en:"as a manager",pt:"como gerente",s:LFT},
+      {en:"as an analyst",pt:"como analista",s:LFT},
+      {en:"as a designer",pt:"como designer",s:LFT},
+      {en:"as a developer",pt:"como desenvolvedor(a)",s:LFT},
+      {en:"as a director",pt:"como diretor(a)",s:LFT},
+
+      {en:"a project",pt:"um projeto",s:STAR},
+      {en:"a team of 10",pt:"um time de 10",s:STAR},
+      {en:"a strategy",pt:"uma estratégia",s:STAR},
+      {en:"an initiative",pt:"uma iniciativa",s:STAR},
+
+      {en:"a senior role",pt:"uma vaga sênior",s:DIA},
+      {en:"a remote job",pt:"um emprego remoto",s:DIA},
+      {en:"new challenges",pt:"novos desafios",s:DIA},
+      {en:"a leadership position",pt:"uma posição de liderança",s:DIA},
+      {en:"fresh opportunities",pt:"oportunidades novas",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"a report",pt:"um relatório",s:TRI},
-      {en:"a contract",pt:"um contrato",s:TRI},
-      {en:"a budget",pt:"um orçamento",s:TRI},
-      {en:"the leadership",pt:"a liderança",s:TRI},
-      {en:"the project",pt:"o projeto",s:TRI},
-      {en:"the manager",pt:"o(a) gerente",s:HRT},
-      {en:"a colleague",pt:"um(a) colega",s:HRT},
-      {en:"new staff",pt:"novos empregados",s:HRT},
-      {en:"a plan",pt:"um plano",s:HRT},
-      {en:"on my work",pt:"no trabalho",s:DOT},
-      {en:"at the office",pt:"no escritório",s:DOT},
-      {en:"early",pt:"cedo",s:UP},
-      {en:"early today",pt:"cedo hoje",s:UP},
+      {en:"in marketing",pt:"em marketing",s:TRI},
+      {en:"in business",pt:"em administração",s:TRI},
+      {en:"in design",pt:"em design",s:TRI},
+      {en:"in engineering",pt:"em engenharia",s:TRI},
+      {en:"in finance",pt:"em finanças",s:TRI},
+      {en:"in HR",pt:"em RH",s:TRI},
+
+      {en:"easygoing",pt:"tranquilo(a)",s:HRT},
+      {en:"ambitious",pt:"ambicioso(a)",s:HRT},
+      {en:"methodical",pt:"metódico(a)",s:HRT},
+      {en:"detail-oriented",pt:"orientado(a) a detalhes",s:HRT},
+      {en:"proactive",pt:"proativo(a)",s:HRT},
+      {en:"collaborative",pt:"colaborativo(a)",s:HRT},
+
+      {en:"when I'm prepared",pt:"quando estou preparado(a)",s:DOT},
+      {en:"under pressure",pt:"sob pressão",s:DOT},
+      {en:"with clear goals",pt:"com metas claras",s:DOT},
+      {en:"in groups",pt:"em grupos",s:DOT},
+      {en:"on tight schedules",pt:"em prazos apertados",s:DOT},
+      {en:"when given autonomy",pt:"com autonomia",s:DOT},
+
+      {en:"sometimes",pt:"às vezes",s:UP},
+      {en:"when tired",pt:"quando cansado(a)",s:UP},
+      {en:"at first",pt:"no começo",s:UP},
+      {en:"on Mondays",pt:"nas segundas",s:UP},
+      {en:"in tense moments",pt:"em momentos tensos",s:UP},
+
+      {en:"in marketing",pt:"em marketing",s:LFT},
+      {en:"in operations",pt:"em operações",s:LFT},
+      {en:"in product",pt:"em produto",s:LFT},
+      {en:"in engineering",pt:"em engenharia",s:LFT},
+      {en:"in HR",pt:"em RH",s:LFT},
+
+      {en:"that grew revenue 30%",pt:"que cresceu o faturamento 30%",s:STAR},
+      {en:"that launched the product",pt:"que lançou o produto",s:STAR},
+      {en:"that cut costs in half",pt:"que cortou custos pela metade",s:STAR},
+      {en:"that won an award",pt:"que ganhou um prêmio",s:STAR},
+      {en:"that hit our targets",pt:"que bateu as metas",s:STAR},
+
+      {en:"in tech",pt:"em tech",s:DIA},
+      {en:"in finance",pt:"em finanças",s:DIA},
+      {en:"in startups",pt:"em startups",s:DIA},
+      {en:"in marketing",pt:"em marketing",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"recently",pt:"recentemente",s:TRI},
-      {en:"this week",pt:"essa semana",s:TRI},
-      {en:"this year",pt:"esse ano",s:TRI},
-      {en:"today",pt:"hoje",s:HRT},
-      {en:"this month",pt:"esse mês",s:HRT},
-      {en:"all the time",pt:"o tempo todo",s:DOT},
-      {en:"every Friday",pt:"toda sexta",s:DOT},
-      {en:"tomorrow",pt:"amanhã",s:UP},
-      {en:"next Friday",pt:"sexta que vem",s:UP},
+      {en:"from a top university",pt:"de uma universidade top",s:TRI},
+      {en:"from a public school",pt:"de uma escola pública",s:TRI},
+      {en:"abroad",pt:"no exterior",s:TRI},
+      {en:"online",pt:"online",s:TRI},
+      {en:"from FGV",pt:"da FGV",s:TRI},
+      {en:"through extension",pt:"por extensão",s:TRI},
+
+      {en:"at work",pt:"no trabalho",s:HRT},
+      {en:"under pressure",pt:"sob pressão",s:HRT},
+      {en:"with deadlines",pt:"com prazos",s:HRT},
+      {en:"in meetings",pt:"em reuniões",s:HRT},
+      {en:"in teams",pt:"em times",s:HRT},
+      {en:"with clients",pt:"com clientes",s:HRT},
+
+      {en:"at this company",pt:"nessa empresa",s:DOT},
+      {en:"in my role",pt:"no meu cargo",s:DOT},
+      {en:"in any setting",pt:"em qualquer ambiente",s:DOT},
+      {en:"professionally",pt:"profissionalmente",s:DOT},
+      {en:"day-to-day",pt:"no dia a dia",s:DOT},
+
+      {en:"early in projects",pt:"no início de projetos",s:UP},
+      {en:"in big groups",pt:"em grupos grandes",s:UP},
+      {en:"with new tools",pt:"com ferramentas novas",s:UP},
+      {en:"under stress",pt:"sob estresse",s:UP},
+      {en:"day after day",pt:"dia após dia",s:UP},
+
+      {en:"at a startup",pt:"em uma startup",s:LFT},
+      {en:"at a multinational",pt:"em uma multinacional",s:LFT},
+      {en:"at a small agency",pt:"em uma agência pequena",s:LFT},
+      {en:"at a tech company",pt:"em uma empresa de tech",s:LFT},
+      {en:"remotely",pt:"remotamente",s:LFT},
+
+      {en:"in six months",pt:"em seis meses",s:STAR},
+      {en:"last year",pt:"ano passado",s:STAR},
+      {en:"within a quarter",pt:"em um trimestre",s:STAR},
+      {en:"recently",pt:"recentemente",s:STAR},
+      {en:"at my last job",pt:"no meu último emprego",s:STAR},
+
+      {en:"with growth potential",pt:"com potencial de crescimento",s:DIA},
+      {en:"that pays well",pt:"que pague bem",s:DIA},
+      {en:"with good culture",pt:"com boa cultura",s:DIA},
+      {en:"abroad",pt:"no exterior",s:DIA},
+      {en:"right away",pt:"o quanto antes",s:DIA},
     ]},
+    examples: [
+      {en:"I have a master's in marketing from a top university",pt:"Tenho mestrado em marketing por uma universidade top"},
+      {en:"I'm pursuing an MBA in business abroad",pt:"Estou fazendo um MBA em administração no exterior"},
+      {en:"I tend to be very methodical with deadlines",pt:"Costumo ser bem metódico com prazos"},
+      {en:"I consider myself naturally collaborative in teams",pt:"Me considero naturalmente colaborativo em times"},
+      {en:"I excel at public speaking when I'm prepared at this company",pt:"Eu me destaco em falar em público quando preparado nessa empresa"},
+      {en:"I'm good at multitasking under pressure professionally",pt:"Sou bom em fazer várias coisas sob pressão profissionalmente"},
+      {en:"I struggle with delegating at first with new tools",pt:"Tenho dificuldade em delegar no começo com ferramentas novas"},
+      {en:"I work as a designer in product at a tech company",pt:"Trabalho como designer em produto numa empresa de tech"},
+      {en:"My role is as an analyst in operations remotely",pt:"Meu cargo é analista em operações remotamente"},
+      {en:"I led a team of 10 that launched the product last year",pt:"Liderei um time de 10 que lançou o produto ano passado"},
+      {en:"I drove an initiative that cut costs in half within a quarter",pt:"Conduzi uma iniciativa que cortou custos pela metade em um trimestre"},
+      {en:"I'm looking for a leadership position in startups with good culture",pt:"Estou procurando uma posição de liderança em startups com boa cultura"},
+      {en:"I'm open to new challenges in tech right away",pt:"Estou aberto a novos desafios em tech o quanto antes"},
+    ],
+    phrasals: [
+      {term:"I have a [degree]",desc:"Forma direta de descrever sua formação. Use 'a' antes de bachelor's/master's/MBA/certificate. Para doutorado: 'a doctorate' ou 'a PhD'.",ex:[
+        {en:"I have a master's in marketing",pt:"Tenho mestrado em marketing"},
+        {en:"I'm pursuing a doctorate in finance",pt:"Estou fazendo um doutorado em finanças"}
+      ]},
+      {term:"I tend to be / I consider myself",desc:"Forma humilde e natural de descrever sua personalidade — soa menos arrogante que 'I am very X'. Ótimo em entrevistas para descrever soft skills.",ex:[
+        {en:"I tend to be quite methodical with deadlines",pt:"Costumo ser bem metódico com prazos"},
+        {en:"I consider myself naturally proactive in teams",pt:"Me considero naturalmente proativo em times"}
+      ]},
+      {term:"I excel at / I'm good at",desc:"Para falar de pontos fortes. 'Excel at' é mais formal; 'good at' mais conversacional. Sempre seguido de gerúndio (-ing) ou substantivo.",ex:[
+        {en:"I excel at public speaking when I'm prepared",pt:"Eu me destaco em falar em público quando preparado"},
+        {en:"I'm great at managing teams in any setting",pt:"Sou ótimo em gerenciar times em qualquer ambiente"}
+      ]},
+      {term:"I struggle with / I have trouble with",desc:"Forma honesta de admitir pontos fracos numa entrevista — sem soar fraco. Mostra autoconhecimento. Sempre seguido de gerúndio ou substantivo, com 'with'.",ex:[
+        {en:"I struggle with delegating at first",pt:"Tenho dificuldade em delegar no começo"},
+        {en:"I have trouble with strict deadlines under stress",pt:"Tenho problemas com prazos apertados sob estresse"}
+      ]},
+      {term:"I work as / I'm employed as",desc:"Forma natural de dizer seu cargo. 'I work as a manager' soa muito melhor que 'My job is manager'. Sempre 'as a/an' antes do cargo.",ex:[
+        {en:"I work as a developer in engineering at a tech company",pt:"Trabalho como dev em engenharia numa empresa de tech"},
+        {en:"I'm currently employed as an analyst at a multinational",pt:"Atualmente sou analista numa multinacional"}
+      ]},
+      {term:"I led/managed [X] that [result]",desc:"Estrutura STAR pra contar conquistas em entrevistas. Sempre conecte o que você fez com o resultado quantificável. Substitua os números pelos seus reais.",ex:[
+        {en:"I led a project that grew revenue 30% in six months",pt:"Liderei um projeto que cresceu o faturamento 30% em seis meses"},
+        {en:"I managed a team of 10 that hit our targets last year",pt:"Gerenciei um time de 10 que bateu as metas ano passado"}
+      ]},
+      {term:"I'm looking for / I'm open to",desc:"Para networking e LinkedIn. 'Looking for' é específico (cargo definido); 'open to' é mais flexível (várias possibilidades). Use ambos pra mostrar abertura sem parecer perdido.",ex:[
+        {en:"I'm looking for a senior role in tech with growth potential",pt:"Estou procurando uma vaga sênior em tech com potencial de crescimento"},
+        {en:"I'm open to new challenges abroad",pt:"Estou aberto a novos desafios no exterior"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
