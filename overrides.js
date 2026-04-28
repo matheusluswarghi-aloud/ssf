@@ -2015,55 +2015,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // FAMILY
-  // ◣ I was [vb] [pessoa] [contexto]
-  // ♥ I [vb] [familiar] [contexto]
-  // ● I have [vb] [familiar] [contexto]
+  // FAMILY — Apresentar, descrever, falar de origem
+  // ◣ Apresentar familiar — "This is my brother who lives in São Paulo"
+  // ♥ Como foi criado — "I grew up in a small town with my parents"
+  // ● Composição familiar — "I have two siblings and a younger sister honestly"
+  // ▲ Relação com familiar — "I'm really close to my mom these days"
+  // ◀ Reuniões / eventos — "We get together for Christmas every year"
+  // ★ Descrever a família — "My family is super loud and loving honestly"
+  // ◆ Comparações — "I take after my dad more than my mom personally"
   // ════════════════════════════════════════════
   "family": {
+    title: "family",
+    sub: "Apresentar e descrever",
+    desc: "Frases pra falar da sua família em inglês — apresentar parentes, contar de onde veio, descrever relações. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I was",pt:"Eu fui",s:TRI},
-      {en:"I",pt:"Eu",s:HRT},
-      {en:"I have",pt:"Eu",s:DOT},
+      {en:"This is",pt:"Esse(a) é",s:TRI},
+      {en:"Meet",pt:"Conheça",s:TRI},
+      {en:"Let me introduce",pt:"Deixa eu te apresentar",s:TRI},
+      {en:"Here's",pt:"Aqui está",s:TRI},
+
+      {en:"I grew up",pt:"Eu cresci",s:HRT},
+      {en:"I was raised",pt:"Eu fui criado(a)",s:HRT},
+      {en:"I was born",pt:"Eu nasci",s:HRT},
+      {en:"I lived",pt:"Eu morei",s:HRT},
+
+      {en:"I have",pt:"Eu tenho",s:DOT},
+      {en:"I'm one of",pt:"Sou um(a) de",s:DOT},
+      {en:"There are",pt:"Somos",s:DOT},
+      {en:"My family includes",pt:"Minha família inclui",s:DOT},
+
+      {en:"I'm really close to",pt:"Sou super próximo(a) de",s:UP},
+      {en:"I get along well with",pt:"Me dou bem com",s:UP},
+      {en:"I don't get along with",pt:"Não me dou bem com",s:UP},
+      {en:"I'm not close to",pt:"Não sou próximo(a) de",s:UP},
+
+      {en:"We get together",pt:"A gente se reúne",s:LFT},
+      {en:"We celebrate",pt:"A gente celebra",s:LFT},
+      {en:"We always meet up",pt:"A gente sempre se encontra",s:LFT},
+      {en:"We have dinner",pt:"A gente janta",s:LFT},
+
+      {en:"My family is",pt:"Minha família é",s:STAR},
+      {en:"We're",pt:"Nós somos",s:STAR},
+      {en:"My household is",pt:"Minha casa é",s:STAR},
+      {en:"My parents are",pt:"Meus pais são",s:STAR},
+
+      {en:"I take after",pt:"Eu puxei",s:DIA},
+      {en:"I look like",pt:"Eu pareço",s:DIA},
+      {en:"I'm just like",pt:"Sou igualzinho(a) a",s:DIA},
+      {en:"I get my [trait] from",pt:"Eu peguei o(a) [traço] de",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"brought up by",pt:"criado por",s:TRI},
-      {en:"raised by",pt:"criado por",s:TRI},
-      {en:"grew up with",pt:"cresci com",s:HRT},
-      {en:"get along with",pt:"me dou bem com",s:HRT},
-      {en:"don’t get along with",pt:"não me dou bem com",s:HRT},
-      {en:"take after",pt:"puxei para",s:HRT},
-      {en:"look up to",pt:"admiro",s:HRT},
-      {en:"can’t put up with",pt:"não aguento",s:HRT},
-      {en:"look after",pt:"cuido de",s:HRT},
-      {en:"fallen out with",pt:"fiquei de mal com",s:DOT},
-      {en:"got together with",pt:"me reuni com",s:DOT},
+      {en:"my brother",pt:"meu irmão",s:TRI},
+      {en:"my sister",pt:"minha irmã",s:TRI},
+      {en:"my mom",pt:"minha mãe",s:TRI},
+      {en:"my cousin",pt:"meu(minha) primo(a)",s:TRI},
+
+      {en:"in a small town",pt:"em uma cidade pequena",s:HRT},
+      {en:"in a big city",pt:"em uma cidade grande",s:HRT},
+      {en:"in São Paulo",pt:"em São Paulo",s:HRT},
+      {en:"abroad",pt:"no exterior",s:HRT},
+
+      {en:"two siblings",pt:"dois irmãos",s:DOT},
+      {en:"one brother and one sister",pt:"um irmão e uma irmã",s:DOT},
+      {en:"a big family",pt:"uma família grande",s:DOT},
+      {en:"only one sister",pt:"só uma irmã",s:DOT},
+
+      {en:"my mom",pt:"minha mãe",s:UP},
+      {en:"my dad",pt:"meu pai",s:UP},
+      {en:"my siblings",pt:"meus irmãos",s:UP},
+      {en:"my grandparents",pt:"meus avós",s:UP},
+
+      {en:"for Christmas",pt:"no Natal",s:LFT},
+      {en:"for birthdays",pt:"em aniversários",s:LFT},
+      {en:"on Sundays",pt:"aos domingos",s:LFT},
+      {en:"for holidays",pt:"nos feriados",s:LFT},
+
+      {en:"super loud",pt:"super barulhenta",s:STAR},
+      {en:"really close",pt:"bem unida",s:STAR},
+      {en:"a bit chaotic",pt:"meio caótica",s:STAR},
+      {en:"pretty traditional",pt:"bem tradicional",s:STAR},
+
+      {en:"my dad",pt:"meu pai",s:DIA},
+      {en:"my mom",pt:"minha mãe",s:DIA},
+      {en:"my grandfather",pt:"meu avô",s:DIA},
+      {en:"my whole family",pt:"toda a família",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"my parents",pt:"meus pais",s:TRI},
-      {en:"my grandparents",pt:"meus avós",s:TRI},
-      {en:"my mom",pt:"minha mãe",s:TRI},
-      {en:"my dad",pt:"meu pai",s:HRT},
-      {en:"my sister",pt:"minha irmã",s:HRT},
-      {en:"my brother",pt:"meu irmão",s:HRT},
-      {en:"my aunt",pt:"minha tia",s:HRT},
-      {en:"my uncle",pt:"meu tio",s:HRT},
-      {en:"my stepfather",pt:"meu padrasto",s:HRT},
-      {en:"my cousin",pt:"meu(minha) primo(a)",s:DOT},
-      {en:"my niece",pt:"minha sobrinha",s:DOT},
-      {en:"my family",pt:"minha família",s:DOT},
+      {en:"who lives",pt:"que mora",s:TRI},
+      {en:"who works",pt:"que trabalha",s:TRI},
+      {en:"who studies",pt:"que estuda",s:TRI},
+      {en:"who travels",pt:"que viaja",s:TRI},
+
+      {en:"with my parents",pt:"com meus pais",s:HRT},
+      {en:"by my grandparents",pt:"pelos meus avós",s:HRT},
+      {en:"in a big house",pt:"em uma casa grande",s:HRT},
+      {en:"with my single mom",pt:"com minha mãe solo",s:HRT},
+
+      {en:"and a younger sister",pt:"e uma irmã mais nova",s:DOT},
+      {en:"all older than me",pt:"todos mais velhos que eu",s:DOT},
+      {en:"and a baby cousin",pt:"e um(a) primo(a) bebê",s:DOT},
+      {en:"plus a stepbrother",pt:"mais um meio-irmão",s:DOT},
+
+      {en:"these days",pt:"hoje em dia",s:UP},
+      {en:"as adults",pt:"agora adultos",s:UP},
+      {en:"despite the distance",pt:"apesar da distância",s:UP},
+      {en:"more than ever",pt:"mais que nunca",s:UP},
+
+      {en:"every year",pt:"todo ano",s:LFT},
+      {en:"once a month",pt:"uma vez por mês",s:LFT},
+      {en:"whenever possible",pt:"sempre que possível",s:LFT},
+      {en:"without fail",pt:"sem falhar",s:LFT},
+
+      {en:"and loving",pt:"e amorosa",s:STAR},
+      {en:"and supportive",pt:"e apoiadora",s:STAR},
+      {en:"and Italian",pt:"e italiana",s:STAR},
+      {en:"and complicated",pt:"e complicada",s:STAR},
+
+      {en:"more than my mom",pt:"mais que minha mãe",s:DIA},
+      {en:"in many ways",pt:"de várias formas",s:DIA},
+      {en:"physically",pt:"fisicamente",s:DIA},
+      {en:"in personality",pt:"em personalidade",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"in a small town",pt:"em uma cidade pequena",s:TRI},
-      {en:"in a village",pt:"em uma vila",s:TRI},
-      {en:"in a big city",pt:"em uma cidade grande",s:TRI},
-      {en:"every day",pt:"todo dia",s:HRT},
-      {en:"a lot",pt:"bastante",s:HRT},
-      {en:"on weekends",pt:"nos fins de semana",s:HRT},
-      {en:"at Christmas",pt:"no Natal",s:DOT},
-      {en:"on holidays",pt:"em feriados",s:DOT},
-      {en:"this week",pt:"essa semana",s:DOT},
+      {en:"in São Paulo",pt:"em São Paulo",s:TRI},
+      {en:"abroad",pt:"no exterior",s:TRI},
+      {en:"with us",pt:"com a gente",s:TRI},
+      {en:"nearby",pt:"perto",s:TRI},
+
+      {en:"happy childhood",pt:"infância feliz",s:HRT},
+      {en:"a tough situation",pt:"uma situação difícil",s:HRT},
+      {en:"with lots of love",pt:"com muito amor",s:HRT},
+      {en:"surrounded by family",pt:"cercado(a) pela família",s:HRT},
+
+      {en:"honestly",pt:"sinceramente",s:DOT},
+      {en:"believe it or not",pt:"acredite ou não",s:DOT},
+      {en:"only",pt:"só",s:DOT},
+      {en:"in total",pt:"no total",s:DOT},
+
+      {en:"honestly",pt:"sinceramente",s:UP},
+      {en:"unfortunately",pt:"infelizmente",s:UP},
+      {en:"surprisingly",pt:"surpreendentemente",s:UP},
+      {en:"thankfully",pt:"felizmente",s:UP},
+
+      {en:"no matter what",pt:"não importa o que",s:LFT},
+      {en:"as a tradition",pt:"como tradição",s:LFT},
+      {en:"and it's lovely",pt:"e é lindo",s:LFT},
+      {en:"and we all show up",pt:"e todos comparecem",s:LFT},
+
+      {en:"honestly",pt:"sinceramente",s:STAR},
+      {en:"in a good way",pt:"do bom jeito",s:STAR},
+      {en:"to be fair",pt:"pra ser justo",s:STAR},
+      {en:"by Brazilian standards",pt:"pra padrões brasileiros",s:STAR},
+
+      {en:"personally",pt:"pessoalmente",s:DIA},
+      {en:"according to everyone",pt:"segundo todo mundo",s:DIA},
+      {en:"thankfully",pt:"felizmente",s:DIA},
+      {en:"for better or worse",pt:"pra melhor ou pior",s:DIA},
     ]},
+    examples: [
+      {en:"This is my brother who lives in São Paulo",pt:"Esse é meu irmão que mora em São Paulo"},
+      {en:"Meet my sister who works abroad",pt:"Conheça minha irmã que trabalha no exterior"},
+      {en:"I grew up in a small town with my parents happy childhood",pt:"Eu cresci em uma cidade pequena com meus pais infância feliz"},
+      {en:"I was raised in São Paulo by my grandparents with lots of love",pt:"Fui criado em São Paulo pelos meus avós com muito amor"},
+      {en:"I have two siblings and a younger sister honestly",pt:"Tenho dois irmãos e uma irmã mais nova sinceramente"},
+      {en:"My family includes a big family plus a stepbrother in total",pt:"Minha família inclui uma família grande mais um meio-irmão no total"},
+      {en:"I'm really close to my mom these days honestly",pt:"Sou super próximo da minha mãe hoje em dia sinceramente"},
+      {en:"I get along well with my siblings as adults thankfully",pt:"Me dou bem com meus irmãos agora adultos felizmente"},
+      {en:"We get together for Christmas every year no matter what",pt:"A gente se reúne no Natal todo ano não importa o que"},
+      {en:"We always meet up on Sundays whenever possible and it's lovely",pt:"A gente sempre se encontra aos domingos sempre que possível e é lindo"},
+      {en:"My family is super loud and loving honestly",pt:"Minha família é super barulhenta e amorosa sinceramente"},
+      {en:"We're really close and supportive in a good way",pt:"Nós somos bem unidos e apoiadores do bom jeito"},
+      {en:"I take after my dad more than my mom personally",pt:"Eu puxei meu pai mais que minha mãe pessoalmente"},
+      {en:"I look like my grandfather physically according to everyone",pt:"Eu pareço meu avô fisicamente segundo todo mundo"},
+    ],
+    phrasals: [
+      {term:"This is / Meet [pessoa]",desc:"Pra apresentar familiar/amigo. 'This is' é casual; 'Meet [nome]' é mais informal e amigável. Sempre seguido de 'who [verbo]' adiciona contexto rapidinho.",ex:[
+        {en:"This is my brother who lives in São Paulo",pt:"Esse é meu irmão que mora em São Paulo"},
+        {en:"Meet my sister who works abroad",pt:"Conheça minha irmã que trabalha no exterior"}
+      ]},
+      {term:"I grew up / I was raised",desc:"Pra contar origem. 'I grew up' enfatiza o lugar/contexto; 'I was raised by' enfatiza quem te criou. Ambos passado simples (não present perfect).",ex:[
+        {en:"I grew up in a small town with my parents",pt:"Eu cresci em uma cidade pequena com meus pais"},
+        {en:"I was raised by my grandparents with lots of love",pt:"Fui criado pelos meus avós com muito amor"}
+      ]},
+      {term:"I have / I'm one of",desc:"Pra descrever quantos irmãos. 'I have two siblings' é o padrão. 'I'm one of three' = sou o terceiro de três. Não confunda 'siblings' (irmãos em geral) com 'brother/sister' (gênero específico).",ex:[
+        {en:"I have two siblings and a younger sister",pt:"Tenho dois irmãos e uma irmã mais nova"},
+        {en:"I'm one of three children",pt:"Sou um(a) de três filhos"}
+      ]},
+      {term:"I'm close to / I get along with",desc:"Pra descrever relação. 'Close to' = proximidade emocional. 'Get along with' = relação tranquila, sem brigas. Negativos: 'I'm not close to' / 'I don't get along with'.",ex:[
+        {en:"I'm really close to my mom these days",pt:"Sou super próximo da minha mãe hoje em dia"},
+        {en:"I get along well with my siblings as adults",pt:"Me dou bem com meus irmãos agora adultos"}
+      ]},
+      {term:"We get together / We celebrate",desc:"Pra falar de eventos familiares. 'Get together' é genérico (qualquer reunião); 'celebrate' é específico (datas comemorativas). Sempre seguido de 'for [evento]' ou 'on [dia]'.",ex:[
+        {en:"We get together for Christmas every year",pt:"A gente se reúne no Natal todo ano"},
+        {en:"We celebrate birthdays without fail",pt:"A gente celebra aniversários sem falhar"}
+      ]},
+      {term:"My family is / We're [adjetivo]",desc:"Pra descrever a família como um todo. Adjetivos comuns: 'loud', 'loving', 'close-knit', 'traditional', 'chaotic', 'supportive'. 'Family' é singular ('is', não 'are').",ex:[
+        {en:"My family is super loud and loving",pt:"Minha família é super barulhenta e amorosa"},
+        {en:"We're really close and supportive",pt:"Nós somos bem unidos e apoiadores"}
+      ]},
+      {term:"I take after / I look like",desc:"'Take after' = parecer (em personalidade ou hábitos); 'look like' = parecer fisicamente. 'I take after my dad' = sou como meu pai. Não confunda 'take after' com 'look after' (cuidar de).",ex:[
+        {en:"I take after my dad more than my mom",pt:"Eu puxei meu pai mais que minha mãe"},
+        {en:"I look like my grandfather physically",pt:"Eu pareço meu avô fisicamente"}
+      ]},
+    ]
   },
 
 };
