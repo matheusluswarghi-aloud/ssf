@@ -1220,207 +1220,91 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // DAILY — Rotina, hobbies, small talk
-  // ◣ Rotina diária — "I usually wake up early on weekdays"
-  // ♥ Fim de semana — "On weekends I relax at home all day"
-  // ● Hobbies / interesses — "I'm into cooking on weekends it's my therapy"
-  // ▲ O que detesta — "I can't stand waking up early in the morning honestly"
-  // ◀ Pergunta de small talk — "What's your favorite movie lately around here"
-  // ★ Atualizações recentes — "I just finished a great book over the weekend"
-  // ◆ Abrir conversa — "How was your weekend by the way I want to hear"
+  // HOBBIES — Gostos & preferências (single-frame, 3 cols)
+  // Frame: [emotional verb that takes gerund/noun] + [activity] + [context]
+  // All Col I items take gerund/noun; all Col II are gerunds/nouns; all Col III
+  // are time/manner adverbials. Any combination produces valid English.
+  // Example: "I love cooking on weekends"
   // ════════════════════════════════════════════
   "at-home": {
-    title: "daily",
-    sub: "Rotina & small talk",
-    desc: "Frases pra papo do dia a dia — descrever sua rotina, falar de hobbies, abrir conversa em inglês. Toque num item da coluna I e siga combinando — só os itens que formam uma frase real ficam ativos.",
+    title: "hobbies",
+    sub: "Gostos & preferências",
+    desc: "Frases pra falar do que você gosta, ama, odeia. Toque em qualquer item da coluna I e qualquer combinação nas próximas colunas forma uma frase real em inglês.",
+    // All items share s:0. Filtering becomes trivially "all available", so
+    // any Col I × Col II × Col III combination is valid English.
     0: { replace:true, items:[
-      {en:"I usually",pt:"Eu geralmente",s:TRI},
-      {en:"I always",pt:"Eu sempre",s:TRI},
-      {en:"I normally",pt:"Eu normalmente",s:TRI},
-      {en:"I tend to",pt:"Costumo",s:TRI},
-
-      {en:"On weekends I",pt:"Nos finais de semana eu",s:HRT},
-      {en:"On Saturdays I",pt:"Nos sábados eu",s:HRT},
-      {en:"In my free time I",pt:"No meu tempo livre eu",s:HRT},
-      {en:"When I'm off I",pt:"Quando estou de folga eu",s:HRT},
-
-      {en:"I'm into",pt:"Eu curto",s:DOT},
-      {en:"I love",pt:"Eu amo",s:DOT},
-      {en:"I'm a fan of",pt:"Sou fã de",s:DOT},
-      {en:"I'm passionate about",pt:"Sou apaixonado(a) por",s:DOT},
-
-      {en:"I can't stand",pt:"Eu não suporto",s:UP},
-      {en:"I hate",pt:"Eu odeio",s:UP},
-      {en:"I'm not a fan of",pt:"Não sou fã de",s:UP},
-      {en:"I dislike",pt:"Não gosto de",s:UP},
-
-      {en:"What's your favorite",pt:"Qual seu(sua) favorito(a)",s:LFT},
-      {en:"Do you have a favorite",pt:"Você tem um(a) favorito(a)",s:LFT},
-      {en:"What's the best",pt:"Qual o(a) melhor",s:LFT},
-      {en:"How do you feel about",pt:"O que acha de",s:LFT},
-
-      {en:"I just",pt:"Eu acabei de",s:STAR},
-      {en:"I recently",pt:"Eu recentemente",s:STAR},
-      {en:"I've just",pt:"Eu acabei de",s:STAR},
-      {en:"Yesterday I",pt:"Ontem eu",s:STAR},
-
-      {en:"How was your",pt:"Como foi seu(sua)",s:DIA},
-      {en:"How did your",pt:"Como foi seu(sua)",s:DIA},
-      {en:"Did you enjoy your",pt:"Você curtiu seu(sua)",s:DIA},
-      {en:"How's the",pt:"Como está o(a)",s:DIA},
+      {en:"I love",pt:"Eu amo",s:TRI},
+      {en:"I enjoy",pt:"Eu curto",s:TRI},
+      {en:"I'm into",pt:"Curto muito",s:TRI},
+      {en:"I'm a fan of",pt:"Sou fã de",s:TRI},
+      {en:"I'm passionate about",pt:"Sou apaixonado(a) por",s:TRI},
+      {en:"I can't stand",pt:"Não suporto",s:TRI},
+      {en:"I hate",pt:"Eu odeio",s:TRI},
+      {en:"I'm not a fan of",pt:"Não sou fã de",s:TRI},
     ]},
     1: { replace:true, items:[
-      {en:"wake up early",pt:"acordo cedo",s:TRI},
-      {en:"work from home",pt:"trabalho de casa",s:TRI},
-      {en:"check my phone",pt:"checo o celular",s:TRI},
-      {en:"have breakfast",pt:"tomo café",s:TRI},
-
-      {en:"relax",pt:"relaxo",s:HRT},
-      {en:"hang out with friends",pt:"saio com amigos",s:HRT},
-      {en:"watch movies",pt:"assisto filmes",s:HRT},
-      {en:"go to the gym",pt:"vou na academia",s:HRT},
-
-      {en:"cooking",pt:"cozinhar",s:DOT},
-      {en:"reading",pt:"ler",s:DOT},
-      {en:"running",pt:"correr",s:DOT},
-      {en:"photography",pt:"fotografia",s:DOT},
-
-      {en:"waking up early",pt:"acordar cedo",s:UP},
-      {en:"loud noises",pt:"barulho alto",s:UP},
-      {en:"rude people",pt:"gente grossa",s:UP},
-      {en:"traffic",pt:"trânsito",s:UP},
-
-      {en:"movie",pt:"filme",s:LFT},
-      {en:"restaurant",pt:"restaurante",s:LFT},
-      {en:"weekend activity",pt:"atividade de fim de semana",s:LFT},
-      {en:"way to relax",pt:"jeito de relaxar",s:LFT},
-
-      {en:"finished",pt:"terminei",s:STAR},
-      {en:"started",pt:"comecei",s:STAR},
-      {en:"tried",pt:"experimentei",s:STAR},
-      {en:"watched",pt:"assisti",s:STAR},
-
-      {en:"weekend",pt:"fim de semana",s:DIA},
-      {en:"day",pt:"dia",s:DIA},
-      {en:"trip",pt:"viagem",s:DIA},
-      {en:"week",pt:"semana",s:DIA},
+      {en:"cooking",pt:"cozinhar",s:TRI},
+      {en:"reading",pt:"ler",s:TRI},
+      {en:"running",pt:"correr",s:TRI},
+      {en:"photography",pt:"fotografia",s:TRI},
+      {en:"going to the gym",pt:"ir na academia",s:TRI},
+      {en:"watching movies",pt:"assistir filmes",s:TRI},
+      {en:"hanging out with friends",pt:"sair com amigos",s:TRI},
+      {en:"listening to music",pt:"ouvir música",s:TRI},
+      {en:"traveling",pt:"viajar",s:TRI},
+      {en:"shopping",pt:"fazer compras",s:TRI},
     ]},
     2: { replace:true, items:[
-      {en:"around 7am",pt:"por volta das 7",s:TRI},
-      {en:"before the kids",pt:"antes das crianças",s:TRI},
-      {en:"after lunch",pt:"depois do almoço",s:TRI},
-      {en:"in the morning",pt:"de manhã",s:TRI},
-
-      {en:"at home",pt:"em casa",s:HRT},
-      {en:"at the park",pt:"no parque",s:HRT},
-      {en:"with family",pt:"com a família",s:HRT},
-      {en:"by the pool",pt:"na piscina",s:HRT},
-
-      {en:"on weekends",pt:"nos fins de semana",s:DOT},
-      {en:"lately",pt:"ultimamente",s:DOT},
-      {en:"since I was a kid",pt:"desde criança",s:DOT},
-      {en:"for years",pt:"há anos",s:DOT},
-
-      {en:"at all",pt:"de jeito nenhum",s:UP},
-      {en:"in the morning",pt:"de manhã",s:UP},
-      {en:"on weekends",pt:"nos fins de semana",s:UP},
-      {en:"honestly",pt:"sinceramente",s:UP},
-
-      {en:"lately",pt:"ultimamente",s:LFT},
-      {en:"these days",pt:"hoje em dia",s:LFT},
-      {en:"honestly",pt:"sinceramente",s:LFT},
-      {en:"overall",pt:"no geral",s:LFT},
-
-      {en:"a great book",pt:"um livro ótimo",s:STAR},
-      {en:"a new gym",pt:"uma academia nova",s:STAR},
-      {en:"sushi for the first time",pt:"sushi pela primeira vez",s:STAR},
-      {en:"an awesome movie",pt:"um filme incrível",s:STAR},
-
-      {en:"by the way",pt:"a propósito",s:DIA},
-      {en:"so far",pt:"até agora",s:DIA},
-      {en:"overall",pt:"no geral",s:DIA},
-      {en:"honestly",pt:"sinceramente",s:DIA},
-    ]},
-    3: { replace:true, items:[
-      {en:"on weekdays",pt:"nos dias úteis",s:TRI},
-      {en:"before work",pt:"antes do trabalho",s:TRI},
-      {en:"first thing",pt:"a primeira coisa",s:TRI},
-      {en:"no matter what",pt:"não importa o que",s:TRI},
-
-      {en:"all day",pt:"o dia todo",s:HRT},
-      {en:"for hours",pt:"por horas",s:HRT},
-      {en:"mostly",pt:"a maior parte",s:HRT},
-      {en:"sometimes",pt:"às vezes",s:HRT},
-
-      {en:"it's my therapy",pt:"é minha terapia",s:DOT},
-      {en:"it relaxes me",pt:"isso me relaxa",s:DOT},
-      {en:"I do it daily",pt:"faço diariamente",s:DOT},
-      {en:"I never miss",pt:"nunca perco",s:DOT},
-
-      {en:"it drives me crazy",pt:"me deixa louco",s:UP},
-      {en:"it ruins my day",pt:"arruína meu dia",s:UP},
-      {en:"no exceptions",pt:"sem exceção",s:UP},
-      {en:"period",pt:"ponto final",s:UP},
-
-      {en:"around here",pt:"por aqui",s:LFT},
-      {en:"in São Paulo",pt:"em São Paulo",s:LFT},
-      {en:"for a Friday night",pt:"pra uma sexta",s:LFT},
-      {en:"for a date",pt:"pra um encontro",s:LFT},
-
-      {en:"last week",pt:"semana passada",s:STAR},
-      {en:"over the weekend",pt:"no fim de semana",s:STAR},
-      {en:"it was amazing",pt:"foi incrível",s:STAR},
-      {en:"highly recommend",pt:"recomendo muito",s:STAR},
-
-      {en:"I want to hear",pt:"quero saber",s:DIA},
-      {en:"spill the tea",pt:"conta a fofoca",s:DIA},
-      {en:"no boring details",pt:"sem detalhes chatos",s:DIA},
-      {en:"I'm curious",pt:"tô curioso",s:DIA},
+      {en:"on weekends",pt:"nos fins de semana",s:TRI},
+      {en:"lately",pt:"ultimamente",s:TRI},
+      {en:"for years",pt:"há anos",s:TRI},
+      {en:"since I was a kid",pt:"desde criança",s:TRI},
+      {en:"honestly",pt:"sinceramente",s:TRI},
+      {en:"in general",pt:"no geral",s:TRI},
+      {en:"daily",pt:"diariamente",s:TRI},
+      {en:"to relax",pt:"pra relaxar",s:TRI},
+      {en:"when I'm stressed",pt:"quando estou estressado(a)",s:TRI},
     ]},
     examples: [
-      {en:"I usually wake up early before work first thing",pt:"Eu geralmente acordo cedo antes do trabalho a primeira coisa"},
-      {en:"I tend to check my phone after lunch on weekdays",pt:"Costumo checar o celular depois do almoço nos dias úteis"},
-      {en:"On weekends I relax at home all day",pt:"Nos fins de semana eu relaxo em casa o dia todo"},
-      {en:"In my free time I hang out with friends at the park for hours",pt:"No meu tempo livre eu saio com amigos no parque por horas"},
-      {en:"I'm into cooking on weekends it's my therapy",pt:"Eu curto cozinhar nos fins de semana é minha terapia"},
-      {en:"I'm a fan of running for years I do it daily",pt:"Sou fã de correr há anos faço diariamente"},
-      {en:"I can't stand traffic in the morning it drives me crazy",pt:"Não suporto trânsito de manhã me deixa louco"},
-      {en:"I hate loud noises honestly no exceptions",pt:"Eu odeio barulho alto sinceramente sem exceção"},
-      {en:"What's your favorite restaurant lately around here?",pt:"Qual seu restaurante favorito ultimamente por aqui?"},
-      {en:"What's the best way to relax overall for a Friday night?",pt:"Qual o melhor jeito de relaxar pra uma sexta?"},
-      {en:"I just finished a great book over the weekend",pt:"Acabei de terminar um livro ótimo no fim de semana"},
-      {en:"I recently tried sushi for the first time it was amazing",pt:"Recentemente experimentei sushi pela primeira vez foi incrível"},
-      {en:"How was your weekend by the way I want to hear?",pt:"Como foi seu fim de semana a propósito quero saber?"},
-      {en:"How's the trip so far I'm curious?",pt:"Como está a viagem até agora tô curioso?"},
+      {en:"I love cooking on weekends",pt:"Eu amo cozinhar nos fins de semana"},
+      {en:"I'm into photography lately",pt:"Curto muito fotografia ultimamente"},
+      {en:"I'm passionate about running since I was a kid",pt:"Sou apaixonado por correr desde criança"},
+      {en:"I'm a fan of watching movies to relax",pt:"Sou fã de assistir filmes pra relaxar"},
+      {en:"I enjoy traveling for years",pt:"Curto viajar há anos"},
+      {en:"I can't stand shopping honestly",pt:"Não suporto fazer compras sinceramente"},
+      {en:"I hate going to the gym daily",pt:"Odeio ir na academia diariamente"},
+      {en:"I'm not a fan of listening to music when I'm stressed",pt:"Não sou fã de ouvir música quando estou estressado"},
+      {en:"I'm passionate about shopping when I'm stressed",pt:"Sou apaixonada por fazer compras quando estou estressada"},
+      {en:"I love hanging out with friends in general",pt:"Amo sair com amigos no geral"},
     ],
     phrasals: [
-      {term:"I usually / I tend to",desc:"Pra falar de rotina e hábitos. 'I usually' é direto ('eu geralmente'); 'I tend to' é mais suave, sugerindo padrão. Sempre seguido de verbo no presente simples (sem -ing).",ex:[
-        {en:"I usually wake up early on weekdays",pt:"Eu geralmente acordo cedo nos dias úteis"},
-        {en:"I tend to check my phone first thing",pt:"Costumo checar o celular a primeira coisa"}
+      {term:"I love / I enjoy",desc:"Os dois verbos mais comuns pra dizer que gosta de algo. 'I love' é mais forte e expressivo; 'I enjoy' é mais neutro/elegante. Os dois sempre seguidos de gerúndio (-ing) ou substantivo, NUNCA do infinitivo após eles.",ex:[
+        {en:"I love cooking on weekends",pt:"Eu amo cozinhar nos fins de semana"},
+        {en:"I enjoy traveling lately",pt:"Curto viajar ultimamente"}
       ]},
-      {term:"On weekends I / In my free time I",desc:"Estruturas pra falar de tempo livre. Note a inversão: o adverbial vem PRIMEIRO, depois o sujeito ('On weekends I relax', não 'I relax on weekends'). Ambos funcionam mas o primeiro soa mais natural quando o tempo é o foco.",ex:[
-        {en:"On weekends I relax at home",pt:"Nos fins de semana eu relaxo em casa"},
-        {en:"In my free time I go to the gym",pt:"No meu tempo livre eu vou na academia"}
+      {term:"I'm into / I'm a fan of",desc:"Formas mais casuais de dizer que curte algo. 'I'm into' é informal e popular entre jovens. 'I'm a fan of' funciona em qualquer contexto. Cuidado: ambos pedem gerúndio (-ing) ou substantivo, NUNCA infinitivo.",ex:[
+        {en:"I'm into running for years",pt:"Curto correr há anos"},
+        {en:"I'm a fan of photography in general",pt:"Sou fã de fotografia no geral"}
       ]},
-      {term:"I'm into / I'm a fan of",desc:"Forma natural de falar de hobbies. 'I'm into' é casual, comum entre jovens; 'I'm a fan of' é mais neutro. Sempre seguido de gerúndio (-ing) ou substantivo, NUNCA infinitivo.",ex:[
-        {en:"I'm into cooking on weekends",pt:"Eu curto cozinhar nos fins de semana"},
-        {en:"I'm a fan of photography lately",pt:"Sou fã de fotografia ultimamente"}
+      {term:"I'm passionate about",desc:"Forma mais forte e elegante pra dizer que ama algo. Soa profissional e maduro — perfeito pra entrevistas e bio do LinkedIn. Sempre seguido de gerúndio ou substantivo.",ex:[
+        {en:"I'm passionate about traveling",pt:"Sou apaixonado(a) por viajar"},
+        {en:"I'm passionate about photography since I was a kid",pt:"Sou apaixonado(a) por fotografia desde criança"}
       ]},
-      {term:"I can't stand / I'm not a fan of",desc:"Pra falar de pet peeves. 'I can't stand' é forte ('não suporto'); 'I'm not a fan of' é mais educado. Ambos seguidos de gerúndio ou substantivo.",ex:[
-        {en:"I can't stand waking up early honestly",pt:"Não suporto acordar cedo sinceramente"},
-        {en:"I'm not a fan of loud noises at all",pt:"Não sou fã de barulho alto de jeito nenhum"}
+      {term:"I can't stand / I hate",desc:"Pra falar do que detesta. 'I can't stand' é o mais comum em conversa ('não suporto'); 'I hate' é mais forte e direto. Ambos seguidos de gerúndio ou substantivo. Não confundir com 'don't like' que é bem mais brando.",ex:[
+        {en:"I can't stand shopping honestly",pt:"Não suporto fazer compras sinceramente"},
+        {en:"I hate going to the gym daily",pt:"Odeio ir na academia diariamente"}
       ]},
-      {term:"What's your favorite [X]?",desc:"Pergunta de small talk universal. Sempre 'What IS your favorite' (não 'What ARE'), mesmo se a resposta for plural. Após resposta, geralmente pede 'why?' ou 'how come?'.",ex:[
-        {en:"What's your favorite movie lately?",pt:"Qual seu filme favorito ultimamente?"},
-        {en:"What's your favorite way to relax?",pt:"Qual seu jeito favorito de relaxar?"}
+      {term:"I'm not a fan of",desc:"Forma educada e suave de dizer que não gosta de algo. Soa diplomático e evita conflito — ideal em conversa com pessoas que você não conhece bem. Sempre seguido de gerúndio ou substantivo.",ex:[
+        {en:"I'm not a fan of cooking honestly",pt:"Não sou fã de cozinhar sinceramente"},
+        {en:"I'm not a fan of running in general",pt:"Não sou fã de correr no geral"}
       ]},
-      {term:"I just / I recently",desc:"'I just' = ação muito recente (minutos/horas atrás, ou recente como surpresa). 'I recently' = nas últimas semanas/meses, mais distanciado. Ambos com verbo no passado simples.",ex:[
-        {en:"I just finished a great book",pt:"Acabei de terminar um livro ótimo"},
-        {en:"I recently tried sushi for the first time",pt:"Recentemente experimentei sushi pela primeira vez"}
+      {term:"Atividade em -ing (gerúndio)",desc:"Regra crítica: depois de 'love/enjoy/hate/can't stand/be into/be a fan of' SEMPRE vem gerúndio (-ing) ou substantivo. Nunca infinitivo. Erro clássico do brasileiro: 'I love to cook' soa antiquado; o correto natural é 'I love cooking'.",ex:[
+        {en:"I love cooking, not 'I love to cook'",pt:"Sempre cooking (gerúndio)"},
+        {en:"I'm into running, not 'I'm into to run'",pt:"Sempre running"}
       ]},
-      {term:"How was your [event]?",desc:"O abridor de conversa mais comum em inglês. 'How WAS your weekend?' (passado), 'How IS the trip?' (em andamento). Saber a diferença evita erro clássico de brasileiro.",ex:[
-        {en:"How was your weekend by the way?",pt:"Como foi seu fim de semana a propósito?"},
-        {en:"How's the trip so far?",pt:"Como está a viagem até agora?"}
+      {term:"on weekends / lately / for years",desc:"Fechadores de frase pra dar contexto temporal. 'On weekends' = padrão regular. 'Lately' = recentemente, com mudança. 'For years' = há muito tempo (ainda em curso). 'Since I was a kid' = desde a infância (raiz profunda).",ex:[
+        {en:"I'm into running for years",pt:"Curto correr há anos"},
+        {en:"I'm a fan of photography since I was a kid",pt:"Sou fã de fotografia desde criança"}
       ]},
     ]
   },

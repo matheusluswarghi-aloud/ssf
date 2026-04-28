@@ -1,9 +1,9 @@
-// SSF E-book — app logic with symbol-as-compass UX
+// SSF E-book — app logic
 // Renders chapters, builds sentences, navigates pages, TTS, onboarding
 
 (function() {
-  const SYMBOLS = ['◣','♥','●','▲','◀','★','◆'];
-  const ROMAN = ['I','II','III','IIII'];
+  const COL_COUNT = 3;
+  const ROMAN = ['I','II','III'];
 
   // Curated list of practical chapters in pedagogical order (basic → advanced).
   // Chapters not in this list stay in chapters.js but aren't rendered.
@@ -82,7 +82,10 @@
       <div class="ssf-col-head"><span>Coluna</span><span class="roman">${r}</span></div>
     `).join('');
 
-    const colsHTML = ch.cols.map((col, ci) => `
+    // Show only the first COL_COUNT columns. Older chapter data may still
+    // have a 4th column — it's silently dropped from the UI.
+    const visibleCols = ch.cols.slice(0, COL_COUNT);
+    const colsHTML = visibleCols.map((col, ci) => `
       <div class="ssf-col ${ci===0?'tab-active':''}" data-col="${ci}">
         ${col.map((cell, idx) => {
           const symIdx = (cell.s !== undefined) ? cell.s : null;
@@ -101,7 +104,7 @@
         <div class="builder-head">
           <span class="builder-label">Sua frase</span>
           <span class="builder-progress">
-            <strong class="b-count">0</strong> de 4 ·
+            <strong class="b-count">0</strong> de ${COL_COUNT} ·
             <span class="b-status">monte uma frase</span>
             <span class="builder-warn">— escolhas que não combinam</span>
           </span>
@@ -152,7 +155,7 @@
       <div class="divider-cyan"></div>
       <div class="cyan-strip" style="margin-top:8px;">it's time to practice</div>
       <h2 class="practice-title">Sua vez<span class="script">— escreva 5 frases novas usando o SSF acima</span></h2>
-      <p class="practice-intro">Combine I + II + III + IIII e teste no espelho. Em voz alta. Out loud.</p>
+      <p class="practice-intro">Combine I + II + III e teste no espelho. Em voz alta. Out loud.</p>
       <div class="practice-lines">
         ${[1,2,3,4,5,6,7,8].map(n => `
           <div class="practice-line">
@@ -282,9 +285,15 @@
   const builderState = {};
   const tabState = {};
 
+  function emptyState() {
+    const s = {};
+    for (let i = 0; i < COL_COUNT; i++) s[i] = null;
+    return s;
+  }
+
   document.querySelectorAll('.ssf-wrap').forEach(wrap => {
     const id = wrap.dataset.ssf;
-    builderState[id] = { 0: null, 1: null, 2: null, 3: null };
+    builderState[id] = emptyState();
     tabState[id] = 0;
     const builder = wrap.querySelector('.builder');
 
@@ -293,10 +302,9 @@
       cell.addEventListener('click', () => {
         if (cell.classList.contains('incompatible')) {
           // Clicking an incompatible cell means "start over with this option" —
-          // clear all selections, then pick this cell. Avoids the user feeling
-          // stuck after one mistake.
+          // clear all selections, then pick this cell.
           const col = +cell.dataset.col;
-          builderState[id] = { 0: null, 1: null, 2: null, 3: null };
+          builderState[id] = emptyState();
           wrap.querySelectorAll('.ssf-cell.active').forEach(c => c.classList.remove('active'));
           builderState[id][col] = +cell.dataset.idx;
           cell.classList.add('active');
@@ -330,7 +338,7 @@
 
     // Builder controls
     builder.querySelector('.clear').addEventListener('click', () => {
-      builderState[id] = { 0: null, 1: null, 2: null, 3: null };
+      builderState[id] = emptyState();
       wrap.querySelectorAll('.ssf-cell.active').forEach(c => c.classList.remove('active'));
       applyCompass(id);
       renderBuilder(id);
@@ -399,8 +407,8 @@
   function autoAdvanceTab(id, justFilledCol) {
     if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
     const state = builderState[id];
-    for (let off = 1; off <= 3; off++) {
-      const target = (justFilledCol + off) % 4;
+    for (let off = 1; off < COL_COUNT; off++) {
+      const target = (justFilledCol + off) % COL_COUNT;
       if (state[target] === null) {
         setTimeout(() => switchTab(id, target), 320);
         return;
@@ -412,8 +420,8 @@
     const ch = chapters.find(c => c.id === id);
     const state = builderState[id];
     const syms = new Set();
-    for (let col = 0; col < 4; col++) {
-      if (state[col] !== null && ch.cols[col][state[col]]) {
+    for (let col = 0; col < COL_COUNT; col++) {
+      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
         const s = ch.cols[col][state[col]].s;
         if (s !== undefined) syms.add(s);
       }
@@ -422,9 +430,10 @@
   }
 
   // Compatibility = which cells in the OTHER columns can still combine
-  // with what's already selected. Internally uses the `s` field on each cell
-  // (set up when the chapter is authored) to know what fits together. Users
-  // never see the symbol — they just see the dimming/highlighting.
+  // with what's already selected. Uses the `s` field as a compatibility tag
+  // (cells with the same `s` form a valid sentence). Chapters designed as a
+  // single coherent frame share one `s` value so all combinations are
+  // valid → no dimming. Multi-pattern legacy chapters still work.
   function applyCompass(id) {
     const wrap = document.querySelector(`.ssf-wrap[data-ssf="${id}"]`);
     const activeSyms = getActiveSymbols(id);
@@ -443,8 +452,8 @@
     const ch = chapters.find(c => c.id === id);
     const state = builderState[id];
     const parts = [];
-    for (let col = 0; col < 4; col++) {
-      if (state[col] !== null && ch.cols[col][state[col]]) {
+    for (let col = 0; col < COL_COUNT; col++) {
+      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
         parts.push(ch.cols[col][state[col]].en);
       }
     }
@@ -460,9 +469,10 @@
 
     let count = 0;
     const symbolsPicked = new Set();
-    for (let col = 0; col < 4; col++) {
+    for (let col = 0; col < COL_COUNT; col++) {
       const slot = slotsContainer.querySelector(`.builder-slot[data-slot="${col}"]`);
-      if (state[col] !== null && ch.cols[col][state[col]]) {
+      if (!slot) continue;
+      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
         const cell = ch.cols[col][state[col]];
         slot.classList.add('filled');
         slot.classList.remove('empty');
@@ -485,9 +495,10 @@
 
     builder.querySelector('.b-count').textContent = count;
     const status = builder.querySelector('.b-status');
-    const isComplete = count === 4 && symbolsPicked.size === 1;
+    const isComplete = count === COL_COUNT && symbolsPicked.size <= 1;
     const isSaveable = count >= 2 && symbolsPicked.size <= 1;
     const isWarning = symbolsPicked.size > 1;
+    const remaining = COL_COUNT - count;
 
     builder.classList.toggle('complete', isComplete);
     builder.classList.toggle('warning', isWarning);
@@ -499,9 +510,9 @@
     } else if (count === 0) {
       status.textContent = 'monte uma frase';
     } else if (count >= 2) {
-      status.textContent = `${4-count} restante${4-count > 1 ? 's' : ''} — já dá pra salvar`;
+      status.textContent = `${remaining} restante${remaining > 1 ? 's' : ''} — já dá pra salvar`;
     } else {
-      status.textContent = `falta${4-count > 1 ? 'm' : ''} ${4-count}`;
+      status.textContent = `falta${remaining > 1 ? 'm' : ''} ${remaining}`;
     }
 
     builder.querySelector('.listen').disabled = count === 0;
