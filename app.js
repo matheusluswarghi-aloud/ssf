@@ -520,6 +520,7 @@
     builder.querySelector('.b-count').textContent = count;
     const status = builder.querySelector('.b-status');
     const isComplete = count === 4 && symbolsPicked.size === 1;
+    const isSaveable = count >= 2 && symbolsPicked.size <= 1;
     const isWarning = symbolsPicked.size > 1;
 
     builder.classList.toggle('complete', isComplete);
@@ -531,12 +532,14 @@
       status.textContent = 'frase completa — toque em ouvir';
     } else if (count === 0) {
       status.textContent = 'monte uma frase';
+    } else if (count >= 2) {
+      status.textContent = `${4-count} restante${4-count > 1 ? 's' : ''} — já dá pra salvar`;
     } else {
       status.textContent = `falta${4-count > 1 ? 'm' : ''} ${4-count}`;
     }
 
     builder.querySelector('.listen').disabled = count === 0;
-    builder.querySelector('.save').disabled = !isComplete;
+    builder.querySelector('.save').disabled = !isSaveable;
 
     wrap.querySelectorAll('.ssf-mobile-tabs button').forEach(btn => {
       const ci = +btn.dataset.tab;
