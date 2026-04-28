@@ -167,67 +167,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // HEALTH
-  // ◣ I have [vb] [doença/sintoma] [contexto]
-  // ♥ I am [vb-ing] [obj] [contexto]
-  // ● I [vb] [obj] [tempo/propósito]
-  // ▲ My [familiar] passed away [contexto]
-  // ◀ I was [laid up] with [doença] [tempo]
+  // HEALTH — Médico, farmácia, falando de saúde
+  // ◣ Sintomas — "I have a headache that started yesterday morning"
+  // ♥ Marcando consulta — "I'd like to make an appointment with a doctor today"
+  // ● Histórico / alergias — "I'm allergic to penicillin since I was a kid"
+  // ▲ Pedindo medicamento — "Can you prescribe something for the pain please"
+  // ◀ Hábitos saudáveis — "I usually exercise three times a week at the gym"
+  // ★ Como tem se sentido — "I've been feeling tired for days now lately"
+  // ◆ Pergunta sobre seriedade — "Is this anything serious doctor by any chance"
   // ════════════════════════════════════════════
   "health": {
+    title: "health",
+    sub: "Médico, farmácia & saúde",
+    desc: "Frases pra qualquer situação médica em inglês — descrever sintomas, marcar consulta, falar de alergias, pedir medicamento. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I have",pt:"Eu",s:TRI},
-      {en:"I am",pt:"Eu estou",s:HRT},
-      {en:"I",pt:"Eu",s:DOT},
-      {en:"My",pt:"Meu/minha",s:UP},
-      {en:"I was",pt:"Eu estava",s:LFT},
+      {en:"I have",pt:"Eu tenho",s:TRI},
+      {en:"I've got",pt:"Eu peguei",s:TRI},
+      {en:"I'm dealing with",pt:"Estou lidando com",s:TRI},
+      {en:"I think I have",pt:"Acho que tenho",s:TRI},
+
+      {en:"I'd like to",pt:"Eu gostaria de",s:HRT},
+      {en:"I need to",pt:"Eu preciso",s:HRT},
+      {en:"Could I",pt:"Posso",s:HRT},
+      {en:"Can I",pt:"Posso",s:HRT},
+
+      {en:"I'm allergic to",pt:"Sou alérgico(a) a",s:DOT},
+      {en:"I can't take",pt:"Não posso tomar",s:DOT},
+      {en:"I'm sensitive to",pt:"Sou sensível a",s:DOT},
+      {en:"I've had bad reactions to",pt:"Tive reação ruim a",s:DOT},
+
+      {en:"Can you prescribe",pt:"Você pode receitar",s:UP},
+      {en:"Could I get",pt:"Posso pegar",s:UP},
+      {en:"Do you have something for",pt:"Tem algo para",s:UP},
+      {en:"What do you recommend for",pt:"O que você recomenda para",s:UP},
+
+      {en:"I usually exercise",pt:"Eu geralmente faço exercício",s:LFT},
+      {en:"I work out",pt:"Eu malho",s:LFT},
+      {en:"I try to stay active",pt:"Tento ficar ativo(a)",s:LFT},
+      {en:"I go for a run",pt:"Eu corro",s:LFT},
+
+      {en:"I've been feeling",pt:"Eu venho me sentindo",s:STAR},
+      {en:"I've been having",pt:"Eu venho tendo",s:STAR},
+      {en:"I've felt",pt:"Eu me senti",s:STAR},
+      {en:"Lately I've been",pt:"Ultimamente tenho estado",s:STAR},
+
+      {en:"Is this",pt:"Isto é",s:DIA},
+      {en:"Is it",pt:"É",s:DIA},
+      {en:"Should I be worried about",pt:"Devo me preocupar com",s:DIA},
+      {en:"Could it be",pt:"Pode ser",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"broken out in",pt:"tive",s:TRI},
-      {en:"come down with",pt:"fiquei com",s:TRI},
-      {en:"thrown up",pt:"vomitei",s:TRI},
-      {en:"got over",pt:"me recuperei de",s:TRI},
-      {en:"fighting off",pt:"lutando contra",s:HRT},
-      {en:"trying to shake off",pt:"tentando me livrar de",s:HRT},
-      {en:"work out",pt:"me exercito",s:DOT},
-      {en:"warm up",pt:"aqueço",s:DOT},
-      {en:"passed out",pt:"desmaiei",s:DOT},
-      {en:"come to",pt:"recobrei consciência",s:DOT},
-      {en:"mum",pt:"mãe",s:UP},
-      {en:"dad",pt:"pai",s:UP},
-      {en:"grandfather",pt:"avô",s:UP},
-      {en:"laid up",pt:"de cama",s:LFT},
+      {en:"a headache",pt:"uma dor de cabeça",s:TRI},
+      {en:"a fever",pt:"febre",s:TRI},
+      {en:"a sore throat",pt:"dor de garganta",s:TRI},
+      {en:"stomach pain",pt:"dor de estômago",s:TRI},
+
+      {en:"make an appointment",pt:"marcar uma consulta",s:HRT},
+      {en:"see a doctor",pt:"ver um médico",s:HRT},
+      {en:"get a check-up",pt:"fazer um check-up",s:HRT},
+      {en:"speak with a nurse",pt:"falar com uma enfermeira",s:HRT},
+
+      {en:"penicillin",pt:"penicilina",s:DOT},
+      {en:"ibuprofen",pt:"ibuprofeno",s:DOT},
+      {en:"aspirin",pt:"aspirina",s:DOT},
+      {en:"antibiotics",pt:"antibióticos",s:DOT},
+
+      {en:"something for",pt:"algo para",s:UP},
+      {en:"painkillers for",pt:"analgésicos para",s:UP},
+      {en:"medicine for",pt:"remédio para",s:UP},
+      {en:"a cream for",pt:"uma pomada para",s:UP},
+
+      {en:"three times a week",pt:"três vezes por semana",s:LFT},
+      {en:"every morning",pt:"toda manhã",s:LFT},
+      {en:"on weekends",pt:"nos fins de semana",s:LFT},
+      {en:"after work",pt:"depois do trabalho",s:LFT},
+
+      {en:"tired",pt:"cansado(a)",s:STAR},
+      {en:"dizzy",pt:"tonto(a)",s:STAR},
+      {en:"weak",pt:"fraco(a)",s:STAR},
+      {en:"nauseous",pt:"enjoado(a)",s:STAR},
+
+      {en:"anything serious",pt:"algo sério",s:DIA},
+      {en:"contagious",pt:"contagioso",s:DIA},
+      {en:"normal",pt:"normal",s:DIA},
+      {en:"an emergency",pt:"uma emergência",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"a rash",pt:"uma irritação",s:TRI},
-      {en:"a cold",pt:"um resfriado",s:TRI},
-      {en:"a flu",pt:"uma gripe",s:TRI},
-      {en:"a hangover",pt:"uma ressaca",s:TRI},
-      {en:"a virus",pt:"um vírus",s:HRT},
-      {en:"this cold",pt:"esse resfriado",s:HRT},
-      {en:"this tiredness",pt:"esse cansaço",s:HRT},
-      {en:"with weights",pt:"com pesos",s:DOT},
-      {en:"at the gym",pt:"na academia",s:DOT},
-      {en:"before running",pt:"antes de correr",s:DOT},
-      {en:"after the surgery",pt:"depois da cirurgia",s:DOT},
-      {en:"passed away",pt:"faleceu",s:UP},
-      {en:"with a flu",pt:"com uma gripe",s:LFT},
-      {en:"with fever",pt:"com febre",s:LFT},
+      {en:"that started",pt:"que começou",s:TRI},
+      {en:"that gets worse",pt:"que piora",s:TRI},
+      {en:"that comes and goes",pt:"que vai e vem",s:TRI},
+      {en:"that won't go away",pt:"que não passa",s:TRI},
+
+      {en:"with a doctor",pt:"com um médico",s:HRT},
+      {en:"at the clinic",pt:"na clínica",s:HRT},
+      {en:"online if possible",pt:"online se possível",s:HRT},
+      {en:"as soon as possible",pt:"o mais rápido possível",s:HRT},
+
+      {en:"since I was a kid",pt:"desde criança",s:DOT},
+      {en:"so be careful",pt:"então cuidado",s:DOT},
+      {en:"please note this",pt:"por favor anote",s:DOT},
+      {en:"in my medical history",pt:"no meu histórico",s:DOT},
+
+      {en:"the pain",pt:"a dor",s:UP},
+      {en:"the headache",pt:"a dor de cabeça",s:UP},
+      {en:"the cough",pt:"a tosse",s:UP},
+      {en:"the inflammation",pt:"a inflamação",s:UP},
+
+      {en:"at the gym",pt:"na academia",s:LFT},
+      {en:"in the park",pt:"no parque",s:LFT},
+      {en:"at home",pt:"em casa",s:LFT},
+      {en:"with a trainer",pt:"com um personal",s:LFT},
+
+      {en:"for days",pt:"há dias",s:STAR},
+      {en:"this whole week",pt:"essa semana toda",s:STAR},
+      {en:"since Monday",pt:"desde segunda",s:STAR},
+      {en:"all morning",pt:"a manhã toda",s:STAR},
+
+      {en:"doctor",pt:"doutor(a)",s:DIA},
+      {en:"or just a phase",pt:"ou só uma fase",s:DIA},
+      {en:"in your opinion",pt:"na sua opinião",s:DIA},
+      {en:"to be safe",pt:"pra garantir",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"lately",pt:"ultimamente",s:TRI},
-      {en:"this week",pt:"essa semana",s:TRI},
+      {en:"yesterday morning",pt:"ontem de manhã",s:TRI},
+      {en:"a few days ago",pt:"alguns dias atrás",s:TRI},
       {en:"after the trip",pt:"depois da viagem",s:TRI},
-      {en:"with herbs",pt:"com ervas",s:HRT},
-      {en:"with medicine",pt:"com remédios",s:HRT},
-      {en:"every day",pt:"todo dia",s:DOT},
-      {en:"twice a week",pt:"duas vezes por semana",s:DOT},
-      {en:"this morning",pt:"essa manhã",s:DOT},
-      {en:"last year",pt:"ano passado",s:UP},
-      {en:"recently",pt:"recentemente",s:UP},
-      {en:"for a week",pt:"por uma semana",s:LFT},
-      {en:"for days",pt:"por dias",s:LFT},
+      {en:"last night",pt:"ontem à noite",s:TRI},
+
+      {en:"today",pt:"hoje",s:HRT},
+      {en:"tomorrow",pt:"amanhã",s:HRT},
+      {en:"this week",pt:"essa semana",s:HRT},
+      {en:"if available",pt:"se houver vaga",s:HRT},
+
+      {en:"please write it down",pt:"por favor anote",s:DOT},
+      {en:"important to mention",pt:"importante mencionar",s:DOT},
+      {en:"just so you know",pt:"só pra você saber",s:DOT},
+      {en:"for safety",pt:"por segurança",s:DOT},
+
+      {en:"please",pt:"por favor",s:UP},
+      {en:"if possible",pt:"se possível",s:UP},
+      {en:"thanks",pt:"obrigado(a)",s:UP},
+      {en:"any over-the-counter option",pt:"alguma opção sem receita",s:UP},
+
+      {en:"to stay healthy",pt:"pra ficar saudável",s:LFT},
+      {en:"to lose weight",pt:"pra perder peso",s:LFT},
+      {en:"to relieve stress",pt:"pra aliviar o estresse",s:LFT},
+      {en:"because I love it",pt:"porque amo",s:LFT},
+
+      {en:"now",pt:"agora",s:STAR},
+      {en:"lately",pt:"ultimamente",s:STAR},
+      {en:"and it's getting worse",pt:"e está piorando",s:STAR},
+      {en:"and I'm worried",pt:"e estou preocupado(a)",s:STAR},
+
+      {en:"by any chance",pt:"por acaso",s:DIA},
+      {en:"or normal",pt:"ou normal",s:DIA},
+      {en:"just to be sure",pt:"só pra ter certeza",s:DIA},
+      {en:"or am I overreacting",pt:"ou estou exagerando",s:DIA},
     ]},
+    examples: [
+      {en:"I have a headache that started yesterday morning",pt:"Eu tenho uma dor de cabeça que começou ontem de manhã"},
+      {en:"I've got a fever that won't go away after the trip",pt:"Peguei febre que não passa depois da viagem"},
+      {en:"I'd like to make an appointment with a doctor today",pt:"Gostaria de marcar uma consulta com médico hoje"},
+      {en:"I need to see a doctor as soon as possible please",pt:"Preciso ver um médico o mais rápido possível por favor"},
+      {en:"I'm allergic to penicillin since I was a kid please write it down",pt:"Sou alérgico a penicilina desde criança por favor anote"},
+      {en:"I can't take ibuprofen so be careful important to mention",pt:"Não posso tomar ibuprofeno então cuidado importante mencionar"},
+      {en:"Can you prescribe something for the pain please?",pt:"Você pode receitar algo para a dor por favor?"},
+      {en:"Do you have something for the headache any over-the-counter option?",pt:"Tem algo para a dor de cabeça alguma opção sem receita?"},
+      {en:"I usually exercise three times a week at the gym to stay healthy",pt:"Eu geralmente faço exercício três vezes por semana na academia pra ficar saudável"},
+      {en:"I go for a run every morning in the park because I love it",pt:"Eu corro toda manhã no parque porque amo"},
+      {en:"I've been feeling tired for days now lately",pt:"Eu venho me sentindo cansado há dias ultimamente"},
+      {en:"Lately I've been dizzy this whole week and I'm worried",pt:"Ultimamente tenho estado tonto essa semana toda e estou preocupado"},
+      {en:"Is this anything serious doctor by any chance?",pt:"Isto é algo sério doutor por acaso?"},
+      {en:"Could it be contagious or just a phase just to be sure?",pt:"Pode ser contagioso ou só uma fase só pra ter certeza?"},
+    ],
+    phrasals: [
+      {term:"I have / I've got",desc:"Pra descrever sintomas. 'I have' é mais formal e americano; 'I've got' é mais britânico e casual. Sempre seguido de 'a/an' + sintoma. Não esqueça o artigo: 'I have headache' está errado.",ex:[
+        {en:"I have a headache that started yesterday",pt:"Tenho uma dor de cabeça que começou ontem"},
+        {en:"I've got a fever that won't go away",pt:"Peguei febre que não passa"}
+      ]},
+      {term:"I'd like to make an appointment",desc:"A frase exata pra marcar consulta. Sempre 'make an appointment' (não 'mark' como em português). Pode adicionar 'with' (médico específico) ou deixar genérico ('with a doctor').",ex:[
+        {en:"I'd like to make an appointment with a doctor today",pt:"Gostaria de marcar uma consulta com médico hoje"},
+        {en:"I need to make an appointment as soon as possible",pt:"Preciso marcar uma consulta o mais rápido possível"}
+      ]},
+      {term:"I'm allergic to / I can't take",desc:"Crítico em qualquer farmácia/hospital. 'Allergic to' = alergia médica (reação física). 'Can't take' = mais geral, evitação. Sempre seguido do nome do medicamento ou substância.",ex:[
+        {en:"I'm allergic to penicillin since I was a kid",pt:"Sou alérgico a penicilina desde criança"},
+        {en:"I can't take ibuprofen please note this",pt:"Não posso tomar ibuprofeno por favor anote"}
+      ]},
+      {term:"Can you prescribe / Do you have something for",desc:"'Can you prescribe' é com médico (precisa receita). 'Do you have something for' é mais comum em farmácia (over-the-counter, sem receita). Use 'painkillers' pra analgésicos genéricos.",ex:[
+        {en:"Can you prescribe something for the pain?",pt:"Você pode receitar algo para a dor?"},
+        {en:"Do you have something for the headache?",pt:"Tem algo para a dor de cabeça?"}
+      ]},
+      {term:"I usually exercise / I work out",desc:"'Exercise' é mais geral; 'work out' implica academia/musculação. Pra correr: 'go for a run'. Pra esporte: 'play [sport]'. 'Exercise' é incontável — não 'exercises'.",ex:[
+        {en:"I usually exercise three times a week",pt:"Eu geralmente faço exercício três vezes por semana"},
+        {en:"I work out at the gym after work",pt:"Eu malho na academia depois do trabalho"}
+      ]},
+      {term:"I've been feeling / Lately I've been",desc:"Present perfect continuous pra descrever sintoma duradouro. Diferente de 'I'm feeling' (agora) — 'I've been feeling' implica há um tempo. 'Lately' reforça essa duração.",ex:[
+        {en:"I've been feeling tired for days now",pt:"Eu venho me sentindo cansado há dias"},
+        {en:"Lately I've been dizzy this whole week",pt:"Ultimamente tenho estado tonto essa semana toda"}
+      ]},
+      {term:"Is this anything serious? / Could it be...",desc:"Pra perguntar gravidade ao médico. 'Is this anything serious?' é o mais usado. 'Could it be [doença]?' é educado pra sugerir hipóteses. Termine com 'doctor' pra soar respeitoso.",ex:[
+        {en:"Is this anything serious doctor?",pt:"Isto é algo sério doutor?"},
+        {en:"Could it be contagious by any chance?",pt:"Pode ser contagioso por acaso?"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
