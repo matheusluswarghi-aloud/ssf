@@ -107,63 +107,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // MONEY
-  // ◣ I will [vb] [obj] [tempo/propósito]
-  // ♥ I have [vb] [obj] [contexto]
-  // ● I am [vb-ing] [obj] [propósito]
-  // ▲ I had to [vb] [obj] for [propósito]
-  // ◀ I’ve been [vb] [obj] [propósito]
+  // MONEY — Banco, câmbio, pagamentos, finanças
+  // ◣ Câmbio — "I need to exchange dollars for euros today please"
+  // ♥ Pagamento — "I'd like to pay by credit card if possible thanks"
+  // ● Banco — "I want to open a new account online this week"
+  // ▲ Gastos — "I spent too much on dinner last weekend honestly"
+  // ◀ Cotação — "How much does this cost in dollars please?"
+  // ★ Negociar — "Could you give me a discount on this item please"
+  // ◆ Economizar — "I'm saving up for a new laptop these days"
   // ════════════════════════════════════════════
   "money": {
+    title: "money",
+    sub: "Banco, câmbio & pagamentos",
+    desc: "Frases pra qualquer situação envolvendo dinheiro em inglês — câmbio, pagamento, banco, negociação. Cada símbolo é uma situação típica. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I will",pt:"Eu irei",s:TRI},
-      {en:"I have",pt:"Eu",s:HRT},
-      {en:"I am",pt:"Eu estou",s:DOT},
-      {en:"I had to",pt:"Eu precisei",s:UP},
-      {en:"I’ve been",pt:"Eu fui",s:LFT},
+      {en:"I need to",pt:"Eu preciso",s:TRI},
+      {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
+      {en:"Could I",pt:"Posso",s:TRI},
+      {en:"Where can I",pt:"Onde posso",s:TRI},
+
+      {en:"I'd like to",pt:"Eu gostaria de",s:HRT},
+      {en:"I'll",pt:"Vou",s:HRT},
+      {en:"Can I",pt:"Posso",s:HRT},
+      {en:"I prefer to",pt:"Prefiro",s:HRT},
+
+      {en:"I want to",pt:"Eu quero",s:DOT},
+      {en:"I'd like to",pt:"Eu gostaria de",s:DOT},
+      {en:"I'm thinking of",pt:"Estou pensando em",s:DOT},
+      {en:"How do I",pt:"Como eu",s:DOT},
+
+      {en:"I spent",pt:"Eu gastei",s:UP},
+      {en:"I blew",pt:"Torrei",s:UP},
+      {en:"I wasted",pt:"Desperdicei",s:UP},
+      {en:"I dropped",pt:"Larguei",s:UP},
+
+      {en:"How much does",pt:"Quanto",s:LFT},
+      {en:"What's the price of",pt:"Qual o preço de",s:LFT},
+      {en:"How much is",pt:"Quanto é",s:LFT},
+      {en:"What does it cost",pt:"Quanto custa",s:LFT},
+
+      {en:"Could you give me",pt:"Você pode me dar",s:STAR},
+      {en:"Is there",pt:"Tem",s:STAR},
+      {en:"Do you offer",pt:"Vocês oferecem",s:STAR},
+      {en:"Can I get",pt:"Posso ter",s:STAR},
+
+      {en:"I'm saving up",pt:"Estou economizando",s:DIA},
+      {en:"I'm putting aside",pt:"Estou separando",s:DIA},
+      {en:"I'm setting money aside",pt:"Estou guardando dinheiro",s:DIA},
+      {en:"I've been saving",pt:"Tenho economizado",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"pay off",pt:"pagar",s:TRI},
-      {en:"put down",pt:"pagar (entrada)",s:TRI},
-      {en:"run up",pt:"acumulei",s:HRT},
-      {en:"come into",pt:"ganhei",s:HRT},
-      {en:"squirreled away",pt:"guardei",s:HRT},
-      {en:"splashed out",pt:"torrei",s:HRT},
-      {en:"saving up",pt:"economizando",s:DOT},
-      {en:"putting aside",pt:"separando",s:DOT},
-      {en:"fork out",pt:"desembolsar",s:UP},
-      {en:"ripped off",pt:"levei facada",s:LFT},
+      {en:"exchange",pt:"trocar",s:TRI},
+      {en:"withdraw",pt:"sacar",s:TRI},
+      {en:"convert",pt:"converter",s:TRI},
+      {en:"deposit",pt:"depositar",s:TRI},
+
+      {en:"pay",pt:"pagar",s:HRT},
+      {en:"split the bill",pt:"dividir a conta",s:HRT},
+      {en:"tip",pt:"dar gorjeta",s:HRT},
+      {en:"settle up",pt:"acertar",s:HRT},
+
+      {en:"open a new account",pt:"abrir uma conta nova",s:DOT},
+      {en:"transfer money",pt:"transferir dinheiro",s:DOT},
+      {en:"apply for a loan",pt:"pedir um empréstimo",s:DOT},
+      {en:"close my account",pt:"fechar minha conta",s:DOT},
+
+      {en:"too much",pt:"demais",s:UP},
+      {en:"a fortune",pt:"uma fortuna",s:UP},
+      {en:"way too much",pt:"muito mais do que devia",s:UP},
+      {en:"all my savings",pt:"todas as minhas economias",s:UP},
+
+      {en:"this",pt:"isto",s:LFT},
+      {en:"that",pt:"aquilo",s:LFT},
+      {en:"the room",pt:"o quarto",s:LFT},
+      {en:"the service",pt:"o serviço",s:LFT},
+
+      {en:"a discount",pt:"um desconto",s:STAR},
+      {en:"a deal",pt:"uma promo",s:STAR},
+      {en:"a payment plan",pt:"um plano de pagamento",s:STAR},
+      {en:"any promotion",pt:"alguma promoção",s:STAR},
+
+      {en:"for a new laptop",pt:"para um notebook novo",s:DIA},
+      {en:"for a trip",pt:"para uma viagem",s:DIA},
+      {en:"for retirement",pt:"para a aposentadoria",s:DIA},
+      {en:"for emergencies",pt:"para emergências",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"my credit card",pt:"meu cartão",s:TRI},
-      {en:"my debts",pt:"minhas contas",s:TRI},
-      {en:"a thousand",pt:"mil",s:TRI},
-      {en:"an enormous bill",pt:"uma conta enorme",s:HRT},
-      {en:"a fortune",pt:"uma fortuna",s:HRT},
-      {en:"an inheritance",pt:"uma herança",s:HRT},
-      {en:"my savings",pt:"minhas economias",s:HRT},
-      {en:"some money",pt:"um dinheiro",s:DOT},
-      {en:"a thousand reais",pt:"mil reais",s:DOT},
-      {en:"a fortune",pt:"uma fortuna",s:UP},
-      {en:"a lot of money",pt:"muito dinheiro",s:UP},
-      {en:"by",pt:"por/pelo(a)",s:LFT},
+      {en:"dollars for euros",pt:"dólares por euros",s:TRI},
+      {en:"some cash",pt:"um dinheiro",s:TRI},
+      {en:"a hundred reais",pt:"cem reais",s:TRI},
+      {en:"five hundred",pt:"quinhentos",s:TRI},
+
+      {en:"by credit card",pt:"no cartão",s:HRT},
+      {en:"in cash",pt:"em dinheiro",s:HRT},
+      {en:"by debit",pt:"no débito",s:HRT},
+      {en:"with Pix",pt:"no Pix",s:HRT},
+
+      {en:"with this bank",pt:"nesse banco",s:DOT},
+      {en:"as a non-resident",pt:"como não-residente",s:DOT},
+      {en:"with no fees",pt:"sem taxas",s:DOT},
+      {en:"in dollars",pt:"em dólares",s:DOT},
+
+      {en:"on dinner",pt:"com jantar",s:UP},
+      {en:"on shopping",pt:"em compras",s:UP},
+      {en:"on the trip",pt:"na viagem",s:UP},
+      {en:"on this hotel",pt:"nesse hotel",s:UP},
+
+      {en:"in dollars",pt:"em dólares",s:LFT},
+      {en:"in cash",pt:"em dinheiro",s:LFT},
+      {en:"per night",pt:"por noite",s:LFT},
+      {en:"with tax included",pt:"com taxa incluída",s:LFT},
+
+      {en:"on this item",pt:"nesse item",s:STAR},
+      {en:"if I pay in cash",pt:"se eu pagar em dinheiro",s:STAR},
+      {en:"for paying upfront",pt:"por pagar à vista",s:STAR},
+      {en:"for buying two",pt:"por levar dois",s:STAR},
+
+      {en:"these days",pt:"hoje em dia",s:DIA},
+      {en:"this year",pt:"esse ano",s:DIA},
+      {en:"every month",pt:"todo mês",s:DIA},
+      {en:"diligently",pt:"com disciplina",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"first",pt:"primeiro",s:TRI},
-      {en:"this month",pt:"esse mês",s:TRI},
-      {en:"as a deposit",pt:"como entrada",s:TRI},
-      {en:"recently",pt:"recentemente",s:HRT},
-      {en:"this week",pt:"essa semana",s:HRT},
-      {en:"on a car",pt:"em um carro",s:HRT},
-      {en:"for the future",pt:"para o futuro",s:HRT},
-      {en:"every month",pt:"todo mês",s:DOT},
-      {en:"to buy a bike",pt:"para comprar uma bike",s:DOT},
-      {en:"for a trip",pt:"para uma viagem",s:DOT},
-      {en:"for the service",pt:"pelo serviço",s:UP},
-      {en:"on a fine",pt:"em uma multa",s:UP},
-      {en:"the agency",pt:"a agência",s:LFT},
-      {en:"the store",pt:"a loja",s:LFT},
+      {en:"today please",pt:"hoje por favor",s:TRI},
+      {en:"at the airport",pt:"no aeroporto",s:TRI},
+      {en:"with a good rate",pt:"com boa cotação",s:TRI},
+      {en:"if possible",pt:"se possível",s:TRI},
+
+      {en:"if possible",pt:"se possível",s:HRT},
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"separately",pt:"separadamente",s:HRT},
+
+      {en:"online",pt:"online",s:DOT},
+      {en:"this week",pt:"essa semana",s:DOT},
+      {en:"with low fees",pt:"com taxas baixas",s:DOT},
+      {en:"as soon as possible",pt:"o mais rápido possível",s:DOT},
+
+      {en:"last weekend",pt:"fim de semana passado",s:UP},
+      {en:"this month",pt:"esse mês",s:UP},
+      {en:"honestly",pt:"sinceramente",s:UP},
+      {en:"on impulse",pt:"por impulso",s:UP},
+
+      {en:"please",pt:"por favor",s:LFT},
+      {en:"by the way",pt:"a propósito",s:LFT},
+      {en:"approximately",pt:"aproximadamente",s:LFT},
+      {en:"in total",pt:"no total",s:LFT},
+
+      {en:"please",pt:"por favor",s:STAR},
+      {en:"if you can",pt:"se puder",s:STAR},
+      {en:"to close the deal",pt:"pra fechar o negócio",s:STAR},
+      {en:"as a regular customer",pt:"como cliente fiel",s:STAR},
+
+      {en:"slowly but surely",pt:"devagar mas sempre",s:DIA},
+      {en:"for the future",pt:"para o futuro",s:DIA},
+      {en:"as much as I can",pt:"o máximo que consigo",s:DIA},
+      {en:"and it's working",pt:"e tá dando certo",s:DIA},
     ]},
+    examples: [
+      {en:"I need to exchange dollars for euros today please",pt:"Preciso trocar dólares por euros hoje por favor"},
+      {en:"Where can I withdraw some cash with a good rate?",pt:"Onde posso sacar um dinheiro com boa cotação?"},
+      {en:"I'd like to pay by credit card if possible thanks",pt:"Eu gostaria de pagar no cartão se possível obrigado"},
+      {en:"Can I split the bill separately please?",pt:"Posso dividir a conta separadamente por favor?"},
+      {en:"I want to open a new account online this week",pt:"Eu quero abrir uma conta nova online essa semana"},
+      {en:"How do I transfer money with low fees as soon as possible?",pt:"Como eu transfiro dinheiro com taxas baixas o mais rápido possível?"},
+      {en:"I spent too much on dinner last weekend honestly",pt:"Gastei demais com jantar fim de semana passado sinceramente"},
+      {en:"I blew a fortune on shopping on impulse",pt:"Torrei uma fortuna em compras por impulso"},
+      {en:"How much does this cost in dollars please?",pt:"Quanto isto custa em dólares por favor?"},
+      {en:"What's the price of the room per night with tax included?",pt:"Qual o preço do quarto por noite com taxa incluída?"},
+      {en:"Could you give me a discount on this item please?",pt:"Você pode me dar um desconto nesse item por favor?"},
+      {en:"Is there a deal if I pay in cash to close the deal?",pt:"Tem uma promo se eu pagar em dinheiro pra fechar o negócio?"},
+      {en:"I'm saving up for a new laptop these days slowly but surely",pt:"Estou economizando para um notebook novo hoje em dia devagar mas sempre"},
+      {en:"I've been saving for retirement diligently for the future",pt:"Tenho economizado para a aposentadoria com disciplina para o futuro"},
+    ],
+    phrasals: [
+      {term:"I need to / I'd like to (com câmbio)",desc:"'Exchange' = trocar moedas. 'Withdraw' = sacar do caixa. Sempre 'X for Y' (dollars FOR euros). Note: 'a good rate' (boa cotação) é a chave em qualquer câmbio.",ex:[
+        {en:"I need to exchange dollars for euros today",pt:"Preciso trocar dólares por euros hoje"},
+        {en:"Where can I withdraw some cash with a good rate?",pt:"Onde posso sacar um dinheiro com boa cotação?"}
+      ]},
+      {term:"I'd like to pay by",desc:"'Pay BY card' (preposição 'by' + meio) ou 'pay IN cash/dollars' (preposição 'in' + moeda física). Erro clássico: 'pay with card' não é o padrão. Sempre 'pay by'.",ex:[
+        {en:"I'd like to pay by credit card if possible",pt:"Eu gostaria de pagar no cartão se possível"},
+        {en:"Can I split the bill separately?",pt:"Posso dividir a conta separadamente?"}
+      ]},
+      {term:"I want to open / How do I transfer",desc:"Frases de banco. 'Open an account' (sempre 'an'). 'Transfer money' não 'transfer wage' (que é outra coisa). 'Apply for a loan' = pedir empréstimo.",ex:[
+        {en:"I want to open a new account online",pt:"Eu quero abrir uma conta nova online"},
+        {en:"How do I transfer money with low fees?",pt:"Como eu transfiro dinheiro com taxas baixas?"}
+      ]},
+      {term:"I spent / I blew",desc:"'Spent' é neutro; 'blew' (passado de blow) é gastou demais, com arrependimento. 'Wasted' implica desperdício real. 'Dropped' (informal) = larguei muito dinheiro em algo.",ex:[
+        {en:"I spent too much on dinner last weekend",pt:"Gastei demais com jantar fim de semana passado"},
+        {en:"I blew a fortune on shopping on impulse",pt:"Torrei uma fortuna em compras por impulso"}
+      ]},
+      {term:"How much does / What's the price of",desc:"Pra perguntar preço. 'How much DOES this cost' (com 'does' + verbo no infinitivo). 'How much IS this' (com 'is' + sem verbo). Ambos funcionam. 'In [moeda]' especifica moeda.",ex:[
+        {en:"How much does this cost in dollars?",pt:"Quanto isto custa em dólares?"},
+        {en:"How much is the room per night?",pt:"Quanto é o quarto por noite?"}
+      ]},
+      {term:"Could you give me a discount",desc:"Pra negociar. 'Discount' (desconto) é o termo padrão. 'Deal' implica oferta especial. 'Promotion' é mais formal. Adicionar contexto ('if I pay in cash', 'as a regular customer') aumenta chance de sucesso.",ex:[
+        {en:"Could you give me a discount on this item?",pt:"Você pode me dar um desconto nesse item?"},
+        {en:"Is there a deal if I pay in cash?",pt:"Tem uma promo se eu pagar em dinheiro?"}
+      ]},
+      {term:"I'm saving up / I've been saving",desc:"'Saving up FOR [objetivo]' = economizando com propósito. 'I'm saving' (presente contínuo) = ação atual. 'I've been saving' (present perfect continuous) = vem economizando há um tempo.",ex:[
+        {en:"I'm saving up for a new laptop these days",pt:"Estou economizando para um notebook novo hoje em dia"},
+        {en:"I've been saving for retirement diligently",pt:"Tenho economizado para a aposentadoria com disciplina"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
