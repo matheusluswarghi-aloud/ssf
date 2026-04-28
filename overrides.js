@@ -1162,52 +1162,209 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // COOKING 1
-  // ◣ I am [vb-ing] [ingrediente] [propósito]
+  // FOOD — Restaurantes & comida
+  // ◣ Pedindo formal — "I'd like to order the steak well-done please"
+  // ♥ Pedindo casual — "Can I get a coffee with milk to go"
+  // ● Pergunta sobre prato — "Is this dish vegetarian by any chance"
+  // ▲ Restrição alimentar — "I'm allergic to peanuts unfortunately"
+  // ◀ Pedido extra — "Could we have some bread with the meal"
+  // ★ Feedback — "The food is delicious honestly we love it"
+  // ◆ Fechar conta — "Could you bring the bill when you have a chance"
   // ════════════════════════════════════════════
   "cooking-1": {
+    title: "food",
+    sub: "Restaurantes & pedidos",
+    desc: "Frases pra usar em qualquer restaurante de língua inglesa — pedir prato, falar sobre alergias, pedir conta. Cada símbolo é um momento da refeição. Combine itens das 4 colunas com o mesmo símbolo.",
     0: { replace:true, items:[
-      {en:"I am",pt:"Eu estou",s:TRI},
+      {en:"I'd like to order",pt:"Eu gostaria de pedir",s:TRI},
+      {en:"I'll have",pt:"Vou querer",s:TRI},
+      {en:"I'll go with",pt:"Vou de",s:TRI},
+      {en:"For me,",pt:"Pra mim,",s:TRI},
+
+      {en:"Can I get",pt:"Posso pedir",s:HRT},
+      {en:"Could I have",pt:"Posso ter",s:HRT},
+      {en:"I'd like",pt:"Eu queria",s:HRT},
+      {en:"Just",pt:"Só",s:HRT},
+
+      {en:"Is this",pt:"Isto é",s:DOT},
+      {en:"Is the",pt:"O(a)",s:DOT},
+      {en:"Does this have",pt:"Isso tem",s:DOT},
+      {en:"What's in",pt:"O que tem em",s:DOT},
+
+      {en:"I'm allergic to",pt:"Sou alérgico(a) a",s:UP},
+      {en:"I can't eat",pt:"Não posso comer",s:UP},
+      {en:"I don't eat",pt:"Não como",s:UP},
+      {en:"Please no",pt:"Sem",s:UP},
+
+      {en:"Could we have",pt:"Podemos ter",s:LFT},
+      {en:"Could you bring us",pt:"Pode trazer",s:LFT},
+      {en:"Can we get",pt:"Podemos pedir",s:LFT},
+      {en:"We'd like",pt:"Nós gostaríamos",s:LFT},
+
+      {en:"The food is",pt:"A comida está",s:STAR},
+      {en:"This dish is",pt:"Esse prato está",s:STAR},
+      {en:"Everything is",pt:"Tudo está",s:STAR},
+      {en:"The service is",pt:"O atendimento está",s:STAR},
+
+      {en:"Could you bring",pt:"Pode trazer",s:DIA},
+      {en:"Can I have",pt:"Posso pedir",s:DIA},
+      {en:"We'd like to pay",pt:"Gostaríamos de pagar",s:DIA},
+      {en:"Could we get",pt:"Podemos pedir",s:DIA},
     ]},
     1: { replace:true, items:[
-      {en:"spreading some",pt:"passando",s:TRI},
-      {en:"peeling",pt:"descascando",s:TRI},
-      {en:"chopping",pt:"picando",s:TRI},
-      {en:"slicing",pt:"fatiando",s:TRI},
-      {en:"grating",pt:"ralando",s:TRI},
-      {en:"mixing",pt:"misturando",s:TRI},
-      {en:"whipping",pt:"batendo",s:TRI},
-      {en:"tasting",pt:"provando",s:TRI},
-      {en:"boiling",pt:"fervendo",s:TRI},
-      {en:"steaming",pt:"cozinhando no vapor",s:TRI},
+      {en:"the steak",pt:"o bife",s:TRI},
+      {en:"the pasta",pt:"a massa",s:TRI},
+      {en:"the salad",pt:"a salada",s:TRI},
+      {en:"the chef's special",pt:"o prato do chef",s:TRI},
+
+      {en:"a coffee",pt:"um café",s:HRT},
+      {en:"a beer",pt:"uma cerveja",s:HRT},
+      {en:"a glass of wine",pt:"uma taça de vinho",s:HRT},
+      {en:"a sandwich",pt:"um sanduíche",s:HRT},
+
+      {en:"dish",pt:"prato",s:DOT},
+      {en:"sauce",pt:"molho",s:DOT},
+      {en:"soup",pt:"sopa",s:DOT},
+      {en:"meat",pt:"carne",s:DOT},
+
+      {en:"peanuts",pt:"amendoim",s:UP},
+      {en:"dairy",pt:"laticínio",s:UP},
+      {en:"gluten",pt:"glúten",s:UP},
+      {en:"shellfish",pt:"frutos do mar",s:UP},
+
+      {en:"some bread",pt:"um pão",s:LFT},
+      {en:"some water",pt:"uma água",s:LFT},
+      {en:"another menu",pt:"outro menu",s:LFT},
+      {en:"some napkins",pt:"alguns guardanapos",s:LFT},
+
+      {en:"delicious",pt:"deliciosa",s:STAR},
+      {en:"amazing",pt:"incrível",s:STAR},
+      {en:"a bit cold",pt:"um pouco fria",s:STAR},
+      {en:"too salty",pt:"salgada demais",s:STAR},
+
+      {en:"the bill",pt:"a conta",s:DIA},
+      {en:"the check",pt:"a conta",s:DIA},
+      {en:"a doggy bag",pt:"uma quentinha",s:DIA},
+      {en:"the receipt",pt:"o recibo",s:DIA},
     ]},
     2: { replace:true, items:[
-      {en:"jam",pt:"geleia",s:TRI},
-      {en:"butter",pt:"manteiga",s:TRI},
-      {en:"Nutella",pt:"Nutella",s:TRI},
-      {en:"cream cheese",pt:"cream cheese",s:TRI},
-      {en:"an onion",pt:"uma cebola",s:TRI},
-      {en:"a banana",pt:"uma banana",s:TRI},
-      {en:"a tomato",pt:"um tomate",s:TRI},
-      {en:"the cheese",pt:"o queijo",s:TRI},
-      {en:"the eggs",pt:"os ovos",s:TRI},
-      {en:"the soup",pt:"a sopa",s:TRI},
-      {en:"some carrots",pt:"algumas cenouras",s:TRI},
-      {en:"the broccoli",pt:"o brócolis",s:TRI},
+      {en:"well-done",pt:"bem passado",s:TRI},
+      {en:"medium",pt:"ao ponto",s:TRI},
+      {en:"with extra cheese",pt:"com extra queijo",s:TRI},
+      {en:"without onions",pt:"sem cebola",s:TRI},
+
+      {en:"with milk",pt:"com leite",s:HRT},
+      {en:"to go",pt:"pra viagem",s:HRT},
+      {en:"on the rocks",pt:"com gelo",s:HRT},
+      {en:"with no ice",pt:"sem gelo",s:HRT},
+
+      {en:"vegetarian",pt:"vegetariano",s:DOT},
+      {en:"vegan",pt:"vegano",s:DOT},
+      {en:"spicy",pt:"apimentado",s:DOT},
+      {en:"gluten-free",pt:"sem glúten",s:DOT},
+
+      {en:"unfortunately",pt:"infelizmente",s:UP},
+      {en:"I'm sorry",pt:"desculpa",s:UP},
+      {en:"if possible",pt:"se possível",s:UP},
+      {en:"strictly",pt:"estritamente",s:UP},
+
+      {en:"with the meal",pt:"com a refeição",s:LFT},
+      {en:"to start with",pt:"pra começar",s:LFT},
+      {en:"on the side",pt:"à parte",s:LFT},
+      {en:"for the table",pt:"pra mesa",s:LFT},
+
+      {en:"honestly",pt:"sinceramente",s:STAR},
+      {en:"by the way",pt:"a propósito",s:STAR},
+      {en:"to be fair",pt:"pra ser justo",s:STAR},
+      {en:"I have to say",pt:"tenho que admitir",s:STAR},
+
+      {en:"when you have a chance",pt:"quando puder",s:DIA},
+      {en:"please",pt:"por favor",s:DIA},
+      {en:"separately",pt:"separadamente",s:DIA},
+      {en:"with the card machine",pt:"com a maquininha",s:DIA},
     ]},
     3: { replace:true, items:[
-      {en:"on my toast",pt:"na minha torrada",s:TRI},
-      {en:"on bread",pt:"no pão",s:TRI},
-      {en:"for the omelet",pt:"para o omelete",s:TRI},
-      {en:"for the cake",pt:"para o bolo",s:TRI},
-      {en:"into small pieces",pt:"em pedaços pequenos",s:TRI},
-      {en:"into cubes",pt:"em cubos",s:TRI},
-      {en:"into slices",pt:"em fatias",s:TRI},
-      {en:"in a blender",pt:"no liquidificador",s:TRI},
-      {en:"with sugar",pt:"com açúcar",s:TRI},
-      {en:"in the oven",pt:"no forno",s:TRI},
-      {en:"on the stove",pt:"no fogão",s:TRI},
+      {en:"please",pt:"por favor",s:TRI},
+      {en:"thanks",pt:"obrigado(a)",s:TRI},
+      {en:"if possible",pt:"se possível",s:TRI},
+      {en:"to start",pt:"pra começar",s:TRI},
+
+      {en:"please",pt:"por favor",s:HRT},
+      {en:"if you can",pt:"se puder",s:HRT},
+      {en:"thanks",pt:"obrigado(a)",s:HRT},
+      {en:"to drink",pt:"pra beber",s:HRT},
+
+      {en:"by any chance",pt:"por acaso",s:DOT},
+      {en:"or not",pt:"ou não",s:DOT},
+      {en:"on the menu",pt:"no cardápio",s:DOT},
+      {en:"as an option",pt:"como opção",s:DOT},
+
+      {en:"in the dish",pt:"no prato",s:UP},
+      {en:"in the meal",pt:"na refeição",s:UP},
+      {en:"at all",pt:"de jeito nenhum",s:UP},
+      {en:"please",pt:"por favor",s:UP},
+
+      {en:"please",pt:"por favor",s:LFT},
+      {en:"if you don't mind",pt:"se não se importar",s:LFT},
+      {en:"to share",pt:"pra dividir",s:LFT},
+      {en:"to enjoy",pt:"pra curtir",s:LFT},
+
+      {en:"we love it",pt:"estamos amando",s:STAR},
+      {en:"compliments to the chef",pt:"parabéns ao chef",s:STAR},
+      {en:"could be better",pt:"poderia ser melhor",s:STAR},
+      {en:"we'll come back",pt:"vamos voltar",s:STAR},
+
+      {en:"thanks",pt:"obrigado(a)",s:DIA},
+      {en:"if possible",pt:"se possível",s:DIA},
+      {en:"to share",pt:"pra dividir",s:DIA},
+      {en:"by card",pt:"no cartão",s:DIA},
     ]},
+    examples: [
+      {en:"I'd like to order the steak well-done please",pt:"Eu gostaria de pedir o bife bem passado por favor"},
+      {en:"I'll have the pasta with extra cheese to start",pt:"Vou querer a massa com extra queijo pra começar"},
+      {en:"Can I get a coffee with milk please?",pt:"Posso pedir um café com leite por favor?"},
+      {en:"Could I have a beer to go thanks?",pt:"Posso ter uma cerveja pra viagem obrigado?"},
+      {en:"Is this dish vegetarian by any chance?",pt:"Esse prato é vegetariano por acaso?"},
+      {en:"Does this have meat in the dish?",pt:"Isso tem carne no prato?"},
+      {en:"I'm allergic to peanuts unfortunately at all",pt:"Sou alérgico a amendoim infelizmente de jeito nenhum"},
+      {en:"I can't eat dairy I'm sorry please",pt:"Não posso comer laticínio desculpa por favor"},
+      {en:"Could we have some bread with the meal please?",pt:"Podemos ter um pão com a refeição por favor?"},
+      {en:"Can we get some water for the table to share?",pt:"Podemos pedir uma água pra mesa pra dividir?"},
+      {en:"The food is delicious honestly we love it",pt:"A comida está deliciosa sinceramente estamos amando"},
+      {en:"This dish is amazing I have to say compliments to the chef",pt:"Esse prato está incrível tenho que admitir parabéns ao chef"},
+      {en:"Could you bring the bill when you have a chance thanks?",pt:"Pode trazer a conta quando puder obrigado?"},
+      {en:"We'd like to pay separately by card",pt:"Gostaríamos de pagar separadamente no cartão"},
+    ],
+    phrasals: [
+      {term:"I'd like to order / I'll have",desc:"As duas formas mais usadas pra pedir num restaurante. 'I'd like to order' é mais formal e completa; 'I'll have' é casual e mais comum no dia a dia. Sempre seguido de 'the' + nome do prato.",ex:[
+        {en:"I'd like to order the steak please",pt:"Eu gostaria de pedir o bife por favor"},
+        {en:"I'll have the pasta with extra cheese",pt:"Vou querer a massa com extra queijo"}
+      ]},
+      {term:"Can I get / Could I have",desc:"Para pedidos casuais (cafés, bares, fast food). 'Can I get' é mais americano, 'Could I have' mais britânico/educado. Funcionam intercambiavelmente.",ex:[
+        {en:"Can I get a coffee with milk to go?",pt:"Posso pedir um café com leite pra viagem?"},
+        {en:"Could I have a beer please?",pt:"Posso ter uma cerveja por favor?"}
+      ]},
+      {term:"Is this / Does this have",desc:"Pra perguntar sobre ingredientes. 'Is this [adjetivo]?' (vegan, gluten-free, spicy). 'Does this have [substantivo]?' (peanuts, dairy, meat). Confundir os dois é erro clássico.",ex:[
+        {en:"Is this dish vegetarian?",pt:"Esse prato é vegetariano?"},
+        {en:"Does this have peanuts?",pt:"Isso tem amendoim?"}
+      ]},
+      {term:"I'm allergic to / I can't eat",desc:"Pra restrições alimentares. 'Allergic to' é alergia médica; 'I can't eat' é mais geral (pode ser dieta, gosto). Sempre 'to + substantivo' depois de 'allergic'.",ex:[
+        {en:"I'm allergic to peanuts unfortunately",pt:"Sou alérgico a amendoim infelizmente"},
+        {en:"I can't eat dairy please",pt:"Não posso comer laticínio por favor"}
+      ]},
+      {term:"Could we have / Could you bring us",desc:"Pra pedidos no plural (mesa). Mais educado que 'we want' ou 'give us'. Padrão em restaurantes formais.",ex:[
+        {en:"Could we have some bread with the meal?",pt:"Podemos ter um pão com a refeição?"},
+        {en:"Could you bring us another menu please?",pt:"Pode trazer outro menu por favor?"}
+      ]},
+      {term:"The food is / The service is",desc:"Estruturas pra dar feedback. Note: 'food' e 'service' são incontáveis (não 'foods are', sempre 'food is'). Adicione adverbial ('honestly', 'to be fair') pra suavizar críticas.",ex:[
+        {en:"The food is delicious honestly we love it",pt:"A comida está deliciosa sinceramente estamos amando"},
+        {en:"The service is amazing by the way",pt:"O atendimento está incrível a propósito"}
+      ]},
+      {term:"Could you bring / We'd like to pay",desc:"Pra fechar conta. 'Could you bring the bill' (UK) ou 'check' (US) — ambos funcionam. 'We'd like to pay separately' é fundamental quando vai dividir.",ex:[
+        {en:"Could you bring the bill when you have a chance?",pt:"Pode trazer a conta quando puder?"},
+        {en:"We'd like to pay separately by card",pt:"Gostaríamos de pagar separadamente no cartão"}
+      ]},
+    ]
   },
 
   // ════════════════════════════════════════════
