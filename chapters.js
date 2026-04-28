@@ -35,7 +35,7 @@ window.SSF_CHAPTERS = [
         {en:"rainforest",pt:"floresta tropical",s:5},
         {en:"jungle",pt:"selva",s:5},
         {en:"is",pt:"está",s:6},
-        {en:"has",pt:"tem",s:6}
+        {en:"has been",pt:"vem",s:6}
       ],
       [
         {en:"by",pt:"pelo(a)",s:0},
@@ -45,8 +45,6 @@ window.SSF_CHAPTERS = [
         {en:"all the",pt:"todos(as) os(as)",s:3},
         {en:"almost all the",pt:"quase todos(as) os(as)",s:3},
         {en:"half of the",pt:"metade dos(as)",s:3},
-        {en:"are slowly",pt:"estão lentamente",s:4},
-        {en:"are quickly",pt:"estão rapidamente",s:4},
         {en:"spreading out",pt:"espalhando-se",s:4},
         {en:"is being",pt:"está sendo",s:5},
         {en:"has been",pt:"foi",s:5},
@@ -57,6 +55,7 @@ window.SSF_CHAPTERS = [
         {en:"the flood",pt:"enchente",s:0},
         {en:"the storm",pt:"tempestade",s:0},
         {en:"the wind",pt:"vento",s:0},
+        {en:"in nature",pt:"na natureza",s:1},
         {en:"plastic bags",pt:"sacolas plásticas",s:2},
         {en:"cardboard",pt:"papelão",s:2},
         {en:"water bottles",pt:"garrafas de água",s:2},
@@ -66,13 +65,10 @@ window.SSF_CHAPTERS = [
         {en:"power",pt:"luz",s:3},
         {en:"oil",pt:"petróleo",s:3},
         {en:"gas",pt:"gás",s:3},
-        {en:"dying out",pt:"acabando",s:4},
         {en:"across the sky",pt:"pelo céu",s:4},
         {en:"across the streets",pt:"pelas ruas",s:4},
         {en:"among the trees",pt:"entre as árvores",s:4},
         {en:"cut down",pt:"cortado(a)",s:5},
-        {en:"to support us",pt:"para nos apoiar",s:6},
-        {en:"to help us",pt:"para nos ajudar",s:6},
         {en:"organizations",pt:"organizações",s:6}
       ]
     ],
@@ -102,15 +98,16 @@ window.SSF_CHAPTERS = [
         {en:"A thief has",pt:"Um ladrão",s:1},
         {en:"I have",pt:"Eu",s:2},
         {en:"Cops have",pt:"Policiais",s:3},
-        {en:"They have been",pt:"Eles foram",s:4}
+        {en:"They have been",pt:"Eles foram",s:4},
+        {en:"I have",pt:"Eu",s:5}
       ],
       [
         {en:"broke into",pt:"invadiu",s:0},
         {en:"broken out",pt:"escapou",s:1},
         {en:"tipped",pt:"alertei",s:2},
-        {en:"brought in",pt:"trouxe",s:2},
         {en:"staked out",pt:"vigiaram",s:3},
-        {en:"arrested",pt:"presos",s:4}
+        {en:"arrested",pt:"presos",s:4},
+        {en:"brought in",pt:"trouxe",s:5}
       ],
       [
         {en:"the store",pt:"a loja",s:0},
@@ -121,12 +118,12 @@ window.SSF_CHAPTERS = [
         {en:"of his cell",pt:"da cela",s:1},
         {en:"you off about",pt:"você sobre",s:2},
         {en:"them off about",pt:"eles(as) sobre",s:2},
-        {en:"a lawyer",pt:"um advogado",s:2},
-        {en:"the cops",pt:"a polícia",s:2},
         {en:"the store",pt:"a loja",s:3},
         {en:"that place",pt:"aquele lugar",s:3},
         {en:"the house",pt:"a casa",s:3},
-        {en:"for",pt:"por",s:4}
+        {en:"for",pt:"por",s:4},
+        {en:"a lawyer",pt:"um advogado",s:5},
+        {en:"the cops",pt:"a polícia",s:5}
       ],
       [
         {en:"today",pt:"hoje",s:0},
@@ -139,14 +136,14 @@ window.SSF_CHAPTERS = [
         {en:"the crime",pt:"o crime",s:2},
         {en:"the assault",pt:"o assalto",s:2},
         {en:"the drug dealer",pt:"o traficante",s:2},
-        {en:"to solve it",pt:"para resolvê-lo",s:2},
-        {en:"to arrest him",pt:"para prendê-lo",s:2},
         {en:"for weeks",pt:"por semanas",s:3},
         {en:"for months",pt:"por meses",s:3},
         {en:"for hours",pt:"por horas",s:3},
         {en:"larceny",pt:"furto",s:4},
         {en:"drunk driving",pt:"dirigir bêbado",s:4},
-        {en:"domestic violence",pt:"violência doméstica",s:4}
+        {en:"domestic violence",pt:"violência doméstica",s:4},
+        {en:"to solve it",pt:"para resolvê-lo",s:5},
+        {en:"to arrest him",pt:"para prendê-lo",s:5}
       ]
     ],
     examples:[
