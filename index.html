@@ -315,29 +315,29 @@ h1, h2, h3, h4 {
   max-width: 720px;
   margin-bottom: 48px;
 }
-.howto-steps { list-style: none; counter-reset: step; display: grid; gap: 12px; margin-bottom: 64px; }
+.howto-steps { list-style: none; counter-reset: step; margin-bottom: 64px; }
 .howto-steps li {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  align-items: start;
-  gap: 20px;
-  padding: 20px 0;
+  position: relative;
+  padding: 20px 0 20px 76px;
   border-top: 1px solid var(--gray-dark);
   counter-increment: step;
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--white);
 }
 .howto-steps li:last-child { border-bottom: 1px solid var(--gray-dark); }
 .howto-steps li::before {
   content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 24px;
   font-family: var(--font-head);
   font-weight: 700;
   font-size: 14px;
   color: var(--cyan);
   letter-spacing: 0.1em;
-  padding-top: 4px;
 }
+.howto-steps li strong { color: var(--white); font-weight: 600; }
 
 .legend {
   display: grid;
@@ -1405,7 +1405,8 @@ h1, h2, h3, h4 {
   .logo-mark--img img { height: 28px; }
 
   /* How to */
-  .howto-steps li { grid-template-columns: 40px 1fr; gap: 12px; padding: 18px 0; }
+  .howto-steps li { padding: 18px 0 18px 56px; font-size: 15px; }
+  .howto-steps li::before { top: 22px; }
 
   /* TOC */
   .toc-grid, .toc-overlay-grid { grid-template-columns: 1fr; gap: 0; }
@@ -1561,7 +1562,7 @@ h1, h2, h3, h4 {
 <!-- ============ HOW TO USE ============ -->
 <section class="page" data-page="howto" data-screen-label="02 Como usar">
   <span class="page-tag">Introdução</span>
-  <span class="page-marker"><span class="num">02</span> / 28</span>
+  <span class="page-marker"><span class="num">02</span> / 16</span>
 
   <div class="cyan-strip">comece por aqui</div>
   <h1 class="howto-title">
@@ -1571,35 +1572,35 @@ h1, h2, h3, h4 {
   </h1>
 
   <p class="howto-intro">
-    O <strong style="color:var(--cyan);">Sistema Simples de Frases</strong> é um esqueleto: você combina pedaços de três colunas para montar dezenas de frases corretas em inglês. Sem decoreba. Sem pânico.
+    O <strong style="color:var(--cyan);">Sistema Simples de Frases</strong> é um esqueleto guiado: cada escolha que você faz desbloqueia as próximas, montando frases reais em inglês passo a passo. Sem decoreba. Sem pânico.
   </p>
 
   <ol class="howto-steps">
-    <li>Escolha um capítulo. Cada um foca em <strong>um tema do dia a dia</strong>.</li>
-    <li>Toque num item da <strong>primeira coluna</strong> — ele vira o início da sua frase.</li>
-    <li>Nas próximas colunas, só os itens que <strong>combinam com sua escolha</strong> ficam ativos. Os outros ficam apagados pra você não errar.</li>
-    <li>Continue clicando até montar uma frase completa nas três colunas. O painel ciano monta junto, em tempo real.</li>
-    <li>Use o botão <strong>▶︎ Ouvir</strong> para escutar a pronúncia e repita em voz alta.</li>
-    <li>Veja os exemplos prontos, leia as <em>expressões-chave</em> e escreva 8 frases novas na página de prática.</li>
+    <li>Escolha um capítulo. Cada um foca em <strong>um cenário do dia a dia</strong>.</li>
+    <li>Toque num item da <strong>coluna I</strong> — ele vira o início da sua frase e abre a coluna II.</li>
+    <li>A <strong>coluna II</strong> revela só as opções que fazem sentido com sua escolha. Pegue uma — ela abre a coluna III.</li>
+    <li>A <strong>coluna III</strong> mostra os detalhes finais, específicos pro item que você pegou. O painel ciano monta a frase em tempo real.</li>
+    <li>Toque em <strong>▶︎ Ouvir</strong> pra escutar a pronúncia e repita em voz alta. Use <strong>Salvar</strong> pra mandar a frase pra prática.</li>
+    <li>Confira os exemplos prontos, leia as <em>expressões-chave</em> e escreva 8 frases novas na página de prática.</li>
   </ol>
 
   <h3 style="font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); font-weight:600; margin-bottom:18px;">Como funciona na prática</h3>
   <div class="legend">
     <div class="legend-card">
-      <h4>Da esquerda pra direita</h4>
+      <h4>Cascata personalizada</h4>
       <div class="demo-orient">
-        Você lê e clica <strong style="color:var(--white);">da coluna I até a III</strong>. Cada coluna oferece várias opções e <em style="color:var(--cyan-soft); font-style:italic;">qualquer combinação</em> dentro de um capítulo forma uma frase real em inglês.
+        Você clica <strong style="color:var(--white);">da coluna I até a III</strong>. Cada escolha personaliza as próximas — só aparece o que <em style="color:var(--cyan-soft); font-style:italic;">faz sentido pro cenário</em> que você está montando.
       </div>
       <div class="demo-sentence">
-        <span class="col-roman">I</span><span>I love</span>
-        <span class="col-roman">II</span><span>cooking</span>
-        <span class="col-roman">III</span><span>on weekends.</span>
+        <span class="col-roman">I</span><span>I'll have</span>
+        <span class="col-roman">II</span><span>the steak</span>
+        <span class="col-roman">III</span><span>well-done.</span>
       </div>
     </div>
     <div class="legend-card">
       <h4>Sem decoreba</h4>
       <div class="demo-orient">
-        O sistema te impede de montar frases erradas — então você pode <strong style="color:var(--cyan)">explorar livremente</strong> e ver dezenas de combinações certas em poucos minutos. <em style="color:var(--cyan-soft); font-style:italic;">Erre à vontade</em>: o painel ciano mostra a frase montada em tempo real, e você ouve depois.
+        Cada combinação produz uma frase <strong style="color:var(--cyan)">real do dia a dia</strong>. Não tem como errar — o painel ciano monta junto em tempo real e a pronúncia roda com um toque. <em style="color:var(--cyan-soft); font-style:italic;">Explore à vontade.</em>
       </div>
     </div>
   </div>
@@ -1615,7 +1616,7 @@ h1, h2, h3, h4 {
 <!-- ============ TOC ============ -->
 <section class="page" data-page="toc" data-screen-label="03 Sumário">
   <span class="page-tag">Sumário</span>
-  <span class="page-marker"><span class="num">03</span> / 28</span>
+  <span class="page-marker"><span class="num">03</span> / 16</span>
 
   <div class="cyan-strip">índice de capítulos</div>
   <h1 class="howto-title">
