@@ -27,7 +27,7 @@
     .sort((a, b) => ENABLED_CHAPTERS.indexOf(a.id) - ENABLED_CHAPTERS.indexOf(b.id));
   const OV = window.SSF_OVERRIDES || {};
 
-  // Merge overrides — supports column replacements + meta overrides
+  // Merge overrides — supports column replacements + meta overrides + tree
   chapters.forEach(ch => {
     const o = OV[ch.id]; if (!o) return;
     Object.keys(o).forEach(key => {
@@ -42,6 +42,11 @@
         ch.sub = def;
       } else if (key === 'title' && typeof def === 'string') {
         ch.title = def;
+      } else if (key === 'tree' && Array.isArray(def)) {
+        // Cascading schema: col 1 → col 2 personalizada → col 3 personalizada.
+        // Cells dos cols 2/3 são derivadas no momento via getColCells().
+        ch.tree = def;
+        ch.cols = [[], [], []];
       } else if (def && def.replace && Array.isArray(def.items)) {
         ch.cols[+key] = def.items.map(it => ({ ...it }));
       } else if (Array.isArray(def)) {
@@ -68,7 +73,7 @@
       <div class="ssf-mobile-tabs" data-tabs="${ch.id}">
         <div class="grid">
           ${ROMAN.map((r, ci) => `
-            <button type="button" data-tab="${ci}" class="${ci===0?'tab-active':''}">
+            <button type="button" data-tab="${ci}" class="${ci===0?'tab-active':''}${ci>0 && ch.tree?' locked':''}">
               <span class="roman">${r}</span>
               <span class="lbl">Coluna</span>
               <span class="filled-dot"></span>
@@ -82,21 +87,9 @@
       <div class="ssf-col-head"><span>Coluna</span><span class="roman">${r}</span></div>
     `).join('');
 
-    // Show only the first COL_COUNT columns. Older chapter data may still
-    // have a 4th column — it's silently dropped from the UI.
-    const visibleCols = ch.cols.slice(0, COL_COUNT);
-    const colsHTML = visibleCols.map((col, ci) => `
-      <div class="ssf-col ${ci===0?'tab-active':''}" data-col="${ci}">
-        ${col.map((cell, idx) => {
-          const symIdx = (cell.s !== undefined) ? cell.s : null;
-          return `
-            <div class="ssf-cell" data-col="${ci}" data-idx="${idx}"${symIdx!==null?` data-sym="${symIdx}"`:''}>
-              <div class="en">${escape(cell.en)}</div>
-              <div class="pt">${escape(cell.pt)}</div>
-            </div>
-          `;
-        }).join('')}
-      </div>
+    // Empty containers — populated by renderCol() after DOM insertion.
+    const colsHTML = ROMAN.map((r, ci) => `
+      <div class="ssf-col ${ci===0?'tab-active':''}" data-col="${ci}"></div>
     `).join('');
 
     const builderHTML = `
@@ -291,42 +284,102 @@
     return s;
   }
 
+  // Cell lookup that works for both legacy single-frame and new tree schema.
+  function getColCells(ch, state, ci) {
+    if (ch.tree) {
+      if (ci === 0) return ch.tree;
+      if (ci === 1) {
+        if (state[0] === null) return [];
+        return ch.tree[state[0]].colII || [];
+      }
+      if (ci === 2) {
+        if (state[0] === null || state[1] === null) return [];
+        const colII = ch.tree[state[0]].colII || [];
+        return (colII[state[1]] && colII[state[1]].colIII) || [];
+      }
+    }
+    return ch.cols[ci] || [];
+  }
+
+  function getCellAt(ch, state, ci) {
+    const cells = getColCells(ch, state, ci);
+    return state[ci] !== null ? cells[state[ci]] : null;
+  }
+
+  function renderCol(wrap, ch, ci) {
+    const colEl = wrap.querySelector(`.ssf-col[data-col="${ci}"]`);
+    if (!colEl) return;
+    const state = builderState[ch.id];
+    const cells = getColCells(ch, state, ci);
+    if (cells.length === 0) {
+      colEl.classList.remove('populated');
+      const msg = ci === 1 ? 'Escolha I primeiro' : 'Escolha II primeiro';
+      colEl.innerHTML = `<div class="ssf-cell placeholder"><div class="en">${msg}</div></div>`;
+      return;
+    }
+    colEl.classList.add('populated');
+    colEl.innerHTML = cells.map((cell, idx) => {
+      const isActive = state[ci] === idx;
+      const symIdx = (cell.s !== undefined) ? cell.s : null;
+      return `<div class="ssf-cell${isActive?' active':''}" data-col="${ci}" data-idx="${idx}" style="--idx:${idx}"${symIdx!==null?` data-sym="${symIdx}"`:''}>
+        <div class="en">${escape(cell.en)}</div>
+        <div class="pt">${escape(cell.pt)}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderAllCols(wrap, ch) {
+    for (let ci = 0; ci < COL_COUNT; ci++) renderCol(wrap, ch, ci);
+  }
+
+  // Initial populate of every chapter's columns
+  chapters.forEach(ch => {
+    builderState[ch.id] = emptyState();
+    tabState[ch.id] = 0;
+    const wrap = document.querySelector(`.ssf-wrap[data-ssf="${ch.id}"]`);
+    if (wrap) renderAllCols(wrap, ch);
+  });
+
   document.querySelectorAll('.ssf-wrap').forEach(wrap => {
     const id = wrap.dataset.ssf;
-    builderState[id] = emptyState();
-    tabState[id] = 0;
+    const ch = chapters.find(c => c.id === id);
     const builder = wrap.querySelector('.builder');
 
-    // Cell clicks
-    wrap.querySelectorAll('.ssf-cell').forEach(cell => {
-      cell.addEventListener('click', () => {
-        if (cell.classList.contains('incompatible')) {
-          // Clicking an incompatible cell means "start over with this option" —
-          // clear all selections, then pick this cell.
-          const col = +cell.dataset.col;
-          builderState[id] = emptyState();
-          wrap.querySelectorAll('.ssf-cell.active').forEach(c => c.classList.remove('active'));
-          builderState[id][col] = +cell.dataset.idx;
-          cell.classList.add('active');
-          autoAdvanceTab(id, col);
-          applyCompass(id);
-          renderBuilder(id);
-          return;
-        }
-        const col = +cell.dataset.col;
-        const idx = +cell.dataset.idx;
-        const curSel = builderState[id][col];
-        wrap.querySelectorAll(`.ssf-cell[data-col="${col}"]`).forEach(c => c.classList.remove('active'));
-        if (curSel === idx) {
-          builderState[id][col] = null;
-        } else {
-          builderState[id][col] = idx;
-          cell.classList.add('active');
-          autoAdvanceTab(id, col);
-        }
+    // Delegated cell clicks (cells get re-rendered, so we listen on the wrap)
+    wrap.addEventListener('click', (e) => {
+      const cell = e.target.closest('.ssf-cell');
+      if (!cell || !wrap.contains(cell)) return;
+      if (cell.classList.contains('placeholder')) return;
+      const col = +cell.dataset.col;
+      const idx = +cell.dataset.idx;
+
+      if (cell.classList.contains('incompatible')) {
+        // Legacy reset behavior: start over with this option.
+        builderState[id] = emptyState();
+        builderState[id][col] = idx;
+        renderAllCols(wrap, ch);
+        autoAdvanceTab(id, col);
         applyCompass(id);
         renderBuilder(id);
-      });
+        return;
+      }
+
+      const curSel = builderState[id][col];
+      if (curSel === idx) {
+        builderState[id][col] = null;
+        if (ch.tree) {
+          for (let c = col + 1; c < COL_COUNT; c++) builderState[id][c] = null;
+        }
+      } else {
+        builderState[id][col] = idx;
+        if (ch.tree) {
+          for (let c = col + 1; c < COL_COUNT; c++) builderState[id][c] = null;
+        }
+        autoAdvanceTab(id, col);
+      }
+      renderAllCols(wrap, ch);
+      applyCompass(id);
+      renderBuilder(id);
     });
 
     // Mobile tab clicks
@@ -339,7 +392,7 @@
     // Builder controls
     builder.querySelector('.clear').addEventListener('click', () => {
       builderState[id] = emptyState();
-      wrap.querySelectorAll('.ssf-cell.active').forEach(c => c.classList.remove('active'));
+      renderAllCols(wrap, ch);
       applyCompass(id);
       renderBuilder(id);
     });
@@ -375,13 +428,16 @@
       showToast('Prática completa');
     });
 
-    // Slot click → unselect that column
+    // Slot click → unselect that column (and dependent columns in tree mode)
     wrap.querySelectorAll('.builder-slot').forEach(slot => {
       const handler = () => {
         const ci = +slot.dataset.slot;
         if (builderState[id][ci] !== null) {
           builderState[id][ci] = null;
-          wrap.querySelectorAll(`.ssf-cell[data-col="${ci}"]`).forEach(c => c.classList.remove('active'));
+          if (ch.tree) {
+            for (let c = ci + 1; c < COL_COUNT; c++) builderState[id][c] = null;
+          }
+          renderAllCols(wrap, ch);
           applyCompass(id);
           renderBuilder(id);
         }
@@ -407,6 +463,15 @@
   function autoAdvanceTab(id, justFilledCol) {
     if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
     const state = builderState[id];
+    const ch = chapters.find(c => c.id === id);
+    if (ch && ch.tree) {
+      // Tree mode: only advance forward (cascade). Don't wrap.
+      const target = justFilledCol + 1;
+      if (target < COL_COUNT && state[target] === null) {
+        setTimeout(() => switchTab(id, target), 320);
+      }
+      return;
+    }
     for (let off = 1; off < COL_COUNT; off++) {
       const target = (justFilledCol + off) % COL_COUNT;
       if (state[target] === null) {
@@ -421,10 +486,8 @@
     const state = builderState[id];
     const syms = new Set();
     for (let col = 0; col < COL_COUNT; col++) {
-      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
-        const s = ch.cols[col][state[col]].s;
-        if (s !== undefined) syms.add(s);
-      }
+      const cell = getCellAt(ch, state, col);
+      if (cell && cell.s !== undefined) syms.add(cell.s);
     }
     return syms;
   }
@@ -435,6 +498,8 @@
   // single coherent frame share one `s` value so all combinations are
   // valid → no dimming. Multi-pattern legacy chapters still work.
   function applyCompass(id) {
+    const ch = chapters.find(c => c.id === id);
+    if (ch.tree) return; // tree chapters use cascade-based filtering, no compass needed
     const wrap = document.querySelector(`.ssf-wrap[data-ssf="${id}"]`);
     const activeSyms = getActiveSymbols(id);
 
@@ -453,9 +518,8 @@
     const state = builderState[id];
     const parts = [];
     for (let col = 0; col < COL_COUNT; col++) {
-      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
-        parts.push(ch.cols[col][state[col]].en);
-      }
+      const cell = getCellAt(ch, state, col);
+      if (cell) parts.push(cell.en);
     }
     return parts.join(' ').replace(/\s+([.,!?;:])/g, '$1');
   }
@@ -472,8 +536,8 @@
     for (let col = 0; col < COL_COUNT; col++) {
       const slot = slotsContainer.querySelector(`.builder-slot[data-slot="${col}"]`);
       if (!slot) continue;
-      if (state[col] !== null && ch.cols[col] && ch.cols[col][state[col]]) {
-        const cell = ch.cols[col][state[col]];
+      const cell = getCellAt(ch, state, col);
+      if (cell) {
         slot.classList.add('filled');
         slot.classList.remove('empty');
         slot.innerHTML = `
@@ -495,9 +559,10 @@
 
     builder.querySelector('.b-count').textContent = count;
     const status = builder.querySelector('.b-status');
-    const isComplete = count === COL_COUNT && symbolsPicked.size <= 1;
-    const isSaveable = count >= 2 && symbolsPicked.size <= 1;
-    const isWarning = symbolsPicked.size > 1;
+    // Tree mode never produces conflicting symbols (cascade enforces validity).
+    const isComplete = count === COL_COUNT && (ch.tree || symbolsPicked.size <= 1);
+    const isSaveable = count >= 2 && (ch.tree || symbolsPicked.size <= 1);
+    const isWarning = !ch.tree && symbolsPicked.size > 1;
     const remaining = COL_COUNT - count;
 
     builder.classList.toggle('complete', isComplete);
@@ -521,6 +586,12 @@
     wrap.querySelectorAll('.ssf-mobile-tabs button').forEach(btn => {
       const ci = +btn.dataset.tab;
       btn.classList.toggle('has-pick', state[ci] !== null);
+      if (ch.tree) {
+        const locked =
+          (ci === 1 && state[0] === null) ||
+          (ci === 2 && (state[0] === null || state[1] === null));
+        btn.classList.toggle('locked', locked);
+      }
     });
   }
 
@@ -547,25 +618,25 @@
   }
 
   // ---------- Onboarding ----------
-  // Bumped key to v3 because onboarding was rewritten. Returning users will
+  // Bumped key to v4 because cascade UX was added. Returning users will
   // see the new tour once.
-  const ONBOARD_KEY = 'ssf-onboarded-v3';
+  const ONBOARD_KEY = 'ssf-onboarded-v4';
   const onboard = document.getElementById('onboard');
   const onboardSteps = [
     {
       step: 'PASSO 01 / 03',
       title: 'Comece pela coluna I',
-      body: 'Toque em qualquer item da <strong>primeira coluna</strong>. Ele vira o início da sua frase.'
+      body: 'Escolha como você quer <strong>abrir a frase</strong>. Cada opção desbloqueia continuações específicas pra aquele jeito de falar.'
     },
     {
       step: 'PASSO 02 / 03',
-      title: 'Siga combinando',
-      body: 'Nas próximas colunas, os itens que <strong>combinam com sua escolha ficam acesos</strong>. Os que não combinam ficam apagados. Vá clicando até montar a frase completa.'
+      title: 'A coluna II revela suas opções',
+      body: 'Depois da sua primeira escolha, a <strong>coluna II abre opções personalizadas</strong> — só o que faz sentido com o que você começou.'
     },
     {
       step: 'PASSO 03 / 03',
-      title: 'Ouça e repita',
-      body: 'Frase pronta? Toque em <strong>▶︎ Ouvir</strong> pra escutar a pronúncia e repita em voz alta. Use <strong>Salvar</strong> pra enviar pra prática no fim do capítulo.'
+      title: 'Coluna III fecha com detalhe',
+      body: 'A última coluna mostra <strong>detalhes específicos</strong> daquele item. Frase pronta? Toque em <strong>▶︎ Ouvir</strong> e repita em voz alta.'
     },
   ];
   let onboardIdx = 0;

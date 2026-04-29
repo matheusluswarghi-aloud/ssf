@@ -10,6 +10,118 @@
 (function() {
   const TRI=0, HRT=1, DOT=2, UP=3, LFT=4, STAR=5, DIA=6;
 
+  // ──────────────────────────────────────────────
+  // FOOD — col-III modifiers (reused across openers)
+  // ──────────────────────────────────────────────
+  const STEAK_OPT = [
+    {en:"well-done",pt:"bem passado"},
+    {en:"medium",pt:"ao ponto"},
+    {en:"rare",pt:"mal passado"},
+    {en:"with mashed potatoes",pt:"com purê"},
+    {en:"with sauce on the side",pt:"com molho à parte"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"for here",pt:"pra comer aqui"},
+  ];
+  const PASTA_OPT = [
+    {en:"with extra cheese",pt:"com queijo extra"},
+    {en:"without sauce",pt:"sem molho"},
+    {en:"with chicken",pt:"com frango"},
+    {en:"to share",pt:"pra dividir"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"for here",pt:"pra comer aqui"},
+  ];
+  const COFFEE_OPT = [
+    {en:"with milk",pt:"com leite"},
+    {en:"black",pt:"puro"},
+    {en:"iced",pt:"gelado"},
+    {en:"with no sugar",pt:"sem açúcar"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"for here",pt:"pra tomar aqui"},
+  ];
+  const BEER_OPT = [
+    {en:"cold",pt:"gelada"},
+    {en:"on tap",pt:"de barril"},
+    {en:"by the bottle",pt:"em garrafa"},
+    {en:"in a pint glass",pt:"no copo grande"},
+    {en:"please",pt:"por favor"},
+  ];
+  const SALAD_OPT = [
+    {en:"with dressing on the side",pt:"com molho à parte"},
+    {en:"without onions",pt:"sem cebola"},
+    {en:"with chicken",pt:"com frango"},
+    {en:"to share",pt:"pra dividir"},
+    {en:"please",pt:"por favor"},
+  ];
+  const WINE_OPT = [
+    {en:"red",pt:"tinto"},
+    {en:"white",pt:"branco"},
+    {en:"by the glass",pt:"em taça"},
+    {en:"by the bottle",pt:"em garrafa"},
+    {en:"please",pt:"por favor"},
+  ];
+  const CHICKEN_OPT = [
+    {en:"grilled",pt:"grelhado"},
+    {en:"breaded",pt:"empanado"},
+    {en:"with rice",pt:"com arroz"},
+    {en:"with fries",pt:"com batatas fritas"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"please",pt:"por favor"},
+  ];
+  const SOUP_OPT = [
+    {en:"hot",pt:"bem quente"},
+    {en:"with bread",pt:"com pão"},
+    {en:"to share",pt:"pra dividir"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"please",pt:"por favor"},
+  ];
+  const SANDWICH_OPT = [
+    {en:"toasted",pt:"tostado"},
+    {en:"with extra cheese",pt:"com queijo extra"},
+    {en:"with no mayo",pt:"sem maionese"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"please",pt:"por favor"},
+  ];
+  const FRIES_OPT = [
+    {en:"with ketchup",pt:"com ketchup"},
+    {en:"large",pt:"grande"},
+    {en:"with extra salt",pt:"com sal extra"},
+    {en:"to share",pt:"pra dividir"},
+    {en:"please",pt:"por favor"},
+  ];
+  const APPETIZER_OPT = [
+    {en:"for the table",pt:"pra mesa"},
+    {en:"to share",pt:"pra dividir"},
+    {en:"with bread",pt:"com pão"},
+    {en:"please",pt:"por favor"},
+  ];
+  const WATER_OPT = [
+    {en:"still",pt:"sem gás"},
+    {en:"sparkling",pt:"com gás"},
+    {en:"with ice",pt:"com gelo"},
+    {en:"with no ice",pt:"sem gelo"},
+    {en:"please",pt:"por favor"},
+  ];
+  const SNACK_OPT = [
+    {en:"quick",pt:"rapidinho"},
+    {en:"to go",pt:"pra viagem"},
+    {en:"please",pt:"por favor"},
+  ];
+
+  // Col-II items (dish/drink) — each pairs a noun with its modifier list
+  const STEAK     = {en:"the steak",      pt:"o bife",          colIII: STEAK_OPT};
+  const PASTA     = {en:"the pasta",      pt:"a massa",         colIII: PASTA_OPT};
+  const CHICKEN   = {en:"the chicken",    pt:"o frango",        colIII: CHICKEN_OPT};
+  const SALAD     = {en:"the salad",      pt:"a salada",        colIII: SALAD_OPT};
+  const COFFEE    = {en:"a coffee",       pt:"um café",         colIII: COFFEE_OPT};
+  const BEER      = {en:"a beer",         pt:"uma cerveja",     colIII: BEER_OPT};
+  const WINE      = {en:"a glass of wine",pt:"uma taça de vinho",colIII: WINE_OPT};
+  const SOUP      = {en:"the soup",       pt:"a sopa",          colIII: SOUP_OPT};
+  const SANDWICH  = {en:"a sandwich",     pt:"um sanduíche",    colIII: SANDWICH_OPT};
+  const FRIES     = {en:"fries",          pt:"batatas fritas",  colIII: FRIES_OPT};
+  const APPETIZER = {en:"an appetizer",   pt:"uma entrada",     colIII: APPETIZER_OPT};
+  const WATER     = {en:"a water",        pt:"uma água",        colIII: WATER_OPT};
+  const SNACK     = {en:"a snack",        pt:"um lanche",       colIII: SNACK_OPT};
+
 window.SSF_OVERRIDES = {
 
   // ════════════════════════════════════════════
@@ -1014,85 +1126,84 @@ window.SSF_OVERRIDES = {
   },
 
   // ════════════════════════════════════════════
-  // FOOD — Pedir num restaurante (single-frame)
-  // Frame: [order opener] + [dish/drink] + [modifier]
-  // Example: "I'd like to order the steak well-done"
+  // FOOD — Pedir num restaurante (cascata personalizada)
+  // Col I (opener) → Col II (prato/bebida que combina com aquele opener)
+  //               → Col III (modificador específico daquele item)
+  // Ex: "I'll have" → "the steak" → "well-done"
+  //     "Can I get" → "a coffee" → "to go"
   // ════════════════════════════════════════════
   "cooking-1": {
     title: "food",
     sub: "Restaurantes & pedidos",
-    desc: "Frases pra pedir num restaurante em inglês — qualquer prato, qualquer modificação. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'd like to order",pt:"Eu gostaria de pedir",s:TRI},
-      {en:"I'll have",pt:"Vou querer",s:TRI},
-      {en:"Can I get",pt:"Posso pedir",s:TRI},
-      {en:"Could I have",pt:"Posso ter",s:TRI},
-      {en:"I want",pt:"Eu quero",s:TRI},
-      {en:"I'll start with",pt:"Vou começar com",s:TRI},
-      {en:"For me,",pt:"Pra mim,",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"the steak",pt:"o bife",s:TRI},
-      {en:"the pasta",pt:"a massa",s:TRI},
-      {en:"the salad",pt:"a salada",s:TRI},
-      {en:"a coffee",pt:"um café",s:TRI},
-      {en:"a beer",pt:"uma cerveja",s:TRI},
-      {en:"a glass of wine",pt:"uma taça de vinho",s:TRI},
-      {en:"the chicken",pt:"o frango",s:TRI},
-      {en:"the soup",pt:"a sopa",s:TRI},
-      {en:"a sandwich",pt:"um sanduíche",s:TRI},
-      {en:"the special",pt:"o prato do dia",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"well-done",pt:"bem passado",s:TRI},
-      {en:"medium",pt:"ao ponto",s:TRI},
-      {en:"with extra cheese",pt:"com extra queijo",s:TRI},
-      {en:"without onions",pt:"sem cebola",s:TRI},
-      {en:"to go",pt:"pra viagem",s:TRI},
-      {en:"on the side",pt:"à parte",s:TRI},
-      {en:"please",pt:"por favor",s:TRI},
-      {en:"to share",pt:"pra dividir",s:TRI},
-      {en:"to start with",pt:"pra começar",s:TRI},
-    ]},
+    desc: "Pedir num restaurante em inglês. Cada escolha personaliza as próximas — só aparece o que faz sentido pro pedido que você está montando.",
+    tree: [
+      // Universal opener — qualquer prato ou bebida cabe
+      { en:"I'll have", pt:"Vou querer",
+        colII: [STEAK, PASTA, CHICKEN, SALAD, SOUP, COFFEE, BEER, WATER] },
+
+      // Formal universal — mesmo cardápio, registro elegante
+      { en:"I'd like to order", pt:"Eu gostaria de pedir",
+        colII: [STEAK, PASTA, CHICKEN, SALAD, SOUP, COFFEE, WINE, WATER] },
+
+      // Casual / rápido — café, bar, fast food
+      { en:"Can I get", pt:"Posso pedir",
+        colII: [COFFEE, BEER, SANDWICH, FRIES, SNACK, WATER] },
+
+      // Educado / britânico — pratos bem definidos, com bebidas
+      { en:"Could I have", pt:"Posso ter",
+        colII: [STEAK, PASTA, CHICKEN, COFFEE, BEER, WINE, WATER] },
+
+      // Direto — usado pra fazer pedido sem rodeio
+      { en:"I want", pt:"Eu quero",
+        colII: [STEAK, PASTA, CHICKEN, SALAD, COFFEE] },
+
+      // Pra começar — entradas, drinks de início
+      { en:"I'll start with", pt:"Vou começar com",
+        colII: [SALAD, SOUP, BEER, WINE, APPETIZER] },
+
+      // Pedido em grupo, todo mundo na mesa
+      { en:"For me,", pt:"Pra mim,",
+        colII: [STEAK, PASTA, CHICKEN, SALAD, COFFEE] },
+    ],
     examples: [
-      {en:"I'd like to order the steak well-done",pt:"Eu gostaria de pedir o bife bem passado"},
-      {en:"I'll have the pasta with extra cheese",pt:"Vou querer a massa com extra queijo"},
-      {en:"Can I get a coffee to go please?",pt:"Posso pedir um café pra viagem por favor?"},
-      {en:"Could I have a beer please?",pt:"Posso ter uma cerveja por favor?"},
-      {en:"I want the chicken without onions",pt:"Eu quero o frango sem cebola"},
+      {en:"I'll have the steak well-done",pt:"Vou querer o bife bem passado"},
+      {en:"I'd like to order the pasta with extra cheese",pt:"Eu gostaria de pedir a massa com queijo extra"},
+      {en:"Can I get a coffee to go please",pt:"Posso pedir um café pra viagem por favor"},
+      {en:"Could I have a glass of wine please",pt:"Posso ter uma taça de vinho por favor"},
+      {en:"I want the chicken with rice",pt:"Eu quero o frango com arroz"},
       {en:"I'll start with the salad to share",pt:"Vou começar com a salada pra dividir"},
-      {en:"For me, the soup on the side",pt:"Pra mim, a sopa à parte"},
-      {en:"I'd like to order the special medium",pt:"Eu gostaria de pedir o prato do dia ao ponto"},
-      {en:"Could I have a glass of wine to start with",pt:"Posso ter uma taça de vinho pra começar"},
+      {en:"For me, the pasta with chicken",pt:"Pra mim, a massa com frango"},
+      {en:"Can I get a sandwich toasted",pt:"Posso pedir um sanduíche tostado"},
+      {en:"I'll have a beer cold please",pt:"Vou querer uma cerveja gelada por favor"},
     ],
     phrasals: [
-      {term:"I'd like to order / I'll have",desc:"As duas formas mais usadas pra pedir num restaurante. 'I'd like to order' é formal/completa, ideal pra restaurantes mais elegantes. 'I'll have' é casual e funciona em qualquer contexto. Sempre seguido de 'the/a' + prato.",ex:[
-        {en:"I'd like to order the steak well-done",pt:"Eu gostaria de pedir o bife bem passado"},
-        {en:"I'll have the pasta with extra cheese",pt:"Vou querer a massa com extra queijo"}
+      {term:"I'll have / I'd like to order",desc:"Os dois openers universais. 'I'll have' é casual e cabe em qualquer restaurante. 'I'd like to order' é formal e completo. Cada um abre um cardápio próprio na coluna II.",ex:[
+        {en:"I'll have the steak well-done",pt:"Vou querer o bife bem passado"},
+        {en:"I'd like to order the pasta with extra cheese",pt:"Eu gostaria de pedir a massa com queijo extra"}
       ]},
-      {term:"Can I get / Could I have",desc:"Pedidos rápidos em cafés, bares, fast food. 'Can I get' é mais americano e direto; 'Could I have' é britânico, mais educado. Os dois funcionam.",ex:[
+      {term:"Can I get / Could I have",desc:"'Can I get' é o jeito americano em cafés, bares e fast food — bem direto. 'Could I have' é britânico, mais educado. Note como a coluna II troca entre eles: 'Can I get' foca em itens rápidos (sanduíche, café, fries), enquanto 'Could I have' tende a pratos da casa.",ex:[
         {en:"Can I get a coffee to go?",pt:"Posso pedir um café pra viagem?"},
-        {en:"Could I have a beer please?",pt:"Posso ter uma cerveja por favor?"}
+        {en:"Could I have a glass of wine please",pt:"Posso ter uma taça de vinho por favor"}
       ]},
-      {term:"I want / For me",desc:"Formas mais diretas. 'I want' é coloquial mas pode soar grosso sem 'please'. 'For me' é uma forma simpática quando todo mundo está pedindo na mesa, tipo 'pra mim'.",ex:[
-        {en:"I want the chicken without onions",pt:"Eu quero o frango sem cebola"},
-        {en:"For me, the soup on the side",pt:"Pra mim, a sopa à parte"}
+      {term:"I'll start with",desc:"Pra abrir a refeição com entrada, salada, sopa ou drink — deixa claro que vem mais coisa. A coluna II só mostra itens de início (não tem prato principal aqui).",ex:[
+        {en:"I'll start with the salad with dressing on the side",pt:"Vou começar com a salada com molho à parte"},
+        {en:"I'll start with a glass of wine red",pt:"Vou começar com uma taça de vinho tinto"}
       ]},
-      {term:"I'll start with",desc:"Pra pedir uma entrada ou aperitivo. 'Start with' deixa claro que tem mais coisa vindo depois. Bom pra refeições com vários pratos.",ex:[
-        {en:"I'll start with the salad to share",pt:"Vou começar com a salada pra dividir"},
-        {en:"I'll start with a glass of wine please",pt:"Vou começar com uma taça de vinho por favor"}
+      {term:"For me,",desc:"Forma simpática quando todo mundo está pedindo na mesa. Funciona como 'pra mim'. Sempre com vírgula antes do prato.",ex:[
+        {en:"For me, the pasta with chicken",pt:"Pra mim, a massa com frango"},
+        {en:"For me, the salad to share",pt:"Pra mim, a salada pra dividir"}
       ]},
-      {term:"well-done / medium",desc:"Como pedir o ponto da carne. 'Rare' (mal-passada), 'medium-rare' (mal-ao-ponto), 'medium' (ao-ponto), 'medium-well' (passado-ao-ponto), 'well-done' (bem-passada). Note: 'well-done' (com hífen) é o termo correto.",ex:[
-        {en:"I'd like to order the steak well-done",pt:"Eu gostaria de pedir o bife bem passado"},
-        {en:"I'll have the chicken medium",pt:"Vou querer o frango ao ponto"}
+      {term:"well-done / medium / rare",desc:"Pontos da carne. 'Rare' (mal-passada), 'medium' (ao-ponto), 'well-done' (bem-passada, com hífen). Aparece só quando o prato escolhido é steak — não faz sentido com café ou massa.",ex:[
+        {en:"I'll have the steak well-done",pt:"Vou querer o bife bem passado"},
+        {en:"Could I have the steak medium",pt:"Posso ter o bife ao ponto"}
       ]},
-      {term:"with extra / without",desc:"Modificações no prato. 'With extra [X]' = com mais. 'Without [X]' = sem. Sempre seguido de substantivo. 'With no [X]' também funciona pra negar (sinônimo de 'without').",ex:[
-        {en:"I'll have the pasta with extra cheese",pt:"Vou querer a massa com extra queijo"},
-        {en:"I want the chicken without onions",pt:"Eu quero o frango sem cebola"}
+      {term:"to go / for here",desc:"Pra viagem ou pra comer no local. Aparece naturalmente em itens que dá pra levar — sanduíche, café, frango. Em vinho ou entrada compartilhada, o app não oferece.",ex:[
+        {en:"Can I get a coffee to go",pt:"Posso pedir um café pra viagem"},
+        {en:"I'll have a sandwich for here",pt:"Vou querer um sanduíche pra comer aqui"}
       ]},
-      {term:"to go / on the side / to share",desc:"Especificações comuns. 'To go' = pra levar (take-away). 'On the side' = à parte (molho separado, por exemplo). 'To share' = pra dividir (entradas, sobremesas).",ex:[
-        {en:"Can I get a coffee to go?",pt:"Posso pedir um café pra viagem?"},
-        {en:"For me, the soup on the side",pt:"Pra mim, a sopa à parte"}
+      {term:"with extra / without / with no",desc:"Modificações específicas do prato. 'With extra' = com mais. 'Without' / 'with no' = sem. A coluna III só lista modificações que combinam com o item: 'with extra cheese' aparece em pasta e sandwich, 'without onions' em salad, etc.",ex:[
+        {en:"I'd like to order the pasta with extra cheese",pt:"Eu gostaria de pedir a massa com queijo extra"},
+        {en:"I want the salad without onions",pt:"Eu quero a salada sem cebola"}
       ]},
     ]
   },

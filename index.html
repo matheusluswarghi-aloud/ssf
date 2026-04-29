@@ -552,6 +552,10 @@ h1, h2, h3, h4 {
 .ssf-mobile-tabs button.tab-active .roman,
 .ssf-mobile-tabs button.tab-active .lbl { color: var(--black); }
 .ssf-mobile-tabs button.tab-active.has-pick .filled-dot { background: var(--black); }
+.ssf-mobile-tabs button.locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
 
 .ssf-cols {
   display: grid;
@@ -637,6 +641,34 @@ h1, h2, h3, h4 {
   color: var(--gray);
   margin-top: 4px;
   line-height: 1.3;
+}
+
+/* Placeholder cell — shown when a tree column has no parent selection yet */
+.ssf-cell.placeholder {
+  opacity: 0.32;
+  cursor: default;
+  pointer-events: none;
+  border-left-color: transparent;
+  min-height: 100px;
+}
+.ssf-cell.placeholder .en {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--gray-mid);
+}
+.ssf-cell.placeholder:hover { background: transparent; }
+
+/* Cascade reveal — when col II/III gets populated after a parent click */
+.ssf-col.populated > .ssf-cell {
+  animation: cell-reveal 0.22s ease-out backwards;
+  animation-delay: calc(var(--idx, 0) * 24ms);
+}
+@keyframes cell-reveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ========== Sticky Builder ========== */
