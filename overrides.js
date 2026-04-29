@@ -471,76 +471,244 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "health": {
     title: "health",
-    sub: "Sintomas & médico",
-    desc: "Frases pra descrever sintomas em qualquer consulta médica em inglês. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I have",pt:"Eu tenho",s:TRI},
-      {en:"I've got",pt:"Eu peguei",s:TRI},
-      {en:"I'm dealing with",pt:"Estou lidando com",s:TRI},
-      {en:"I think I have",pt:"Acho que tenho",s:TRI},
-      {en:"I keep getting",pt:"Continuo tendo",s:TRI},
-      {en:"I've been having",pt:"Venho tendo",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"a headache",pt:"dor de cabeça",s:TRI},
-      {en:"a fever",pt:"febre",s:TRI},
-      {en:"a sore throat",pt:"dor de garganta",s:TRI},
-      {en:"a bad cough",pt:"uma tosse forte",s:TRI},
-      {en:"a stomachache",pt:"dor de estômago",s:TRI},
-      {en:"a runny nose",pt:"nariz escorrendo",s:TRI},
-      {en:"a cold",pt:"um resfriado",s:TRI},
-      {en:"a mild flu",pt:"uma gripe leve",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"since yesterday",pt:"desde ontem",s:TRI},
-      {en:"for a few days",pt:"há alguns dias",s:TRI},
-      {en:"and I'm worried",pt:"e estou preocupado(a)",s:TRI},
-      {en:"that won't go away",pt:"que não passa",s:TRI},
-      {en:"mostly at night",pt:"mais à noite",s:TRI},
-      {en:"on and off",pt:"que vai e vem",s:TRI},
-      {en:"really bad",pt:"bem ruim",s:TRI},
-      {en:"honestly",pt:"sinceramente",s:TRI},
-      {en:"lately",pt:"ultimamente",s:TRI},
-    ]},
+    sub: "Sintomas, consulta & remédio",
+    desc: "Pra navegar saúde em inglês — descrever sintoma, marcar consulta, pegar receita, falar de alergia. Cada opener abre uma cena de saúde.",
+    tree: [
+      // Sintoma direto
+      { en:"I have", pt:"Tenho", colII:[
+        { en:"a headache", pt:"dor de cabeça", colIII:[
+          {en:"since this morning",pt:"desde de manhã"},
+          {en:"for two days",pt:"há dois dias"},
+          {en:"on and off",pt:"que vai e vem"},
+          {en:"really bad",pt:"bem forte"},
+        ]},
+        { en:"a fever", pt:"febre", colIII:[
+          {en:"of 38 degrees",pt:"de 38 graus"},
+          {en:"since last night",pt:"desde ontem à noite"},
+          {en:"for two days",pt:"há dois dias"},
+          {en:"on and off",pt:"que vai e vem"},
+        ]},
+        { en:"a cough", pt:"tosse", colIII:[
+          {en:"that won't go away",pt:"que não passa"},
+          {en:"mostly at night",pt:"mais à noite"},
+          {en:"with phlegm",pt:"com catarro"},
+          {en:"for a week",pt:"há uma semana"},
+        ]},
+        { en:"a sore throat", pt:"dor de garganta", colIII:[
+          {en:"since yesterday",pt:"desde ontem"},
+          {en:"really bad",pt:"bem forte"},
+          {en:"when I swallow",pt:"quando engulo"},
+          {en:"and it hurts to talk",pt:"e dói pra falar"},
+        ]},
+        { en:"a stomachache", pt:"dor de estômago", colIII:[
+          {en:"after eating",pt:"depois de comer"},
+          {en:"on and off",pt:"que vai e vem"},
+          {en:"since this morning",pt:"desde de manhã"},
+          {en:"with nausea",pt:"com náusea"},
+        ]},
+      ]},
+
+      // Estado/sentimento
+      { en:"I'm feeling", pt:"Estou me sentindo", colII:[
+        { en:"dizzy", pt:"tonto(a)", colIII:[
+          {en:"when I stand up",pt:"quando levanto"},
+          {en:"all morning",pt:"a manhã toda"},
+          {en:"and weak",pt:"e fraco"},
+          {en:"out of nowhere",pt:"do nada"},
+        ]},
+        { en:"nauseous", pt:"enjoado(a)", colIII:[
+          {en:"after eating",pt:"depois de comer"},
+          {en:"all day",pt:"o dia todo"},
+          {en:"on and off",pt:"que vai e vem"},
+          {en:"and I might throw up",pt:"e acho que vou vomitar"},
+        ]},
+        { en:"weak", pt:"fraco(a)", colIII:[
+          {en:"all day",pt:"o dia todo"},
+          {en:"after the meds",pt:"depois do remédio"},
+          {en:"and tired",pt:"e cansado"},
+          {en:"lately",pt:"ultimamente"},
+        ]},
+        { en:"better", pt:"melhor", colIII:[
+          {en:"today",pt:"hoje"},
+          {en:"after the meds",pt:"depois do remédio"},
+          {en:"than yesterday",pt:"do que ontem"},
+          {en:"but not 100%",pt:"mas não 100%"},
+        ]},
+        { en:"worse", pt:"pior", colIII:[
+          {en:"than yesterday",pt:"do que ontem"},
+          {en:"after the meds",pt:"depois do remédio"},
+          {en:"in the morning",pt:"de manhã"},
+          {en:"every day",pt:"todo dia"},
+        ]},
+      ]},
+
+      // Marcar consulta
+      { en:"I'd like to make", pt:"Quero marcar", colII:[
+        { en:"an appointment", pt:"uma consulta", colIII:[
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"next week",pt:"semana que vem"},
+          {en:"as soon as possible",pt:"o quanto antes"},
+          {en:"with Dr. Smith",pt:"com o Dr. Smith"},
+        ]},
+        { en:"a checkup", pt:"um check-up", colIII:[
+          {en:"this month",pt:"esse mês"},
+          {en:"for my annual exam",pt:"pro meu exame anual"},
+          {en:"next week",pt:"semana que vem"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a follow-up", pt:"um retorno", colIII:[
+          {en:"in two weeks",pt:"em duas semanas"},
+          {en:"after the test",pt:"depois do exame"},
+          {en:"with Dr. Smith",pt:"com o Dr. Smith"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Chegada na clínica
+      { en:"I'm here for", pt:"Estou aqui pra", colII:[
+        { en:"my appointment", pt:"minha consulta", colIII:[
+          {en:"with Dr. Smith",pt:"com o Dr. Smith"},
+          {en:"at 3",pt:"das 3"},
+          {en:"I scheduled yesterday",pt:"que marquei ontem"},
+          {en:"for a checkup",pt:"pra um check-up"},
+        ]},
+        { en:"a checkup", pt:"um check-up", colIII:[
+          {en:"with Dr. Smith",pt:"com o Dr. Smith"},
+          {en:"my annual one",pt:"o anual"},
+          {en:"at 10",pt:"das 10"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"blood work", pt:"exame de sangue", colIII:[
+          {en:"that my doctor ordered",pt:"que meu médico pediu"},
+          {en:"fasting",pt:"em jejum"},
+          {en:"this morning",pt:"essa manhã"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a follow-up", pt:"um retorno", colIII:[
+          {en:"with Dr. Smith",pt:"com o Dr. Smith"},
+          {en:"after my last visit",pt:"depois da última consulta"},
+          {en:"at 2",pt:"das 2"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Receita / remédio
+      { en:"I need a refill", pt:"Preciso renovar a receita", colII:[
+        { en:"of my prescription", pt:"do meu remédio", colIII:[
+          {en:"for 30 days",pt:"por 30 dias"},
+          {en:"by Friday",pt:"até sexta"},
+          {en:"at this pharmacy",pt:"nessa farmácia"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for my blood pressure meds", pt:"do remédio de pressão", colIII:[
+          {en:"for 30 days",pt:"por 30 dias"},
+          {en:"the same dose",pt:"a mesma dose"},
+          {en:"by tomorrow",pt:"até amanhã"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for my inhaler", pt:"da bombinha", colIII:[
+          {en:"by Friday",pt:"até sexta"},
+          {en:"two units",pt:"duas unidades"},
+          {en:"at this pharmacy",pt:"nessa farmácia"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Localização da dor
+      { en:"It hurts when", pt:"Dói quando", colII:[
+        { en:"I move", pt:"eu me mexo", colIII:[
+          {en:"my arm",pt:"o braço"},
+          {en:"my neck",pt:"o pescoço"},
+          {en:"this way",pt:"pra esse lado"},
+          {en:"a lot",pt:"muito"},
+        ]},
+        { en:"I breathe", pt:"eu respiro", colIII:[
+          {en:"deeply",pt:"fundo"},
+          {en:"in cold air",pt:"ar frio"},
+          {en:"on my left side",pt:"do lado esquerdo"},
+          {en:"a little",pt:"um pouco"},
+        ]},
+        { en:"I touch it", pt:"eu encosto", colIII:[
+          {en:"here",pt:"aqui"},
+          {en:"on this side",pt:"desse lado"},
+          {en:"a little",pt:"um pouco"},
+          {en:"a lot",pt:"muito"},
+        ]},
+        { en:"I walk", pt:"eu ando", colIII:[
+          {en:"a lot",pt:"muito"},
+          {en:"upstairs",pt:"escada acima"},
+          {en:"on my right knee",pt:"no joelho direito"},
+          {en:"after a while",pt:"depois de um tempo"},
+        ]},
+      ]},
+
+      // Alergia
+      { en:"I'm allergic to", pt:"Sou alérgico(a) a", colII:[
+        { en:"peanuts", pt:"amendoim", colIII:[
+          {en:"and my throat closes up",pt:"e minha garganta fecha"},
+          {en:"and I get hives",pt:"e fico com urticária"},
+          {en:"so I can't take that",pt:"então não posso tomar isso"},
+          {en:"please warn the kitchen",pt:"avisem a cozinha"},
+        ]},
+        { en:"penicillin", pt:"penicilina", colIII:[
+          {en:"so I can't take that",pt:"então não posso tomar isso"},
+          {en:"and I get a rash",pt:"e fico com manchas"},
+          {en:"please prescribe something else",pt:"prescreva outra coisa"},
+          {en:"please note in my chart",pt:"anota no prontuário"},
+        ]},
+        { en:"shellfish", pt:"frutos do mar", colIII:[
+          {en:"and my throat closes up",pt:"e minha garganta fecha"},
+          {en:"so I can't eat that",pt:"então não posso comer isso"},
+          {en:"please warn the kitchen",pt:"avisem a cozinha"},
+          {en:"and I carry an EpiPen",pt:"e ando com adrenalina"},
+        ]},
+        { en:"dairy", pt:"laticínios", colIII:[
+          {en:"so I can't have that",pt:"então não posso consumir"},
+          {en:"and I get stomach pain",pt:"e tenho dor no estômago"},
+          {en:"is there a substitute?",pt:"tem alguma alternativa?"},
+          {en:"please warn the kitchen",pt:"avisem a cozinha"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I have a headache since yesterday",pt:"Eu tenho dor de cabeça desde ontem"},
-      {en:"I've got a fever for a few days",pt:"Peguei febre há alguns dias"},
-      {en:"I'm dealing with a bad cough that won't go away",pt:"Estou lidando com uma tosse forte que não passa"},
-      {en:"I think I have a cold and I'm worried",pt:"Acho que tenho um resfriado e estou preocupado"},
-      {en:"I keep getting a stomachache mostly at night",pt:"Continuo tendo dor de estômago mais à noite"},
-      {en:"I've been having a runny nose on and off",pt:"Venho tendo nariz escorrendo que vai e vem"},
-      {en:"I have a sore throat really bad",pt:"Eu tenho dor de garganta bem ruim"},
-      {en:"I've got a mild flu honestly",pt:"Peguei uma gripe leve sinceramente"},
-      {en:"I'm dealing with a fever lately",pt:"Estou lidando com febre ultimamente"},
+      {en:"I have a headache since this morning",pt:"Tenho dor de cabeça desde de manhã"},
+      {en:"I'm feeling dizzy when I stand up",pt:"Estou me sentindo tonto quando levanto"},
+      {en:"I'd like to make an appointment with Dr. Smith",pt:"Quero marcar uma consulta com o Dr. Smith"},
+      {en:"I'm here for my appointment with Dr. Smith",pt:"Estou aqui pra minha consulta com o Dr. Smith"},
+      {en:"I need a refill of my prescription for 30 days",pt:"Preciso renovar minha receita por 30 dias"},
+      {en:"It hurts when I breathe deeply",pt:"Dói quando respiro fundo"},
+      {en:"I'm allergic to penicillin so I can't take that",pt:"Sou alérgico a penicilina então não posso tomar"},
+      {en:"I have a fever of 38 degrees",pt:"Tenho febre de 38 graus"},
+      {en:"I'm feeling worse than yesterday",pt:"Estou me sentindo pior do que ontem"},
     ],
     phrasals: [
-      {term:"I have / I've got",desc:"Pra descrever sintomas. 'I have' é americano e formal; 'I've got' é britânico e casual — os dois funcionam em qualquer país. SEMPRE seguido de 'a/an' + sintoma. Erro clássico: 'I have headache' (sem 'a') está errado.",ex:[
-        {en:"I have a headache since yesterday",pt:"Eu tenho dor de cabeça desde ontem"},
-        {en:"I've got a fever for a few days",pt:"Peguei febre há alguns dias"}
+      {term:"I have / I'm feeling",desc:"'I have' descreve um sintoma físico ('a headache', 'a fever' — sempre com 'a/an'). 'I'm feeling' descreve um estado/sensação ('dizzy', 'nauseous' — sem artigo). NÃO confunda: 'I have dizzy' está errado; é 'I'm feeling dizzy'.",ex:[
+        {en:"I have a headache since this morning",pt:"Tenho dor de cabeça desde de manhã"},
+        {en:"I'm feeling dizzy when I stand up",pt:"Estou tonto quando levanto"}
       ]},
-      {term:"I'm dealing with",desc:"Forma mais reflexiva: 'tô lidando com'. Sugere que você já tá tentando resolver o problema. Bom pra sintomas que persistem (tosse, gripe, dor crônica).",ex:[
-        {en:"I'm dealing with a bad cough that won't go away",pt:"Estou lidando com uma tosse forte que não passa"},
-        {en:"I'm dealing with a fever lately",pt:"Estou lidando com febre ultimamente"}
+      {term:"I'd like to make an appointment",desc:"Frase exata pra marcar consulta. SEMPRE 'make AN appointment' (com 'an'). Combine com 'for [data]' / 'with Dr. [nome]' / 'as soon as possible'. 'Schedule' funciona como sinônimo formal.",ex:[
+        {en:"I'd like to make an appointment for tomorrow",pt:"Quero marcar uma consulta pra amanhã"},
+        {en:"I'd like to make an appointment with Dr. Smith",pt:"Quero marcar uma consulta com o Dr. Smith"}
       ]},
-      {term:"I think I have",desc:"Pra suspeita (não tem certeza ainda). Soa humilde, deixa o médico avaliar. Bom abridor de consulta. Sempre seguido de 'a/an' + sintoma.",ex:[
-        {en:"I think I have a cold and I'm worried",pt:"Acho que tenho um resfriado e estou preocupado"},
-        {en:"I think I have a sore throat lately",pt:"Acho que tenho dor de garganta ultimamente"}
+      {term:"I'm here for",desc:"Pra checar in na recepção da clínica. 'I'm here FOR my appointment' (com 'for'). Funciona pra qualquer compromisso médico: appointment, checkup, blood work, follow-up.",ex:[
+        {en:"I'm here for my appointment at 3",pt:"Estou aqui pra minha consulta das 3"},
+        {en:"I'm here for blood work fasting",pt:"Estou aqui pra exame de sangue em jejum"}
       ]},
-      {term:"I keep getting",desc:"Pra sintomas recorrentes. 'I keep getting headaches' = continuo tendo dores de cabeça (acontece várias vezes). Diferente de 'I have a headache' (uma única ocorrência).",ex:[
-        {en:"I keep getting a stomachache mostly at night",pt:"Continuo tendo dor de estômago mais à noite"},
-        {en:"I keep getting a runny nose on and off",pt:"Continuo tendo nariz escorrendo que vai e vem"}
+      {term:"I need a refill",desc:"Pra renovar receita. 'Refill' = renovação. SEMPRE 'a refill OF my prescription' (com 'of'). 'For [duração]' = pra quantos dias. 'At this pharmacy' = nesta farmácia. Termos americanos comuns.",ex:[
+        {en:"I need a refill of my prescription for 30 days",pt:"Preciso renovar minha receita por 30 dias"},
+        {en:"I need a refill for my inhaler by Friday",pt:"Preciso renovar a bombinha até sexta"}
       ]},
-      {term:"I've been having",desc:"Present perfect continuous: enfatiza que o sintoma vem ocorrendo ao longo do tempo. 'I've been having headaches for a week' = venho tendo dores há uma semana. Mais grave que 'I have'.",ex:[
-        {en:"I've been having a runny nose for a few days",pt:"Venho tendo nariz escorrendo há alguns dias"},
-        {en:"I've been having a bad cough lately",pt:"Venho tendo uma tosse forte ultimamente"}
+      {term:"It hurts when",desc:"Frase-chave pra médico identificar dor. 'Hurts WHEN [ação]' = dói quando [ação]. Sempre presente simples no que vem depois: 'I move' / 'I breathe' / 'I touch it'. NÃO use gerúndio ('when moving' soa estranho aqui).",ex:[
+        {en:"It hurts when I breathe deeply",pt:"Dói quando respiro fundo"},
+        {en:"It hurts when I move my neck",pt:"Dói quando movo o pescoço"}
       ]},
-      {term:"since yesterday / for a few days",desc:"Marcadores de duração — críticos pra médico entender quanto tempo o sintoma existe. 'Since [marco]' = desde quando começou. 'For [tempo]' = quanto tempo passou. Não confunda os dois.",ex:[
-        {en:"I have a headache since yesterday",pt:"Tenho dor de cabeça desde ontem"},
-        {en:"I've been having a fever for a few days",pt:"Venho tendo febre há alguns dias"}
+      {term:"I'm allergic to",desc:"Pra declarar alergia. SEMPRE 'allergic TO' (com 'to'). Sem artigo no item: 'allergic to peanuts' / 'to penicillin' / 'to dairy'. Combine com a reação: 'and my throat closes up' / 'and I get hives'.",ex:[
+        {en:"I'm allergic to peanuts and my throat closes up",pt:"Sou alérgico a amendoim e minha garganta fecha"},
+        {en:"I'm allergic to penicillin so I can't take that",pt:"Sou alérgico a penicilina então não posso tomar"}
       ]},
-      {term:"that won't go away / mostly at night",desc:"Detalhes do sintoma. 'That won't go away' = que não passa (persistente). 'Mostly at night' = principalmente à noite (padrão). 'On and off' = vai e vem. 'Really bad' = bem ruim (intensidade). Estes detalhes ajudam o médico diagnosticar.",ex:[
-        {en:"I'm dealing with a bad cough that won't go away",pt:"Estou lidando com uma tosse forte que não passa"},
-        {en:"I keep getting a stomachache mostly at night",pt:"Continuo tendo dor de estômago mais à noite"}
+      {term:"since / for / on and off",desc:"Marcadores de duração — críticos pra médico. 'Since [marco]' = desde quando começou ('since this morning'). 'For [tempo]' = quanto tempo dura ('for two days'). 'On and off' = vai e vem (intermitente).",ex:[
+        {en:"I have a fever for two days",pt:"Tenho febre há dois dias"},
+        {en:"I have a stomachache on and off",pt:"Tenho dor de estômago que vai e vem"}
       ]},
     ]
   },
@@ -552,75 +720,274 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "working": {
     title: "work",
-    sub: "Cargo & networking",
-    desc: "Frases pra falar do seu cargo em inglês — entrevistas, networking, LinkedIn. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I work as",pt:"Trabalho como",s:TRI},
-      {en:"I'm employed as",pt:"Sou empregado(a) como",s:TRI},
-      {en:"I serve as",pt:"Atuo como",s:TRI},
-      {en:"I used to work as",pt:"Eu trabalhava como",s:TRI},
-      {en:"I'm now",pt:"Agora sou",s:TRI},
-      {en:"I'm currently",pt:"Atualmente sou",s:TRI},
-      {en:"I just started as",pt:"Acabei de começar como",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"a manager",pt:"gerente",s:TRI},
-      {en:"an analyst",pt:"analista",s:TRI},
-      {en:"a designer",pt:"designer",s:TRI},
-      {en:"a developer",pt:"dev",s:TRI},
-      {en:"a director",pt:"diretor(a)",s:TRI},
-      {en:"a consultant",pt:"consultor(a)",s:TRI},
-      {en:"a project lead",pt:"líder de projeto",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"at a startup",pt:"em uma startup",s:TRI},
-      {en:"at a multinational",pt:"em uma multinacional",s:TRI},
-      {en:"in marketing",pt:"em marketing",s:TRI},
-      {en:"in tech",pt:"em tech",s:TRI},
-      {en:"remotely",pt:"remotamente",s:TRI},
-      {en:"in São Paulo",pt:"em São Paulo",s:TRI},
-      {en:"for a small agency",pt:"em uma agência pequena",s:TRI},
-      {en:"part-time",pt:"meio período",s:TRI},
-    ]},
+    sub: "Projeto, vaga & reunião",
+    desc: "Pra navegar trabalho em inglês — projeto atual, candidatura, folga, reunião, salário. Cada opener abre uma cena profissional.",
+    tree: [
+      // Tarefa atual
+      { en:"I'm working on", pt:"Estou trabalhando em", colII:[
+        { en:"a new project", pt:"um novo projeto", colIII:[
+          {en:"for next Monday",pt:"pra segunda que vem"},
+          {en:"with the team",pt:"com o time"},
+          {en:"by myself",pt:"sozinho"},
+          {en:"that I'll present soon",pt:"que vou apresentar logo"},
+        ]},
+        { en:"a presentation", pt:"uma apresentação", colIII:[
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"for the client",pt:"pro cliente"},
+          {en:"for the all-hands",pt:"pra reunião geral"},
+          {en:"and I need feedback",pt:"e preciso de feedback"},
+        ]},
+        { en:"the report", pt:"o relatório", colIII:[
+          {en:"due Friday",pt:"que vence sexta"},
+          {en:"for the manager",pt:"pro gerente"},
+          {en:"on the Q3 numbers",pt:"sobre os números do Q3"},
+          {en:"and I'm almost done",pt:"e estou quase pronto"},
+        ]},
+        { en:"fixing this bug", pt:"corrigir esse bug", colIII:[
+          {en:"it's blocking the team",pt:"tá bloqueando o time"},
+          {en:"and it's tricky",pt:"e tá difícil"},
+          {en:"with another dev",pt:"com outro dev"},
+          {en:"by end of day",pt:"até o fim do dia"},
+        ]},
+      ]},
+
+      // Candidatura
+      { en:"I'd like to apply for", pt:"Quero me candidatar a", colII:[
+        { en:"this position", pt:"essa vaga", colIII:[
+          {en:"that you posted",pt:"que vocês publicaram"},
+          {en:"on LinkedIn",pt:"no LinkedIn"},
+          {en:"by Friday",pt:"até sexta"},
+          {en:"if it's still open",pt:"se ainda estiver aberta"},
+        ]},
+        { en:"a promotion", pt:"uma promoção", colIII:[
+          {en:"to senior",pt:"a sênior"},
+          {en:"in this team",pt:"nessa equipe"},
+          {en:"this cycle",pt:"esse ciclo"},
+          {en:"and I'd like to discuss",pt:"e queria conversar"},
+        ]},
+        { en:"the open role", pt:"a vaga aberta", colIII:[
+          {en:"on your team",pt:"no seu time"},
+          {en:"in marketing",pt:"em marketing"},
+          {en:"that I saw posted",pt:"que vi anunciada"},
+          {en:"if you have a referral",pt:"se você puder indicar"},
+        ]},
+        { en:"a remote job", pt:"um trabalho remoto", colIII:[
+          {en:"with your company",pt:"na sua empresa"},
+          {en:"that's posted",pt:"que tá publicada"},
+          {en:"by next week",pt:"até semana que vem"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Folga
+      { en:"Can I take", pt:"Posso tirar", colII:[
+        { en:"tomorrow off", pt:"folga amanhã", colIII:[
+          {en:"I'll work Monday instead",pt:"pego segunda no lugar"},
+          {en:"please",pt:"por favor"},
+          {en:"I have a personal thing",pt:"tenho um compromisso"},
+          {en:"my tasks are caught up",pt:"minhas tarefas estão em dia"},
+        ]},
+        { en:"a vacation day", pt:"um dia de férias", colIII:[
+          {en:"next Friday",pt:"sexta que vem"},
+          {en:"in two weeks",pt:"em duas semanas"},
+          {en:"please",pt:"por favor"},
+          {en:"I have nothing critical",pt:"não tenho nada crítico"},
+        ]},
+        { en:"a sick day", pt:"um atestado", colIII:[
+          {en:"today",pt:"hoje"},
+          {en:"I'm not feeling well",pt:"não estou me sentindo bem"},
+          {en:"and work from home tomorrow",pt:"e trabalhar de casa amanhã"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a long lunch", pt:"um almoço prolongado", colIII:[
+          {en:"on Tuesday",pt:"na terça"},
+          {en:"for an appointment",pt:"pra uma consulta"},
+          {en:"I'll be back by 2",pt:"volto às 2"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Agenda / reunião
+      { en:"I have a meeting", pt:"Tenho uma reunião", colII:[
+        { en:"at 3", pt:"às 3", colIII:[
+          {en:"that I can't move",pt:"que não dá pra mexer"},
+          {en:"with the client",pt:"com o cliente"},
+          {en:"for one hour",pt:"de uma hora"},
+          {en:"on the project",pt:"sobre o projeto"},
+        ]},
+        { en:"tomorrow", pt:"amanhã", colIII:[
+          {en:"at 10",pt:"às 10"},
+          {en:"with my manager",pt:"com meu gestor"},
+          {en:"about my goals",pt:"sobre minhas metas"},
+          {en:"that I need to prep for",pt:"que preciso preparar"},
+        ]},
+        { en:"with the client", pt:"com o cliente", colIII:[
+          {en:"at 4",pt:"às 4"},
+          {en:"to review the proposal",pt:"pra revisar a proposta"},
+          {en:"in person",pt:"presencial"},
+          {en:"I can't move",pt:"que não dá pra mexer"},
+        ]},
+        { en:"with my manager", pt:"com meu gestor", colIII:[
+          {en:"at 11",pt:"às 11"},
+          {en:"about my career",pt:"sobre minha carreira"},
+          {en:"for my 1-on-1",pt:"pra nossa 1-on-1"},
+          {en:"that I shouldn't miss",pt:"que não posso perder"},
+        ]},
+      ]},
+
+      // Indisponibilidade
+      { en:"I'm not available", pt:"Não estou disponível", colII:[
+        { en:"this afternoon", pt:"essa tarde", colIII:[
+          {en:"because I have a meeting",pt:"porque tenho reunião"},
+          {en:"can we move it to tomorrow?",pt:"podemos passar pra amanhã?"},
+          {en:"sorry",pt:"desculpa"},
+        ]},
+        { en:"on Friday", pt:"na sexta", colIII:[
+          {en:"I'm taking the day off",pt:"vou tirar folga"},
+          {en:"can we reschedule?",pt:"podemos remarcar?"},
+          {en:"please find another time",pt:"escolha outro horário"},
+        ]},
+        { en:"next week", pt:"semana que vem", colIII:[
+          {en:"I'll be on vacation",pt:"estarei de férias"},
+          {en:"please",pt:"por favor"},
+          {en:"can we do the week after?",pt:"podemos na seguinte?"},
+        ]},
+        { en:"for the rest of today", pt:"pelo resto de hoje", colIII:[
+          {en:"back-to-back meetings",pt:"reuniões em cima"},
+          {en:"can we talk tomorrow?",pt:"podemos falar amanhã?"},
+          {en:"sorry",pt:"desculpa"},
+        ]},
+      ]},
+
+      // Conversar com gestor
+      { en:"I'd like to discuss", pt:"Quero conversar sobre", colII:[
+        { en:"my salary", pt:"meu salário", colIII:[
+          {en:"in our next 1-on-1",pt:"na nossa próxima 1-on-1"},
+          {en:"when you have time",pt:"quando você tiver tempo"},
+          {en:"privately",pt:"em particular"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a raise", pt:"um aumento", colIII:[
+          {en:"this cycle",pt:"esse ciclo"},
+          {en:"based on my performance",pt:"com base na minha performance"},
+          {en:"in our next 1-on-1",pt:"na nossa próxima 1-on-1"},
+          {en:"privately",pt:"em particular"},
+        ]},
+        { en:"the project timeline", pt:"o prazo do projeto", colIII:[
+          {en:"with the team",pt:"com o time"},
+          {en:"in our next sync",pt:"no próximo sync"},
+          {en:"because it's tight",pt:"porque está apertado"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"my responsibilities", pt:"minhas responsabilidades", colIII:[
+          {en:"in our next 1-on-1",pt:"na nossa próxima 1-on-1"},
+          {en:"and the scope",pt:"e o escopo"},
+          {en:"when you have time",pt:"quando você tiver tempo"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Conclusão
+      { en:"I just finished", pt:"Acabei de terminar", colII:[
+        { en:"the report", pt:"o relatório", colIII:[
+          {en:"and I'm sending it now",pt:"e estou mandando agora"},
+          {en:"and I need feedback",pt:"e preciso de feedback"},
+          {en:"for review",pt:"pra revisão"},
+          {en:"please take a look",pt:"por favor dá uma olhada"},
+        ]},
+        { en:"the presentation", pt:"a apresentação", colIII:[
+          {en:"and I'm ready to present",pt:"e estou pronto pra apresentar"},
+          {en:"please review the slides",pt:"por favor revise os slides"},
+          {en:"earlier than expected",pt:"antes do esperado"},
+          {en:"and I'm free for next steps",pt:"e estou livre pra próximos passos"},
+        ]},
+        { en:"my tasks", pt:"minhas tarefas", colIII:[
+          {en:"so I'm free",pt:"então estou livre"},
+          {en:"earlier than expected",pt:"antes do esperado"},
+          {en:"what's next?",pt:"qual o próximo?"},
+          {en:"please assign more",pt:"por favor passe mais"},
+        ]},
+        { en:"the client call", pt:"a call com o cliente", colIII:[
+          {en:"it went well",pt:"foi bem"},
+          {en:"and they have feedback",pt:"e eles têm feedback"},
+          {en:"want a quick recap?",pt:"quer um resumo rápido?"},
+          {en:"so I'm sending notes",pt:"vou mandar a ata"},
+        ]},
+      ]},
+
+      // Pontos fortes
+      { en:"I excel", pt:"Sou bom(a)", colII:[
+        { en:"at presenting", pt:"em apresentar", colIII:[
+          {en:"in front of clients",pt:"pra clientes"},
+          {en:"to large audiences",pt:"pra plateias grandes"},
+          {en:"on technical topics",pt:"em temas técnicos"},
+          {en:"under pressure",pt:"sob pressão"},
+        ]},
+        { en:"at this role", pt:"nesse cargo", colIII:[
+          {en:"because I love the work",pt:"porque amo o trabalho"},
+          {en:"based on the feedback",pt:"baseado no feedback"},
+          {en:"and I'm ready for more",pt:"e estou pronto pra mais"},
+          {en:"with this team",pt:"com esse time"},
+        ]},
+        { en:"under pressure", pt:"sob pressão", colIII:[
+          {en:"when deadlines hit",pt:"quando o prazo aperta"},
+          {en:"on tight timelines",pt:"em prazos apertados"},
+          {en:"with the right team",pt:"com o time certo"},
+          {en:"and I stay focused",pt:"e mantenho o foco"},
+        ]},
+        { en:"at my job", pt:"no que faço", colIII:[
+          {en:"based on my reviews",pt:"baseado nas minhas avaliações"},
+          {en:"in this team",pt:"nessa equipe"},
+          {en:"because I love what I do",pt:"porque amo o que faço"},
+          {en:"and I deliver consistently",pt:"e entrego consistentemente"},
+        ]},
+        { en:"with new tools", pt:"com ferramentas novas", colIII:[
+          {en:"once I learn them",pt:"depois que aprendo"},
+          {en:"in any tech stack",pt:"em qualquer stack"},
+          {en:"and I learn fast",pt:"e aprendo rápido"},
+          {en:"so onboarding is smooth",pt:"então o onboarding é tranquilo"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I work as a manager at a startup",pt:"Trabalho como gerente em uma startup"},
-      {en:"I'm employed as an analyst in marketing",pt:"Sou empregado como analista em marketing"},
-      {en:"I serve as a designer in tech",pt:"Atuo como designer em tech"},
-      {en:"I used to work as a developer in São Paulo",pt:"Eu trabalhava como dev em São Paulo"},
-      {en:"I'm now a director at a multinational",pt:"Agora sou diretor em uma multinacional"},
-      {en:"I'm currently a consultant remotely",pt:"Atualmente sou consultor remotamente"},
-      {en:"I just started as a project lead for a small agency",pt:"Acabei de começar como líder de projeto em uma agência pequena"},
-      {en:"I work as a designer part-time",pt:"Trabalho como designer meio período"},
-      {en:"I'm employed as a developer in tech",pt:"Sou empregado como dev em tech"},
+      {en:"I'm working on a new project for next Monday",pt:"Estou trabalhando num projeto pra segunda que vem"},
+      {en:"I'd like to apply for this position by Friday",pt:"Quero me candidatar a essa vaga até sexta"},
+      {en:"Can I take tomorrow off please",pt:"Posso tirar folga amanhã por favor"},
+      {en:"I have a meeting at 3 with the client",pt:"Tenho reunião às 3 com o cliente"},
+      {en:"I'm not available this afternoon because I have a meeting",pt:"Não estou disponível essa tarde porque tenho reunião"},
+      {en:"I'd like to discuss my salary in our next 1-on-1",pt:"Quero conversar sobre meu salário na nossa próxima 1-on-1"},
+      {en:"I just finished the report and I need feedback",pt:"Acabei o relatório e preciso de feedback"},
+      {en:"I excel at presenting in front of clients",pt:"Sou bom em apresentar pra clientes"},
+      {en:"I excel under pressure when deadlines hit",pt:"Sou bom sob pressão quando o prazo aperta"},
     ],
     phrasals: [
-      {term:"I work as / I'm employed as",desc:"As duas formas mais usadas pra dizer seu cargo. 'I work as' é o mais comum em conversa; 'I'm employed as' é mais formal (CV, LinkedIn). SEMPRE 'as A/AN' antes do cargo. Erro clássico do brasileiro: 'I work like a manager' (errado, sempre 'as').",ex:[
-        {en:"I work as a manager at a startup",pt:"Trabalho como gerente em uma startup"},
-        {en:"I'm employed as an analyst in marketing",pt:"Sou empregado como analista em marketing"}
+      {term:"I'm working on",desc:"Pra status atual de tarefa. 'Working ON [item]' (com 'on'). Funciona pra projeto, apresentação, relatório, bug. Combine com prazo: 'for next Monday' / 'due Friday'.",ex:[
+        {en:"I'm working on a new project for next Monday",pt:"Estou trabalhando num projeto pra segunda que vem"},
+        {en:"I'm working on the report due Friday",pt:"Estou trabalhando no relatório que vence sexta"}
       ]},
-      {term:"I serve as",desc:"Forma mais formal e elegante. Comum em descrições de função em conselhos, comitês, ou cargos sêniores. 'I serve as a director on the board' soa muito profissional. Mesmo padrão: 'as A/AN'.",ex:[
-        {en:"I serve as a designer in tech",pt:"Atuo como designer em tech"},
-        {en:"I serve as a consultant for a small agency",pt:"Atuo como consultor em uma agência pequena"}
+      {term:"I'd like to apply for",desc:"Frase formal pra candidatura. SEMPRE 'apply FOR' (com 'for'). 'A position' / 'a promotion' / 'the open role' / 'a remote job'. Erro clássico: 'apply to' (errado pra vaga; 'apply to' é só pra escolas).",ex:[
+        {en:"I'd like to apply for this position by Friday",pt:"Quero me candidatar a essa vaga até sexta"},
+        {en:"I'd like to apply for a promotion this cycle",pt:"Quero me candidatar a uma promoção esse ciclo"}
       ]},
-      {term:"I used to work as",desc:"Pra falar de cargo passado. 'Used to' é a estrutura clássica pra hábito/situação no passado que mudou. SEMPRE 'used to + verbo no infinitivo' (sem -ed). 'I used to worked' está errado.",ex:[
-        {en:"I used to work as a developer in São Paulo",pt:"Eu trabalhava como dev em São Paulo"},
-        {en:"I used to work as an analyst at a multinational",pt:"Eu trabalhava como analista em uma multinacional"}
+      {term:"Can I take [time] off",desc:"Pra pedir folga ao gestor. Estrutura clássica: 'take [tempo] OFF' (com 'off'). 'Tomorrow off' / 'a day off' / 'the morning off'. 'A sick day' = atestado. 'A vacation day' = dia de férias.",ex:[
+        {en:"Can I take tomorrow off please",pt:"Posso tirar folga amanhã por favor"},
+        {en:"Can I take a sick day today",pt:"Posso tirar atestado hoje"}
       ]},
-      {term:"I'm now / I'm currently",desc:"Pra cargo atual com ênfase. 'I'm now [cargo]' = mudou recentemente. 'I'm currently [cargo]' = situação presente, mais formal. Os dois funcionam direto com substantivo (sem 'as a/an').",ex:[
-        {en:"I'm now a director at a multinational",pt:"Agora sou diretor em uma multinacional"},
-        {en:"I'm currently a consultant remotely",pt:"Atualmente sou consultor remotamente"}
+      {term:"I'm not available / I have a meeting",desc:"Pra dizer que não pode falar/encontrar. 'Not available' = indisponível (sem 'not free'). 'I have a meeting AT [hora]' / 'WITH [pessoa]' / 'ABOUT [tópico]'. Sempre 'AT 3', não 'in 3'.",ex:[
+        {en:"I'm not available this afternoon",pt:"Não estou disponível essa tarde"},
+        {en:"I have a meeting at 3 with the client",pt:"Tenho reunião às 3 com o cliente"}
       ]},
-      {term:"I just started as",desc:"Pra novo emprego (semanas/meses). 'I just started' = comecei há pouco. SEMPRE 'as A/AN' como em 'work as'. Bom pra primeiro dia, networking inicial.",ex:[
-        {en:"I just started as a project lead",pt:"Acabei de começar como líder de projeto"},
-        {en:"I just started as a manager at a startup",pt:"Acabei de começar como gerente em uma startup"}
+      {term:"I'd like to discuss",desc:"Pra abrir conversa séria com gestor. 'Discuss' = discutir, conversar (não confunda com discussão acalorada). Sempre 'discuss [substantivo]' (sem 'about'). Erro clássico: 'discuss about my salary' (errado).",ex:[
+        {en:"I'd like to discuss my salary in our next 1-on-1",pt:"Quero conversar sobre meu salário na nossa próxima 1-on-1"},
+        {en:"I'd like to discuss a raise this cycle",pt:"Quero conversar sobre um aumento esse ciclo"}
       ]},
-      {term:"at a startup / at a multinational",desc:"Pra falar do tipo de empresa. 'AT a [empresa]' (sempre 'at'). Tipos: startup, multinational (multinacional), small agency (agência pequena), tech company (empresa de tech). NÃO 'in a startup' que é raro.",ex:[
-        {en:"I work as a manager at a startup",pt:"Trabalho como gerente em uma startup"},
-        {en:"I'm now a director at a multinational",pt:"Agora sou diretor em uma multinacional"}
+      {term:"I just finished",desc:"Pra reportar conclusão recente. 'Just finished' = acabei de terminar. SEMPRE 'finished + substantivo' (objeto direto, sem preposição). 'Finished the report' / 'finished my tasks' / 'finished the call'.",ex:[
+        {en:"I just finished the report and I need feedback",pt:"Acabei o relatório e preciso de feedback"},
+        {en:"I just finished my tasks so I'm free",pt:"Acabei minhas tarefas então estou livre"}
       ]},
-      {term:"in marketing / in tech / remotely",desc:"Pra área ou modalidade. 'IN [área]' (in marketing, in tech, in finance). 'Remotely' = remoto (sem preposição). 'Part-time' = meio período. 'Full-time' = integral. Todos funcionam no fim da frase.",ex:[
-        {en:"I'm employed as an analyst in marketing",pt:"Sou empregado como analista em marketing"},
-        {en:"I'm currently a consultant remotely",pt:"Atualmente sou consultor remotamente"}
+      {term:"I excel",desc:"Pra falar de pontos fortes (entrevista, review). 'Excel AT [coisa]' = sou bom em. 'Excel UNDER [condição]' = me destaco sob (pressão, prazo). Não exagere — só use quando souber sustentar com exemplo.",ex:[
+        {en:"I excel at presenting in front of clients",pt:"Sou bom em apresentar pra clientes"},
+        {en:"I excel under pressure when deadlines hit",pt:"Sou bom sob pressão quando o prazo aperta"}
       ]},
     ]
   },
@@ -632,77 +999,242 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "education": {
     title: "education",
-    sub: "Estudos & cursos",
-    desc: "Frases pra falar dos seus estudos em inglês — área, instituição, modalidade. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'm studying",pt:"Estou estudando",s:TRI},
-      {en:"I'm learning",pt:"Estou aprendendo",s:TRI},
-      {en:"I'm taking a course on",pt:"Estou fazendo um curso de",s:TRI},
-      {en:"I'm interested in",pt:"Tenho interesse em",s:TRI},
-      {en:"I'm focused on",pt:"Estou focado(a) em",s:TRI},
-      {en:"I'm reading about",pt:"Estou lendo sobre",s:TRI},
-      {en:"I'm working on",pt:"Estou trabalhando em",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"business",pt:"administração",s:TRI},
-      {en:"computer science",pt:"ciência da computação",s:TRI},
-      {en:"law",pt:"direito",s:TRI},
-      {en:"engineering",pt:"engenharia",s:TRI},
-      {en:"design",pt:"design",s:TRI},
-      {en:"English",pt:"inglês",s:TRI},
-      {en:"marketing",pt:"marketing",s:TRI},
-      {en:"psychology",pt:"psicologia",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"at FGV",pt:"na FGV",s:TRI},
-      {en:"online",pt:"online",s:TRI},
-      {en:"on YouTube",pt:"no YouTube",s:TRI},
-      {en:"for fun",pt:"por diversão",s:TRI},
-      {en:"for my career",pt:"pra minha carreira",s:TRI},
-      {en:"lately",pt:"ultimamente",s:TRI},
-      {en:"since last year",pt:"desde o ano passado",s:TRI},
-      {en:"part-time",pt:"meio período",s:TRI},
-      {en:"full-time",pt:"integral",s:TRI},
-    ]},
+    sub: "Curso, aula & dúvida",
+    desc: "Pra navegar estudos em inglês — matrícula, foco, inscrição, faltas, dúvidas. Cada opener abre uma cena de estudante.",
+    tree: [
+      // Matrícula
+      { en:"I'm enrolled in", pt:"Estou matriculado em", colII:[
+        { en:"an English course", pt:"um curso de inglês", colIII:[
+          {en:"for two semesters",pt:"por dois semestres"},
+          {en:"part-time",pt:"meio período"},
+          {en:"online",pt:"online"},
+          {en:"starting next month",pt:"a partir do próximo mês"},
+        ]},
+        { en:"a master's program", pt:"um mestrado", colIII:[
+          {en:"at FGV",pt:"na FGV"},
+          {en:"in business",pt:"em administração"},
+          {en:"part-time",pt:"meio período"},
+          {en:"that takes two years",pt:"que dura dois anos"},
+        ]},
+        { en:"online classes", pt:"aulas online", colIII:[
+          {en:"on weekdays",pt:"em dias de semana"},
+          {en:"in the evenings",pt:"à noite"},
+          {en:"with live lectures",pt:"com aulas ao vivo"},
+          {en:"and a final project",pt:"e um projeto final"},
+        ]},
+        { en:"a certificate", pt:"uma certificação", colIII:[
+          {en:"in marketing",pt:"em marketing"},
+          {en:"on Coursera",pt:"no Coursera"},
+          {en:"that takes 6 months",pt:"de 6 meses"},
+          {en:"for my career",pt:"pra minha carreira"},
+        ]},
+      ]},
+
+      // Foco/área
+      { en:"I'm studying", pt:"Estou estudando", colII:[
+        { en:"English", pt:"inglês", colIII:[
+          {en:"at home",pt:"em casa"},
+          {en:"with a tutor",pt:"com tutor"},
+          {en:"two hours a day",pt:"duas horas por dia"},
+          {en:"to fluency",pt:"até a fluência"},
+        ]},
+        { en:"for the test", pt:"pra prova", colIII:[
+          {en:"next week",pt:"semana que vem"},
+          {en:"every night",pt:"toda noite"},
+          {en:"with a study group",pt:"com um grupo de estudo"},
+          {en:"all by myself",pt:"sozinho"},
+        ]},
+        { en:"abroad", pt:"no exterior", colIII:[
+          {en:"in the US",pt:"nos EUA"},
+          {en:"for one year",pt:"por um ano"},
+          {en:"on a scholarship",pt:"com bolsa"},
+          {en:"and loving it",pt:"e adorando"},
+        ]},
+        { en:"business", pt:"administração", colIII:[
+          {en:"at the university",pt:"na faculdade"},
+          {en:"online",pt:"online"},
+          {en:"for two more years",pt:"por mais dois anos"},
+          {en:"and working at the same time",pt:"e trabalhando junto"},
+        ]},
+      ]},
+
+      // Inscrição
+      { en:"I'd like to sign up for", pt:"Quero me inscrever em", colII:[
+        { en:"a class", pt:"uma aula", colIII:[
+          {en:"for next month",pt:"pra próximo mês"},
+          {en:"online",pt:"online"},
+          {en:"in person",pt:"presencial"},
+          {en:"for beginners",pt:"pra iniciantes"},
+        ]},
+        { en:"a workshop", pt:"um workshop", colIII:[
+          {en:"on writing",pt:"de escrita"},
+          {en:"this Saturday",pt:"esse sábado"},
+          {en:"for a weekend",pt:"de um fim de semana"},
+          {en:"if there's space",pt:"se tiver vaga"},
+        ]},
+        { en:"the next term", pt:"o próximo módulo", colIII:[
+          {en:"in advanced English",pt:"de inglês avançado"},
+          {en:"starting in March",pt:"começando em março"},
+          {en:"if it's still open",pt:"se ainda estiver aberto"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a private tutor", pt:"um professor particular", colIII:[
+          {en:"for one-on-one",pt:"pra aula individual"},
+          {en:"twice a week",pt:"duas vezes por semana"},
+          {en:"online",pt:"online"},
+          {en:"for next month",pt:"pra próximo mês"},
+        ]},
+      ]},
+
+      // Faltas / atraso
+      { en:"I missed", pt:"Perdi", colII:[
+        { en:"the class", pt:"a aula", colIII:[
+          {en:"because I was sick",pt:"porque tava doente"},
+          {en:"yesterday",pt:"ontem"},
+          {en:"and I need to make it up",pt:"e preciso recuperar"},
+          {en:"do you have notes?",pt:"você tem o material?"},
+        ]},
+        { en:"the deadline", pt:"o prazo", colIII:[
+          {en:"by one day",pt:"por um dia"},
+          {en:"can I get an extension?",pt:"posso pedir prorrogação?"},
+          {en:"because of an emergency",pt:"por causa de uma emergência"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the test", pt:"a prova", colIII:[
+          {en:"because I was sick",pt:"porque tava doente"},
+          {en:"and I have a doctor's note",pt:"e tenho atestado"},
+          {en:"can I retake it?",pt:"posso refazer?"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the email", pt:"o e-mail", colIII:[
+          {en:"about the assignment",pt:"sobre a tarefa"},
+          {en:"can you forward it?",pt:"pode encaminhar?"},
+          {en:"with the deadline",pt:"com o prazo"},
+          {en:"sorry",pt:"desculpa"},
+        ]},
+      ]},
+
+      // Tarefa em andamento
+      { en:"I have an assignment", pt:"Tenho uma tarefa", colII:[
+        { en:"due tomorrow", pt:"pra amanhã", colIII:[
+          {en:"on climate change",pt:"sobre mudança climática"},
+          {en:"that I haven't started",pt:"que ainda não comecei"},
+          {en:"5 pages long",pt:"de 5 páginas"},
+          {en:"and I'm stressed",pt:"e estou estressado"},
+        ]},
+        { en:"due Friday", pt:"pra sexta", colIII:[
+          {en:"for English class",pt:"da aula de inglês"},
+          {en:"that I'm halfway through",pt:"que tô na metade"},
+          {en:"and I need help",pt:"e preciso de ajuda"},
+          {en:"can you review?",pt:"pode revisar?"},
+        ]},
+        { en:"I haven't started", pt:"que não comecei", colIII:[
+          {en:"and the deadline is Friday",pt:"e o prazo é sexta"},
+          {en:"on a topic I don't understand",pt:"sobre um tema que não entendo"},
+          {en:"and I'm stuck",pt:"e tô travado"},
+          {en:"any tips?",pt:"alguma dica?"},
+        ]},
+        { en:"I'm still working on", pt:"que ainda estou fazendo", colIII:[
+          {en:"and need feedback",pt:"e preciso de feedback"},
+          {en:"due tomorrow",pt:"pra amanhã"},
+          {en:"that's almost done",pt:"que tá quase pronta"},
+          {en:"can you take a look?",pt:"pode dar uma olhada?"},
+        ]},
+      ]},
+
+      // Dúvida pro professor
+      { en:"Can you explain", pt:"Pode explicar", colII:[
+        { en:"this exercise", pt:"esse exercício", colIII:[
+          {en:"again",pt:"de novo"},
+          {en:"slowly",pt:"devagar"},
+          {en:"step by step",pt:"passo a passo"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"what's on the test", pt:"o que cai na prova", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"in detail",pt:"em detalhe"},
+          {en:"so I can study",pt:"pra eu poder estudar"},
+        ]},
+        { en:"what we did last class", pt:"o que fizemos na última aula", colIII:[
+          {en:"because I missed it",pt:"porque eu perdi"},
+          {en:"in summary",pt:"em resumo"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the homework", pt:"a tarefa de casa", colIII:[
+          {en:"again",pt:"de novo"},
+          {en:"with an example",pt:"com um exemplo"},
+          {en:"step by step",pt:"passo a passo"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Meta / esforço
+      { en:"I'm trying to", pt:"Estou tentando", colII:[
+        { en:"improve my English", pt:"melhorar meu inglês", colIII:[
+          {en:"by the end of the year",pt:"até o fim do ano"},
+          {en:"to fluency",pt:"até a fluência"},
+          {en:"with daily practice",pt:"com prática diária"},
+          {en:"on my own",pt:"sozinho"},
+        ]},
+        { en:"get my certificate", pt:"tirar meu certificado", colIII:[
+          {en:"by next month",pt:"até o mês que vem"},
+          {en:"in advanced English",pt:"de inglês avançado"},
+          {en:"after the test",pt:"depois da prova"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"pass this test", pt:"passar nessa prova", colIII:[
+          {en:"by studying every night",pt:"estudando toda noite"},
+          {en:"with a study group",pt:"com um grupo de estudo"},
+          {en:"on my first try",pt:"de primeira"},
+          {en:"to move on",pt:"pra seguir adiante"},
+        ]},
+        { en:"understand this topic", pt:"entender esse tema", colIII:[
+          {en:"on my own",pt:"sozinho"},
+          {en:"with extra reading",pt:"com leitura extra"},
+          {en:"by tomorrow",pt:"até amanhã"},
+          {en:"any tips?",pt:"alguma dica?"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'm studying business at FGV",pt:"Estou estudando administração na FGV"},
-      {en:"I'm learning computer science online",pt:"Estou aprendendo ciência da computação online"},
-      {en:"I'm taking a course on law on YouTube",pt:"Estou fazendo um curso de direito no YouTube"},
-      {en:"I'm interested in engineering for my career",pt:"Tenho interesse em engenharia pra minha carreira"},
-      {en:"I'm focused on design lately",pt:"Estou focado em design ultimamente"},
-      {en:"I'm reading about psychology for fun",pt:"Estou lendo sobre psicologia por diversão"},
-      {en:"I'm working on marketing since last year",pt:"Estou trabalhando em marketing desde o ano passado"},
-      {en:"I'm studying English part-time",pt:"Estou estudando inglês meio período"},
-      {en:"I'm interested in psychology lately",pt:"Tenho interesse em psicologia ultimamente"},
+      {en:"I'm enrolled in an English course for two semesters",pt:"Estou matriculado num curso de inglês por dois semestres"},
+      {en:"I'm studying English with a tutor",pt:"Estou estudando inglês com tutor"},
+      {en:"I'd like to sign up for a class for next month",pt:"Quero me inscrever numa aula pra próximo mês"},
+      {en:"I missed the class because I was sick",pt:"Perdi a aula porque tava doente"},
+      {en:"I have an assignment due tomorrow that I haven't started",pt:"Tenho tarefa pra amanhã que ainda não comecei"},
+      {en:"Can you explain this exercise step by step",pt:"Pode explicar esse exercício passo a passo"},
+      {en:"I'm trying to improve my English by the end of the year",pt:"Estou tentando melhorar meu inglês até o fim do ano"},
+      {en:"I'm enrolled in a master's program at FGV",pt:"Estou matriculado num mestrado na FGV"},
+      {en:"I missed the deadline by one day",pt:"Perdi o prazo por um dia"},
     ],
     phrasals: [
-      {term:"I'm studying / I'm learning",desc:"'I'm studying' = formal, geralmente faculdade ou curso oficial. 'I'm learning' = mais geral, inclui auto-estudo. 'I'm taking a course on' especifica que é um curso. Não use 'I do English' (errado) — sempre 'study/learn English'.",ex:[
-        {en:"I'm studying business at FGV",pt:"Estou estudando administração na FGV"},
-        {en:"I'm learning computer science online",pt:"Estou aprendendo ciência da computação online"}
+      {term:"I'm enrolled in",desc:"Forma formal pra matrícula. SEMPRE 'enrolled IN' (com 'in'). 'A class' / 'a course' / 'a program' (com artigo). Mais formal que 'I'm taking'. Comum em CV e formulários.",ex:[
+        {en:"I'm enrolled in an English course",pt:"Estou matriculado num curso de inglês"},
+        {en:"I'm enrolled in a master's program at FGV",pt:"Estou matriculado num mestrado na FGV"}
       ]},
-      {term:"I'm taking a course on",desc:"Estrutura específica pra cursos individuais (não graduação completa). SEMPRE 'a course ON [assunto]' (com preposição 'on'). Erro clássico: 'a course OF business' (errado, sempre 'on').",ex:[
-        {en:"I'm taking a course on law on YouTube",pt:"Estou fazendo um curso de direito no YouTube"},
-        {en:"I'm taking a course on marketing online",pt:"Estou fazendo um curso de marketing online"}
+      {term:"I'm studying",desc:"Pra falar do foco atual. 'Studying [matéria]' (sem artigo: 'studying English', 'studying business'). 'Studying FOR [prova]' = estudando pra (com 'for'). 'Studying ABROAD' = no exterior.",ex:[
+        {en:"I'm studying English with a tutor",pt:"Estou estudando inglês com tutor"},
+        {en:"I'm studying for the test next week",pt:"Estou estudando pra prova semana que vem"}
       ]},
-      {term:"I'm interested in / I'm focused on",desc:"'Interested IN' (sempre 'in') = tenho interesse. 'Focused ON' (sempre 'on') = focado em. Os dois funcionam pra falar de área de estudo. 'In' é mais geral; 'on' é mais ativo, com dedicação.",ex:[
-        {en:"I'm interested in engineering for my career",pt:"Tenho interesse em engenharia pra minha carreira"},
-        {en:"I'm focused on design lately",pt:"Estou focado em design ultimamente"}
+      {term:"I'd like to sign up for",desc:"Pra inscrição. SEMPRE 'sign up FOR [coisa]' (com 'for'). 'A class' / 'a workshop' / 'a tutor' (com artigo). 'Sign up' é phrasal verb separável: 'sign me up'.",ex:[
+        {en:"I'd like to sign up for a class",pt:"Quero me inscrever numa aula"},
+        {en:"I'd like to sign up for a private tutor",pt:"Quero me inscrever com um professor particular"}
       ]},
-      {term:"I'm reading about / I'm working on",desc:"'Reading about [tema]' = lendo sobre (auto-estudo informal). 'Working on [tema]' = trabalhando em (estudo ativo, projeto). Os dois são bons pra mostrar interesse autodidata.",ex:[
-        {en:"I'm reading about psychology for fun",pt:"Estou lendo sobre psicologia por diversão"},
-        {en:"I'm working on marketing since last year",pt:"Estou trabalhando em marketing desde o ano passado"}
+      {term:"I missed",desc:"Pra falta. 'Missed THE class' / 'THE deadline' / 'THE test' (com 'the' — específico que perdi). Combine com motivo: 'because I was sick' / 'by one day' (por um dia).",ex:[
+        {en:"I missed the class because I was sick",pt:"Perdi a aula porque tava doente"},
+        {en:"I missed the deadline by one day",pt:"Perdi o prazo por um dia"}
       ]},
-      {term:"at FGV / online / on YouTube",desc:"Como falar onde estuda. 'AT [instituição]' (sempre 'at' pra escola/faculdade). 'Online' não precisa preposição. 'On YouTube' (sempre 'on' pra plataforma de vídeo). Erro comum: 'in FGV' (errado, sempre 'at').",ex:[
-        {en:"I'm studying business at FGV",pt:"Estou estudando administração na FGV"},
-        {en:"I'm learning English on YouTube",pt:"Estou aprendendo inglês no YouTube"}
+      {term:"I have an assignment",desc:"Frase exata pra tarefa de faculdade. 'Assignment' = tarefa, trabalho. 'DUE [data]' = vence em (sem 'on'). 'Due tomorrow' / 'due Friday'. Erro comum: 'due ON Friday' (errado, sem 'on').",ex:[
+        {en:"I have an assignment due tomorrow",pt:"Tenho uma tarefa pra amanhã"},
+        {en:"I have an assignment I haven't started",pt:"Tenho uma tarefa que não comecei"}
       ]},
-      {term:"for fun / for my career",desc:"Motivações comuns. 'For fun' = por diversão (hobby). 'For my career' = pra carreira (profissional). 'For my own learning' = pra meu aprendizado (autodidata). 'For school' = pra escola.",ex:[
-        {en:"I'm reading about psychology for fun",pt:"Estou lendo sobre psicologia por diversão"},
-        {en:"I'm interested in engineering for my career",pt:"Tenho interesse em engenharia pra minha carreira"}
+      {term:"Can you explain",desc:"Pra pedir explicação. 'Can you explain [coisa]' (sem 'about'). Erro clássico do brasileiro: 'explain ABOUT' (errado). 'Step by step' / 'slowly' / 'with an example' especificam como.",ex:[
+        {en:"Can you explain this exercise step by step",pt:"Pode explicar esse exercício passo a passo"},
+        {en:"Can you explain what's on the test in detail",pt:"Pode explicar o que cai na prova em detalhe"}
       ]},
-      {term:"part-time / full-time / since last year",desc:"Modalidade de estudo. 'Part-time' = meio período. 'Full-time' = integral. 'Online' = à distância. 'Since [marco]' = desde quando começou ('since last year'). 'Lately' = recentemente. Sempre no fim da frase.",ex:[
-        {en:"I'm studying English part-time",pt:"Estou estudando inglês meio período"},
-        {en:"I'm working on marketing since last year",pt:"Estou trabalhando em marketing desde o ano passado"}
+      {term:"I'm trying to",desc:"Pra falar de meta/esforço. 'Trying TO [verbo no infinitivo]'. 'Improve' / 'get my certificate' / 'pass this test' / 'understand'. Combine com prazo: 'by the end of the year' / 'by next month'.",ex:[
+        {en:"I'm trying to improve my English by the end of the year",pt:"Estou tentando melhorar meu inglês até o fim do ano"},
+        {en:"I'm trying to pass this test on my first try",pt:"Estou tentando passar nessa prova de primeira"}
       ]},
     ]
   },
@@ -714,75 +1246,235 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "driving": {
     title: "driving",
-    sub: "Aluguel & serviços",
-    desc: "Frases pra qualquer serviço com carro em inglês — alugar, abastecer, estacionar, lavar. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
-      {en:"I want to",pt:"Eu quero",s:TRI},
-      {en:"I need to",pt:"Eu preciso",s:TRI},
-      {en:"Can I",pt:"Posso",s:TRI},
-      {en:"Could I",pt:"Posso",s:TRI},
-      {en:"Where can I",pt:"Onde posso",s:TRI},
-      {en:"Could you help me",pt:"Pode me ajudar a",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"rent a car",pt:"alugar um carro",s:TRI},
-      {en:"fill up the tank",pt:"encher o tanque",s:TRI},
-      {en:"park the car",pt:"estacionar o carro",s:TRI},
-      {en:"wash the car",pt:"lavar o carro",s:TRI},
-      {en:"return this car",pt:"devolver esse carro",s:TRI},
-      {en:"drop off the keys",pt:"deixar as chaves",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"today",pt:"hoje",s:TRI},
-      {en:"right now",pt:"agora",s:TRI},
-      {en:"nearby",pt:"perto",s:TRI},
-      {en:"with insurance",pt:"com seguro",s:TRI},
-      {en:"safely",pt:"com segurança",s:TRI},
-      {en:"quickly",pt:"rapidinho",s:TRI},
-      {en:"if possible",pt:"se possível",s:TRI},
-      {en:"in advance",pt:"com antecedência",s:TRI},
-      {en:"please",pt:"por favor",s:TRI},
-    ]},
+    sub: "Aluguel, direção & problema",
+    desc: "Pra resolver questões de carro em inglês — alugar, perguntar caminho, lidar com pane, manobra. Cada opener abre uma cena.",
+    tree: [
+      // Aluguel
+      { en:"I'd like to rent", pt:"Quero alugar", colII:[
+        { en:"a small car", pt:"um carro pequeno", colIII:[
+          {en:"for the weekend",pt:"pro fim de semana"},
+          {en:"for a week",pt:"por uma semana"},
+          {en:"with insurance",pt:"com seguro"},
+          {en:"automatic",pt:"automático"},
+        ]},
+        { en:"an SUV", pt:"um SUV", colIII:[
+          {en:"for a road trip",pt:"pra uma viagem"},
+          {en:"for a week",pt:"por uma semana"},
+          {en:"with full coverage",pt:"com cobertura total"},
+          {en:"for 5 people",pt:"pra 5 pessoas"},
+        ]},
+        { en:"an automatic", pt:"um automático", colIII:[
+          {en:"for the day",pt:"pelo dia"},
+          {en:"with insurance",pt:"com seguro"},
+          {en:"with GPS included",pt:"com GPS incluso"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"something with GPS", pt:"algo com GPS", colIII:[
+          {en:"for tourism",pt:"pra turismo"},
+          {en:"with insurance",pt:"com seguro"},
+          {en:"for 3 days",pt:"por 3 dias"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Pedir direção
+      { en:"Can you tell me", pt:"Pode me dizer", colII:[
+        { en:"how to get to", pt:"como chegar em", colIII:[
+          {en:"the airport",pt:"o aeroporto"},
+          {en:"downtown",pt:"o centro"},
+          {en:"this address",pt:"esse endereço"},
+          {en:"the highway",pt:"a rodovia"},
+        ]},
+        { en:"where the nearest gas station is", pt:"onde tem posto mais próximo", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"on this route",pt:"nessa rota"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"how to get downtown", pt:"como chegar no centro", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"avoiding traffic",pt:"sem trânsito"},
+          {en:"the fastest way",pt:"do jeito mais rápido"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"if I'm on the right road", pt:"se estou no caminho certo", colIII:[
+          {en:"to the airport",pt:"pro aeroporto"},
+          {en:"for downtown",pt:"pro centro"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Desorientação
+      { en:"I think I'm", pt:"Acho que estou", colII:[
+        { en:"lost", pt:"perdido(a)", colIII:[
+          {en:"can you help?",pt:"pode ajudar?"},
+          {en:"I missed my exit",pt:"perdi a saída"},
+          {en:"and my GPS isn't working",pt:"e meu GPS não tá funcionando"},
+          {en:"I need to find the highway",pt:"preciso achar a rodovia"},
+        ]},
+        { en:"going the wrong way", pt:"indo no caminho errado", colIII:[
+          {en:"can you point me?",pt:"pode me apontar?"},
+          {en:"where do I turn around?",pt:"onde dou meia volta?"},
+          {en:"my GPS says otherwise",pt:"meu GPS diz outra coisa"},
+        ]},
+        { en:"running late", pt:"atrasado(a)", colIII:[
+          {en:"any shortcut?",pt:"algum atalho?"},
+          {en:"to the airport",pt:"pro aeroporto"},
+          {en:"because of traffic",pt:"por causa do trânsito"},
+          {en:"can you help me get there fast?",pt:"pode me ajudar a chegar rápido?"},
+        ]},
+      ]},
+
+      // Problema mecânico
+      { en:"My car", pt:"Meu carro", colII:[
+        { en:"broke down", pt:"quebrou", colIII:[
+          {en:"on the highway",pt:"na estrada"},
+          {en:"in the parking lot",pt:"no estacionamento"},
+          {en:"and I need a tow",pt:"e preciso de guincho"},
+          {en:"please send help",pt:"por favor mandem ajuda"},
+        ]},
+        { en:"won't start", pt:"não dá partida", colIII:[
+          {en:"this morning",pt:"essa manhã"},
+          {en:"I think the battery is dead",pt:"acho que a bateria foi"},
+          {en:"can you send a jump start?",pt:"podem mandar pra dar partida?"},
+          {en:"please send help",pt:"por favor mandem ajuda"},
+        ]},
+        { en:"has a flat tire", pt:"tá com pneu furado", colIII:[
+          {en:"on the highway",pt:"na estrada"},
+          {en:"and I don't have a spare",pt:"e não tenho estepe"},
+          {en:"can you send a tow?",pt:"pode mandar guincho?"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"is making a weird noise", pt:"tá fazendo um barulho estranho", colIII:[
+          {en:"since this morning",pt:"desde de manhã"},
+          {en:"when I brake",pt:"quando freio"},
+          {en:"under the hood",pt:"no motor"},
+          {en:"can someone check it?",pt:"alguém pode dar uma olhada?"},
+        ]},
+      ]},
+
+      // Manobra/ação
+      { en:"I need to", pt:"Preciso", colII:[
+        { en:"fill up", pt:"abastecer", colIII:[
+          {en:"with regular",pt:"com gasolina comum"},
+          {en:"with premium",pt:"com aditivada"},
+          {en:"the tank",pt:"o tanque"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"park", pt:"estacionar", colIII:[
+          {en:"for an hour",pt:"por uma hora"},
+          {en:"nearby",pt:"perto"},
+          {en:"is this spot okay?",pt:"esse lugar tá ok?"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"pull over", pt:"encostar", colIII:[
+          {en:"on this side",pt:"desse lado"},
+          {en:"for a minute",pt:"por um minuto"},
+          {en:"is it okay here?",pt:"pode aqui?"},
+          {en:"to check something",pt:"pra checar uma coisa"},
+        ]},
+        { en:"take a detour", pt:"fazer um desvio", colIII:[
+          {en:"because of traffic",pt:"por causa do trânsito"},
+          {en:"around this construction",pt:"pra desviar dessa obra"},
+          {en:"the fastest way",pt:"do jeito mais rápido"},
+          {en:"can you help?",pt:"pode ajudar?"},
+        ]},
+      ]},
+
+      // Dúvida de regra
+      { en:"Is it okay to", pt:"Pode", colII:[
+        { en:"park here", pt:"estacionar aqui", colIII:[
+          {en:"during rush hour",pt:"em horário de pico"},
+          {en:"for an hour",pt:"por uma hora"},
+          {en:"on this side",pt:"desse lado"},
+          {en:"without a permit",pt:"sem ticket"},
+        ]},
+        { en:"turn left", pt:"virar à esquerda", colIII:[
+          {en:"here",pt:"aqui"},
+          {en:"on red",pt:"no vermelho"},
+          {en:"during rush hour",pt:"em horário de pico"},
+          {en:"on this street",pt:"nessa rua"},
+        ]},
+        { en:"make a U-turn", pt:"dar meia volta", colIII:[
+          {en:"here",pt:"aqui"},
+          {en:"at this intersection",pt:"nesse cruzamento"},
+          {en:"if I missed my exit",pt:"se perdi a saída"},
+          {en:"please confirm",pt:"por favor confirma"},
+        ]},
+        { en:"pass on this side", pt:"ultrapassar por aqui", colIII:[
+          {en:"on the right",pt:"pela direita"},
+          {en:"on the highway",pt:"na rodovia"},
+          {en:"in this lane",pt:"nessa faixa"},
+          {en:"or do I need to wait?",pt:"ou tenho que esperar?"},
+        ]},
+      ]},
+
+      // Serviço de emergência/extra
+      { en:"Can I get", pt:"Posso pedir", colII:[
+        { en:"a tow", pt:"um guincho", colIII:[
+          {en:"as soon as possible",pt:"o quanto antes"},
+          {en:"to the nearest shop",pt:"pra oficina mais próxima"},
+          {en:"my location is...",pt:"minha localização é..."},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a jump start", pt:"pra dar partida", colIII:[
+          {en:"my battery is dead",pt:"minha bateria foi"},
+          {en:"as soon as possible",pt:"o quanto antes"},
+          {en:"my location is...",pt:"minha localização é..."},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"directions", pt:"direção", colIII:[
+          {en:"to the nearest gas station",pt:"pro posto mais próximo"},
+          {en:"to the airport",pt:"pro aeroporto"},
+          {en:"avoiding traffic",pt:"sem trânsito"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a parking permit", pt:"um ticket de estacionamento", colIII:[
+          {en:"for one day",pt:"por um dia"},
+          {en:"for this block",pt:"pra esse quarteirão"},
+          {en:"how do I pay?",pt:"como eu pago?"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'd like to rent a car with insurance",pt:"Eu gostaria de alugar um carro com seguro"},
-      {en:"I need to fill up the tank quickly",pt:"Eu preciso encher o tanque rapidinho"},
-      {en:"Where can I park the car nearby?",pt:"Onde posso estacionar o carro perto?"},
-      {en:"Could you help me wash the car if possible?",pt:"Pode me ajudar a lavar o carro se possível?"},
-      {en:"Can I return this car today?",pt:"Posso devolver esse carro hoje?"},
-      {en:"Could I drop off the keys in advance?",pt:"Posso deixar as chaves com antecedência?"},
-      {en:"I want to rent a car for the weekend please",pt:"Eu quero alugar um carro pra o fim de semana por favor"},
-      {en:"I need to park the car safely right now",pt:"Eu preciso estacionar o carro com segurança agora"},
-      {en:"Where can I fill up the tank nearby?",pt:"Onde posso encher o tanque perto?"},
+      {en:"I'd like to rent a small car for the weekend",pt:"Quero alugar um carro pequeno pro fim de semana"},
+      {en:"Can you tell me how to get to the airport",pt:"Pode me dizer como chegar no aeroporto"},
+      {en:"I think I'm lost can you help",pt:"Acho que estou perdido pode ajudar"},
+      {en:"My car broke down on the highway",pt:"Meu carro quebrou na estrada"},
+      {en:"I need to fill up with regular",pt:"Preciso abastecer com gasolina comum"},
+      {en:"Is it okay to park here for an hour",pt:"Pode estacionar aqui por uma hora"},
+      {en:"Can I get a tow as soon as possible",pt:"Posso pedir um guincho o quanto antes"},
+      {en:"I'd like to rent an SUV with full coverage",pt:"Quero alugar um SUV com cobertura total"},
+      {en:"My car has a flat tire on the highway",pt:"Meu carro tá com pneu furado na estrada"},
     ],
     phrasals: [
-      {term:"rent a car",desc:"Frase exata pra alugar carro. SEMPRE 'rent A car' (com 'a'). Não 'rent the car' (que seria um carro específico). Pra duração: 'for [tempo]' — 'for the weekend', 'for three days'.",ex:[
-        {en:"I'd like to rent a car with insurance",pt:"Eu gostaria de alugar um carro com seguro"},
-        {en:"I want to rent a car for the weekend",pt:"Eu quero alugar um carro pra o fim de semana"}
+      {term:"I'd like to rent",desc:"Pra alugar carro. SEMPRE 'rent A car' / 'an SUV' (com artigo). Tipos: 'a small car' (compacto), 'an SUV', 'an automatic' (câmbio automático). Combine com 'with insurance' / 'with full coverage'.",ex:[
+        {en:"I'd like to rent a small car for the weekend",pt:"Quero alugar um carro pequeno pro fim de semana"},
+        {en:"I'd like to rent an automatic with insurance",pt:"Quero alugar um automático com seguro"}
       ]},
-      {term:"fill up the tank",desc:"Pra abastecer. 'Fill up' (separável) + 'the tank' (objeto). Em conversa rápida, só 'fill up' já entende-se que é o tanque. Pra tipo de combustível: 'with regular/premium/diesel'.",ex:[
-        {en:"I need to fill up the tank quickly",pt:"Eu preciso encher o tanque rapidinho"},
-        {en:"Could you fill up the tank please?",pt:"Pode encher o tanque por favor?"}
+      {term:"Can you tell me how to get to",desc:"Frase clássica pra pedir direção. SEMPRE 'how to GET TO [destino]' (com 'get to'). 'Where the nearest [X] is' = onde fica o [X] mais próximo (note ordem: 'where IS' vira 'where IS' no fim).",ex:[
+        {en:"Can you tell me how to get to the airport",pt:"Pode me dizer como chegar no aeroporto"},
+        {en:"Can you tell me where the nearest gas station is",pt:"Pode me dizer onde tem posto mais próximo"}
       ]},
-      {term:"park the car",desc:"Estacionar. 'Park' é o verbo, 'the car' é o objeto direto. SEMPRE 'park IN [lugar]' ou 'park AT [lugar específico]'. Não confunda com 'parking' (substantivo) que é o ato/lugar de estacionar.",ex:[
-        {en:"Where can I park the car nearby?",pt:"Onde posso estacionar o carro perto?"},
-        {en:"I need to park the car safely",pt:"Eu preciso estacionar o carro com segurança"}
+      {term:"I think I'm lost / running late",desc:"Pra emergência leve. 'I'm lost' = me perdi. 'I'm running late' = tô atrasado (note 'running' não 'getting'). 'I missed my exit' = perdi a saída. Combine com 'can you help?'.",ex:[
+        {en:"I think I'm lost can you help",pt:"Acho que estou perdido pode ajudar"},
+        {en:"I think I'm running late any shortcut",pt:"Acho que estou atrasado tem algum atalho"}
       ]},
-      {term:"wash the car / drop off the keys",desc:"'Wash the car' = lavar o carro. 'Drop off' = deixar (entregar). 'Drop off the keys' = deixar as chaves (na devolução). 'Drop off' é phrasal verb separável.",ex:[
-        {en:"Could you help me wash the car?",pt:"Pode me ajudar a lavar o carro?"},
-        {en:"I'd like to drop off the keys in advance",pt:"Eu gostaria de deixar as chaves com antecedência"}
+      {term:"My car broke down / won't start",desc:"Pra problema mecânico. 'Broke down' (passado de break down) = quebrou. 'Won't start' = não dá partida. 'Has a flat tire' = pneu furado. 'Is making a weird noise' = barulho estranho.",ex:[
+        {en:"My car broke down on the highway",pt:"Meu carro quebrou na estrada"},
+        {en:"My car won't start the battery is dead",pt:"Meu carro não dá partida a bateria foi"}
       ]},
-      {term:"return this car",desc:"Pra devolver carro alugado. 'Return' (devolver) é o verbo padrão em locadoras. SEMPRE 'return THIS car' (apontando o seu) ou 'return the car' (genérico). Não 'give back' que é informal demais.",ex:[
-        {en:"Can I return this car today?",pt:"Posso devolver esse carro hoje?"},
-        {en:"I need to return this car right now",pt:"Eu preciso devolver esse carro agora"}
+      {term:"I need to fill up / park / pull over",desc:"Manobras comuns. 'Fill up' = abastecer (separável: 'fill IT up'). 'Park' = estacionar. 'Pull over' = encostar (na beira). 'Take a detour' = fazer desvio.",ex:[
+        {en:"I need to fill up with regular",pt:"Preciso abastecer com gasolina comum"},
+        {en:"I need to pull over for a minute",pt:"Preciso encostar por um minuto"}
       ]},
-      {term:"with insurance",desc:"Crítico em locação. 'With insurance' = com seguro. 'With full coverage' = com cobertura total. 'Without insurance' = sem seguro (perigoso, geralmente mais barato). 'Insurance' é incontável (não 'insurances').",ex:[
-        {en:"I'd like to rent a car with insurance",pt:"Eu gostaria de alugar um carro com seguro"},
-        {en:"Could I rent a car with full coverage?",pt:"Posso alugar um carro com cobertura total?"}
+      {term:"Is it okay to",desc:"Pra confirmar regra de trânsito. 'Is it okay TO [verbo no infinitivo]'. 'Park here' / 'turn left' / 'make a U-turn' / 'pass on this side'. Mais educado que 'Can I'. Ótimo em país estrangeiro.",ex:[
+        {en:"Is it okay to park here for an hour",pt:"Pode estacionar aqui por uma hora"},
+        {en:"Is it okay to make a U-turn here",pt:"Pode dar meia volta aqui"}
       ]},
-      {term:"nearby / safely / quickly",desc:"Especificadores comuns ao dirigir. 'Nearby' = perto. 'Safely' = com segurança. 'Quickly' = rapidinho. 'In advance' = com antecedência. Todos funcionam no fim da frase pra dar contexto.",ex:[
-        {en:"Where can I park the car nearby?",pt:"Onde posso estacionar o carro perto?"},
-        {en:"I need to fill up the tank quickly",pt:"Eu preciso encher o tanque rapidinho"}
+      {term:"Can I get a tow / jump start",desc:"Pra emergência. 'A tow' = guincho. 'A jump start' = dar partida (com cabos). 'Directions' = direção (no plural). 'A parking permit' = ticket de estacionamento. Termos americanos comuns.",ex:[
+        {en:"Can I get a tow as soon as possible",pt:"Posso pedir um guincho o quanto antes"},
+        {en:"Can I get a jump start my battery is dead",pt:"Posso pedir pra dar partida a bateria foi"}
       ]},
     ]
   },
