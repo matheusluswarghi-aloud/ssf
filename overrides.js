@@ -230,75 +230,236 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "money": {
     title: "money",
-    sub: "Banco & pagamentos",
-    desc: "Frases pra qualquer transação financeira em inglês — pagar, sacar, depositar, transferir. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
-      {en:"I want to",pt:"Eu quero",s:TRI},
-      {en:"I need to",pt:"Eu preciso",s:TRI},
-      {en:"Can I",pt:"Posso",s:TRI},
-      {en:"Could I",pt:"Posso",s:TRI},
-      {en:"Where can I",pt:"Onde posso",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"pay",pt:"pagar",s:TRI},
-      {en:"withdraw",pt:"sacar",s:TRI},
-      {en:"deposit",pt:"depositar",s:TRI},
-      {en:"exchange",pt:"trocar",s:TRI},
-      {en:"transfer",pt:"transferir",s:TRI},
-      {en:"send",pt:"enviar",s:TRI},
-      {en:"split",pt:"dividir",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"by credit card",pt:"no cartão",s:TRI},
-      {en:"in cash",pt:"em dinheiro",s:TRI},
-      {en:"with PayPal",pt:"com PayPal",s:TRI},
-      {en:"a hundred dollars",pt:"cem dólares",s:TRI},
-      {en:"online",pt:"online",s:TRI},
-      {en:"today",pt:"hoje",s:TRI},
-      {en:"to my bank",pt:"para meu banco",s:TRI},
-      {en:"separately",pt:"separadamente",s:TRI},
-      {en:"please",pt:"por favor",s:TRI},
-    ]},
+    sub: "Banco, cartão & contas",
+    desc: "Pra resolver questões de banco e dinheiro em inglês — abrir conta, pagar, transferir, contestar cobrança. Cada opener abre uma cena de banco diferente.",
+    tree: [
+      // Ação bancária
+      { en:"I need to", pt:"Preciso", colII:[
+        { en:"open an account", pt:"abrir uma conta", colIII:[
+          {en:"this week",pt:"essa semana"},
+          {en:"a checking account",pt:"corrente"},
+          {en:"a savings account",pt:"poupança"},
+          {en:"for my business",pt:"pra meu negócio"},
+        ]},
+        { en:"withdraw cash", pt:"sacar", colIII:[
+          {en:"500 dollars",pt:"500 dólares"},
+          {en:"from my checking account",pt:"da conta corrente"},
+          {en:"today",pt:"hoje"},
+          {en:"in 20s",pt:"em notas de 20"},
+        ]},
+        { en:"deposit a check", pt:"depositar um cheque", colIII:[
+          {en:"in my account",pt:"na minha conta"},
+          {en:"for 1,000 dollars",pt:"de 1.000 dólares"},
+          {en:"today",pt:"hoje"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"wire money", pt:"fazer uma transferência", colIII:[
+          {en:"abroad",pt:"pro exterior"},
+          {en:"to Brazil",pt:"pro Brasil"},
+          {en:"by Friday",pt:"até sexta"},
+          {en:"urgently",pt:"urgente"},
+        ]},
+        { en:"cancel my card", pt:"cancelar meu cartão", colIII:[
+          {en:"right now",pt:"agora mesmo"},
+          {en:"I lost it",pt:"perdi"},
+          {en:"and get a new one",pt:"e pegar um novo"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Operação online / app
+      { en:"I'd like to", pt:"Quero", colII:[
+        { en:"transfer money", pt:"transferir dinheiro", colIII:[
+          {en:"from savings to checking",pt:"da poupança pra corrente"},
+          {en:"500 reais",pt:"500 reais"},
+          {en:"to another bank",pt:"pra outro banco"},
+          {en:"right now",pt:"agora"},
+        ]},
+        { en:"pay a bill", pt:"pagar uma conta", colIII:[
+          {en:"online",pt:"online"},
+          {en:"with my card",pt:"no cartão"},
+          {en:"by Friday",pt:"até sexta"},
+          {en:"in installments",pt:"parcelado"},
+        ]},
+        { en:"dispute a charge", pt:"contestar uma cobrança", colIII:[
+          {en:"on my statement",pt:"na fatura"},
+          {en:"for 200 reais",pt:"de 200 reais"},
+          {en:"that I don't recognize",pt:"que não reconheço"},
+          {en:"as fraud",pt:"como fraude"},
+        ]},
+        { en:"close my account", pt:"encerrar minha conta", colIII:[
+          {en:"by the end of the month",pt:"até o fim do mês"},
+          {en:"and transfer my balance",pt:"e transferir o saldo"},
+          {en:"because I'm moving",pt:"porque vou mudar"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Bloqueio / problema
+      { en:"I can't", pt:"Não consigo", colII:[
+        { en:"log in to my account", pt:"entrar na conta", colIII:[
+          {en:"online",pt:"online"},
+          {en:"on the app",pt:"no app"},
+          {en:"with my password",pt:"com minha senha"},
+          {en:"can you reset it?",pt:"pode resetar?"},
+        ]},
+        { en:"make this payment", pt:"fazer este pagamento", colIII:[
+          {en:"my card got declined",pt:"meu cartão foi recusado"},
+          {en:"there's an error",pt:"deu erro"},
+          {en:"can you help?",pt:"pode ajudar?"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"withdraw", pt:"sacar", colIII:[
+          {en:"from this ATM",pt:"deste caixa"},
+          {en:"with my card",pt:"com meu cartão"},
+          {en:"what's the daily limit?",pt:"qual o limite diário?"},
+          {en:"any amount",pt:"nenhum valor"},
+        ]},
+        { en:"use my card", pt:"usar meu cartão", colIII:[
+          {en:"abroad",pt:"no exterior"},
+          {en:"online",pt:"online"},
+          {en:"can you unlock it?",pt:"pode desbloquear?"},
+          {en:"it keeps getting declined",pt:"fica sendo recusado"},
+        ]},
+      ]},
+
+      // Perda
+      { en:"I lost", pt:"Perdi", colII:[
+        { en:"my card", pt:"meu cartão", colIII:[
+          {en:"yesterday",pt:"ontem"},
+          {en:"and I need a replacement",pt:"e preciso de outro"},
+          {en:"please block it",pt:"por favor bloqueia"},
+          {en:"can you send a new one?",pt:"pode mandar um novo?"},
+        ]},
+        { en:"my checkbook", pt:"meu talão de cheques", colIII:[
+          {en:"and I need a new one",pt:"e preciso de outro"},
+          {en:"can you cancel the checks?",pt:"pode cancelar os cheques?"},
+          {en:"last week",pt:"semana passada"},
+        ]},
+        { en:"my phone with the app", pt:"meu celular com o app", colIII:[
+          {en:"and I can't access my account",pt:"e não acesso a conta"},
+          {en:"please block remote access",pt:"por favor bloqueia o acesso"},
+          {en:"how do I recover it?",pt:"como recupero?"},
+        ]},
+      ]},
+
+      // Cobrança suspeita
+      { en:"There's a charge", pt:"Tem uma cobrança", colII:[
+        { en:"I don't recognize", pt:"que não reconheço", colIII:[
+          {en:"on my statement",pt:"na fatura"},
+          {en:"from a place I never went",pt:"de um lugar que nunca fui"},
+          {en:"can you investigate?",pt:"podem investigar?"},
+          {en:"please reverse it",pt:"por favor estorna"},
+        ]},
+        { en:"for 200 reais", pt:"de 200 reais", colIII:[
+          {en:"I didn't authorize",pt:"que não autorizei"},
+          {en:"that's repeating",pt:"que tá se repetindo"},
+          {en:"and I want it removed",pt:"e quero que remova"},
+          {en:"can you explain?",pt:"podem explicar?"},
+        ]},
+        { en:"on my statement", pt:"na minha fatura", colIII:[
+          {en:"I want to dispute",pt:"que quero contestar"},
+          {en:"that doesn't make sense",pt:"que não faz sentido"},
+          {en:"from last month",pt:"do mês passado"},
+          {en:"please review it",pt:"por favor revisa"},
+        ]},
+      ]},
+
+      // Configurar
+      { en:"I want to set up", pt:"Quero configurar", colII:[
+        { en:"a transfer", pt:"uma transferência", colIII:[
+          {en:"every month",pt:"todo mês"},
+          {en:"to my savings account",pt:"pra minha poupança"},
+          {en:"of 500 reais",pt:"de 500 reais"},
+          {en:"on the 5th",pt:"todo dia 5"},
+        ]},
+        { en:"direct deposit", pt:"depósito direto", colIII:[
+          {en:"for my paycheck",pt:"do meu salário"},
+          {en:"into checking",pt:"na conta corrente"},
+          {en:"starting next month",pt:"a partir do próximo mês"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"autopay", pt:"débito automático", colIII:[
+          {en:"for rent",pt:"pro aluguel"},
+          {en:"for my bills",pt:"pras contas"},
+          {en:"every month",pt:"todo mês"},
+          {en:"on the due date",pt:"no vencimento"},
+        ]},
+        { en:"a savings goal", pt:"uma meta de poupança", colIII:[
+          {en:"of 10,000 reais",pt:"de 10.000 reais"},
+          {en:"by the end of the year",pt:"até o fim do ano"},
+          {en:"for a trip",pt:"pra uma viagem"},
+          {en:"in the app",pt:"no app"},
+        ]},
+      ]},
+
+      // Tutorial / dúvida
+      { en:"How do I", pt:"Como faço pra", colII:[
+        { en:"check my balance", pt:"ver meu saldo", colIII:[
+          {en:"on the app",pt:"no app"},
+          {en:"online",pt:"online"},
+          {en:"at this ATM",pt:"neste caixa"},
+          {en:"by phone",pt:"por telefone"},
+        ]},
+        { en:"send money abroad", pt:"mandar dinheiro pro exterior", colIII:[
+          {en:"to Brazil",pt:"pro Brasil"},
+          {en:"the cheapest way",pt:"do jeito mais barato"},
+          {en:"using this app",pt:"usando este app"},
+          {en:"in dollars",pt:"em dólar"},
+        ]},
+        { en:"get a new card", pt:"pegar um cartão novo", colIII:[
+          {en:"after I lost mine",pt:"depois que perdi o meu"},
+          {en:"with a different limit",pt:"com outro limite"},
+          {en:"in the mail",pt:"pelos correios"},
+          {en:"by tomorrow",pt:"até amanhã"},
+        ]},
+        { en:"dispute a charge", pt:"contestar uma cobrança", colIII:[
+          {en:"online",pt:"online"},
+          {en:"over the phone",pt:"por telefone"},
+          {en:"if I don't recognize it",pt:"se eu não reconheço"},
+          {en:"in the app",pt:"no app"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'd like to pay by credit card",pt:"Eu gostaria de pagar no cartão"},
-      {en:"I want to withdraw a hundred dollars",pt:"Eu quero sacar cem dólares"},
-      {en:"I need to deposit in cash today",pt:"Eu preciso depositar em dinheiro hoje"},
-      {en:"Can I exchange online?",pt:"Posso trocar online?"},
-      {en:"Could I transfer to my bank?",pt:"Posso transferir para meu banco?"},
-      {en:"Where can I send with PayPal?",pt:"Onde posso enviar com PayPal?"},
-      {en:"I'd like to split separately please",pt:"Eu gostaria de dividir separadamente por favor"},
-      {en:"I want to pay in cash",pt:"Eu quero pagar em dinheiro"},
-      {en:"I need to send a hundred dollars",pt:"Eu preciso enviar cem dólares"},
+      {en:"I need to open an account this week",pt:"Preciso abrir uma conta essa semana"},
+      {en:"I'd like to transfer money from savings to checking",pt:"Quero transferir da poupança pra corrente"},
+      {en:"I can't log in to my account on the app",pt:"Não consigo entrar na conta pelo app"},
+      {en:"I lost my card and I need a replacement",pt:"Perdi meu cartão e preciso de outro"},
+      {en:"There's a charge for 200 reais I didn't authorize",pt:"Tem uma cobrança de 200 reais que não autorizei"},
+      {en:"I want to set up autopay for rent",pt:"Quero configurar débito automático pro aluguel"},
+      {en:"How do I send money abroad to Brazil",pt:"Como faço pra mandar dinheiro pro Brasil"},
+      {en:"I need to wire money to Brazil urgently",pt:"Preciso fazer uma transferência pro Brasil urgente"},
+      {en:"I'd like to dispute a charge on my statement",pt:"Quero contestar uma cobrança na fatura"},
     ],
     phrasals: [
-      {term:"I'd like to / I want to / I need to",desc:"As três formas mais comuns pra abrir transação financeira. 'I'd like to' é o mais educado e versátil — funciona em banco, lojas, hotéis. 'I want to' é direto. 'I need to' implica urgência.",ex:[
-        {en:"I'd like to pay by credit card",pt:"Eu gostaria de pagar no cartão"},
-        {en:"I need to deposit in cash today",pt:"Eu preciso depositar em dinheiro hoje"}
+      {term:"I need to / I'd like to / I want to",desc:"Os três openers de banco. 'I need to' = urgência. 'I'd like to' = formal e educado (banco gosta). 'I want to' = direto. Cada um abre cenários levemente diferentes na col II.",ex:[
+        {en:"I need to open an account this week",pt:"Preciso abrir uma conta essa semana"},
+        {en:"I'd like to dispute a charge on my statement",pt:"Quero contestar uma cobrança na fatura"}
       ]},
-      {term:"Pay BY card / pay IN cash",desc:"REGRA fundamental: 'pay BY [meio]' (cartão, débito, Pix) e 'pay IN [moeda]' (cash, dollars, reais). Erro clássico do brasileiro: 'pay with card' (errado). Sempre 'BY' pra meio, 'IN' pra moeda física.",ex:[
-        {en:"I'd like to pay by credit card",pt:"Eu gostaria de pagar no cartão"},
-        {en:"I want to pay in cash",pt:"Eu quero pagar em dinheiro"}
+      {term:"open an account / close my account",desc:"Pra abrir/fechar conta. 'Open AN account' (com 'an'). Tipos: 'a checking account' (conta corrente) e 'a savings account' (poupança). Pra fechar: SEMPRE 'close MY account' (com possessivo).",ex:[
+        {en:"I need to open a checking account",pt:"Preciso abrir uma conta corrente"},
+        {en:"I'd like to close my account by the end of the month",pt:"Quero encerrar minha conta até o fim do mês"}
       ]},
-      {term:"withdraw / deposit",desc:"Os dois verbos do banco. 'Withdraw' = sacar (tirar dinheiro). 'Deposit' = depositar (colocar dinheiro). Ambos funcionam com valor ('a hundred dollars') ou método ('in cash').",ex:[
-        {en:"I want to withdraw a hundred dollars",pt:"Eu quero sacar cem dólares"},
-        {en:"I need to deposit in cash today",pt:"Eu preciso depositar em dinheiro hoje"}
+      {term:"withdraw / deposit",desc:"'Withdraw' = sacar (tirar). 'Deposit' = depositar (colocar). Withdraw cash AT an ATM (no caixa). Deposit a check (cheque). Withdraw FROM my account (de onde está saindo).",ex:[
+        {en:"I need to withdraw 500 dollars",pt:"Preciso sacar 500 dólares"},
+        {en:"I need to deposit a check for 1,000 dollars",pt:"Preciso depositar um cheque de 1.000 dólares"}
       ]},
-      {term:"exchange / convert",desc:"Pra trocar moedas (câmbio). 'Exchange' é o padrão; 'convert' é mais técnico. SEMPRE seguido de 'X for Y' quando especifica: 'exchange dollars for euros'.",ex:[
-        {en:"Can I exchange online?",pt:"Posso trocar online?"},
-        {en:"I need to exchange a hundred dollars",pt:"Eu preciso trocar cem dólares"}
+      {term:"transfer / wire",desc:"'Transfer' = transferência interna (entre suas contas) ou nacional. 'Wire' = transferência internacional (mais formal e cara). 'Wire money abroad' é o termo padrão pra mandar pro exterior.",ex:[
+        {en:"I'd like to transfer money from savings to checking",pt:"Quero transferir da poupança pra corrente"},
+        {en:"I need to wire money to Brazil urgently",pt:"Preciso transferir pro Brasil urgente"}
       ]},
-      {term:"transfer / send",desc:"'Transfer' é mais formal (banco, transações oficiais). 'Send' é genérico (PayPal, Wise, qualquer pagamento). Pra dinheiro específico: 'transfer money TO [account/bank]'.",ex:[
-        {en:"Could I transfer to my bank?",pt:"Posso transferir para meu banco?"},
-        {en:"I need to send a hundred dollars",pt:"Eu preciso enviar cem dólares"}
+      {term:"dispute a charge",desc:"Pra contestar cobrança suspeita. SEMPRE 'dispute A charge' (com 'a'). 'On my statement' = na fatura. 'I don't recognize' = não reconheço. Bancos americanos respondem rápido a 'dispute'.",ex:[
+        {en:"I'd like to dispute a charge for 200 reais",pt:"Quero contestar uma cobrança de 200 reais"},
+        {en:"There's a charge I don't recognize on my statement",pt:"Tem uma cobrança que não reconheço na fatura"}
       ]},
-      {term:"split",desc:"Dividir conta. 'Split the bill' (com 'the bill') é completo. Em conversa rápida, só 'split' já implica que é a conta. 'Split separately' = cada um paga seu, em vez de dividir igualmente.",ex:[
-        {en:"I'd like to split separately please",pt:"Eu gostaria de dividir separadamente por favor"},
-        {en:"Can I split today?",pt:"Posso dividir hoje?"}
+      {term:"set up autopay / direct deposit",desc:"Termos do dia a dia. 'Autopay' = débito automático. 'Direct deposit' = depósito direto do salário. SEMPRE 'set up' (verbo separável). 'For [item]' especifica o quê.",ex:[
+        {en:"I want to set up autopay for rent",pt:"Quero configurar débito automático pro aluguel"},
+        {en:"I want to set up direct deposit for my paycheck",pt:"Quero configurar depósito direto do salário"}
       ]},
-      {term:"online / today / separately",desc:"Especificadores comuns. 'Online' = via internet. 'Today' = urgência temporal. 'Separately' = pra dividir conta. 'Please' = sempre fica bem no final pra educação.",ex:[
-        {en:"Can I exchange online?",pt:"Posso trocar online?"},
-        {en:"I need to deposit in cash today",pt:"Eu preciso depositar em dinheiro hoje"}
+      {term:"How do I",desc:"Pra perguntar processo bancário. 'How do I check my balance' (ver saldo) / 'send money abroad' (mandar pro exterior) / 'get a new card' (pegar cartão novo). Sempre verbo no infinitivo SEM 'to' depois de 'I'.",ex:[
+        {en:"How do I check my balance on the app",pt:"Como vejo o saldo no app"},
+        {en:"How do I get a new card",pt:"Como pego um cartão novo"}
       ]},
     ]
   },
@@ -1051,76 +1212,247 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "shopping": {
     title: "shopping",
-    sub: "Lojas & produtos",
-    desc: "Frases pra procurar produtos em qualquer loja em inglês. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'm looking for",pt:"Estou procurando",s:TRI},
-      {en:"Do you have",pt:"Vocês têm",s:TRI},
-      {en:"I need",pt:"Preciso de",s:TRI},
-      {en:"Where can I find",pt:"Onde encontro",s:TRI},
-      {en:"I want",pt:"Eu quero",s:TRI},
-      {en:"Could you show me",pt:"Pode me mostrar",s:TRI},
-      {en:"I'd like",pt:"Eu gostaria de",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"a shirt",pt:"uma camisa",s:TRI},
-      {en:"some jeans",pt:"uma calça jeans",s:TRI},
-      {en:"sneakers",pt:"tênis",s:TRI},
-      {en:"a dress",pt:"um vestido",s:TRI},
-      {en:"a watch",pt:"um relógio",s:TRI},
-      {en:"a backpack",pt:"uma mochila",s:TRI},
-      {en:"a phone case",pt:"uma capa de celular",s:TRI},
-      {en:"a gift",pt:"um presente",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"in size medium",pt:"tamanho médio",s:TRI},
-      {en:"in black",pt:"em preto",s:TRI},
-      {en:"on sale",pt:"em promoção",s:TRI},
-      {en:"under fifty dollars",pt:"abaixo de cinquenta dólares",s:TRI},
-      {en:"in stock",pt:"em estoque",s:TRI},
-      {en:"with free shipping",pt:"com frete grátis",s:TRI},
-      {en:"for a gift",pt:"de presente",s:TRI},
-      {en:"in a different color",pt:"em outra cor",s:TRI},
-    ]},
+    sub: "Loja, prova & checkout",
+    desc: "Pra comprar em qualquer loja em inglês — procurar item, provar, perguntar preço, devolver, pagar. Cada opener abre uma cena.",
+    tree: [
+      // Procurar item
+      { en:"I'm looking for", pt:"Estou procurando", colII:[
+        { en:"a t-shirt", pt:"uma camiseta", colIII:[
+          {en:"in size M",pt:"tamanho M"},
+          {en:"in black",pt:"em preto"},
+          {en:"on sale",pt:"em promoção"},
+          {en:"for a gift",pt:"de presente"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"shoes", pt:"sapatos", colIII:[
+          {en:"in size 9",pt:"número 39"},
+          {en:"in black",pt:"em preto"},
+          {en:"for running",pt:"pra correr"},
+          {en:"under 100 dollars",pt:"abaixo de 100 dólares"},
+        ]},
+        { en:"a gift", pt:"um presente", colIII:[
+          {en:"for my mom",pt:"pra minha mãe"},
+          {en:"for a coworker",pt:"pra um colega"},
+          {en:"under 50 dollars",pt:"abaixo de 50 dólares"},
+          {en:"that comes wrapped",pt:"que venha embrulhado"},
+        ]},
+        { en:"a backpack", pt:"uma mochila", colIII:[
+          {en:"for travel",pt:"pra viagem"},
+          {en:"with a laptop sleeve",pt:"com bolso pra notebook"},
+          {en:"in black",pt:"em preto"},
+          {en:"under 100 dollars",pt:"abaixo de 100 dólares"},
+        ]},
+        { en:"a dress", pt:"um vestido", colIII:[
+          {en:"in size M",pt:"tamanho M"},
+          {en:"in black",pt:"em preto"},
+          {en:"for a wedding",pt:"pra um casamento"},
+          {en:"under 100 dollars",pt:"abaixo de 100 dólares"},
+        ]},
+      ]},
+
+      // Disponibilidade
+      { en:"Do you have", pt:"Vocês têm", colII:[
+        { en:"this in another size", pt:"isso em outro tamanho", colIII:[
+          {en:"in size L",pt:"tamanho L"},
+          {en:"in size XL",pt:"tamanho XL"},
+          {en:"smaller",pt:"menor"},
+          {en:"in stock",pt:"em estoque"},
+        ]},
+        { en:"this in another color", pt:"isso em outra cor", colIII:[
+          {en:"in black",pt:"em preto"},
+          {en:"in white",pt:"em branco"},
+          {en:"in blue",pt:"em azul"},
+          {en:"in stock",pt:"em estoque"},
+        ]},
+        { en:"a bigger one", pt:"um maior", colIII:[
+          {en:"in this style",pt:"neste estilo"},
+          {en:"in stock",pt:"em estoque"},
+          {en:"in the back",pt:"no estoque"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"something cheaper", pt:"algo mais barato", colIII:[
+          {en:"on sale",pt:"em promoção"},
+          {en:"in this size",pt:"neste tamanho"},
+          {en:"under 50 dollars",pt:"abaixo de 50 dólares"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Provar
+      { en:"Can I try", pt:"Posso provar", colII:[
+        { en:"this on", pt:"isso", colIII:[
+          {en:"real quick",pt:"rapidinho"},
+          {en:"in the fitting room",pt:"no provador"},
+          {en:"before I decide",pt:"antes de decidir"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a different size", pt:"outro tamanho", colIII:[
+          {en:"in size M",pt:"tamanho M"},
+          {en:"in size L",pt:"tamanho L"},
+          {en:"smaller",pt:"menor"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"this in red", pt:"isso em vermelho", colIII:[
+          {en:"in size M",pt:"tamanho M"},
+          {en:"if you have it",pt:"se vocês tiverem"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"both", pt:"os dois", colIII:[
+          {en:"to compare",pt:"pra comparar"},
+          {en:"real quick",pt:"rapidinho"},
+          {en:"in the fitting room",pt:"no provador"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Preço
+      { en:"How much is", pt:"Quanto custa", colII:[
+        { en:"this", pt:"isso", colIII:[
+          {en:"with tax",pt:"com imposto"},
+          {en:"with the discount",pt:"com desconto"},
+          {en:"on sale",pt:"em promoção"},
+          {en:"in cash",pt:"em dinheiro"},
+        ]},
+        { en:"that one", pt:"aquele", colIII:[
+          {en:"on the wall",pt:"da parede"},
+          {en:"in the window",pt:"da vitrine"},
+          {en:"with tax",pt:"com imposto"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the total", pt:"o total", colIII:[
+          {en:"with tax",pt:"com imposto"},
+          {en:"with the discount",pt:"com desconto"},
+          {en:"in cash",pt:"em dinheiro"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the discount", pt:"o desconto", colIII:[
+          {en:"on this",pt:"nisso"},
+          {en:"on sale items",pt:"nos itens em promoção"},
+          {en:"for the bundle",pt:"no combo"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Devolver
+      { en:"I'd like to return", pt:"Quero devolver", colII:[
+        { en:"this", pt:"isso", colIII:[
+          {en:"for a refund",pt:"pra reembolso"},
+          {en:"for store credit",pt:"pra crédito na loja"},
+          {en:"because it doesn't fit",pt:"porque não serviu"},
+          {en:"because I changed my mind",pt:"porque mudei de ideia"},
+        ]},
+        { en:"these shoes", pt:"estes sapatos", colIII:[
+          {en:"because they're too tight",pt:"porque estão apertados"},
+          {en:"because they don't fit",pt:"porque não servem"},
+          {en:"for a refund",pt:"pra reembolso"},
+          {en:"for store credit",pt:"pra crédito na loja"},
+        ]},
+        { en:"a gift", pt:"um presente", colIII:[
+          {en:"for store credit",pt:"pra crédito na loja"},
+          {en:"because I got two",pt:"porque ganhei dois"},
+          {en:"without a receipt",pt:"sem nota"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"what I bought yesterday", pt:"o que comprei ontem", colIII:[
+          {en:"for a refund",pt:"pra reembolso"},
+          {en:"because it's defective",pt:"porque tá com defeito"},
+          {en:"because it doesn't fit",pt:"porque não serviu"},
+          {en:"and exchange it",pt:"e trocar"},
+        ]},
+      ]},
+
+      // Pagamento
+      { en:"Do you accept", pt:"Vocês aceitam", colII:[
+        { en:"credit cards", pt:"cartão de crédito", colIII:[
+          {en:"here",pt:"aqui"},
+          {en:"in installments",pt:"parcelado"},
+          {en:"for under 10 dollars",pt:"abaixo de 10 dólares"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"cash", pt:"dinheiro", colIII:[
+          {en:"only",pt:"só"},
+          {en:"in dollars",pt:"em dólar"},
+          {en:"in reais",pt:"em real"},
+          {en:"with change",pt:"com troco"},
+        ]},
+        { en:"Pix", pt:"Pix", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"with QR code",pt:"com QR code"},
+          {en:"to a CNPJ",pt:"pra CNPJ"},
+        ]},
+        { en:"Apple Pay", pt:"Apple Pay", colIII:[
+          {en:"here",pt:"aqui"},
+          {en:"or contactless",pt:"ou aproximação"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Fechamento
+      { en:"I'll take", pt:"Vou levar", colII:[
+        { en:"this one", pt:"este", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"in red",pt:"em vermelho"},
+          {en:"in size M",pt:"tamanho M"},
+          {en:"and a bag",pt:"e uma sacola"},
+        ]},
+        { en:"both", pt:"os dois", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"with the discount",pt:"com desconto"},
+          {en:"as a bundle",pt:"como combo"},
+          {en:"and a bag",pt:"e uma sacola"},
+        ]},
+        { en:"the small one", pt:"o pequeno", colIII:[
+          {en:"in black",pt:"em preto"},
+          {en:"please",pt:"por favor"},
+          {en:"and the receipt",pt:"e a nota"},
+        ]},
+        { en:"two of these", pt:"dois desses", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"with the discount",pt:"com desconto"},
+          {en:"in different colors",pt:"em cores diferentes"},
+          {en:"and a bag",pt:"e uma sacola"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'm looking for a shirt in size medium",pt:"Estou procurando uma camisa tamanho médio"},
-      {en:"Do you have sneakers on sale?",pt:"Vocês têm tênis em promoção?"},
-      {en:"I need a watch under fifty dollars",pt:"Preciso de um relógio abaixo de cinquenta dólares"},
-      {en:"Where can I find a backpack with free shipping?",pt:"Onde encontro uma mochila com frete grátis?"},
-      {en:"I want some jeans in black",pt:"Eu quero uma calça jeans em preto"},
-      {en:"Could you show me a dress in a different color?",pt:"Pode me mostrar um vestido em outra cor?"},
-      {en:"I'd like a phone case in stock",pt:"Eu gostaria de uma capa de celular em estoque"},
-      {en:"Do you have a gift for a gift?",pt:"Vocês têm um presente de presente?"},
-      {en:"I'm looking for a dress for a gift",pt:"Estou procurando um vestido de presente"},
+      {en:"I'm looking for a t-shirt in size M",pt:"Estou procurando uma camiseta tamanho M"},
+      {en:"Do you have this in another color in black",pt:"Vocês têm isso em outra cor, em preto"},
+      {en:"Can I try this on in the fitting room",pt:"Posso provar isso no provador"},
+      {en:"How much is this with the discount",pt:"Quanto custa isso com desconto"},
+      {en:"I'd like to return this for a refund",pt:"Quero devolver isso pra reembolso"},
+      {en:"Do you accept credit cards in installments",pt:"Vocês aceitam cartão parcelado"},
+      {en:"I'll take both with the discount",pt:"Vou levar os dois com desconto"},
+      {en:"I'm looking for a gift for my mom",pt:"Estou procurando um presente pra minha mãe"},
+      {en:"Can I try a different size smaller",pt:"Posso provar outro tamanho, menor"},
     ],
     phrasals: [
-      {term:"I'm looking for / Do you have",desc:"As duas formas mais comuns pra começar busca em loja. 'I'm looking for' (estou procurando) implica que ainda decide; 'Do you have' é direto. Sempre seguido de 'a/an' + item.",ex:[
-        {en:"I'm looking for a shirt in size medium",pt:"Estou procurando uma camisa tamanho médio"},
-        {en:"Do you have sneakers on sale?",pt:"Vocês têm tênis em promoção?"}
+      {term:"I'm looking for",desc:"Pra começar busca. Sempre 'looking FOR' (com 'for'). Funciona pra item ('a t-shirt'), pessoa ('my friend') ou serviço.",ex:[
+        {en:"I'm looking for shoes for running",pt:"Estou procurando sapatos pra correr"},
+        {en:"I'm looking for a gift for my mom",pt:"Estou procurando um presente pra minha mãe"}
       ]},
-      {term:"I need / I want",desc:"'I need' soa mais necessário (mais educado em compras). 'I want' é direto e claro. Os dois aceitam 'a/an' + item.",ex:[
-        {en:"I need a watch under fifty dollars",pt:"Preciso de um relógio abaixo de cinquenta dólares"},
-        {en:"I want some jeans in black",pt:"Eu quero uma calça jeans em preto"}
+      {term:"Do you have / Can I try",desc:"'Do you have' = pra checar disponibilidade. 'Can I try [X] on' (provar roupa, com 'on' no fim). 'Can I try a different size' (sem 'on' quando o objeto já é específico).",ex:[
+        {en:"Do you have this in another color",pt:"Vocês têm isso em outra cor"},
+        {en:"Can I try this on in the fitting room",pt:"Posso provar isso no provador"}
       ]},
-      {term:"Where can I find",desc:"Pra perguntar onde está localizado o produto na loja. Resposta provável: 'Aisle 3' (corredor 3) ou 'Second floor' (segundo andar).",ex:[
-        {en:"Where can I find a backpack?",pt:"Onde encontro uma mochila?"},
-        {en:"Where can I find sneakers in size medium?",pt:"Onde encontro tênis tamanho médio?"}
+      {term:"How much is",desc:"Pergunta de preço básica. 'How much IS this' (singular) / 'How much ARE these' (plural). Combine com 'with tax' (com imposto), 'with the discount' (com desconto), 'in cash' (à vista).",ex:[
+        {en:"How much is this with tax",pt:"Quanto custa isso com imposto"},
+        {en:"How much is the total in cash",pt:"Quanto é o total à vista"}
       ]},
-      {term:"Could you show me / I'd like",desc:"'Could you show me' = pra pedir pra atendente trazer/mostrar item específico. 'I'd like' é o mais educado e versátil ('eu gostaria de'). Os dois funcionam em qualquer loja.",ex:[
-        {en:"Could you show me a dress in a different color?",pt:"Pode me mostrar um vestido em outra cor?"},
-        {en:"I'd like a phone case in stock",pt:"Eu gostaria de uma capa de celular em estoque"}
+      {term:"I'd like to return",desc:"Pra devolver compra. Sempre 'return [item]'. Combine com motivo: 'because it doesn't fit' (porque não serviu) / 'for a refund' (pra reembolso) / 'for store credit' (pra crédito na loja).",ex:[
+        {en:"I'd like to return this for a refund",pt:"Quero devolver isso pra reembolso"},
+        {en:"I'd like to return these shoes because they don't fit",pt:"Quero devolver estes sapatos porque não servem"}
       ]},
-      {term:"in size [tamanho]",desc:"Forma padrão pra especificar tamanho. 'In size medium/large/XL'. Note: SEM artigo ('in size A medium' está errado). Tamanhos: small/medium/large/extra-large/XL.",ex:[
-        {en:"I'm looking for a shirt in size medium",pt:"Estou procurando uma camisa tamanho médio"},
-        {en:"Do you have sneakers in size large?",pt:"Vocês têm tênis tamanho grande?"}
+      {term:"Do you accept",desc:"Pra checar forma de pagamento. 'Credit cards' (plural — cartões em geral). 'Cash' (sem artigo — dinheiro em geral). 'In installments' = parcelado.",ex:[
+        {en:"Do you accept credit cards in installments",pt:"Vocês aceitam cartão parcelado"},
+        {en:"Do you accept cash in dollars",pt:"Vocês aceitam dinheiro em dólar"}
       ]},
-      {term:"on sale / under [preço]",desc:"Pra falar de preço/promoção. 'On sale' = em promoção. 'Under fifty dollars' = abaixo de cinquenta dólares. 'In stock' = em estoque. 'With free shipping' = com frete grátis.",ex:[
-        {en:"Do you have sneakers on sale?",pt:"Vocês têm tênis em promoção?"},
-        {en:"I need a watch under fifty dollars",pt:"Preciso de um relógio abaixo de cinquenta dólares"}
+      {term:"I'll take",desc:"Frase de fechamento na loja — equivalente a 'vou levar'. Sempre seguido de pronome ou quantidade: 'this one', 'both', 'two of these'. Adicione 'please' pra educação.",ex:[
+        {en:"I'll take this one in red",pt:"Vou levar este em vermelho"},
+        {en:"I'll take two of these with the discount",pt:"Vou levar dois desses com desconto"}
       ]},
-      {term:"in [color] / in a different color",desc:"Pra falar de cor. 'In black/blue/red'. 'In a different color' = em outra cor. SEMPRE preposição 'in' (não 'with' ou 'of'). Erro clássico do brasileiro: 'with black color' (errado).",ex:[
-        {en:"I want some jeans in black",pt:"Eu quero uma calça jeans em preto"},
-        {en:"Could you show me a dress in a different color?",pt:"Pode me mostrar um vestido em outra cor?"}
+      {term:"in size / in [color]",desc:"Sempre preposição 'in' pra tamanho e cor. 'In size M' (não 'on size'). 'In black' (não 'with black'). Erro clássico do brasileiro: 'on size'/'with black color'.",ex:[
+        {en:"I'm looking for a t-shirt in size M",pt:"Estou procurando uma camiseta tamanho M"},
+        {en:"Do you have this in black",pt:"Vocês têm isso em preto"}
       ]},
     ]
   },
@@ -1263,73 +1595,235 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "phone": {
     title: "phone",
-    sub: "Ligações & reuniões",
-    desc: "Frases pra qualquer ligação ou call em inglês — pedir pra falar com alguém, deixar recado. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"Could I",pt:"Posso",s:TRI},
-      {en:"Can I",pt:"Posso",s:TRI},
-      {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
-      {en:"I need to",pt:"Eu preciso",s:TRI},
-      {en:"Is it possible to",pt:"É possível",s:TRI},
-      {en:"I'm trying to",pt:"Estou tentando",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"speak to the manager",pt:"falar com o gerente",s:TRI},
-      {en:"call customer service",pt:"ligar pro atendimento",s:TRI},
-      {en:"talk to someone in HR",pt:"falar com alguém do RH",s:TRI},
-      {en:"leave a message",pt:"deixar uma mensagem",s:TRI},
-      {en:"schedule a call",pt:"marcar uma call",s:TRI},
-      {en:"get connected",pt:"ser conectado(a)",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"today",pt:"hoje",s:TRI},
-      {en:"later",pt:"mais tarde",s:TRI},
-      {en:"right now",pt:"agora",s:TRI},
-      {en:"about the issue",pt:"sobre a questão",s:TRI},
-      {en:"urgently",pt:"urgentemente",s:TRI},
-      {en:"please",pt:"por favor",s:TRI},
-      {en:"when possible",pt:"quando possível",s:TRI},
-      {en:"before noon",pt:"antes do meio-dia",s:TRI},
-    ]},
+    sub: "Ligação, call & recado",
+    desc: "Pra navegar telefone e calls em inglês — abrir motivo, falar com alguém, marcar reunião, lidar com conexão ruim. Cada opener abre uma fase da chamada.",
+    tree: [
+      // Motivo da ligação
+      { en:"I'm calling about", pt:"Estou ligando sobre", colII:[
+        { en:"my appointment", pt:"meu agendamento", colIII:[
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"at 3 p.m.",pt:"das 3 da tarde"},
+          {en:"I need to reschedule",pt:"preciso remarcar"},
+          {en:"to confirm",pt:"pra confirmar"},
+        ]},
+        { en:"the order", pt:"o pedido", colIII:[
+          {en:"I placed yesterday",pt:"que fiz ontem"},
+          {en:"that hasn't arrived",pt:"que não chegou"},
+          {en:"number 1234",pt:"número 1234"},
+          {en:"to cancel it",pt:"pra cancelar"},
+        ]},
+        { en:"the invoice", pt:"a fatura", colIII:[
+          {en:"I haven't received",pt:"que não recebi"},
+          {en:"from last month",pt:"do mês passado"},
+          {en:"that's incorrect",pt:"que tá incorreta"},
+          {en:"to dispute it",pt:"pra contestar"},
+        ]},
+        { en:"the meeting", pt:"a reunião", colIII:[
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"to confirm the time",pt:"pra confirmar o horário"},
+          {en:"to reschedule",pt:"pra remarcar"},
+          {en:"with John",pt:"com o John"},
+        ]},
+      ]},
+
+      // Falar com alguém
+      { en:"Can I speak to", pt:"Posso falar com", colII:[
+        { en:"the manager", pt:"o gerente", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"about my account",pt:"sobre minha conta"},
+          {en:"right now",pt:"agora"},
+          {en:"as soon as possible",pt:"o mais rápido possível"},
+        ]},
+        { en:"customer service", pt:"o atendimento", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"about my order",pt:"sobre meu pedido"},
+          {en:"about a charge",pt:"sobre uma cobrança"},
+          {en:"in English",pt:"em inglês"},
+        ]},
+        { en:"John", pt:"o John", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"from sales",pt:"de vendas"},
+          {en:"if he's available",pt:"se ele estiver disponível"},
+          {en:"about the project",pt:"sobre o projeto"},
+        ]},
+        { en:"someone from sales", pt:"alguém de vendas", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"about a quote",pt:"sobre uma cotação"},
+          {en:"in English",pt:"em inglês"},
+          {en:"as soon as possible",pt:"o mais rápido possível"},
+        ]},
+      ]},
+
+      // Agendamento
+      { en:"I'd like to schedule", pt:"Quero marcar", colII:[
+        { en:"a call", pt:"uma call", colIII:[
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"at 3",pt:"às 3"},
+          {en:"for 30 minutes",pt:"de 30 minutos"},
+          {en:"this week",pt:"essa semana"},
+        ]},
+        { en:"a meeting", pt:"uma reunião", colIII:[
+          {en:"for next week",pt:"pra semana que vem"},
+          {en:"with the team",pt:"com o time"},
+          {en:"for one hour",pt:"de uma hora"},
+          {en:"in person",pt:"presencial"},
+        ]},
+        { en:"a follow-up", pt:"um follow-up", colIII:[
+          {en:"for next week",pt:"pra semana que vem"},
+          {en:"on this topic",pt:"sobre esse assunto"},
+          {en:"for 15 minutes",pt:"de 15 minutos"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a quick chat", pt:"uma conversa rápida", colIII:[
+          {en:"today",pt:"hoje"},
+          {en:"this afternoon",pt:"essa tarde"},
+          {en:"for 10 minutes",pt:"de 10 minutos"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Pedido durante a chamada
+      { en:"Can you", pt:"Pode", colII:[
+        { en:"hold on a second", pt:"aguardar um segundo", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"I need to grab something",pt:"preciso pegar uma coisa"},
+          {en:"I'll be right back",pt:"já volto"},
+        ]},
+        { en:"repeat that", pt:"repetir isso", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"I didn't catch it",pt:"não entendi"},
+          {en:"slowly",pt:"devagar"},
+          {en:"the last part",pt:"a última parte"},
+        ]},
+        { en:"call me back", pt:"me ligar de volta", colIII:[
+          {en:"in five minutes",pt:"em cinco minutos"},
+          {en:"this afternoon",pt:"hoje à tarde"},
+          {en:"tomorrow morning",pt:"amanhã de manhã"},
+          {en:"on this number",pt:"neste número"},
+        ]},
+        { en:"transfer me", pt:"me transferir", colIII:[
+          {en:"to the manager",pt:"pro gerente"},
+          {en:"to customer service",pt:"pro atendimento"},
+          {en:"to someone in English",pt:"pra alguém que fale inglês"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Retorno
+      { en:"I'll call back", pt:"Eu ligo de volta", colII:[
+        { en:"in five minutes", pt:"em cinco minutos", colIII:[
+          {en:"after this meeting",pt:"depois dessa reunião"},
+          {en:"once I check",pt:"assim que eu checar"},
+          {en:"is that okay?",pt:"tudo bem?"},
+        ]},
+        { en:"later today", pt:"mais tarde hoje", colIII:[
+          {en:"after lunch",pt:"depois do almoço"},
+          {en:"around 4",pt:"por volta das 4"},
+          {en:"when I'm free",pt:"quando eu estiver livre"},
+          {en:"is that okay?",pt:"tudo bem?"},
+        ]},
+        { en:"tomorrow", pt:"amanhã", colIII:[
+          {en:"in the morning",pt:"de manhã"},
+          {en:"once I have an answer",pt:"quando eu tiver resposta"},
+          {en:"first thing",pt:"logo cedo"},
+          {en:"is that okay?",pt:"tudo bem?"},
+        ]},
+        { en:"when I'm free", pt:"quando estiver livre", colIII:[
+          {en:"after lunch",pt:"depois do almoço"},
+          {en:"this afternoon",pt:"hoje à tarde"},
+          {en:"by end of day",pt:"até o fim do dia"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Recado
+      { en:"Could you take a message?", pt:"Pode anotar um recado?", colII:[
+        { en:"I'll call back later", pt:"que ligo de volta depois", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"this afternoon",pt:"essa tarde"},
+          {en:"around 4",pt:"por volta das 4"},
+        ]},
+        { en:"please tell them I called", pt:"avisa que liguei", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"my number is...",pt:"meu número é..."},
+          {en:"I'll be available all day",pt:"vou ficar disponível o dia todo"},
+        ]},
+        { en:"it's urgent", pt:"é urgente", colIII:[
+          {en:"please",pt:"por favor"},
+          {en:"have them call me back",pt:"peçam pra me ligarem"},
+          {en:"on this number",pt:"neste número"},
+        ]},
+        { en:"let them know I'll email", pt:"avisa que vou mandar e-mail", colIII:[
+          {en:"in 10 minutes",pt:"em 10 minutos"},
+          {en:"with the details",pt:"com os detalhes"},
+          {en:"thank you",pt:"obrigado"},
+        ]},
+      ]},
+
+      // Conexão ruim
+      { en:"I think we have", pt:"Acho que temos", colII:[
+        { en:"a bad connection", pt:"uma conexão ruim", colIII:[
+          {en:"can you hear me?",pt:"você consegue me ouvir?"},
+          {en:"let me try again",pt:"deixa eu tentar de novo"},
+          {en:"I'll redial",pt:"vou ligar de novo"},
+          {en:"please call me back",pt:"por favor me liga de volta"},
+        ]},
+        { en:"static on the line", pt:"interferência na linha", colIII:[
+          {en:"can you hear me?",pt:"você consegue me ouvir?"},
+          {en:"let me try again",pt:"deixa eu tentar de novo"},
+          {en:"I'll switch phones",pt:"vou trocar de telefone"},
+        ]},
+        { en:"an echo", pt:"um eco", colIII:[
+          {en:"can you check your mic?",pt:"pode checar seu mic?"},
+          {en:"let me mute and unmute",pt:"deixa eu mutar e desmutar"},
+          {en:"is it better now?",pt:"melhorou?"},
+        ]},
+        { en:"a dropped call", pt:"uma queda de chamada", colIII:[
+          {en:"sorry about that",pt:"desculpa"},
+          {en:"I just redialed",pt:"acabei de ligar de novo"},
+          {en:"can you hear me now?",pt:"agora me ouve?"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"Could I speak to the manager today?",pt:"Posso falar com o gerente hoje?"},
-      {en:"Can I call customer service later?",pt:"Posso ligar pro atendimento mais tarde?"},
-      {en:"I'd like to talk to someone in HR right now",pt:"Eu gostaria de falar com alguém do RH agora"},
-      {en:"I need to leave a message about the issue",pt:"Eu preciso deixar uma mensagem sobre a questão"},
-      {en:"Is it possible to schedule a call urgently?",pt:"É possível marcar uma call urgentemente?"},
-      {en:"I'm trying to get connected please",pt:"Estou tentando ser conectado por favor"},
-      {en:"Could I speak to the manager before noon?",pt:"Posso falar com o gerente antes do meio-dia?"},
-      {en:"Can I leave a message when possible?",pt:"Posso deixar uma mensagem quando possível?"},
-      {en:"I'd like to schedule a call today",pt:"Eu gostaria de marcar uma call hoje"},
+      {en:"I'm calling about my appointment for tomorrow",pt:"Estou ligando sobre meu agendamento de amanhã"},
+      {en:"Can I speak to the manager please",pt:"Posso falar com o gerente por favor"},
+      {en:"I'd like to schedule a call for tomorrow at 3",pt:"Quero marcar uma call pra amanhã às 3"},
+      {en:"Can you transfer me to customer service",pt:"Pode me transferir pro atendimento"},
+      {en:"I'll call back in five minutes after this meeting",pt:"Eu ligo em cinco minutos depois dessa reunião"},
+      {en:"Could you take a message it's urgent",pt:"Pode anotar um recado é urgente"},
+      {en:"I think we have a bad connection can you hear me",pt:"Acho que temos conexão ruim você me ouve"},
+      {en:"I'm calling about the order I placed yesterday",pt:"Estou ligando sobre o pedido que fiz ontem"},
+      {en:"Can you repeat that please",pt:"Pode repetir por favor"},
     ],
     phrasals: [
-      {term:"Could I / Can I / May I",desc:"Os três níveis de formalidade pra pedir conexão. 'Could I' é o padrão educado. 'Can I' é mais casual. 'May I' é máxima formalidade (raro em telefone, mais em e-mail).",ex:[
-        {en:"Could I speak to the manager today?",pt:"Posso falar com o gerente hoje?"},
-        {en:"Can I call customer service later?",pt:"Posso ligar pro atendimento mais tarde?"}
+      {term:"I'm calling about",desc:"Frase universal pra abrir ligação. 'I'm calling ABOUT [tópico]' (com 'about'). Sempre seguido por substantivo: 'my appointment' / 'the order' / 'the invoice' / 'the meeting'.",ex:[
+        {en:"I'm calling about my appointment for tomorrow",pt:"Estou ligando sobre meu agendamento de amanhã"},
+        {en:"I'm calling about the order I placed yesterday",pt:"Estou ligando sobre o pedido que fiz ontem"}
       ]},
-      {term:"speak to / talk to",desc:"REGRA importante: SEMPRE 'speak TO [pessoa]' ou 'talk TO [pessoa]'. Erro clássico do brasileiro: 'speak with' (errado em American English padrão). 'Speak to' = mais formal; 'talk to' = mais casual.",ex:[
-        {en:"Could I speak to the manager?",pt:"Posso falar com o gerente?"},
-        {en:"I'd like to talk to someone in HR",pt:"Eu gostaria de falar com alguém do RH"}
+      {term:"Can I speak to",desc:"Pra pedir pra falar com alguém. SEMPRE 'speak TO' (não 'speak with'). 'Can I speak to the manager' / 'to John' / 'to customer service'. 'Please' fecha educadamente.",ex:[
+        {en:"Can I speak to the manager please",pt:"Posso falar com o gerente por favor"},
+        {en:"Can I speak to someone from sales",pt:"Posso falar com alguém de vendas"}
       ]},
-      {term:"call customer service",desc:"'Call' como verbo = ligar. 'Customer service' = atendimento ao cliente (sempre singular, incontável). NÃO usar 'phone' como verbo na maioria dos contextos profissionais — 'call' é mais natural.",ex:[
-        {en:"Can I call customer service later?",pt:"Posso ligar pro atendimento mais tarde?"},
-        {en:"I need to call customer service today",pt:"Eu preciso ligar pro atendimento hoje"}
+      {term:"I'd like to schedule",desc:"Pra marcar reunião/call. 'Schedule' = agendar. Sempre 'A call' / 'A meeting' (com 'a'). Note 'follow-up' (com hífen) = encontro de retorno. Pra remarcar é 'reschedule'.",ex:[
+        {en:"I'd like to schedule a call for tomorrow",pt:"Quero marcar uma call pra amanhã"},
+        {en:"I'd like to schedule a follow-up for next week",pt:"Quero marcar um follow-up pra semana que vem"}
       ]},
-      {term:"leave a message",desc:"Frase exata pra recado. SEMPRE 'leave A message' (com 'a'). Funciona quando a pessoa não pode atender. Pode adicionar 'for [pessoa]' pra especificar destinatário ('leave a message for the manager').",ex:[
-        {en:"I need to leave a message about the issue",pt:"Eu preciso deixar uma mensagem sobre a questão"},
-        {en:"Can I leave a message when possible?",pt:"Posso deixar uma mensagem quando possível?"}
+      {term:"Can you hold on / repeat / call me back / transfer me",desc:"Pedidos durante a chamada. 'Hold on a second' (espera um segundo) — americano usa 'hold on', não 'wait'. 'Transfer me TO [pessoa]' = me transfere pra. 'Call me back' (separável: 'call me back later').",ex:[
+        {en:"Can you hold on a second please",pt:"Pode aguardar um segundo por favor"},
+        {en:"Can you transfer me to customer service",pt:"Pode me transferir pro atendimento"}
       ]},
-      {term:"schedule a call",desc:"Pra marcar uma call/reunião. 'Schedule' (verbo) = agendar. SEMPRE 'a call' / 'a meeting' (com 'a'). Não confundir com 'reschedule' (remarcar). 'Set up a call' é sinônimo informal.",ex:[
-        {en:"Is it possible to schedule a call urgently?",pt:"É possível marcar uma call urgentemente?"},
-        {en:"I'd like to schedule a call today",pt:"Eu gostaria de marcar uma call hoje"}
+      {term:"I'll call back",desc:"Pra prometer retorno. 'I'll call back IN five minutes' (em cinco minutos — com 'in'). 'I'll call back LATER' (mais tarde — sem preposição). Note: 'call back' (separável, mas comum sem objeto).",ex:[
+        {en:"I'll call back in five minutes",pt:"Eu ligo de volta em cinco minutos"},
+        {en:"I'll call back tomorrow first thing",pt:"Eu ligo de volta amanhã logo cedo"}
       ]},
-      {term:"get connected",desc:"Phrasal verb passivo pra 'ser conectado' (telefonista te transfere). 'Get connected TO [pessoa]' especifica quem. Sem objeto, é genérico. Comum em sistemas automatizados.",ex:[
-        {en:"I'm trying to get connected please",pt:"Estou tentando ser conectado por favor"},
-        {en:"Could I get connected to the manager?",pt:"Posso ser conectado ao gerente?"}
+      {term:"Could you take a message?",desc:"Pra deixar recado quando a pessoa não atende. 'Take a message' (anotar recado) é a expressão exata. Combine com mensagem direta: 'I'll call back later' / 'tell them I called' / 'it's urgent'.",ex:[
+        {en:"Could you take a message please",pt:"Pode anotar um recado por favor"},
+        {en:"Could you take a message it's urgent",pt:"Pode anotar um recado é urgente"}
       ]},
-      {term:"about the issue / urgently / before noon",desc:"Especificadores comuns. 'About the issue' = sobre a questão (motivo). 'Urgently' = urgente (prioridade). 'Before noon' = antes do meio-dia (deadline). 'When possible' = quando puder (flexível). Todos cabem no fim da frase.",ex:[
-        {en:"I need to leave a message about the issue",pt:"Eu preciso deixar uma mensagem sobre a questão"},
-        {en:"Could I speak to the manager before noon?",pt:"Posso falar com o gerente antes do meio-dia?"}
+      {term:"I think we have a bad connection",desc:"Frase pra problemas técnicos na chamada. 'Bad connection' = conexão ruim. 'Static' = chiado/interferência. 'An echo' = eco. 'A dropped call' = chamada caiu. 'Can you hear me?' é a pergunta-chave.",ex:[
+        {en:"I think we have a bad connection can you hear me",pt:"Acho que temos conexão ruim você me ouve"},
+        {en:"I think we have an echo can you check your mic",pt:"Acho que tem eco pode checar seu mic"}
       ]},
     ]
   },
@@ -1341,75 +1835,252 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "traveling": {
     title: "travel",
-    sub: "Reservas & viagem",
-    desc: "Frases pra reservar e gerenciar viagem em inglês — voo, hotel, tour. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'd like to",pt:"Eu gostaria de",s:TRI},
-      {en:"I want to",pt:"Eu quero",s:TRI},
-      {en:"I need to",pt:"Eu preciso",s:TRI},
-      {en:"Could I",pt:"Posso",s:TRI},
-      {en:"Can I",pt:"Posso",s:TRI},
-      {en:"I'm trying to",pt:"Estou tentando",s:TRI},
-      {en:"I just want to",pt:"Só quero",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"book a room",pt:"reservar um quarto",s:TRI},
-      {en:"book a flight",pt:"reservar um voo",s:TRI},
-      {en:"cancel my reservation",pt:"cancelar minha reserva",s:TRI},
-      {en:"change my booking",pt:"mudar minha reserva",s:TRI},
-      {en:"check in",pt:"fazer check-in",s:TRI},
-      {en:"check out",pt:"fazer check-out",s:TRI},
-      {en:"extend my stay",pt:"estender minha estadia",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"today",pt:"hoje",s:TRI},
-      {en:"for tonight",pt:"pra hoje à noite",s:TRI},
-      {en:"online",pt:"online",s:TRI},
-      {en:"in advance",pt:"com antecedência",s:TRI},
-      {en:"for two nights",pt:"por duas noites",s:TRI},
-      {en:"before noon",pt:"antes do meio-dia",s:TRI},
-      {en:"right now",pt:"agora",s:TRI},
-      {en:"please",pt:"por favor",s:TRI},
-    ]},
+    sub: "Aeroporto, hotel & turismo",
+    desc: "Pra navegar viagem em inglês — chegada, hotel, problema de voo, direção. Cada opener abre uma cena diferente.",
+    tree: [
+      // Chegada/check-in de hotel
+      { en:"I have a reservation", pt:"Tenho reserva", colII:[
+        { en:"under my name", pt:"no meu nome", colIII:[
+          {en:"for tonight",pt:"pra hoje à noite"},
+          {en:"for tomorrow",pt:"pra amanhã"},
+          {en:"for two nights",pt:"pra duas noites"},
+          {en:"for two people",pt:"pra duas pessoas"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for tonight", pt:"pra hoje à noite", colIII:[
+          {en:"I booked online",pt:"reservei online"},
+          {en:"for one person",pt:"pra uma pessoa"},
+          {en:"with breakfast",pt:"com café da manhã"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for two nights", pt:"pra duas noites", colIII:[
+          {en:"starting today",pt:"a partir de hoje"},
+          {en:"with breakfast",pt:"com café da manhã"},
+          {en:"for two people",pt:"pra duas pessoas"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for next week", pt:"pra semana que vem", colIII:[
+          {en:"Monday to Friday",pt:"de segunda a sexta"},
+          {en:"for the conference",pt:"pro evento"},
+          {en:"for two",pt:"pra duas pessoas"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Check-in (hotel ou voo)
+      { en:"I'd like to check in", pt:"Quero fazer check-in", colII:[
+        { en:"now", pt:"agora", colIII:[
+          {en:"if my room is ready",pt:"se o quarto estiver pronto"},
+          {en:"I just landed",pt:"acabei de pousar"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"early", pt:"antes do horário", colIII:[
+          {en:"if possible",pt:"se possível"},
+          {en:"I have an early meeting",pt:"tenho reunião cedo"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"for my flight", pt:"pro meu voo", colIII:[
+          {en:"to São Paulo",pt:"pra São Paulo"},
+          {en:"to New York",pt:"pra Nova York"},
+          {en:"to Lisbon",pt:"pra Lisboa"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"online", pt:"online", colIII:[
+          {en:"but it's not working",pt:"mas não tá funcionando"},
+          {en:"from my phone",pt:"do meu celular"},
+          {en:"for two people",pt:"pra duas pessoas"},
+        ]},
+      ]},
+
+      // Pedidos de serviço
+      { en:"Can I get", pt:"Posso pedir", colII:[
+        { en:"a wake-up call", pt:"chamada pra acordar", colIII:[
+          {en:"at 7",pt:"às 7"},
+          {en:"for tomorrow morning",pt:"pra amanhã de manhã"},
+          {en:"every day at 6",pt:"todo dia às 6"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a late checkout", pt:"checkout tardio", colIII:[
+          {en:"until 2",pt:"até as 2"},
+          {en:"tomorrow",pt:"amanhã"},
+          {en:"if possible",pt:"se possível"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"extra towels", pt:"toalhas extras", colIII:[
+          {en:"for the room",pt:"pro quarto"},
+          {en:"as soon as possible",pt:"o quanto antes"},
+          {en:"two more",pt:"mais duas"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a different room", pt:"outro quarto", colIII:[
+          {en:"the other one is too noisy",pt:"o outro tá barulhento demais"},
+          {en:"with a better view",pt:"com vista melhor"},
+          {en:"on a higher floor",pt:"num andar mais alto"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"a taxi", pt:"um táxi", colIII:[
+          {en:"to the airport",pt:"pro aeroporto"},
+          {en:"right now",pt:"agora"},
+          {en:"for 6 a.m.",pt:"pras 6 da manhã"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Navegação (perguntar onde fica)
+      { en:"Where is", pt:"Onde fica", colII:[
+        { en:"the bathroom", pt:"o banheiro", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"on this floor",pt:"neste andar"},
+          {en:"the closest one",pt:"o mais próximo"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the gate", pt:"o portão", colIII:[
+          {en:"for flight 304",pt:"do voo 304"},
+          {en:"for the São Paulo flight",pt:"do voo pra São Paulo"},
+          {en:"from here",pt:"daqui"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the exit", pt:"a saída", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"to the taxis",pt:"pros táxis"},
+          {en:"to the metro",pt:"pro metrô"},
+          {en:"please",pt:"por favor"},
+        ]},
+        { en:"the train station", pt:"a estação de trem", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"the closest one",pt:"a mais próxima"},
+          {en:"on foot",pt:"a pé"},
+          {en:"by metro",pt:"de metrô"},
+        ]},
+        { en:"my room", pt:"meu quarto", colIII:[
+          {en:"the number is 504",pt:"é o 504"},
+          {en:"on this floor",pt:"neste andar"},
+          {en:"with this key card",pt:"com este cartão"},
+          {en:"please",pt:"por favor"},
+        ]},
+      ]},
+
+      // Propósito da viagem
+      { en:"I'm here for", pt:"Estou aqui a/de", colII:[
+        { en:"business", pt:"negócios", colIII:[
+          {en:"for two days",pt:"por dois dias"},
+          {en:"for a meeting",pt:"pra uma reunião"},
+          {en:"for a conference",pt:"pra uma conferência"},
+          {en:"with my team",pt:"com meu time"},
+        ]},
+        { en:"vacation", pt:"férias", colIII:[
+          {en:"for two weeks",pt:"por duas semanas"},
+          {en:"with my family",pt:"com minha família"},
+          {en:"for the first time",pt:"pela primeira vez"},
+          {en:"to relax",pt:"pra relaxar"},
+        ]},
+        { en:"a layover", pt:"uma escala", colIII:[
+          {en:"for 6 hours",pt:"por 6 horas"},
+          {en:"until midnight",pt:"até a meia-noite"},
+          {en:"before my next flight",pt:"antes do próximo voo"},
+          {en:"to São Paulo",pt:"pra São Paulo"},
+        ]},
+        { en:"family", pt:"família", colIII:[
+          {en:"for the holidays",pt:"pras festas"},
+          {en:"for a wedding",pt:"pra um casamento"},
+          {en:"for a week",pt:"por uma semana"},
+          {en:"visiting my parents",pt:"visitando meus pais"},
+        ]},
+      ]},
+
+      // Problema de viagem
+      { en:"I missed", pt:"Perdi", colII:[
+        { en:"my flight", pt:"meu voo", colIII:[
+          {en:"because of the traffic",pt:"por causa do trânsito"},
+          {en:"by 10 minutes",pt:"por 10 minutos"},
+          {en:"and I need to rebook",pt:"e preciso remarcar"},
+          {en:"is there another one?",pt:"tem outro?"},
+        ]},
+        { en:"my connection", pt:"minha conexão", colIII:[
+          {en:"in Lisbon",pt:"em Lisboa"},
+          {en:"and I'm stranded",pt:"e estou preso aqui"},
+          {en:"what are my options?",pt:"quais são as opções?"},
+          {en:"by 5 minutes",pt:"por 5 minutos"},
+        ]},
+        { en:"the train", pt:"o trem", colIII:[
+          {en:"by a minute",pt:"por um minuto"},
+          {en:"when does the next one leave?",pt:"quando sai o próximo?"},
+          {en:"and I'm late",pt:"e estou atrasado"},
+        ]},
+        { en:"the bus", pt:"o ônibus", colIII:[
+          {en:"to the airport",pt:"pro aeroporto"},
+          {en:"and I need a taxi",pt:"e preciso de um táxi"},
+          {en:"by 2 minutes",pt:"por 2 minutos"},
+        ]},
+      ]},
+
+      // Direção / como chegar
+      { en:"How do I get to", pt:"Como vou pra", colII:[
+        { en:"the city center", pt:"o centro", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"by metro",pt:"de metrô"},
+          {en:"by taxi",pt:"de táxi"},
+          {en:"on foot",pt:"a pé"},
+        ]},
+        { en:"the airport", pt:"o aeroporto", colIII:[
+          {en:"from this hotel",pt:"deste hotel"},
+          {en:"by taxi",pt:"de táxi"},
+          {en:"by train",pt:"de trem"},
+          {en:"the cheapest way",pt:"do jeito mais barato"},
+        ]},
+        { en:"my hotel", pt:"meu hotel", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"by taxi",pt:"de táxi"},
+          {en:"on foot",pt:"a pé"},
+          {en:"is it walkable?",pt:"dá pra ir andando?"},
+        ]},
+        { en:"the beach", pt:"a praia", colIII:[
+          {en:"from here",pt:"daqui"},
+          {en:"by bus",pt:"de ônibus"},
+          {en:"the closest one",pt:"a mais próxima"},
+          {en:"on foot",pt:"a pé"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'd like to book a room for tonight",pt:"Eu gostaria de reservar um quarto pra hoje à noite"},
-      {en:"I want to book a flight online",pt:"Eu quero reservar um voo online"},
-      {en:"I need to cancel my reservation today",pt:"Eu preciso cancelar minha reserva hoje"},
-      {en:"Could I change my booking in advance?",pt:"Posso mudar minha reserva com antecedência?"},
-      {en:"Can I check in before noon?",pt:"Posso fazer check-in antes do meio-dia?"},
-      {en:"I'm trying to check out right now",pt:"Estou tentando fazer check-out agora"},
-      {en:"I just want to extend my stay for two nights",pt:"Só quero estender minha estadia por duas noites"},
-      {en:"I'd like to book a flight please",pt:"Eu gostaria de reservar um voo por favor"},
-      {en:"I need to extend my stay today",pt:"Eu preciso estender minha estadia hoje"},
+      {en:"I have a reservation under my name for tonight",pt:"Tenho reserva no meu nome pra hoje à noite"},
+      {en:"I'd like to check in early please",pt:"Quero fazer check-in cedo por favor"},
+      {en:"Can I get a late checkout until 2",pt:"Posso pedir checkout tardio até as 2"},
+      {en:"Where is the gate for flight 304",pt:"Onde fica o portão do voo 304"},
+      {en:"I'm here for business for two days",pt:"Estou aqui a negócios por dois dias"},
+      {en:"I missed my connection in Lisbon",pt:"Perdi minha conexão em Lisboa"},
+      {en:"How do I get to the city center by metro",pt:"Como vou pro centro de metrô"},
+      {en:"Can I get a wake-up call at 7",pt:"Posso pedir chamada pra acordar às 7"},
+      {en:"I'm here for a layover for 6 hours",pt:"Estou aqui de escala por 6 horas"},
     ],
     phrasals: [
-      {term:"book a room / book a flight",desc:"'Book' é o verbo padrão pra reservar. SEMPRE 'book A room' (com 'a'). 'Book' funciona pra qualquer coisa: voo, quarto, mesa, tour. Diferente de 'reserve' que é mais formal e raro em conversa.",ex:[
-        {en:"I'd like to book a room for tonight",pt:"Eu gostaria de reservar um quarto pra hoje à noite"},
-        {en:"I want to book a flight online",pt:"Eu quero reservar um voo online"}
+      {term:"I have a reservation under my name",desc:"Frase-chave de chegada em hotel. 'Under my name' = 'no meu nome' (não 'on my name'). Sempre seguido por detalhe da reserva: 'for tonight', 'for two nights', etc.",ex:[
+        {en:"I have a reservation under my name for tonight",pt:"Tenho reserva no meu nome pra hoje à noite"},
+        {en:"I have a reservation for two nights with breakfast",pt:"Tenho reserva pra duas noites com café da manhã"}
       ]},
-      {term:"cancel my reservation",desc:"Pra cancelar. 'Reservation' é o substantivo (a reserva); 'booking' é sinônimo. SEMPRE 'cancel MY reservation' ou 'cancel THE booking' — nunca sem artigo. Bom adicionar 'today' ou 'in advance'.",ex:[
-        {en:"I need to cancel my reservation today",pt:"Eu preciso cancelar minha reserva hoje"},
-        {en:"Could I cancel my booking in advance?",pt:"Posso cancelar minha reserva com antecedência?"}
+      {term:"I'd like to check in / check out",desc:"'Check in' (verbo, dois palavras) = chegar. 'Check-in' (substantivo, com hífen) = a chegada. Mesmo pra 'check out'. Funciona em hotel E em voo. 'Check in early' = antes do horário oficial.",ex:[
+        {en:"I'd like to check in early please",pt:"Quero fazer check-in cedo por favor"},
+        {en:"I'd like to check in for my flight to New York",pt:"Quero fazer check-in pro meu voo pra Nova York"}
       ]},
-      {term:"change my booking",desc:"Pra alterar reserva (data, horário, quarto). 'Change' é flexível. 'Modify' é mais formal/técnico. 'Reschedule' é específico pra mudar horário/data.",ex:[
-        {en:"Could I change my booking in advance?",pt:"Posso mudar minha reserva com antecedência?"},
-        {en:"I want to change my booking for tonight",pt:"Eu quero mudar minha reserva pra hoje à noite"}
+      {term:"Can I get",desc:"Pedido casual em hotel. Cabe pra serviço (wake-up call, late checkout), item (extra towels), troca (different room) e taxi. Sempre seguido por substantivo. 'Please' fecha educadamente.",ex:[
+        {en:"Can I get a wake-up call at 7",pt:"Posso pedir chamada pra acordar às 7"},
+        {en:"Can I get a different room please",pt:"Posso pedir outro quarto por favor"}
       ]},
-      {term:"check in / check out",desc:"Os dois verbos universais em hotéis/aeroportos. 'Check IN' = entrar (chegar). 'Check OUT' = sair (partir). Note: SEMPRE separados ('check in', não 'checkin'). Como substantivo: 'check-in' (com hífen).",ex:[
-        {en:"Can I check in before noon?",pt:"Posso fazer check-in antes do meio-dia?"},
-        {en:"I'm trying to check out right now",pt:"Estou tentando fazer check-out agora"}
+      {term:"Where is",desc:"Pra perguntar localização. SEMPRE com 'the' antes do lugar. 'The bathroom', 'the gate', 'the exit'. Adicione 'from here' pra mostrar que quer direção a partir do ponto atual.",ex:[
+        {en:"Where is the bathroom from here",pt:"Onde fica o banheiro daqui"},
+        {en:"Where is the gate for flight 304",pt:"Onde fica o portão do voo 304"}
       ]},
-      {term:"extend my stay",desc:"Pra estender estadia em hotel. 'Stay' é o substantivo (a estadia). SEMPRE 'extend MY stay' (com possessivo). 'For [duração]' especifica quantos dias a mais.",ex:[
-        {en:"I just want to extend my stay for two nights",pt:"Só quero estender minha estadia por duas noites"},
-        {en:"I need to extend my stay today",pt:"Eu preciso estender minha estadia hoje"}
+      {term:"I'm here for",desc:"Frase-chave em imigração. 'I'm here for business' / 'vacation' / 'a layover' / 'family'. Note: 'business' e 'vacation' sem artigo; 'a layover' com artigo. 'A layover' = escala curta entre voos.",ex:[
+        {en:"I'm here for vacation for two weeks",pt:"Estou aqui de férias por duas semanas"},
+        {en:"I'm here for a layover for 6 hours",pt:"Estou aqui de escala por 6 horas"}
       ]},
-      {term:"I'd like to / I want to / I need to",desc:"As três formas pra abrir pedido. 'I'd like to' é o mais educado (use em hotéis 5 estrelas). 'I want to' é direto, casual. 'I need to' implica urgência. Os três pedem verbo no infinitivo SEM 'to' extra.",ex:[
-        {en:"I'd like to book a room for tonight",pt:"Eu gostaria de reservar um quarto pra hoje à noite"},
-        {en:"I need to extend my stay today",pt:"Eu preciso estender minha estadia hoje"}
+      {term:"I missed",desc:"Pra perder transporte. 'Miss' = perder no sentido de não pegar a tempo. 'I missed my flight by 10 minutes' = perdi por 10 minutos. Combine com 'because of [motivo]' pra explicar.",ex:[
+        {en:"I missed my flight because of the traffic",pt:"Perdi meu voo por causa do trânsito"},
+        {en:"I missed my connection in Lisbon",pt:"Perdi minha conexão em Lisboa"}
       ]},
-      {term:"in advance / before noon / right now",desc:"Especificadores de tempo. 'In advance' = com antecedência (planejamento). 'Before noon' = antes do meio-dia (deadline específico). 'Right now' = agora (urgência). 'Today' = hoje. Todos cabem no fim da frase.",ex:[
-        {en:"Could I change my booking in advance?",pt:"Posso mudar minha reserva com antecedência?"},
-        {en:"Can I check in before noon?",pt:"Posso fazer check-in antes do meio-dia?"}
+      {term:"How do I get to",desc:"Pra pedir direção. SEMPRE 'How do I GET TO [lugar]', não 'How I go'. Especifique o meio: 'by metro', 'by taxi', 'on foot' (a pé, não 'by foot').",ex:[
+        {en:"How do I get to the airport by taxi",pt:"Como vou pro aeroporto de táxi"},
+        {en:"How do I get to the city center on foot",pt:"Como vou pro centro a pé"}
       ]},
     ]
   },
