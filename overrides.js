@@ -1538,84 +1538,260 @@ window.SSF_OVERRIDES = {
   // Example: "I love cooking on weekends"
   // ════════════════════════════════════════════
   "at-home": {
-    title: "hobbies",
-    sub: "Gostos & preferências",
-    desc: "Frases pra falar do que você gosta, ama, odeia. Toque em qualquer item da coluna I e qualquer combinação nas próximas colunas forma uma frase real em inglês.",
-    // All items share s:0. Filtering becomes trivially "all available", so
-    // any Col I × Col II × Col III combination is valid English.
-    0: { replace:true, items:[
-      {en:"I love",pt:"Eu amo",s:TRI},
-      {en:"I enjoy",pt:"Eu curto",s:TRI},
-      {en:"I'm into",pt:"Curto muito",s:TRI},
-      {en:"I'm a fan of",pt:"Sou fã de",s:TRI},
-      {en:"I'm passionate about",pt:"Sou apaixonado(a) por",s:TRI},
-      {en:"I can't stand",pt:"Não suporto",s:TRI},
-      {en:"I hate",pt:"Eu odeio",s:TRI},
-      {en:"I'm not a fan of",pt:"Não sou fã de",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"cooking",pt:"cozinhar",s:TRI},
-      {en:"reading",pt:"ler",s:TRI},
-      {en:"running",pt:"correr",s:TRI},
-      {en:"photography",pt:"fotografia",s:TRI},
-      {en:"going to the gym",pt:"ir na academia",s:TRI},
-      {en:"watching movies",pt:"assistir filmes",s:TRI},
-      {en:"hanging out with friends",pt:"sair com amigos",s:TRI},
-      {en:"listening to music",pt:"ouvir música",s:TRI},
-      {en:"traveling",pt:"viajar",s:TRI},
-      {en:"shopping",pt:"fazer compras",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"on weekends",pt:"nos fins de semana",s:TRI},
-      {en:"lately",pt:"ultimamente",s:TRI},
-      {en:"for years",pt:"há anos",s:TRI},
-      {en:"since I was a kid",pt:"desde criança",s:TRI},
-      {en:"honestly",pt:"sinceramente",s:TRI},
-      {en:"in general",pt:"no geral",s:TRI},
-      {en:"daily",pt:"diariamente",s:TRI},
-      {en:"to relax",pt:"pra relaxar",s:TRI},
-      {en:"when I'm stressed",pt:"quando estou estressado(a)",s:TRI},
-    ]},
+    title: "small talk",
+    sub: "Rotina, casa & vibe do dia",
+    desc: "Pra contar como tá o dia em inglês — chegada em casa, plano da noite, estado, costume, pendências. Cada opener abre um momento da rotina.",
+    tree: [
+      // Acabei de fazer
+      { en:"I just got", pt:"Acabei de", colII:[
+        { en:"home", pt:"chegar em casa", colIII:[
+          {en:"and I'm exhausted",pt:"e estou exausto"},
+          {en:"and I'm starving",pt:"e estou faminto"},
+          {en:"and I need to sleep",pt:"e preciso dormir"},
+          {en:"from work",pt:"do trabalho"},
+        ]},
+        { en:"off work", pt:"sair do trabalho", colIII:[
+          {en:"and I'm done",pt:"e estou acabado"},
+          {en:"want to grab a drink?",pt:"quer tomar algo?"},
+          {en:"finally",pt:"finalmente"},
+          {en:"early today",pt:"cedo hoje"},
+        ]},
+        { en:"out of the shower", pt:"sair do banho", colIII:[
+          {en:"give me five minutes",pt:"me dá cinco minutos"},
+          {en:"and I'm getting ready",pt:"e estou me arrumando"},
+          {en:"and I feel better",pt:"e me sinto melhor"},
+        ]},
+        { en:"up", pt:"acordar", colIII:[
+          {en:"and I need coffee",pt:"e preciso de café"},
+          {en:"and I'm running late",pt:"e estou atrasado"},
+          {en:"and I feel terrible",pt:"e me sinto péssimo"},
+          {en:"it's already noon",pt:"e já é meio-dia"},
+        ]},
+      ]},
+
+      // Vou ficar em casa
+      { en:"I'm staying in", pt:"Vou ficar em casa", colII:[
+        { en:"tonight", pt:"hoje à noite", colIII:[
+          {en:"and ordering food",pt:"e pedindo comida"},
+          {en:"and watching a movie",pt:"e vendo um filme"},
+          {en:"to recharge",pt:"pra recarregar"},
+          {en:"with my partner",pt:"com meu parceiro"},
+        ]},
+        { en:"this weekend", pt:"esse fim de semana", colIII:[
+          {en:"to rest",pt:"pra descansar"},
+          {en:"and doing nothing",pt:"e não fazendo nada"},
+          {en:"and ordering food",pt:"e pedindo comida"},
+          {en:"with the family",pt:"com a família"},
+        ]},
+        { en:"all day", pt:"o dia todo", colIII:[
+          {en:"and working from home",pt:"e trabalhando de casa"},
+          {en:"to recharge",pt:"pra recarregar"},
+          {en:"and watching shows",pt:"e vendo séries"},
+          {en:"because of the rain",pt:"por causa da chuva"},
+        ]},
+      ]},
+
+      // Prestes a fazer
+      { en:"I'm about to", pt:"Estou prestes a", colII:[
+        { en:"leave", pt:"sair", colIII:[
+          {en:"can I call you back?",pt:"posso te ligar depois?"},
+          {en:"give me a sec",pt:"me dá um segundo"},
+          {en:"see you in 20",pt:"te vejo em 20"},
+          {en:"talk to you later",pt:"falo depois"},
+        ]},
+        { en:"sleep", pt:"dormir", colIII:[
+          {en:"good night",pt:"boa noite"},
+          {en:"talk tomorrow",pt:"a gente fala amanhã"},
+          {en:"I'm exhausted",pt:"estou exausto"},
+          {en:"finally",pt:"finalmente"},
+        ]},
+        { en:"eat", pt:"comer", colIII:[
+          {en:"I'm starving",pt:"estou faminto"},
+          {en:"can I call you back?",pt:"posso te ligar depois?"},
+          {en:"join me",pt:"vem comigo"},
+          {en:"give me a sec",pt:"me dá um segundo"},
+        ]},
+        { en:"shower", pt:"tomar banho", colIII:[
+          {en:"give me 10 minutes",pt:"me dá 10 minutos"},
+          {en:"can I call you after?",pt:"posso te ligar depois?"},
+          {en:"and then head out",pt:"e depois saio"},
+        ]},
+        { en:"order food", pt:"pedir comida", colIII:[
+          {en:"want anything?",pt:"quer alguma coisa?"},
+          {en:"from the usual place",pt:"do lugar de sempre"},
+          {en:"give me a sec",pt:"me dá um segundo"},
+          {en:"I'm starving",pt:"estou faminto"},
+        ]},
+      ]},
+
+      // Estado/sentimento
+      { en:"I'm so", pt:"Estou tão", colII:[
+        { en:"tired", pt:"cansado(a)", colIII:[
+          {en:"I could pass out",pt:"que podia desmaiar"},
+          {en:"right now",pt:"agora"},
+          {en:"after today",pt:"depois de hoje"},
+          {en:"I can't think",pt:"que nem consigo pensar"},
+        ]},
+        { en:"hungry", pt:"com fome", colIII:[
+          {en:"I could eat anything",pt:"que comeria qualquer coisa"},
+          {en:"right now",pt:"agora"},
+          {en:"let's order food",pt:"vamos pedir comida"},
+          {en:"I haven't eaten today",pt:"que não comi hoje"},
+        ]},
+        { en:"sleepy", pt:"com sono", colIII:[
+          {en:"I need a nap",pt:"que preciso cochilar"},
+          {en:"right now",pt:"agora"},
+          {en:"I can barely keep my eyes open",pt:"que mal consigo manter os olhos abertos"},
+          {en:"after lunch",pt:"depois do almoço"},
+        ]},
+        { en:"bored", pt:"entediado(a)", colIII:[
+          {en:"want to do something?",pt:"quer fazer alguma coisa?"},
+          {en:"right now",pt:"agora"},
+          {en:"with this routine",pt:"com essa rotina"},
+          {en:"let's grab a drink",pt:"vamos tomar algo"},
+        ]},
+        { en:"done with today", pt:"acabado(a) com hoje", colIII:[
+          {en:"I just want to sleep",pt:"que só quero dormir"},
+          {en:"can we talk tomorrow?",pt:"podemos falar amanhã?"},
+          {en:"and going to bed",pt:"e vou dormir"},
+        ]},
+      ]},
+
+      // Plano casual
+      { en:"I'm gonna", pt:"Vou", colII:[
+        { en:"chill", pt:"relaxar", colIII:[
+          {en:"tonight",pt:"hoje à noite"},
+          {en:"all day",pt:"o dia todo"},
+          {en:"with a movie",pt:"com um filme"},
+          {en:"and do nothing",pt:"e não fazer nada"},
+        ]},
+        { en:"cook something", pt:"cozinhar algo", colIII:[
+          {en:"quick",pt:"rápido"},
+          {en:"with leftovers",pt:"com sobras"},
+          {en:"for dinner",pt:"pro jantar"},
+          {en:"join me?",pt:"vem comigo?"},
+        ]},
+        { en:"take a nap", pt:"cochilar", colIII:[
+          {en:"for 20 minutes",pt:"por 20 minutos"},
+          {en:"real quick",pt:"rapidinho"},
+          {en:"before dinner",pt:"antes do jantar"},
+          {en:"I'm exhausted",pt:"estou exausto"},
+        ]},
+        { en:"watch a movie", pt:"assistir um filme", colIII:[
+          {en:"and chill",pt:"e relaxar"},
+          {en:"tonight",pt:"hoje à noite"},
+          {en:"join me?",pt:"vem comigo?"},
+          {en:"with popcorn",pt:"com pipoca"},
+        ]},
+        { en:"head out", pt:"sair", colIII:[
+          {en:"in five minutes",pt:"em cinco minutos"},
+          {en:"for a bit",pt:"por um tempo"},
+          {en:"to get fresh air",pt:"pra tomar um ar"},
+          {en:"want to come?",pt:"quer vir?"},
+        ]},
+      ]},
+
+      // Costume / repetição
+      { en:"I keep", pt:"Eu fico", colII:[
+        { en:"forgetting things", pt:"esquecendo coisas", colIII:[
+          {en:"lately",pt:"ultimamente"},
+          {en:"and it's annoying",pt:"e é irritante"},
+          {en:"every day",pt:"todo dia"},
+          {en:"because I'm tired",pt:"porque estou cansado"},
+        ]},
+        { en:"missing the alarm", pt:"não escutando o alarme", colIII:[
+          {en:"in the morning",pt:"de manhã"},
+          {en:"and waking up late",pt:"e acordando tarde"},
+          {en:"every day",pt:"todo dia"},
+          {en:"and I'm running late",pt:"e estou atrasado"},
+        ]},
+        { en:"falling asleep", pt:"dormindo", colIII:[
+          {en:"on the couch",pt:"no sofá"},
+          {en:"during meetings",pt:"em reuniões"},
+          {en:"in front of the TV",pt:"na frente da TV"},
+          {en:"because I'm exhausted",pt:"porque estou exausto"},
+        ]},
+        { en:"putting it off", pt:"adiando isso", colIII:[
+          {en:"because I don't want to",pt:"porque não quero"},
+          {en:"and feeling guilty",pt:"e me sentindo culpado"},
+          {en:"every day",pt:"todo dia"},
+          {en:"but I'll do it tomorrow",pt:"mas faço amanhã"},
+        ]},
+      ]},
+
+      // Pendência (ainda não)
+      { en:"I haven't", pt:"Não", colII:[
+        { en:"eaten", pt:"comi", colIII:[
+          {en:"all day",pt:"o dia todo"},
+          {en:"yet",pt:"ainda"},
+          {en:"and I'm starving",pt:"e estou faminto"},
+          {en:"since this morning",pt:"desde de manhã"},
+        ]},
+        { en:"slept", pt:"dormi", colIII:[
+          {en:"well",pt:"bem"},
+          {en:"in days",pt:"há dias"},
+          {en:"enough lately",pt:"o suficiente ultimamente"},
+          {en:"more than 4 hours",pt:"mais que 4 horas"},
+        ]},
+        { en:"showered", pt:"tomei banho", colIII:[
+          {en:"yet",pt:"ainda"},
+          {en:"all day",pt:"o dia todo"},
+          {en:"give me 10 minutes",pt:"me dá 10 minutos"},
+          {en:"because I just got home",pt:"porque acabei de chegar"},
+        ]},
+        { en:"called", pt:"liguei", colIII:[
+          {en:"my parents in weeks",pt:"pros meus pais há semanas"},
+          {en:"yet",pt:"ainda"},
+          {en:"because I've been busy",pt:"porque tô ocupado"},
+          {en:"I should",pt:"eu deveria"},
+        ]},
+        { en:"finished", pt:"terminei", colIII:[
+          {en:"the work I had",pt:"o trabalho que eu tinha"},
+          {en:"yet",pt:"ainda"},
+          {en:"and I'm stressed",pt:"e estou estressado"},
+          {en:"the dishes",pt:"a louça"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I love cooking on weekends",pt:"Eu amo cozinhar nos fins de semana"},
-      {en:"I'm into photography lately",pt:"Curto muito fotografia ultimamente"},
-      {en:"I'm passionate about running since I was a kid",pt:"Sou apaixonado por correr desde criança"},
-      {en:"I'm a fan of watching movies to relax",pt:"Sou fã de assistir filmes pra relaxar"},
-      {en:"I enjoy traveling for years",pt:"Curto viajar há anos"},
-      {en:"I can't stand shopping honestly",pt:"Não suporto fazer compras sinceramente"},
-      {en:"I hate going to the gym daily",pt:"Odeio ir na academia diariamente"},
-      {en:"I'm not a fan of listening to music when I'm stressed",pt:"Não sou fã de ouvir música quando estou estressado"},
-      {en:"I'm passionate about shopping when I'm stressed",pt:"Sou apaixonada por fazer compras quando estou estressada"},
-      {en:"I love hanging out with friends in general",pt:"Amo sair com amigos no geral"},
+      {en:"I just got home and I'm exhausted",pt:"Acabei de chegar em casa e estou exausto"},
+      {en:"I'm staying in tonight and ordering food",pt:"Vou ficar em casa hoje à noite e pedindo comida"},
+      {en:"I'm about to leave can I call you back",pt:"Estou prestes a sair posso te ligar depois"},
+      {en:"I'm so tired I could pass out",pt:"Estou tão cansado que podia desmaiar"},
+      {en:"I'm gonna take a nap real quick",pt:"Vou cochilar rapidinho"},
+      {en:"I keep forgetting things lately",pt:"Eu fico esquecendo coisas ultimamente"},
+      {en:"I haven't eaten all day",pt:"Não comi o dia todo"},
+      {en:"I just got off work finally",pt:"Acabei de sair do trabalho finalmente"},
+      {en:"I haven't called my parents in weeks",pt:"Não liguei pros meus pais há semanas"},
     ],
     phrasals: [
-      {term:"I love / I enjoy",desc:"Os dois verbos mais comuns pra dizer que gosta de algo. 'I love' é mais forte e expressivo; 'I enjoy' é mais neutro/elegante. Os dois sempre seguidos de gerúndio (-ing) ou substantivo, NUNCA do infinitivo após eles.",ex:[
-        {en:"I love cooking on weekends",pt:"Eu amo cozinhar nos fins de semana"},
-        {en:"I enjoy traveling lately",pt:"Curto viajar ultimamente"}
+      {term:"I just got",desc:"Pra falar de algo recém-feito. 'Just got' + lugar/situação. 'Got home' (cheguei em casa) — note 'got' + 'home' sem preposição. 'Got off work' (saí do trabalho — phrasal verb). 'Got up' (acordei).",ex:[
+        {en:"I just got home and I'm exhausted",pt:"Acabei de chegar em casa e estou exausto"},
+        {en:"I just got off work finally",pt:"Acabei de sair do trabalho finalmente"}
       ]},
-      {term:"I'm into / I'm a fan of",desc:"Formas mais casuais de dizer que curte algo. 'I'm into' é informal e popular entre jovens. 'I'm a fan of' funciona em qualquer contexto. Cuidado: ambos pedem gerúndio (-ing) ou substantivo, NUNCA infinitivo.",ex:[
-        {en:"I'm into running for years",pt:"Curto correr há anos"},
-        {en:"I'm a fan of photography in general",pt:"Sou fã de fotografia no geral"}
+      {term:"I'm staying in",desc:"Pra dizer que vai ficar em casa. 'Staying IN' (com 'in') = ficar em casa. Oposto: 'going out' (sair). Combine com tempo ('tonight', 'this weekend', 'all day') e atividade ('and ordering food', 'and watching a movie').",ex:[
+        {en:"I'm staying in tonight and ordering food",pt:"Vou ficar em casa hoje à noite e pedindo comida"},
+        {en:"I'm staying in this weekend to rest",pt:"Vou ficar em casa esse fim de semana pra descansar"}
       ]},
-      {term:"I'm passionate about",desc:"Forma mais forte e elegante pra dizer que ama algo. Soa profissional e maduro — perfeito pra entrevistas e bio do LinkedIn. Sempre seguido de gerúndio ou substantivo.",ex:[
-        {en:"I'm passionate about traveling",pt:"Sou apaixonado(a) por viajar"},
-        {en:"I'm passionate about photography since I was a kid",pt:"Sou apaixonado(a) por fotografia desde criança"}
+      {term:"I'm about to",desc:"Pra ação iminente (em segundos/minutos). 'About TO + verbo no infinitivo'. SEMPRE com 'to'. Erro: 'I'm about leaving' (errado). Combine com follow-up: 'can I call you back?' / 'give me a sec'.",ex:[
+        {en:"I'm about to leave can I call you back",pt:"Estou prestes a sair posso te ligar depois"},
+        {en:"I'm about to sleep good night",pt:"Estou prestes a dormir boa noite"}
       ]},
-      {term:"I can't stand / I hate",desc:"Pra falar do que detesta. 'I can't stand' é o mais comum em conversa ('não suporto'); 'I hate' é mais forte e direto. Ambos seguidos de gerúndio ou substantivo. Não confundir com 'don't like' que é bem mais brando.",ex:[
-        {en:"I can't stand shopping honestly",pt:"Não suporto fazer compras sinceramente"},
-        {en:"I hate going to the gym daily",pt:"Odeio ir na academia diariamente"}
+      {term:"I'm so",desc:"Pra estado intenso. 'I'm SO [adjetivo]' enfatiza a intensidade. 'Tired' / 'hungry' / 'sleepy' / 'bored' / 'done with today'. Combine com consequência: 'I could pass out' / 'I haven't eaten today'.",ex:[
+        {en:"I'm so tired I could pass out",pt:"Estou tão cansado que podia desmaiar"},
+        {en:"I'm so hungry I could eat anything",pt:"Estou com tanta fome que comeria qualquer coisa"}
       ]},
-      {term:"I'm not a fan of",desc:"Forma educada e suave de dizer que não gosta de algo. Soa diplomático e evita conflito — ideal em conversa com pessoas que você não conhece bem. Sempre seguido de gerúndio ou substantivo.",ex:[
-        {en:"I'm not a fan of cooking honestly",pt:"Não sou fã de cozinhar sinceramente"},
-        {en:"I'm not a fan of running in general",pt:"Não sou fã de correr no geral"}
+      {term:"I'm gonna",desc:"Forma casual de 'I'm going to'. Use em fala/mensagem com amigos, NUNCA em contexto formal. 'Gonna chill' / 'gonna cook' / 'gonna take a nap' / 'gonna head out'. Sempre seguido de verbo no infinitivo.",ex:[
+        {en:"I'm gonna take a nap real quick",pt:"Vou cochilar rapidinho"},
+        {en:"I'm gonna head out for a bit",pt:"Vou sair por um tempo"}
       ]},
-      {term:"Atividade em -ing (gerúndio)",desc:"Regra crítica: depois de 'love/enjoy/hate/can't stand/be into/be a fan of' SEMPRE vem gerúndio (-ing) ou substantivo. Nunca infinitivo. Erro clássico do brasileiro: 'I love to cook' soa antiquado; o correto natural é 'I love cooking'.",ex:[
-        {en:"I love cooking, not 'I love to cook'",pt:"Sempre cooking (gerúndio)"},
-        {en:"I'm into running, not 'I'm into to run'",pt:"Sempre running"}
+      {term:"I keep",desc:"Pra ação repetida (tipo um vício). 'I keep + gerúndio (-ing)'. 'Keep forgetting' / 'keep falling asleep' / 'keep putting it off'. Erro clássico: 'I keep TO forget' (errado, sempre gerúndio).",ex:[
+        {en:"I keep forgetting things lately",pt:"Eu fico esquecendo coisas ultimamente"},
+        {en:"I keep falling asleep on the couch",pt:"Eu fico dormindo no sofá"}
       ]},
-      {term:"on weekends / lately / for years",desc:"Fechadores de frase pra dar contexto temporal. 'On weekends' = padrão regular. 'Lately' = recentemente, com mudança. 'For years' = há muito tempo (ainda em curso). 'Since I was a kid' = desde a infância (raiz profunda).",ex:[
-        {en:"I'm into running for years",pt:"Curto correr há anos"},
-        {en:"I'm a fan of photography since I was a kid",pt:"Sou fã de fotografia desde criança"}
+      {term:"I haven't",desc:"Present perfect negativo — pra dizer que ainda não fez algo. 'I haven't + particípio passado'. 'Eaten' / 'slept' / 'showered' / 'called' / 'finished'. Combine com 'yet' (ainda) ou tempo ('all day', 'in weeks').",ex:[
+        {en:"I haven't eaten all day",pt:"Não comi o dia todo"},
+        {en:"I haven't called my parents in weeks",pt:"Não liguei pros meus pais há semanas"}
       ]},
     ]
   },
@@ -2784,76 +2960,238 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "relationships": {
     title: "relationships",
-    sub: "Namoro & parceiros",
-    desc: "Frases pra falar do seu parceiro em inglês — sentimentos, paixão, dia-a-dia. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'm with",pt:"Estou com",s:TRI},
-      {en:"I'm in love with",pt:"Estou apaixonado(a) por",s:TRI},
-      {en:"I'm crazy about",pt:"Sou louco(a) por",s:TRI},
-      {en:"I miss",pt:"Sinto falta de",s:TRI},
-      {en:"I'm proud of",pt:"Tenho orgulho de",s:TRI},
-      {en:"I really care about",pt:"Me importo muito com",s:TRI},
-      {en:"I depend on",pt:"Conto com",s:TRI},
-      {en:"I'm grateful for",pt:"Sou grato(a) por",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"my boyfriend",pt:"meu namorado",s:TRI},
-      {en:"my girlfriend",pt:"minha namorada",s:TRI},
-      {en:"my partner",pt:"meu(minha) parceiro(a)",s:TRI},
-      {en:"my husband",pt:"meu marido",s:TRI},
-      {en:"my wife",pt:"minha esposa",s:TRI},
-      {en:"my best friend",pt:"meu(minha) melhor amigo(a)",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"for two years",pt:"há dois anos",s:TRI},
-      {en:"lately",pt:"ultimamente",s:TRI},
-      {en:"since college",pt:"desde a faculdade",s:TRI},
-      {en:"honestly",pt:"sinceramente",s:TRI},
-      {en:"every day",pt:"todo dia",s:TRI},
-      {en:"more than ever",pt:"mais do que nunca",s:TRI},
-      {en:"deeply",pt:"profundamente",s:TRI},
-      {en:"in many ways",pt:"de várias formas",s:TRI},
-      {en:"to be honest",pt:"pra ser sincero(a)",s:TRI},
-    ]},
+    sub: "Namoro, casamento & briga",
+    desc: "Pra falar de relacionamento amoroso em inglês — status, paixão, briga, mudança de fase. Cada opener abre uma fase do relacionamento.",
+    tree: [
+      // Namorando
+      { en:"I'm dating", pt:"Estou saindo com", colII:[
+        { en:"someone new", pt:"alguém novo", colIII:[
+          {en:"for a few months",pt:"há alguns meses"},
+          {en:"casually",pt:"de boa"},
+          {en:"and it's going well",pt:"e tá indo bem"},
+          {en:"and we're seeing where it goes",pt:"e a gente tá vendo no que dá"},
+        ]},
+        { en:"a coworker", pt:"um(a) colega de trabalho", colIII:[
+          {en:"discreetly",pt:"em segredo"},
+          {en:"for a few months",pt:"há alguns meses"},
+          {en:"and HR doesn't know",pt:"e o RH não sabe"},
+          {en:"and it's getting serious",pt:"e tá ficando sério"},
+        ]},
+        { en:"my best friend", pt:"meu(minha) melhor amigo(a)", colIII:[
+          {en:"and it's weird at first",pt:"e tá estranho no começo"},
+          {en:"after years of friendship",pt:"depois de anos de amizade"},
+          {en:"and it feels right",pt:"e parece certo"},
+          {en:"now that we admitted it",pt:"agora que a gente admitiu"},
+        ]},
+        { en:"nobody right now", pt:"ninguém no momento", colIII:[
+          {en:"and I'm enjoying it",pt:"e tô curtindo"},
+          {en:"after the breakup",pt:"depois do término"},
+          {en:"and focusing on me",pt:"e me focando em mim"},
+          {en:"by choice",pt:"por escolha"},
+        ]},
+      ]},
+
+      // Apaixonado
+      { en:"I'm in love with", pt:"Estou apaixonado(a) por", colII:[
+        { en:"my partner", pt:"meu(minha) parceiro(a)", colIII:[
+          {en:"completely",pt:"completamente"},
+          {en:"every single day",pt:"todo santo dia"},
+          {en:"more than I thought possible",pt:"mais do que achei que era possível"},
+          {en:"after all these years",pt:"depois de todos esses anos"},
+        ]},
+        { en:"my girlfriend", pt:"minha namorada", colIII:[
+          {en:"and she knows it",pt:"e ela sabe"},
+          {en:"completely",pt:"completamente"},
+          {en:"more than ever",pt:"mais do que nunca"},
+          {en:"for the first time",pt:"pela primeira vez"},
+        ]},
+        { en:"my boyfriend", pt:"meu namorado", colIII:[
+          {en:"and he knows it",pt:"e ele sabe"},
+          {en:"completely",pt:"completamente"},
+          {en:"more than ever",pt:"mais do que nunca"},
+          {en:"for real this time",pt:"pra valer dessa vez"},
+        ]},
+        { en:"someone I just met", pt:"alguém que acabei de conhecer", colIII:[
+          {en:"and it's scary",pt:"e é assustador"},
+          {en:"and excited",pt:"e empolgante"},
+          {en:"already",pt:"já"},
+          {en:"out of nowhere",pt:"do nada"},
+        ]},
+      ]},
+
+      // Casado
+      { en:"I'm married to", pt:"Sou casado(a) com", colII:[
+        { en:"my husband", pt:"meu marido", colIII:[
+          {en:"for 5 years",pt:"há 5 anos"},
+          {en:"since college",pt:"desde a faculdade"},
+          {en:"and we're happy",pt:"e a gente é feliz"},
+          {en:"my high school sweetheart",pt:"meu amor da escola"},
+        ]},
+        { en:"my wife", pt:"minha esposa", colIII:[
+          {en:"for 5 years",pt:"há 5 anos"},
+          {en:"since college",pt:"desde a faculdade"},
+          {en:"and we're happy",pt:"e a gente é feliz"},
+          {en:"my high school sweetheart",pt:"minha namorada da escola"},
+        ]},
+        { en:"my best friend", pt:"meu(minha) melhor amigo(a)", colIII:[
+          {en:"and we love each other deeply",pt:"e a gente se ama profundamente"},
+          {en:"for 7 years",pt:"há 7 anos"},
+          {en:"and that's the secret",pt:"e esse é o segredo"},
+          {en:"since we were in our 20s",pt:"desde os 20 anos"},
+        ]},
+      ]},
+
+      // Terminou
+      { en:"I broke up with", pt:"Terminei com", colII:[
+        { en:"my ex", pt:"meu(minha) ex", colIII:[
+          {en:"last month",pt:"mês passado"},
+          {en:"a year ago",pt:"um ano atrás"},
+          {en:"for good",pt:"de vez"},
+          {en:"and I'm finally free",pt:"e finalmente estou livre"},
+        ]},
+        { en:"my boyfriend", pt:"meu namorado", colIII:[
+          {en:"last month",pt:"mês passado"},
+          {en:"over text",pt:"por mensagem"},
+          {en:"and it was mutual",pt:"e foi mútuo"},
+          {en:"after a long fight",pt:"depois de uma briga longa"},
+        ]},
+        { en:"my girlfriend", pt:"minha namorada", colIII:[
+          {en:"last week",pt:"semana passada"},
+          {en:"and it's hard",pt:"e tá difícil"},
+          {en:"after 3 years",pt:"depois de 3 anos"},
+          {en:"and it was mutual",pt:"e foi mútuo"},
+        ]},
+        { en:"my partner", pt:"meu(minha) parceiro(a)", colIII:[
+          {en:"last month",pt:"mês passado"},
+          {en:"after long deliberation",pt:"depois de muito pensar"},
+          {en:"and it was for the best",pt:"e foi pro melhor"},
+          {en:"and we're still friends",pt:"e a gente ainda é amigo"},
+        ]},
+      ]},
+
+      // Briga
+      { en:"I had a fight with", pt:"Tive uma briga com", colII:[
+        { en:"my partner", pt:"meu(minha) parceiro(a)", colIII:[
+          {en:"last night",pt:"ontem à noite"},
+          {en:"over money",pt:"por causa de dinheiro"},
+          {en:"over nothing",pt:"por nada"},
+          {en:"and we made up",pt:"e a gente fez as pazes"},
+        ]},
+        { en:"my husband", pt:"meu marido", colIII:[
+          {en:"this morning",pt:"essa manhã"},
+          {en:"about chores",pt:"sobre tarefas de casa"},
+          {en:"and I'm still upset",pt:"e ainda estou chateada"},
+          {en:"and we're not talking",pt:"e a gente não tá se falando"},
+        ]},
+        { en:"my girlfriend", pt:"minha namorada", colIII:[
+          {en:"last night",pt:"ontem à noite"},
+          {en:"over plans",pt:"por causa de planos"},
+          {en:"and we made up this morning",pt:"e a gente fez as pazes hoje de manhã"},
+          {en:"and now I'm cooling off",pt:"e agora tô esfriando a cabeça"},
+        ]},
+        { en:"my boyfriend", pt:"meu namorado", colIII:[
+          {en:"last night",pt:"ontem à noite"},
+          {en:"over jealousy",pt:"por ciúme"},
+          {en:"and I need space",pt:"e preciso de espaço"},
+          {en:"and we made up",pt:"e a gente fez as pazes"},
+        ]},
+      ]},
+
+      // Mudança de fase
+      { en:"I'm getting", pt:"Vou", colII:[
+        { en:"married", pt:"me casar", colIII:[
+          {en:"next month",pt:"mês que vem"},
+          {en:"in the spring",pt:"na primavera"},
+          {en:"this year",pt:"esse ano"},
+          {en:"with my best friend",pt:"com minha melhor amiga"},
+        ]},
+        { en:"engaged", pt:"ficar noivo(a)", colIII:[
+          {en:"this weekend",pt:"esse fim de semana"},
+          {en:"on our anniversary",pt:"no nosso aniversário"},
+          {en:"after 4 years together",pt:"depois de 4 anos juntos"},
+          {en:"and I'm nervous",pt:"e estou nervoso"},
+        ]},
+        { en:"divorced", pt:"me divorciar", colIII:[
+          {en:"after 10 years",pt:"depois de 10 anos"},
+          {en:"and it's amicable",pt:"e tá amigável"},
+          {en:"by the end of the year",pt:"até o fim do ano"},
+          {en:"and starting fresh",pt:"e começando do zero"},
+        ]},
+        { en:"back together", pt:"voltar com meu(minha) ex", colIII:[
+          {en:"with my ex",pt:"com meu(minha) ex"},
+          {en:"after a year apart",pt:"depois de um ano separados"},
+          {en:"and it feels right",pt:"e parece certo"},
+          {en:"slowly",pt:"devagar"},
+        ]},
+      ]},
+
+      // Paquera
+      { en:"I have a crush on", pt:"Estou afim de", colII:[
+        { en:"a coworker", pt:"um(a) colega de trabalho", colIII:[
+          {en:"and I can't stop thinking about it",pt:"e não paro de pensar"},
+          {en:"but I'm shy",pt:"mas tô tímido"},
+          {en:"and we're texting",pt:"e a gente tá conversando"},
+          {en:"and I don't know what to do",pt:"e não sei o que fazer"},
+        ]},
+        { en:"someone in class", pt:"alguém da aula", colIII:[
+          {en:"and I can't focus",pt:"e não consigo me concentrar"},
+          {en:"but I haven't talked to them",pt:"mas ainda não falei com a pessoa"},
+          {en:"and we're texting",pt:"e a gente tá conversando"},
+          {en:"and it's mutual I think",pt:"e acho que é mútuo"},
+        ]},
+        { en:"my neighbor", pt:"meu(minha) vizinho(a)", colIII:[
+          {en:"and we're getting close",pt:"e a gente tá ficando próximo"},
+          {en:"and I see them every day",pt:"e vejo a pessoa todo dia"},
+          {en:"and I don't know what to do",pt:"e não sei o que fazer"},
+          {en:"but I'm shy",pt:"mas sou tímido"},
+        ]},
+        { en:"someone unexpected", pt:"alguém inesperado(a)", colIII:[
+          {en:"and it's weird",pt:"e tá estranho"},
+          {en:"and I can't explain why",pt:"e não consigo explicar"},
+          {en:"and we're texting",pt:"e a gente tá conversando"},
+          {en:"and it's exciting",pt:"e tá empolgante"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'm with my boyfriend for two years",pt:"Estou com meu namorado há dois anos"},
-      {en:"I'm in love with my partner since college",pt:"Estou apaixonado pelo(a) meu(minha) parceiro(a) desde a faculdade"},
-      {en:"I'm crazy about my wife every day",pt:"Sou louco pela minha esposa todo dia"},
-      {en:"I miss my best friend lately",pt:"Sinto falta do meu melhor amigo ultimamente"},
-      {en:"I'm proud of my husband honestly",pt:"Tenho orgulho do meu marido sinceramente"},
-      {en:"I really care about my girlfriend deeply",pt:"Me importo muito com minha namorada profundamente"},
-      {en:"I depend on my best friend in many ways",pt:"Conto com meu melhor amigo de várias formas"},
-      {en:"I'm grateful for my partner more than ever",pt:"Sou grato pelo(a) meu(minha) parceiro(a) mais do que nunca"},
-      {en:"I'm in love with my husband to be honest",pt:"Estou apaixonada pelo meu marido pra ser sincera"},
+      {en:"I'm dating someone new for a few months",pt:"Estou saindo com alguém novo há alguns meses"},
+      {en:"I'm in love with my partner completely",pt:"Estou apaixonado(a) pelo(a) meu(minha) parceiro(a) completamente"},
+      {en:"I'm married to my husband for 5 years",pt:"Sou casada com meu marido há 5 anos"},
+      {en:"I broke up with my ex last month",pt:"Terminei com meu(minha) ex mês passado"},
+      {en:"I had a fight with my partner over nothing",pt:"Tive uma briga com meu(minha) parceiro(a) por nada"},
+      {en:"I'm getting married next month",pt:"Vou me casar mês que vem"},
+      {en:"I have a crush on a coworker and I'm shy",pt:"Estou afim de um(a) colega de trabalho e sou tímido"},
+      {en:"I'm dating my best friend after years of friendship",pt:"Estou saindo com meu melhor amigo depois de anos de amizade"},
+      {en:"I'm getting engaged this weekend",pt:"Vou ficar noivo esse fim de semana"},
     ],
     phrasals: [
-      {term:"I'm with / I'm in love with",desc:"'I'm with [pessoa]' = relação estabelecida (namoro, casamento, união). 'I'm in love with' = especificamente apaixonado(a) emocionalmente. Os dois sempre seguidos de pessoa.",ex:[
-        {en:"I'm with my boyfriend for two years",pt:"Estou com meu namorado há dois anos"},
-        {en:"I'm in love with my husband to be honest",pt:"Estou apaixonada pelo meu marido pra ser sincera"}
+      {term:"I'm dating",desc:"Pra namoro casual ou recente. 'Dating [pessoa]' direto, sem preposição. 'Dating someone new' (alguém novo). 'Dating casually' (sem compromisso). Diferente de 'I'm with' que implica relação estabelecida.",ex:[
+        {en:"I'm dating someone new for a few months",pt:"Estou saindo com alguém novo há alguns meses"},
+        {en:"I'm dating a coworker discreetly",pt:"Estou saindo com um(a) colega em segredo"}
       ]},
-      {term:"I'm crazy about",desc:"Forma intensa e informal pra dizer que é apaixonado. Mais forte que 'in love' e mais comum entre jovens. Sempre seguido de pessoa.",ex:[
-        {en:"I'm crazy about my wife every day",pt:"Sou louco pela minha esposa todo dia"},
-        {en:"I'm crazy about my partner more than ever",pt:"Sou louco pelo(a) meu(minha) parceiro(a) mais do que nunca"}
+      {term:"I'm in love with",desc:"Pra paixão emocional. SEMPRE 'in love WITH' (com 'with'). 'My partner' / 'my girlfriend' / 'someone I just met'. Erro clássico: 'in love OF' (errado, sempre 'with').",ex:[
+        {en:"I'm in love with my partner completely",pt:"Estou apaixonado(a) pelo(a) meu(minha) parceiro(a) completamente"},
+        {en:"I'm in love with someone I just met",pt:"Estou apaixonado(a) por alguém que acabei de conhecer"}
       ]},
-      {term:"I miss",desc:"Pra falar de saudade. Sempre seguido direto da pessoa ('I miss her' / 'I miss my wife'). Não 'I miss OF', erro clássico do brasileiro.",ex:[
-        {en:"I miss my best friend lately",pt:"Sinto falta do meu melhor amigo ultimamente"},
-        {en:"I miss my girlfriend deeply",pt:"Sinto falta da minha namorada profundamente"}
+      {term:"I'm married to",desc:"Pra casamento oficial. SEMPRE 'married TO' (com 'to'). Erro clássico: 'married WITH' (errado, 'with' significa que vc casou junto com alguém, não casou com alguém). Tempo: 'for [duração]' / 'since [marco]'.",ex:[
+        {en:"I'm married to my husband for 5 years",pt:"Sou casada com meu marido há 5 anos"},
+        {en:"I'm married to my best friend",pt:"Sou casada com meu melhor amigo"}
       ]},
-      {term:"I'm proud of",desc:"Pra expressar orgulho do parceiro. Sempre 'proud OF' (com 'of'). Funciona pra qualquer parente, parceiro, amigo. Soa carinhoso e maduro.",ex:[
-        {en:"I'm proud of my husband honestly",pt:"Tenho orgulho do meu marido sinceramente"},
-        {en:"I'm proud of my partner in many ways",pt:"Tenho orgulho do(a) meu(minha) parceiro(a) de várias formas"}
+      {term:"I broke up with",desc:"Pra término. 'Break up WITH [pessoa]' (com 'with'). 'I broke up' (passado de 'break up'). Combine com tempo ('last month') ou modo ('over text', 'for good', 'mutual').",ex:[
+        {en:"I broke up with my ex last month",pt:"Terminei com meu(minha) ex mês passado"},
+        {en:"I broke up with my boyfriend over text",pt:"Terminei com meu namorado por mensagem"}
       ]},
-      {term:"I really care about",desc:"Forma terna pra dizer que se importa. Menos intenso que 'in love with', mais profundo que 'like'. Sempre seguido de pessoa. Bom pra amizades também.",ex:[
-        {en:"I really care about my girlfriend deeply",pt:"Me importo muito com minha namorada profundamente"},
-        {en:"I really care about my best friend honestly",pt:"Me importo muito com meu melhor amigo sinceramente"}
+      {term:"I had a fight with",desc:"Pra briga. 'Had a fight WITH [pessoa]' (com 'with'). Combine com tempo ('last night') ou motivo ('over money' = por causa de). 'And we made up' = e a gente fez as pazes.",ex:[
+        {en:"I had a fight with my partner over money",pt:"Tive uma briga com meu(minha) parceiro(a) por causa de dinheiro"},
+        {en:"I had a fight with my husband and we made up",pt:"Tive uma briga com meu marido e a gente fez as pazes"}
       ]},
-      {term:"I depend on / I'm grateful for",desc:"'Depend on' = contar com (apoio). 'Grateful for' = ser grato (sentimento). Os dois funcionam pra falar de quem te sustenta emocionalmente. Note as preposições: ON e FOR.",ex:[
-        {en:"I depend on my best friend in many ways",pt:"Conto com meu melhor amigo de várias formas"},
-        {en:"I'm grateful for my partner more than ever",pt:"Sou grato pelo(a) meu(minha) parceiro(a) mais do que nunca"}
+      {term:"I'm getting",desc:"Pra mudança de fase iminente. 'Getting married' (casando) / 'getting engaged' (noivando) / 'getting divorced' (divorciando) / 'getting back together' (voltando). 'I'm getting' = está acontecendo / vai acontecer.",ex:[
+        {en:"I'm getting married next month",pt:"Vou me casar mês que vem"},
+        {en:"I'm getting back together with my ex",pt:"Vou voltar com meu(minha) ex"}
       ]},
-      {term:"for two years / since college",desc:"Marcadores de duração. 'For [tempo]' = quanto tempo passou ('for two years' = há dois anos). 'Since [marco]' = quando começou ('since college' = desde a faculdade). Mistura comum de erro do brasileiro.",ex:[
-        {en:"I'm with my partner for two years",pt:"Estou com meu(minha) parceiro(a) há dois anos"},
-        {en:"I'm in love with my husband since college",pt:"Estou apaixonada pelo meu marido desde a faculdade"}
+      {term:"I have a crush on",desc:"Pra paquera (afim, sem compromisso). 'Crush ON [pessoa]' (com 'on'). Diferente de 'in love with' (paixão estabelecida). 'A crush' é leve, normalmente unilateral. Erro: 'crush IN' (errado).",ex:[
+        {en:"I have a crush on a coworker",pt:"Estou afim de um(a) colega de trabalho"},
+        {en:"I have a crush on someone in class",pt:"Estou afim de alguém da aula"}
       ]},
     ]
   },
@@ -2865,78 +3203,250 @@ window.SSF_OVERRIDES = {
   // ════════════════════════════════════════════
   "family": {
     title: "family",
-    sub: "Apresentar & descrever",
-    desc: "Frases pra falar dos seus familiares em inglês — proximidade, admiração, gratidão. Toque em qualquer item da coluna I e qualquer combinação forma uma frase real.",
-    0: { replace:true, items:[
-      {en:"I'm close to",pt:"Sou próximo(a) de",s:TRI},
-      {en:"I'm proud of",pt:"Tenho orgulho de",s:TRI},
-      {en:"I get along with",pt:"Me dou bem com",s:TRI},
-      {en:"I look up to",pt:"Admiro",s:TRI},
-      {en:"I admire",pt:"Admiro",s:TRI},
-      {en:"I'm grateful for",pt:"Sou grato(a) por",s:TRI},
-      {en:"I lean on",pt:"Conto com",s:TRI},
-      {en:"I respect",pt:"Respeito",s:TRI},
-    ]},
-    1: { replace:true, items:[
-      {en:"my mom",pt:"minha mãe",s:TRI},
-      {en:"my dad",pt:"meu pai",s:TRI},
-      {en:"my brother",pt:"meu irmão",s:TRI},
-      {en:"my sister",pt:"minha irmã",s:TRI},
-      {en:"my grandfather",pt:"meu avô",s:TRI},
-      {en:"my best friend",pt:"meu(minha) melhor amigo(a)",s:TRI},
-      {en:"my parents",pt:"meus pais",s:TRI},
-      {en:"my kids",pt:"meus filhos",s:TRI},
-    ]},
-    2: { replace:true, items:[
-      {en:"through everything",pt:"em qualquer situação",s:TRI},
-      {en:"since childhood",pt:"desde a infância",s:TRI},
-      {en:"these days",pt:"hoje em dia",s:TRI},
-      {en:"no matter what",pt:"não importa o que",s:TRI},
-      {en:"honestly",pt:"sinceramente",s:TRI},
-      {en:"for everything",pt:"por tudo",s:TRI},
-      {en:"in tough times",pt:"em momentos difíceis",s:TRI},
-      {en:"in many ways",pt:"de várias formas",s:TRI},
-      {en:"deeply",pt:"profundamente",s:TRI},
-    ]},
+    sub: "Família & convivência",
+    desc: "Pra falar da família em inglês — afinidade, parecença, saudade, moradia, visita. Cada opener abre um aspecto diferente da relação.",
+    tree: [
+      // Próximo emocionalmente
+      { en:"I'm close to", pt:"Sou próximo(a) de", colII:[
+        { en:"my mom", pt:"minha mãe", colIII:[
+          {en:"because we talk every day",pt:"porque a gente fala todo dia"},
+          {en:"and we share everything",pt:"e a gente compartilha tudo"},
+          {en:"she's my best friend",pt:"ela é minha melhor amiga"},
+          {en:"since I was a kid",pt:"desde que eu era criança"},
+        ]},
+        { en:"my dad", pt:"meu pai", colIII:[
+          {en:"and we talk weekly",pt:"e a gente fala toda semana"},
+          {en:"because he raised me",pt:"porque ele me criou"},
+          {en:"more than I expected",pt:"mais do que eu imaginava"},
+          {en:"these days",pt:"hoje em dia"},
+        ]},
+        { en:"my brother", pt:"meu irmão", colIII:[
+          {en:"we grew up together",pt:"a gente cresceu junto"},
+          {en:"and we tell each other everything",pt:"e a gente conta tudo um pro outro"},
+          {en:"despite the age gap",pt:"apesar da diferença de idade"},
+          {en:"since we were kids",pt:"desde criança"},
+        ]},
+        { en:"my sister", pt:"minha irmã", colIII:[
+          {en:"we share everything",pt:"a gente compartilha tudo"},
+          {en:"she's my best friend",pt:"ela é minha melhor amiga"},
+          {en:"despite living far",pt:"mesmo morando longe"},
+          {en:"since we were little",pt:"desde pequenas"},
+        ]},
+        { en:"my grandma", pt:"minha avó", colIII:[
+          {en:"because she raised me",pt:"porque ela me criou"},
+          {en:"and I miss her",pt:"e sinto saudade"},
+          {en:"more than anyone",pt:"mais do que ninguém"},
+          {en:"since I was a kid",pt:"desde que eu era criança"},
+        ]},
+      ]},
+
+      // Convivência (se dão bem)
+      { en:"I get along with", pt:"Me dou bem com", colII:[
+        { en:"my parents", pt:"meus pais", colIII:[
+          {en:"really well",pt:"super bem"},
+          {en:"most of the time",pt:"na maior parte do tempo"},
+          {en:"now that I'm older",pt:"agora que sou mais velho"},
+          {en:"surprisingly",pt:"surpreendentemente"},
+        ]},
+        { en:"my siblings", pt:"meus irmãos", colIII:[
+          {en:"really well",pt:"super bem"},
+          {en:"most of the time",pt:"na maior parte do tempo"},
+          {en:"despite the fights",pt:"apesar das brigas"},
+          {en:"more than I expected",pt:"mais do que eu imaginava"},
+        ]},
+        { en:"my cousins", pt:"meus primos", colIII:[
+          {en:"like siblings",pt:"como se fossem irmãos"},
+          {en:"on holidays",pt:"nas férias"},
+          {en:"since we were kids",pt:"desde criança"},
+          {en:"surprisingly well",pt:"surpreendentemente bem"},
+        ]},
+        { en:"my in-laws", pt:"meus sogros", colIII:[
+          {en:"really well",pt:"super bem"},
+          {en:"surprisingly",pt:"surpreendentemente"},
+          {en:"when we agree on things",pt:"quando a gente concorda"},
+          {en:"most of the time",pt:"na maior parte do tempo"},
+        ]},
+      ]},
+
+      // Parecido com
+      { en:"I take after", pt:"Puxei", colII:[
+        { en:"my mom", pt:"minha mãe", colIII:[
+          {en:"in personality",pt:"na personalidade"},
+          {en:"in looks",pt:"na aparência"},
+          {en:"in everything",pt:"em tudo"},
+          {en:"when I'm stressed",pt:"quando estou estressado"},
+        ]},
+        { en:"my dad", pt:"meu pai", colIII:[
+          {en:"in looks",pt:"na aparência"},
+          {en:"in temperament",pt:"no temperamento"},
+          {en:"more than I'd like",pt:"mais do que eu queria"},
+          {en:"in many ways",pt:"de várias formas"},
+        ]},
+        { en:"my grandma", pt:"minha avó", colIII:[
+          {en:"in personality",pt:"na personalidade"},
+          {en:"in cooking",pt:"na cozinha"},
+          {en:"more than my mom",pt:"mais que da minha mãe"},
+          {en:"in many ways",pt:"de várias formas"},
+        ]},
+        { en:"my grandpa", pt:"meu avô", colIII:[
+          {en:"in looks",pt:"na aparência"},
+          {en:"in stubbornness",pt:"na teimosia"},
+          {en:"in humor",pt:"no humor"},
+          {en:"so my mom says",pt:"segundo minha mãe"},
+        ]},
+      ]},
+
+      // Admiração
+      { en:"I look up to", pt:"Admiro", colII:[
+        { en:"my dad", pt:"meu pai", colIII:[
+          {en:"because of his work",pt:"pelo trabalho dele"},
+          {en:"for his patience",pt:"pela paciência dele"},
+          {en:"for raising us",pt:"por ter nos criado"},
+          {en:"in many ways",pt:"de várias formas"},
+        ]},
+        { en:"my mom", pt:"minha mãe", colIII:[
+          {en:"for how she handles things",pt:"pelo jeito que ela lida com tudo"},
+          {en:"for her strength",pt:"pela força dela"},
+          {en:"deeply",pt:"profundamente"},
+          {en:"in many ways",pt:"de várias formas"},
+        ]},
+        { en:"my older sister", pt:"minha irmã mais velha", colIII:[
+          {en:"because she went first",pt:"porque ela foi na frente"},
+          {en:"for her career",pt:"pela carreira dela"},
+          {en:"and learn from her",pt:"e aprendo com ela"},
+          {en:"in many ways",pt:"de várias formas"},
+        ]},
+        { en:"my brother", pt:"meu irmão", colIII:[
+          {en:"for his patience",pt:"pela paciência"},
+          {en:"because he's a good dad",pt:"porque ele é um bom pai"},
+          {en:"in how he treats people",pt:"em como ele trata as pessoas"},
+          {en:"deeply",pt:"profundamente"},
+        ]},
+      ]},
+
+      // Saudade
+      { en:"I miss", pt:"Sinto saudade de", colII:[
+        { en:"my parents", pt:"meus pais", colIII:[
+          {en:"since I moved out",pt:"desde que saí de casa"},
+          {en:"a lot lately",pt:"muito ultimamente"},
+          {en:"on holidays",pt:"nas festas"},
+          {en:"every day",pt:"todo dia"},
+        ]},
+        { en:"my brother", pt:"meu irmão", colIII:[
+          {en:"since he moved",pt:"desde que ele se mudou"},
+          {en:"a lot lately",pt:"muito ultimamente"},
+          {en:"and his energy",pt:"e da energia dele"},
+          {en:"every weekend",pt:"todo fim de semana"},
+        ]},
+        { en:"my hometown", pt:"minha cidade natal", colIII:[
+          {en:"since I moved",pt:"desde que mudei"},
+          {en:"in the summer",pt:"no verão"},
+          {en:"and the food",pt:"e a comida de lá"},
+          {en:"every now and then",pt:"de vez em quando"},
+        ]},
+        { en:"my grandma", pt:"minha avó", colIII:[
+          {en:"since she passed away",pt:"desde que ela faleceu"},
+          {en:"every day",pt:"todo dia"},
+          {en:"and her cooking",pt:"e da comida dela"},
+          {en:"a lot",pt:"muito"},
+        ]},
+      ]},
+
+      // Moradia
+      { en:"I live with", pt:"Moro com", colII:[
+        { en:"my parents", pt:"meus pais", colIII:[
+          {en:"in São Paulo",pt:"em São Paulo"},
+          {en:"for now",pt:"por enquanto"},
+          {en:"and my brother",pt:"e meu irmão"},
+          {en:"and it's actually nice",pt:"e tá sendo legal"},
+        ]},
+        { en:"my partner", pt:"meu(minha) parceiro(a)", colIII:[
+          {en:"for two years",pt:"há dois anos"},
+          {en:"in our apartment",pt:"no nosso apê"},
+          {en:"and our dog",pt:"e nosso cachorro"},
+          {en:"happily",pt:"felizes"},
+        ]},
+        { en:"my roommate", pt:"meu colega de apê", colIII:[
+          {en:"since college",pt:"desde a faculdade"},
+          {en:"in a small apartment",pt:"num apê pequeno"},
+          {en:"and we get along",pt:"e a gente se dá bem"},
+          {en:"for now",pt:"por enquanto"},
+        ]},
+        { en:"my dog", pt:"meu cachorro", colIII:[
+          {en:"alone with him",pt:"sozinho com ele"},
+          {en:"in my apartment",pt:"no meu apê"},
+          {en:"and he's the best company",pt:"e ele é a melhor companhia"},
+          {en:"for now",pt:"por enquanto"},
+        ]},
+      ]},
+
+      // Visita
+      { en:"I'm visiting", pt:"Vou visitar", colII:[
+        { en:"my family", pt:"minha família", colIII:[
+          {en:"next weekend",pt:"no fim de semana que vem"},
+          {en:"for the holidays",pt:"pras festas"},
+          {en:"for a week",pt:"por uma semana"},
+          {en:"after a long time",pt:"depois de muito tempo"},
+        ]},
+        { en:"my cousin", pt:"meu(minha) primo(a)", colIII:[
+          {en:"next weekend",pt:"no fim de semana que vem"},
+          {en:"for her wedding",pt:"pro casamento dela"},
+          {en:"after a year apart",pt:"depois de um ano sem se ver"},
+          {en:"in Rio",pt:"no Rio"},
+        ]},
+        { en:"my grandparents", pt:"meus avós", colIII:[
+          {en:"this Sunday",pt:"esse domingo"},
+          {en:"every other week",pt:"a cada duas semanas"},
+          {en:"for lunch",pt:"pra almoçar"},
+          {en:"and helping out",pt:"e ajudando eles"},
+        ]},
+        { en:"my hometown", pt:"minha cidade natal", colIII:[
+          {en:"next month",pt:"mês que vem"},
+          {en:"for the holidays",pt:"pras festas"},
+          {en:"for the first time in years",pt:"pela primeira vez em anos"},
+          {en:"and seeing everyone",pt:"e vendo todo mundo"},
+        ]},
+      ]},
+    ],
     examples: [
-      {en:"I'm close to my mom honestly",pt:"Sou próximo da minha mãe sinceramente"},
-      {en:"I'm proud of my dad in many ways",pt:"Tenho orgulho do meu pai de várias formas"},
-      {en:"I get along with my brother through everything",pt:"Me dou bem com meu irmão em qualquer situação"},
-      {en:"I look up to my grandfather since childhood",pt:"Admiro meu avô desde a infância"},
-      {en:"I admire my best friend deeply",pt:"Admiro meu melhor amigo profundamente"},
-      {en:"I'm grateful for my parents for everything",pt:"Sou grato pelos meus pais por tudo"},
-      {en:"I lean on my sister in tough times",pt:"Conto com minha irmã em momentos difíceis"},
-      {en:"I respect my kids no matter what",pt:"Respeito meus filhos não importa o que"},
-      {en:"I'm proud of my kids these days",pt:"Tenho orgulho dos meus filhos hoje em dia"},
+      {en:"I'm close to my mom because we talk every day",pt:"Sou próximo da minha mãe porque a gente fala todo dia"},
+      {en:"I get along with my parents really well",pt:"Me dou bem com meus pais super bem"},
+      {en:"I take after my dad in looks",pt:"Puxei meu pai na aparência"},
+      {en:"I look up to my mom for her strength",pt:"Admiro minha mãe pela força dela"},
+      {en:"I miss my parents since I moved out",pt:"Sinto saudade dos meus pais desde que saí de casa"},
+      {en:"I live with my partner for two years",pt:"Moro com meu parceiro há dois anos"},
+      {en:"I'm visiting my family next weekend",pt:"Vou visitar minha família no fim de semana que vem"},
+      {en:"I miss my grandma since she passed away",pt:"Sinto saudade da minha avó desde que ela faleceu"},
+      {en:"I get along with my in-laws surprisingly",pt:"Me dou bem com meus sogros surpreendentemente"},
     ],
     phrasals: [
-      {term:"I'm close to / I'm proud of",desc:"As duas formas mais usadas pra descrever relação familiar. 'Close to' = laço emocional próximo. 'Proud of' = orgulho de quem alguém é ou do que conquistou. Sempre seguido de 'my + parente'.",ex:[
-        {en:"I'm close to my mom honestly",pt:"Sou próximo da minha mãe sinceramente"},
-        {en:"I'm proud of my dad in many ways",pt:"Tenho orgulho do meu pai de várias formas"}
+      {term:"I'm close to",desc:"Pra relação afetiva próxima. 'Close TO [pessoa]' (com 'to'). Sempre 'MY [parente]' (com possessivo). Combine com motivo: 'because we talk every day' / 'we grew up together'.",ex:[
+        {en:"I'm close to my mom because we talk every day",pt:"Sou próximo da minha mãe porque a gente fala todo dia"},
+        {en:"I'm close to my brother since we were kids",pt:"Sou próximo do meu irmão desde criança"}
       ]},
-      {term:"I get along with",desc:"Relação tranquila, sem brigas. Diferente de 'close to' que é mais emocional. 'I get along with my brother' = a gente se dá bem (mas não necessariamente é íntimo). Forma negativa: 'I don't get along with'.",ex:[
-        {en:"I get along with my brother through everything",pt:"Me dou bem com meu irmão em qualquer situação"},
-        {en:"I get along with my sister these days",pt:"Me dou bem com minha irmã hoje em dia"}
+      {term:"I get along with",desc:"Pra dizer que a relação é tranquila. 'Get along WITH [pessoa]' (com 'with'). Diferente de 'close to' (afetivo) — 'get along with' é convivência sem conflito.",ex:[
+        {en:"I get along with my parents really well",pt:"Me dou bem com meus pais super bem"},
+        {en:"I get along with my in-laws surprisingly",pt:"Me dou bem com meus sogros surpreendentemente"}
       ]},
-      {term:"I look up to / I admire",desc:"Pra falar de quem você admira. 'Look up to' tem a conexão de mentor/modelo (alguém mais velho ou mais experiente). 'Admire' é mais geral. Não confunda 'look up to' com 'look at' ou 'look after'.",ex:[
-        {en:"I look up to my grandfather since childhood",pt:"Admiro meu avô desde a infância"},
-        {en:"I admire my best friend deeply",pt:"Admiro meu melhor amigo profundamente"}
+      {term:"I take after",desc:"Pra parecença com parente. 'Take AFTER' (com 'after') = puxar a algum parente. 'In looks' (na aparência) / 'in personality' (na personalidade) / 'in temperament'. Quase sempre com pais ou avós.",ex:[
+        {en:"I take after my dad in looks",pt:"Puxei meu pai na aparência"},
+        {en:"I take after my mom in personality",pt:"Puxei minha mãe na personalidade"}
       ]},
-      {term:"I'm grateful for",desc:"Pra expressar gratidão. Sempre seguido de 'FOR + objeto/pessoa'. 'I'm grateful TO my mom' (com 'to') também funciona, mas é menos comum. 'I'm grateful FOR my mom' soa mais natural.",ex:[
-        {en:"I'm grateful for my parents for everything",pt:"Sou grato pelos meus pais por tudo"},
-        {en:"I'm grateful for my kids every single day",pt:"Sou grato pelos meus filhos todos os dias"}
+      {term:"I look up to",desc:"Pra admiração com componente de modelo/mentor. 'Look UP TO' (com 'up to'). Comum com pais, avós, irmãos mais velhos. Diferente de 'admire' (mais geral, sem hierarquia).",ex:[
+        {en:"I look up to my dad because of his work",pt:"Admiro meu pai pelo trabalho dele"},
+        {en:"I look up to my older sister for her career",pt:"Admiro minha irmã mais velha pela carreira dela"}
       ]},
-      {term:"I lean on",desc:"Conto com (apoio emocional). 'Lean on' literalmente é 'apoiar-se em'. Pra família, significa que você confia naquela pessoa em momentos difíceis. Sempre seguido de pessoa.",ex:[
-        {en:"I lean on my sister in tough times",pt:"Conto com minha irmã em momentos difíceis"},
-        {en:"I lean on my best friend honestly",pt:"Conto com meu melhor amigo sinceramente"}
+      {term:"I miss",desc:"Pra saudade. 'Miss [pessoa/lugar]' direto, sem preposição. SEMPRE com objeto: 'miss MY parents' / 'my hometown'. Combine com tempo: 'since I moved out' / 'every day' / 'on holidays'.",ex:[
+        {en:"I miss my parents since I moved out",pt:"Sinto saudade dos meus pais desde que saí de casa"},
+        {en:"I miss my hometown in the summer",pt:"Sinto saudade da minha cidade natal no verão"}
       ]},
-      {term:"I respect",desc:"Respeito (pessoa, decisão, autoridade). Mais formal que 'admire'. Funciona com qualquer parente. 'I respect my dad' significa que você reconhece o valor dele e a posição dele.",ex:[
-        {en:"I respect my dad no matter what",pt:"Respeito meu pai não importa o que"},
-        {en:"I respect my kids in many ways",pt:"Respeito meus filhos de várias formas"}
+      {term:"I live with",desc:"Pra moradia. 'Live WITH [pessoa]'. Combine com tempo ('for two years' / 'since college') ou lugar ('in São Paulo' / 'in our apartment'). 'Live alone' = morar sozinho (sem 'with').",ex:[
+        {en:"I live with my partner for two years",pt:"Moro com meu parceiro há dois anos"},
+        {en:"I live with my parents for now",pt:"Moro com meus pais por enquanto"}
       ]},
-      {term:"in tough times / through everything",desc:"Fechadores que dão peso emocional à frase. 'In tough times' = nos momentos difíceis. 'Through everything' = em qualquer situação. Ambos transformam a frase de declaração em testemunho.",ex:[
-        {en:"I lean on my best friend in tough times",pt:"Conto com meu melhor amigo em momentos difíceis"},
-        {en:"I get along with my sister through everything",pt:"Me dou bem com minha irmã em qualquer situação"}
+      {term:"I'm visiting",desc:"Pra visita planejada. 'I'm visiting [pessoa/lugar]' (presente contínuo com sentido de futuro). 'Next weekend' / 'for the holidays' / 'for a week'. Erro clássico: 'I'm going to visit' (correto, mas mais longo).",ex:[
+        {en:"I'm visiting my family next weekend",pt:"Vou visitar minha família no fim de semana que vem"},
+        {en:"I'm visiting my grandparents this Sunday",pt:"Vou visitar meus avós esse domingo"}
       ]},
     ]
   },
